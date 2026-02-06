@@ -162,25 +162,25 @@ class SimpleMultiCurveHandler:
         self.color_defs = [
             {
                 'name': 'red1',
-                'hsv_lower': (0, 80, 80),
+                'hsv_lower': (0, 40, 80),
                 'hsv_upper': (10, 255, 255),
                 'bgr_center': (0, 0, 200)
             },
             {
                 'name': 'red2',
-                'hsv_lower': (170, 80, 80),
+                'hsv_lower': (170, 40, 80),
                 'hsv_upper': (180, 255, 255),
                 'bgr_center': (0, 0, 200)
             },
             {
                 'name': 'orange',
-                'hsv_lower': (10, 80, 80),
+                'hsv_lower': (10, 50, 80),
                 'hsv_upper': (25, 255, 255),
                 'bgr_center': (0, 128, 255)
             },
             {
                 'name': 'yellow',
-                'hsv_lower': (25, 80, 80),
+                'hsv_lower': (25, 50, 80),
                 'hsv_upper': (35, 255, 255),
                 'bgr_center': (0, 255, 255)
             },
@@ -232,8 +232,8 @@ class SimpleMultiCurveHandler:
         # Thresholds - more lenient in medical mode for thin/anti-aliased curves
         if self.medical_mode:
             self.min_curve_points = 10  # Lower threshold for medical papers
-            self.min_curve_width_ratio = 0.12  # Allow partial curves
-            self.min_pixel_area = 30  # Lower for thin curves
+            self.min_curve_width_ratio = 0.06  # Allow partial curves
+            self.min_pixel_area = 15  # Lower for thin curves
         else:
             self.min_curve_points = 15
             self.min_curve_width_ratio = 0.15
@@ -280,6 +280,17 @@ class SimpleMultiCurveHandler:
 
             # Step 4: Extract curves
             curves = self._extract_curves(panel_img, panel.panel_id)
+
+            # Fallback: if < 2 curves found, try enhanced separation cascade
+            if len(curves) < 2:
+                logger.info(f"Panel {panel.panel_id}: only {len(curves)} curves from primary detection, trying fallback cascade")
+                fallback_curves = self._extract_curves_with_separation(panel_img, panel.panel_id)
+                # Only use fallback if it found a reasonable number (2-20) — hundreds means noise
+                if len(curves) < len(fallback_curves) <= 20:
+                    curves = fallback_curves
+                    logger.info(f"Panel {panel.panel_id}: fallback cascade found {len(curves)} curves")
+                elif len(fallback_curves) > 20:
+                    logger.info(f"Panel {panel.panel_id}: fallback cascade found {len(fallback_curves)} curves (too many, discarding)")
 
             # Adjust coordinates
             for curve in curves:
@@ -930,8 +941,43 @@ class SimpleMultiCurveHandler:
                 # Check if connected mask forms a valid curve
                 total_pixels = np.sum(connected_mask > 0)
                 if total_pixels > self.min_pixel_area:
-                    # Add as potential curve for further processing
                     logger.debug(f"Detected {style} {color_name} curve with {total_pixels} pixels")
+
+                    # Trace the connected mask and validate as KM curve
+                    points = self._trace_curve(connected_mask)
+                    if len(points) >= self.min_curve_points:
+                        # Define plot region for survival conversion
+                        margin_left = int(w * 0.08)
+                        margin_top = int(h * 0.08)
+                        plot_w = w - margin_left - int(w * 0.05)
+                        plot_h = h - margin_top - int(h * 0.12)
+
+                        survival_data = self._to_survival_legacy(
+                            points, h, w, margin_left, margin_top, plot_w, plot_h
+                        )
+
+                        if self._is_valid_km(survival_data):
+                            # Check width span
+                            cols_with_pixels = np.any(connected_mask > 0, axis=0)
+                            x_min_px = np.argmax(cols_with_pixels)
+                            x_max_px = len(cols_with_pixels) - np.argmax(cols_with_pixels[::-1]) - 1
+                            width_span = x_max_px - x_min_px
+
+                            # Check not already in curves (by color)
+                            existing_colors = {c.color_name for c in curves}
+                            actual_name = 'red' if color_name == 'red1' else color_name
+                            if actual_name not in existing_colors:
+                                confidence = min(1.0, len(points) / 100) * min(1.0, width_span / (plot_w * 0.5)) * 0.9
+                                curves.append(KMCurve(
+                                    curve_id=len(curves),
+                                    color_bgr=color_def['bgr_center'],
+                                    color_name=f"{actual_name}_{style}",
+                                    points=points,
+                                    survival_data=survival_data,
+                                    confidence=confidence,
+                                    panel_id=panel_id
+                                ))
+                                logger.info(f"Added {style} {actual_name} curve: {len(points)} points")
 
         return curves
 
@@ -1471,7 +1517,7 @@ class SimpleMultiCurveHandler:
 
         # Check y-variance: real KM curves have varying y values
         y_std = np.std(y_coords)
-        if y_std < 10:
+        if y_std < 5:
             logger.debug(f"    Black curve rejected: y too constant (std={y_std:.1f})")
             return False
 
@@ -1482,7 +1528,7 @@ class SimpleMultiCurveHandler:
 
         # Real KM curves have many points at same y (horizontal segments)
         # Diagonal lines have unique y for almost every point
-        if unique_ratio > 0.8:
+        if unique_ratio > 0.9:
             logger.debug(f"    Black curve rejected: no step pattern (unique_y_ratio={unique_ratio:.2f})")
             return False
 

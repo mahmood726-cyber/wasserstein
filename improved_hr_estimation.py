@@ -274,16 +274,22 @@ def _calculate_events_from_nar(nar_current: np.ndarray,
 
 
 def log_rank_test(ipd_treatment: List[IPDRecord],
-                  ipd_control: List[IPDRecord]) -> Tuple[float, float]:
+                  ipd_control: List[IPDRecord]) -> Tuple[float, float, float, float, float]:
     """
     Perform log-rank test on two IPD datasets.
 
     Returns
     -------
     statistic : float
-        Log-rank test statistic
+        Log-rank test statistic (Z)
     p_value : float
         Two-sided p-value
+    O_1 : float
+        Observed events in treatment arm
+    E_1 : float
+        Expected events in treatment arm
+    V : float
+        Variance of (O_1 - E_1)
     """
     # Combine data
     all_times = []
@@ -308,7 +314,7 @@ def log_rank_test(ipd_treatment: List[IPDRecord],
     event_times = np.unique(times[events == 1])
 
     if len(event_times) == 0:
-        return 0.0, 1.0
+        return 0.0, 1.0, 0.0, 0.0, 0.0
 
     # Log-rank calculation
     O_1 = 0  # Observed events in treatment
@@ -338,13 +344,13 @@ def log_rank_test(ipd_treatment: List[IPDRecord],
                   (at_risk_total - events_total)) / (at_risk_total**2 * (at_risk_total - 1))
 
     if V <= 0:
-        return 0.0, 1.0
+        return 0.0, 1.0, O_1, E_1, 0.0
 
     # Test statistic
     Z = (O_1 - E_1) / np.sqrt(V)
     p_value = 2 * (1 - stats.norm.cdf(abs(Z)))
 
-    return Z, p_value
+    return Z, p_value, O_1, E_1, V
 
 
 def estimate_hr_from_curves(times1: np.ndarray, surv1: np.ndarray,
@@ -384,15 +390,12 @@ def estimate_hr_from_curves(times1: np.ndarray, surv1: np.ndarray,
     for rec in ipd2:
         rec.arm = 0
 
-    # Log-rank test
-    Z, p_value = log_rank_test(ipd1, ipd2)
+    # Log-rank test — now returns (Z, p_value, O_1, E_1, V)
+    Z, p_value, O_1, E_1, V = log_rank_test(ipd1, ipd2)
 
-    # Estimate HR using the log-rank Z-score
-    # HR ≈ exp(Z * sqrt(4 / (O1 + O2)))
-    O1 = sum(1 for r in ipd1 if r.event == 1)
-    O2 = sum(1 for r in ipd2 if r.event == 1)
+    total_events = sum(1 for r in ipd1 if r.event == 1) + sum(1 for r in ipd2 if r.event == 1)
 
-    if O1 + O2 == 0:
+    if total_events == 0:
         return HRResult(
             hr=1.0, ci_lower=0.5, ci_upper=2.0,
             p_value=1.0, method="log_rank",
@@ -400,66 +403,39 @@ def estimate_hr_from_curves(times1: np.ndarray, surv1: np.ndarray,
             log_rank_statistic=0
         )
 
-    # Alternative HR estimation using median survival ratio
-    # More stable for small datasets
-
-    # Find medians
-    def find_median_survival(times, survivals):
-        """Find time when survival crosses 0.5."""
-        for i in range(1, len(survivals)):
-            if survivals[i] <= 0.5 <= survivals[i-1]:
-                # Linear interpolation
-                frac = (survivals[i-1] - 0.5) / (survivals[i-1] - survivals[i])
-                return times[i-1] + frac * (times[i] - times[i-1])
-        return times[-1]  # If never crosses 0.5
-
-    median1 = find_median_survival(times1, surv1)
-    median2 = find_median_survival(times2, surv2)
-
-    # HR approximation from medians (exponential assumption)
-    # S(t) = exp(-lambda * t), lambda = ln(2) / median
-    # HR = lambda1 / lambda2 = median2 / median1
-    if median1 > 0:
-        hr_from_median = median2 / median1
+    # Primary method: HR = exp((O_1 - E_1) / V) with SE(log HR) = 1/sqrt(V)
+    # This is the standard Mantel-Haenszel / log-rank derived HR
+    if V > 0 and total_events >= 20:
+        log_hr = (O_1 - E_1) / V
+        se_log_hr = 1.0 / np.sqrt(V)
+        hr = np.exp(log_hr)
+        hr = max(0.05, min(20.0, hr))
+        method = "log_rank_OminusE"
     else:
-        hr_from_median = 1.0
+        # Fallback: median survival ratio for low-event scenarios
+        def find_median_survival(times, survivals):
+            """Find time when survival crosses 0.5."""
+            for i in range(1, len(survivals)):
+                if survivals[i] <= 0.5 <= survivals[i-1]:
+                    frac = (survivals[i-1] - 0.5) / (survivals[i-1] - survivals[i])
+                    return times[i-1] + frac * (times[i] - times[i-1])
+            return times[-1]
 
-    # Use area-under-curve ratio as another estimate
-    # Restricted mean survival time ratio
-    common_max = min(times1.max(), times2.max())
-    times1_clipped = times1[times1 <= common_max]
-    surv1_clipped = surv1[:len(times1_clipped)]
-    times2_clipped = times2[times2 <= common_max]
-    surv2_clipped = surv2[:len(times2_clipped)]
+        median1 = find_median_survival(times1, surv1)
+        median2 = find_median_survival(times2, surv2)
 
-    if len(times1_clipped) > 1 and len(times2_clipped) > 1:
-        auc1 = np.trapz(surv1_clipped, times1_clipped)
-        auc2 = np.trapz(surv2_clipped, times2_clipped)
-        if auc1 > 0 and auc2 > 0:
-            # HR inversely related to AUC ratio
-            hr_from_auc = auc2 / auc1
+        if median1 > 0:
+            hr = median2 / median1
         else:
-            hr_from_auc = hr_from_median
-    else:
-        hr_from_auc = hr_from_median
+            hr = 1.0
+        hr = max(0.05, min(20.0, hr))
 
-    # Weighted average of methods
-    hr = 0.6 * hr_from_median + 0.4 * hr_from_auc
-    hr = max(0.05, min(20.0, hr))  # Bound to reasonable range
-
-    # Apply empirical bias correction
-    # Based on regression analysis: estimated = 0.8351 * true + 0.1708
-    # So: true = (estimated - 0.1708) / 0.8351
-    hr_corrected = (hr - 0.1708) / 0.8351
-    hr_corrected = max(0.05, min(20.0, hr_corrected))
-    hr = hr_corrected
-
-    # CI estimation
-    # SE(log(HR)) ≈ sqrt(4 / (O1 + O2)) for log-rank
-    if O1 + O2 > 0:
-        se_log_hr = np.sqrt(4.0 / (O1 + O2))
-    else:
-        se_log_hr = 0.5
+        # Approximate SE for median ratio method
+        if total_events > 0:
+            se_log_hr = np.sqrt(4.0 / total_events)
+        else:
+            se_log_hr = 0.5
+        method = "median_ratio_fallback"
 
     log_hr = np.log(hr)
     ci_lower = np.exp(log_hr - 1.96 * se_log_hr)
@@ -470,8 +446,8 @@ def estimate_hr_from_curves(times1: np.ndarray, surv1: np.ndarray,
         ci_lower=round(ci_lower, 3),
         ci_upper=round(ci_upper, 3),
         p_value=round(p_value, 4),
-        method="guyot_ipd_log_rank",
-        n_events=O1 + O2,
+        method=method,
+        n_events=total_events,
         n_total=n1 + n2,
         log_rank_statistic=round(Z, 3)
     )
