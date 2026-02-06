@@ -1,0 +1,82 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Backups
+backups_v*/
+backups/
+
+# ML models
+ml_models/
+*.pt
+training_output/
+synthetic_training_10k/
+synthetic_v4/
+yolo_data/
+yolo_nar_dataset/
+nar_detector_models/
+pdf_km_training_v4/
+pdf_training_data/
+
+# Validation output (regenerated)
+validation_results/
+batch_results/
+batch_test_results/
+batch_validation_output/
+extraction_results/
+rct_test_results/
+accuracy_results/
+realworld_validation_results/
+realworld_validation_enhanced/
+external_validation_results/
+expanded_validation_results/
+improved_multicurve_results/
+rct_km_extractions/
+validation_output.txt
+failure_analysis/
+multicurve_analysis/
+
+# Debug images
+debug_*.png
+test_fig_*.png
+test_km_*.png
+test_page*.png
+test_survival_plot.png
+km_fig_*.png
+
+# Test results (regenerated)
+test_results.json
+test_report.json
+integration_test_results.json
+selenium_results.json
+v4_test_results.json
+v4_edge_test_results.json
+complete_validation_report.json
+r_benchmark_results.json
+
+# OCR data
+ocr_data/
+
+# Real datasets (large)
+real_datasets/
+real_km_data/
+real_validation_datasets/
+validation_datasets/
+validation_ground_truth/
+survival_datasets/
+km_with_nar_tables/
+benchmark_images/
+
+# Test harvest
+test_harvest/
+
+# Deprecated
+deprecated/
+
+# OS
+.DS_Store
+Thumbs.db
