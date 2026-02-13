@@ -20,6 +20,7 @@ Version: 8.7 (Added black curve detection, timing benchmarks, PDF validation)
 import os
 import sys
 import cv2
+import time
 import numpy as np
 from dataclasses import dataclass, field
 from typing import List, Dict, Tuple, Optional
@@ -159,65 +160,69 @@ class SimpleMultiCurveHandler:
 
         # Define color ranges in HSV (H: 0-180, S: 0-255, V: 0-255)
         # Each color has a name, HSV lower/upper bounds, and expected BGR center
+        # Color ranges in HSV. Saturation floors lowered for muted journal
+        # palettes (NEJM, Lancet, JAMA often use desaturated colors).
+        # Anti-aliased fringe pixels can drop to S=20-30 in real PDFs.
         self.color_defs = [
             {
                 'name': 'red1',
-                'hsv_lower': (0, 40, 80),
+                'hsv_lower': (0, 25, 70),
                 'hsv_upper': (10, 255, 255),
                 'bgr_center': (0, 0, 200)
             },
             {
                 'name': 'red2',
-                'hsv_lower': (170, 40, 80),
+                'hsv_lower': (170, 25, 70),
                 'hsv_upper': (180, 255, 255),
                 'bgr_center': (0, 0, 200)
             },
             {
                 'name': 'orange',
-                'hsv_lower': (10, 50, 80),
+                'hsv_lower': (10, 30, 70),
                 'hsv_upper': (25, 255, 255),
                 'bgr_center': (0, 128, 255)
             },
             {
                 'name': 'yellow',
-                'hsv_lower': (25, 50, 80),
+                'hsv_lower': (25, 35, 70),
                 'hsv_upper': (35, 255, 255),
                 'bgr_center': (0, 255, 255)
             },
             {
                 'name': 'green',
-                'hsv_lower': (35, 50, 50),
+                'hsv_lower': (35, 30, 50),
                 'hsv_upper': (85, 255, 255),
                 'bgr_center': (0, 180, 0)
             },
             # Cyan merged with blue to avoid edge pixel conflicts
             {
                 'name': 'blue',
-                'hsv_lower': (85, 50, 50),
+                'hsv_lower': (85, 25, 50),
                 'hsv_upper': (130, 255, 255),
                 'bgr_center': (255, 100, 0)
             },
             {
                 'name': 'purple',
-                'hsv_lower': (130, 50, 50),
+                'hsv_lower': (130, 30, 50),
                 'hsv_upper': (160, 255, 255),
                 'bgr_center': (180, 0, 180)
             },
             {
                 'name': 'magenta',
-                'hsv_lower': (160, 50, 50),
+                'hsv_lower': (160, 30, 50),
                 'hsv_upper': (170, 255, 255),
                 'bgr_center': (255, 0, 255)
             },
         ]
 
         # Black curve definition (only used when detect_black_curves=True)
-        # Uses low saturation and low value to detect dark/black pixels
-        # Additional validation prevents axis detection
+        # Uses low saturation and low value to detect dark/black pixels.
+        # Upper saturation=25 avoids overlap with lowered color floors.
+        # Additional validation prevents axis detection.
         self.black_color_def = {
             'name': 'black',
             'hsv_lower': (0, 0, 0),
-            'hsv_upper': (180, 50, 80),  # Low saturation, low value
+            'hsv_upper': (180, 25, 80),  # Low saturation, low value
             'bgr_center': (30, 30, 30)
         }
 
@@ -261,6 +266,7 @@ class SimpleMultiCurveHandler:
 
         # Step 2: Process each panel
         all_curves = []
+        fallback_used = False  # Allow at most 1 fallback cascade per figure
         for panel in panels:
             if not panel.is_km_plot:
                 continue
@@ -281,16 +287,44 @@ class SimpleMultiCurveHandler:
             # Step 4: Extract curves
             curves = self._extract_curves(panel_img, panel.panel_id)
 
-            # Fallback: if < 2 curves found, try enhanced separation cascade
-            if len(curves) < 2:
-                logger.info(f"Panel {panel.panel_id}: only {len(curves)} curves from primary detection, trying fallback cascade")
-                fallback_curves = self._extract_curves_with_separation(panel_img, panel.panel_id)
-                # Only use fallback if it found a reasonable number (2-20) — hundreds means noise
-                if len(curves) < len(fallback_curves) <= 20:
-                    curves = fallback_curves
-                    logger.info(f"Panel {panel.panel_id}: fallback cascade found {len(curves)} curves")
-                elif len(fallback_curves) > 20:
-                    logger.info(f"Panel {panel.panel_id}: fallback cascade found {len(fallback_curves)} curves (too many, discarding)")
+            # Fallback: if exactly 1 curve found AND it looks like a real KM
+            # curve (confidence >= 0.5), try enhanced separation to find a
+            # second curve. Skip if 0 curves (page likely not a KM plot) or
+            # if the single curve is low-confidence (table border, axis).
+            # The cascade runs in a daemon thread with a hard 15s timeout
+            # so a single slow step cannot block the pipeline.
+            if len(curves) == 1 and curves[0].confidence >= 0.5 and not fallback_used:
+                import threading
+                FALLBACK_HARD_TIMEOUT = 5.0
+                fallback_used = True
+                logger.info(f"Panel {panel.panel_id}: 1 good curve (conf={curves[0].confidence:.2f}), trying fallback cascade")
+
+                result_holder = [None]
+                def _run_fallback(img, pid, existing, holder):
+                    try:
+                        holder[0] = self._extract_curves_with_separation(
+                            img, pid, existing_curves=existing)
+                    except Exception as e:
+                        logger.debug(f"Fallback cascade error: {e}")
+
+                fb_thread = threading.Thread(
+                    target=_run_fallback,
+                    args=(panel_img, panel.panel_id, curves, result_holder),
+                    daemon=True)
+                fb_thread.start()
+                fb_thread.join(timeout=FALLBACK_HARD_TIMEOUT)
+
+                if fb_thread.is_alive():
+                    logger.info(f"Panel {panel.panel_id}: fallback cascade timed out ({FALLBACK_HARD_TIMEOUT}s)")
+                elif result_holder[0] is not None:
+                    fallback_curves = result_holder[0]
+                    if 2 <= len(fallback_curves) <= 20:
+                        curves = fallback_curves
+                        logger.info(f"Panel {panel.panel_id}: fallback cascade found {len(curves)} curves")
+                    elif len(fallback_curves) > 20:
+                        logger.info(f"Panel {panel.panel_id}: fallback cascade found {len(fallback_curves)} curves (too many, discarding)")
+            elif len(curves) == 1:
+                logger.debug(f"Panel {panel.panel_id}: 1 low-confidence curve (conf={curves[0].confidence:.2f}), skipping fallback")
 
             # Adjust coordinates
             for curve in curves:
@@ -734,18 +768,21 @@ class SimpleMultiCurveHandler:
             except Exception as e:
                 logger.warning(f"Sub-pixel extraction failed, using fallback: {e}")
 
-        # Extract points based on region type
+        # Extract points based on region type.
+        # For anti-aliased curves (3+ pixels thick per column), using
+        # np.min systematically overestimates survival. Use median for
+        # any column with 3+ pixels; min only for truly thin (1-2px) lines.
         points = []
         for x in range(w):
             col = mask[:, x]
             y_positions = np.where(col > 0)[0]
 
             if len(y_positions) > 0:
-                if is_thick_band:
-                    # For thick bands: use MEDIAN (centerline) to get the curve
+                if is_thick_band or len(y_positions) >= 3:
+                    # Median = centerline (correct for bands AND anti-aliased lines)
                     y = int(np.median(y_positions))
                 else:
-                    # For thin curves: use topmost (minimum y = highest survival)
+                    # Truly thin line (1-2 pixels): topmost is fine
                     y = int(np.min(y_positions))
                 points.append((x, y))
 
@@ -756,19 +793,19 @@ class SimpleMultiCurveHandler:
         Detect if mask represents a thick shaded region (confidence band)
         rather than a thin curve line.
 
-        Criteria:
-        1. Total pixel count is very high (>50,000 pixels)
-        2. Average column thickness is >10 pixels
-        3. Thickness is fairly consistent (low variation = uniform band)
+        Criteria (lowered from original to catch medium-thickness CI bands):
+        1. Total pixel count high (>8,000 pixels)
+        2. Average column thickness is >6 pixels
+        3. Thickness is fairly consistent
 
         Returns True if this is likely a confidence band shading.
         """
         h, w = mask.shape
         total_pixels = np.sum(mask > 0)
 
-        # A typical curve line has <10,000 pixels
-        # Confidence bands typically have >50,000 pixels
-        if total_pixels < 50000:
+        # Lowered from 50K: medium-thickness CI bands in smaller figures
+        # have 10K-40K pixels but are still confidence bands, not curves
+        if total_pixels < 8000:
             return False
 
         # Calculate column-wise thickness
@@ -779,11 +816,10 @@ class SimpleMultiCurveHandler:
             return False
 
         avg_thickness = np.mean(non_zero_cols)
-        std_thickness = np.std(non_zero_cols)
 
-        # Thick band: average thickness > 10 pixels
-        # (typical curve lines are 1-5 pixels thick)
-        if avg_thickness > 10:
+        # Lowered from 10: real curves are 1-4 pixels thick;
+        # CI bands in lower-res figures can be 5-9 pixels
+        if avg_thickness > 6:
             logger.debug(f"Thick shaded region detected: {total_pixels} pixels, "
                         f"avg_thickness={avg_thickness:.1f}")
             return True
@@ -892,14 +928,16 @@ class SimpleMultiCurveHandler:
             erode_kernel = np.ones((2, 2), np.uint8)
             return cv2.erode(closed, erode_kernel, iterations=1)
 
-    def _extract_curves_with_line_styles(self, image: np.ndarray, panel_id: int) -> List[KMCurve]:
+    def _extract_curves_with_line_styles(self, image: np.ndarray, panel_id: int,
+                                         existing_curves: Optional[List[KMCurve]] = None) -> List[KMCurve]:
         """
         Extract curves with support for different line styles.
 
         This method extends _extract_curves to handle dashed and dotted lines.
+        If existing_curves is provided, skips the redundant _extract_curves call.
         """
-        # First try standard extraction
-        curves = self._extract_curves(image, panel_id)
+        # Use existing curves if provided, otherwise extract
+        curves = list(existing_curves) if existing_curves is not None else self._extract_curves(image, panel_id)
 
         # If we found enough curves, return
         if len(curves) >= 2:
@@ -1023,7 +1061,16 @@ class SimpleMultiCurveHandler:
         if len(y_coords) < 100:
             return None
 
-        hues = hsv_image[y_coords, x_coords, 0].reshape(-1, 1)
+        # Subsample if too many pixels (KMeans is O(n*k*iter), slow on >50K)
+        MAX_PIXELS = 20000
+        if len(y_coords) > MAX_PIXELS:
+            rng = np.random.RandomState(42)
+            idx = rng.choice(len(y_coords), MAX_PIXELS, replace=False)
+            y_sample, x_sample = y_coords[idx], x_coords[idx]
+        else:
+            y_sample, x_sample = y_coords, x_coords
+
+        hues = hsv_image[y_sample, x_sample, 0].reshape(-1, 1)
 
         # Handle hue wrapping for red (0 and 180 are same color)
         # Map hues to circular coordinates
@@ -1033,17 +1080,24 @@ class SimpleMultiCurveHandler:
 
         # Cluster
         try:
-            kmeans = KMeans(n_clusters=n_clusters, n_init=10, random_state=42)
+            kmeans = KMeans(n_clusters=n_clusters, n_init=5, random_state=42)
             labels = kmeans.fit_predict(hue_features)
         except Exception as e:
             logger.debug(f"KMeans clustering failed: {e}")
             return None
 
+        # Assign ALL colored pixels to clusters using the fitted model
+        all_hues = hsv_image[y_coords, x_coords, 0].reshape(-1, 1)
+        all_sin = np.sin(all_hues * np.pi / 90)
+        all_cos = np.cos(all_hues * np.pi / 90)
+        all_features = np.hstack([all_sin, all_cos])
+        all_labels = kmeans.predict(all_features)
+
         # Create separate masks for each cluster
         cluster_masks = []
         for i in range(n_clusters):
             mask = np.zeros((h, w), dtype=np.uint8)
-            cluster_indices = labels == i
+            cluster_indices = all_labels == i
 
             if np.sum(cluster_indices) < self.min_pixel_area:
                 continue
@@ -1213,28 +1267,25 @@ class SimpleMultiCurveHandler:
         """
         h, w = mask.shape
 
-        # For each x-column, find all y-positions with pixels
-        separate_masks = []
-
         # Analyze y-distribution
         y_coords, x_coords = np.where(mask > 0)
 
         if len(y_coords) < self.min_pixel_area:
             return [mask]
 
-        # Find y-distribution at each x
-        # Group y-values by column and look for gaps
-        y_by_x = defaultdict(list)
-        for y, x in zip(y_coords, x_coords):
-            y_by_x[x].append(y)
+        # Vectorized gap check: sample up to 200 columns for speed
+        unique_x = np.unique(x_coords)
+        if len(unique_x) > 200:
+            sample_x = unique_x[np.linspace(0, len(unique_x) - 1, 200, dtype=int)]
+        else:
+            sample_x = unique_x
 
-        # For columns with multiple y-values, check for gaps
         gap_detected = False
-        for x, y_list in y_by_x.items():
-            if len(y_list) > 1:
-                y_sorted = sorted(y_list)
-                gaps = np.diff(y_sorted)
-                if np.any(gaps > min_gap):
+        for x in sample_x:
+            col_y = y_coords[x_coords == x]
+            if len(col_y) > 1:
+                col_y_sorted = np.sort(col_y)
+                if np.any(np.diff(col_y_sorted) > min_gap):
                     gap_detected = True
                     break
 
@@ -1284,15 +1335,17 @@ class SimpleMultiCurveHandler:
         return [mask]
 
     def _extract_curves_with_separation(self, image: np.ndarray, panel_id: int,
-                                         expected_curves: int = 2) -> List[KMCurve]:
+                                         expected_curves: int = 2,
+                                         existing_curves: Optional[List[KMCurve]] = None) -> List[KMCurve]:
         """
         Extract curves with enhanced separation for overlapping/similar curves.
 
         This method combines multiple strategies:
-        1. Standard color-based extraction
+        1. Dashed/dotted line style detection
         2. Color clustering for similar hues
         3. Vertical position clustering for overlapping curves
-        4. Dashed/dotted line detection
+
+        A 15-second timeout prevents this cascade from blocking the pipeline.
 
         Parameters
         ----------
@@ -1302,31 +1355,53 @@ class SimpleMultiCurveHandler:
             Panel ID
         expected_curves : int
             Expected number of curves
+        existing_curves : list, optional
+            Curves already found by primary detection (avoids redundant call)
 
         Returns
         -------
         List of KMCurve objects
         """
-        # Try standard extraction first
-        curves = self._extract_curves(image, panel_id)
+        FALLBACK_TIMEOUT = 12.0  # seconds total for the whole cascade
+        t_start = time.time()
+
+        # Use existing curves if provided (avoids redundant _extract_curves call)
+        curves = existing_curves if existing_curves is not None else self._extract_curves(image, panel_id)
 
         if len(curves) >= expected_curves:
             return curves
 
-        # Try with line style detection
-        curves_styled = self._extract_curves_with_line_styles(image, panel_id)
-        if len(curves_styled) > len(curves):
-            curves = curves_styled
+        def _budget_left():
+            return max(0, FALLBACK_TIMEOUT - (time.time() - t_start))
+
+        # Try color clustering first (faster than line-style which re-runs _extract_curves)
+        if _budget_left() > 1.0:
+            try:
+                curves_clustered = self._separate_curves_by_color_clustering(image, panel_id, expected_curves)
+                if len(curves_clustered) > len(curves):
+                    curves = curves_clustered
+                    logger.debug(f"Panel {panel_id}: color clustering found {len(curves)} curves")
+            except Exception as e:
+                logger.debug(f"Panel {panel_id}: color clustering error: {e}")
 
         if len(curves) >= expected_curves:
             return curves
 
-        # Try color clustering
-        curves_clustered = self._separate_curves_by_color_clustering(image, panel_id, expected_curves)
-        if len(curves_clustered) > len(curves):
-            curves = curves_clustered
+        # Try line style detection (can be slow — skip if budget is tight)
+        if _budget_left() > 3.0:
+            try:
+                curves_styled = self._extract_curves_with_line_styles(image, panel_id, existing_curves=curves)
+                if len(curves_styled) > len(curves):
+                    curves = curves_styled
+            except Exception as e:
+                logger.debug(f"Panel {panel_id}: line style error: {e}")
 
         if len(curves) >= expected_curves:
+            return curves
+
+        # Skip vertical separation if budget exceeded
+        if _budget_left() < 1.0:
+            logger.info(f"Panel {panel_id}: fallback cascade timeout ({FALLBACK_TIMEOUT}s), stopping")
             return curves
 
         # Try vertical separation on existing masks
@@ -1338,6 +1413,11 @@ class SimpleMultiCurveHandler:
         value = hsv[:, :, 2]
         color_mask = ((saturation > 30) | (value < 80)) & (value < 250) & (value > 20)
         color_mask = color_mask.astype(np.uint8) * 255
+
+        # Quick check: if mask has very few pixels, skip separation
+        n_pixels = np.count_nonzero(color_mask)
+        if n_pixels < self.min_pixel_area * 2:
+            return curves
 
         # Try to separate
         separated = self._separate_by_vertical_position(color_mask, min_gap=15)
@@ -1453,15 +1533,25 @@ class SimpleMultiCurveHandler:
             logger.debug(f"    KM validation: start too low ({mean_start:.2f})")
             return False
 
+        # Must show meaningful survival decrease — reject flat lines
+        # (legend bars, colored text, horizontal grid lines)
+        end_vals = [s for t, s in survival_data[-5:]]
+        mean_end = np.mean(end_vals)
+        total_drop = mean_start - mean_end
+        if total_drop < 0.05:
+            logger.debug(f"    KM validation: flat line (drop={total_drop:.3f})")
+            return False
+
         # Should generally decrease or plateau (allow plateaus and some noise)
+        # Use wider tolerance (0.08) to handle noisy PDF extractions with
+        # anti-aliased step edges and censoring mark artifacts
         increases = 0
         for i in range(1, len(survival_data)):
-            # More tolerant of small increases (noise)
-            if survival_data[i][1] > survival_data[i-1][1] + 0.05:  # Increased from 0.03
+            if survival_data[i][1] > survival_data[i-1][1] + 0.08:
                 increases += 1
 
         increase_ratio = increases / len(survival_data)
-        if increase_ratio > 0.20:  # Increased from 0.15 for more tolerance
+        if increase_ratio > 0.25:  # More tolerant for noisy real PDFs
             logger.debug(f"    KM validation: too many increases ({increases}, {increase_ratio:.2%})")
             return False
 

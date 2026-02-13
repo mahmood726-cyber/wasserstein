@@ -1,0 +1,275 @@
+{
+  "total": 27,
+  "succeeded": 25,
+  "failed": 2,
+  "success_rate": "92.6%",
+  "results": [
+    {
+      "pdf": "1-s2.0-S2666501824001533-main.pdf",
+      "hr": 1.049,
+      "ci_lower": 0.774,
+      "ci_upper": 1.421,
+      "ipd_records": 189,
+      "succeeded": true,
+      "time_s": 46.63,
+      "error": null
+    },
+    {
+      "pdf": "40001_2025_Article_2911.pdf",
+      "hr": 3.344,
+      "ci_lower": 2.287,
+      "ci_upper": 4.889,
+      "ipd_records": 154,
+      "succeeded": true,
+      "time_s": 48.97,
+      "error": null
+    },
+    {
+      "pdf": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf",
+      "hr": 1.075,
+      "ci_lower": 0.775,
+      "ci_upper": 1.491,
+      "ipd_records": 166,
+      "succeeded": true,
+      "time_s": 92.88,
+      "error": null
+    },
+    {
+      "pdf": "BMRI2018-3629384.pdf",
+      "hr": 1.001,
+      "ci_lower": 0.407,
+      "ci_upper": 2.461,
+      "ipd_records": 44,
+      "succeeded": true,
+      "time_s": 35.88,
+      "error": null
+    },
+    {
+      "pdf": "Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf",
+      "hr": 0.583,
+      "ci_lower": 0.416,
+      "ci_upper": 0.816,
+      "ipd_records": 174,
+      "succeeded": true,
+      "time_s": 114.55,
+      "error": null
+    },
+    {
+      "pdf": "Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf",
+      "hr": 1.003,
+      "ci_lower": 0.726,
+      "ci_upper": 1.384,
+      "ipd_records": 172,
+      "succeeded": true,
+      "time_s": 129.49,
+      "error": null
+    },
+    {
+      "pdf": "chun-et-al-cryoballoon-versus-laserballoon.pdf",
+      "hr": 0.811,
+      "ci_lower": 0.496,
+      "ci_upper": 1.327,
+      "ipd_records": 110,
+      "succeeded": true,
+      "time_s": 131.45,
+      "error": null
+    },
+    {
+      "pdf": "circ_circulationaha-2019-042622_supp1.pdf",
+      "hr": 1.023,
+      "ci_lower": 0.763,
+      "ci_upper": 1.373,
+      "ipd_records": 200,
+      "succeeded": true,
+      "time_s": 159.19,
+      "error": null
+    },
+    {
+      "pdf": "ehaf451.pdf",
+      "hr": 0.995,
+      "ci_lower": 0.405,
+      "ci_upper": 2.445,
+      "ipd_records": 110,
+      "succeeded": true,
+      "time_s": 246.03,
+      "error": null
+    },
+    {
+      "pdf": "euaf066.pdf",
+      "hr": 1.495,
+      "ci_lower": 1.04,
+      "ci_upper": 2.149,
+      "ipd_records": 146,
+      "succeeded": true,
+      "time_s": 365.04,
+      "error": null
+    },
+    {
+      "pdf": "eus084.pdf",
+      "hr": 0.974,
+      "ci_lower": 0.651,
+      "ci_upper": 1.457,
+      "ipd_records": 176,
+      "succeeded": true,
+      "time_s": 249.45,
+      "error": null
+    },
+    {
+      "pdf": "eut104.pdf",
+      "hr": 0.951,
+      "ci_lower": 0.689,
+      "ci_upper": 1.312,
+      "ipd_records": 171,
+      "succeeded": true,
+      "time_s": 178.72,
+      "error": null
+    },
+    {
+      "pdf": "eut398.pdf",
+      "hr": 0.712,
+      "ci_lower": 0.512,
+      "ci_upper": 0.991,
+      "ipd_records": 177,
+      "succeeded": true,
+      "time_s": 181.34,
+      "error": null
+    },
+    {
+      "pdf": "euu064.pdf",
+      "hr": 0.811,
+      "ci_lower": 0.577,
+      "ci_upper": 1.141,
+      "ipd_records": 160,
+      "succeeded": true,
+      "time_s": 179.75,
+      "error": null
+    },
+    {
+      "pdf": "NEJMoa1602014.pdf",
+      "hr": 0.952,
+      "ci_lower": 0.653,
+      "ci_upper": 1.387,
+      "ipd_records": 144,
+      "succeeded": true,
+      "time_s": 131.37,
+      "error": null
+    },
+    {
+      "pdf": "nejmoa1602014_appendix.pdf",
+      "hr": 1.106,
+      "ci_lower": 0.765,
+      "ci_upper": 1.598,
+      "ipd_records": 138,
+      "succeeded": true,
+      "time_s": 181.43,
+      "error": null
+    },
+    {
+      "pdf": "pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf",
+      "hr": 0.897,
+      "ci_lower": 0.636,
+      "ci_upper": 1.266,
+      "ipd_records": 152,
+      "succeeded": true,
+      "time_s": 159.33,
+      "error": null
+    },
+    {
+      "pdf": "qgaf049.pdf",
+      "hr": 0.917,
+      "ci_lower": 0.389,
+      "ci_upper": 2.16,
+      "ipd_records": 161,
+      "succeeded": true,
+      "time_s": 164.18,
+      "error": null
+    },
+    {
+      "pdf": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf",
+      "hr": 1.0,
+      "ci_lower": 0.642,
+      "ci_upper": 1.557,
+      "ipd_records": 102,
+      "succeeded": true,
+      "time_s": 124.74,
+      "error": null
+    },
+    {
+      "pdf": "s12872-017-0566-6.pdf",
+      "hr": null,
+      "succeeded": false,
+      "error": "unsupported format string passed to NoneType.__format__"
+    },
+    {
+      "pdf": "schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf",
+      "hr": 0.948,
+      "ci_lower": 0.686,
+      "ci_upper": 1.311,
+      "ipd_records": 192,
+      "succeeded": true,
+      "time_s": 120.32,
+      "error": null
+    },
+    {
+      "pdf": "Supplemental Appendix.pdf",
+      "hr": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 0,
+      "succeeded": false,
+      "time_s": 34.84041428565979,
+      "error": "Insufficient curves: 0"
+    },
+    {
+      "pdf": "Supplemental Figures.pdf",
+      "hr": 1.003,
+      "ci_lower": 0.365,
+      "ci_upper": 2.76,
+      "ipd_records": 37,
+      "succeeded": true,
+      "time_s": 299.76,
+      "error": null
+    },
+    {
+      "pdf": "Supplemental Table 3.pdf",
+      "hr": 0.621,
+      "ci_lower": 0.44,
+      "ci_upper": 0.875,
+      "ipd_records": 166,
+      "succeeded": true,
+      "time_s": 17.08,
+      "error": null
+    },
+    {
+      "pdf": "Supplemental Table 6.pdf",
+      "hr": 0.926,
+      "ci_lower": 0.669,
+      "ci_upper": 1.283,
+      "ipd_records": 173,
+      "succeeded": true,
+      "time_s": 22.32,
+      "error": null
+    },
+    {
+      "pdf": "Supplemental Tables 1 and 2.pdf",
+      "hr": 1.463,
+      "ci_lower": 0.933,
+      "ci_upper": 2.294,
+      "ipd_records": 101,
+      "succeeded": true,
+      "time_s": 24.2,
+      "error": null
+    },
+    {
+      "pdf": "Supplemental Tables 4 and 5.pdf",
+      "hr": 0.972,
+      "ci_lower": 0.682,
+      "ci_upper": 1.385,
+      "ipd_records": 149,
+      "succeeded": true,
+      "time_s": 32.75,
+      "error": null
+    }
+  ],
+  "timestamp": "2026-02-09T18:59:52.799465+00:00"
+}

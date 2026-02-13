@@ -1,0 +1,90 @@
+{
+  "pdf_path": "C:\\Users\\user\\Downloads\\Ablation\\BMRI2018-3629384.pdf",
+  "pdf_name": "BMRI2018-3629384.pdf",
+  "hr": 1.001,
+  "ci_lower": 0.407,
+  "ci_upper": 2.461,
+  "p_value": null,
+  "hr_method": "closest_to_1",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 25,
+    "n_events": 12,
+    "n_censored": 13,
+    "n_records": 25
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 19,
+    "n_events": 7,
+    "n_censored": 12,
+    "n_records": 19
+  },
+  "total_ipd_records": 44,
+  "curve1_times": [
+    0.3600491009941931,
+    0.3608476932284095,
+    0.3616462854626258,
+    0.36244487769684214,
+    0.36324346993105844,
+    0.3640420621652748,
+    0.3648406543994911,
+    0.36563924663370745,
+    0.36643783886792375,
+    0.3672364311021401
+  ],
+  "curve1_times_length": 420,
+  "curve1_survivals": [
+    0.950886367444085,
+    0.950886367444085,
+    0.950886367444085,
+    0.940394039650046,
+    0.940394039650046,
+    0.940394039650046,
+    0.940394039650046,
+    0.940394039650046,
+    0.940394039650046,
+    0.940394039650046
+  ],
+  "curve1_survivals_length": 420,
+  "curve2_times": [
+    0.39199279036284634,
+    0.3927913825970627,
+    0.39358997483127905,
+    0.39678434376814437,
+    0.39758293600236067,
+    0.398381528236577,
+    0.3991801204707934,
+    0.3999787127050097,
+    0.40077730493922603,
+    0.40157589717344233
+  ],
+  "curve2_times_length": 390,
+  "curve2_survivals": [
+    0.9637633151913145,
+    0.9637633151913145,
+    0.9637633151913145,
+    0.9399171156594078,
+    0.9399171156594078,
+    0.9399171156594078,
+    0.9399171156594078,
+    0.9399171156594078,
+    0.9399171156594078,
+    0.9399171156594078
+  ],
+  "curve2_survivals_length": 390,
+  "confidence": 0.65,
+  "orientation_method": "closest_to_1",
+  "text_hr": null,
+  "n_curves_found": 3,
+  "n_pages_scanned": 7,
+  "processing_time_s": 35.88,
+  "warnings": [
+    "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.0",
+  "timestamp": "2026-02-09T18:04:42.669943+00:00"
+}

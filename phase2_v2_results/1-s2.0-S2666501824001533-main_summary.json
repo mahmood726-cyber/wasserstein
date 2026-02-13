@@ -1,0 +1,90 @@
+{
+  "pdf_path": "C:\\Users\\user\\Downloads\\Ablation\\1-s2.0-S2666501824001533-main.pdf",
+  "pdf_name": "1-s2.0-S2666501824001533-main.pdf",
+  "hr": 1.049,
+  "ci_lower": 0.774,
+  "ci_upper": 1.421,
+  "p_value": null,
+  "hr_method": "closest_to_1",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 94,
+    "n_events": 83,
+    "n_censored": 11,
+    "n_records": 94
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 95,
+    "n_events": 85,
+    "n_censored": 10,
+    "n_records": 95
+  },
+  "total_ipd_records": 189,
+  "curve1_times": [
+    0.0029439341849234273,
+    0.003952130823595834,
+    0.004960327462268241,
+    0.0059685241009406476,
+    0.0069767207396130545,
+    0.007984917378285461,
+    0.008993114016957867,
+    0.010001310655630273,
+    0.011009507294302681,
+    0.012017703932975087
+  ],
+  "curve1_times_length": 986,
+  "curve1_survivals": [
+    0.9322768092974115,
+    0.8768092974115161,
+    0.6470153195985209,
+    0.6012326113752422,
+    0.556330339848565,
+    0.27194928684627595,
+    0.27194928684627595,
+    0.27194928684627595,
+    0.27194928684627595,
+    0.27194928684627595
+  ],
+  "curve1_survivals_length": 986,
+  "curve2_times": [
+    0.0029439341849234273,
+    0.003952130823595834,
+    0.004960327462268241,
+    0.0059685241009406476,
+    0.0069767207396130545,
+    0.007984917378285461,
+    0.008993114016957867,
+    0.010001310655630273,
+    0.011009507294302681,
+    0.012017703932975087
+  ],
+  "curve2_times_length": 986,
+  "curve2_survivals": [
+    0.9498855432294419,
+    0.8944180313435464,
+    0.6646240535305512,
+    0.6188413453072725,
+    0.5739390737805952,
+    0.27194928684627595,
+    0.27194928684627595,
+    0.27194928684627595,
+    0.27194928684627595,
+    0.27194928684627595
+  ],
+  "curve2_survivals_length": 986,
+  "confidence": 0.65,
+  "orientation_method": "closest_to_1",
+  "text_hr": null,
+  "n_curves_found": 11,
+  "n_pages_scanned": 8,
+  "processing_time_s": 46.63,
+  "warnings": [
+    "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.0",
+  "timestamp": "2026-02-09T18:01:44.774759+00:00"
+}

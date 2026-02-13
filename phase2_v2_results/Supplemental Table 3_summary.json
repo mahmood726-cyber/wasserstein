@@ -1,0 +1,90 @@
+{
+  "pdf_path": "C:\\Users\\user\\Downloads\\Ablation\\Supplemental Table 3.pdf",
+  "pdf_name": "Supplemental Table 3.pdf",
+  "hr": 0.621,
+  "ci_lower": 0.44,
+  "ci_upper": 0.875,
+  "p_value": null,
+  "hr_method": "closest_to_1",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 84,
+    "n_events": 70,
+    "n_censored": 14,
+    "n_records": 84
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 82,
+    "n_events": 71,
+    "n_censored": 11,
+    "n_records": 82
+  },
+  "total_ipd_records": 166,
+  "curve1_times": [
+    0.059297289122755316,
+    0.05968505585779818,
+    0.060072822592841045,
+    0.06046058932788392,
+    0.06084835606292678,
+    0.06123612279796965,
+    0.06162388953301252,
+    0.06201165626805539,
+    0.06239942300309825,
+    0.06278718973814112
+  ],
+  "curve1_times_length": 1908,
+  "curve1_survivals": [
+    0.7775390125351752,
+    0.7775390125351752,
+    0.7775390125351752,
+    0.7775390125351752,
+    0.7775390125351752,
+    0.7749808135072909,
+    0.7737017139933486,
+    0.7724226144794065,
+    0.7724226144794065,
+    0.7711435149654643
+  ],
+  "curve1_survivals_length": 1908,
+  "curve2_times": [
+    0.059297289122755316,
+    0.05968505585779818,
+    0.060072822592841045,
+    0.06046058932788392,
+    0.06084835606292678,
+    0.11319686529371392,
+    0.1135846320287568,
+    0.11397239876379966,
+    0.11746229937918547,
+    0.11785006611422834
+  ],
+  "curve2_times_length": 782,
+  "curve2_survivals": [
+    0.7519570222563315,
+    0.7519570222563315,
+    0.7519570222563315,
+    0.7519570222563315,
+    0.7519570222563315,
+    0.506369915579432,
+    0.506369915579432,
+    0.506369915579432,
+    0.7583525198260425,
+    0.7583525198260425
+  ],
+  "curve2_survivals_length": 782,
+  "confidence": 0.65,
+  "orientation_method": "closest_to_1",
+  "text_hr": null,
+  "n_curves_found": 2,
+  "n_pages_scanned": 2,
+  "processing_time_s": 17.08,
+  "warnings": [
+    "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.0",
+  "timestamp": "2026-02-09T18:58:33.269775+00:00"
+}

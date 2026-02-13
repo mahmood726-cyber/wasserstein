@@ -1,0 +1,83 @@
+{
+  "truthcert_version": "1.0",
+  "certification_status": "PASS",
+  "timestamp": "2026-02-13T19:18:45.698104+00:00",
+  "product": {
+    "name": "Wasserstein KM Extractor",
+    "version": "1.0",
+    "description": "PDF -> KM curve digitization -> IPD reconstruction -> HR estimation"
+  },
+  "evidence": {
+    "regression_report": {
+      "locator": "regression_13_results/regression_report.json",
+      "sha256": "1adf9973e29052d77d66cddae40c608f97db19289b9414b184f11d3c93f16380",
+      "type": "validation_report"
+    },
+    "source_code": {
+      "files": {
+        "km_pipeline.py": "9167937f55b542b6cf2522cc3e757c23353adf87d39f552e6f9557b2e30dbb7a",
+        "robust_km_pipeline.py": "a9af6392aa1836a57aac2c4ac10c9c766541c79a2cb5cb5a016f643384c0d427",
+        "improved_hr_estimation.py": "e10711a3719ce6dcf89a0ecdca8547727e7439a55e1cf5c472256f9603b31a88",
+        "simple_multicurve_handler.py": "e75edb319732e1f8e8def75e57f0b8fea5567b5ca600251e33fa7e9e212093d4",
+        "improved_guyot_algorithm.py": "ad863c2ea243aa582c9d1f1c34053cf7aaf1091be8ef145fc76c1e11d466e2e4",
+        "enhanced_ocr_axis.py": "8adb6733f38873ab7f663ac2c5ee80fb82874d9ffcd3851a1b2aef44979635b5",
+        "figure_classifier.py": "bb805b55b393c5df275448c5417e04789e77c6e1aa35865b1c5d36804109f10f",
+        "enhanced_curve_extractor.py": "30919f608e092d3e5f4124d85c9b9021247f63a5a259d0d5f89aa11b34d21911",
+        "pdf_extractor.py": "718c23e3d56b5428880eaf804b3f02876efada96f88f8633b41cc26fca6eadd0",
+        "pdf_figure_extractor.py": "689e075bd51ef4a61f0151374091eb7cddfb043efb4146cffc6d04bacbddc5f9",
+        "legend_extractor.py": "f429d2f32b3b96cdd55ff27cd8809481e757952c098379b42be90a74536a69e9",
+        "ground_truth_database.py": "c627419ee5ebe707d6adab419c00350b28e627ca18bd8c3599d7c8be834986b8"
+      },
+      "type": "pipeline_source"
+    },
+    "ground_truth": {
+      "locator": "ground_truth_300.json",
+      "sha256": "34fa96925d002c41581e1f961b6a7c0642ea54244820f3ceba44397a02b10858",
+      "entries": 1836,
+      "type": "reference_data"
+    }
+  },
+  "validation": {
+    "gold_tier_regression": {
+      "n_trials": 13,
+      "n_extracted": 13,
+      "n_within_ci": 13,
+      "n_under_10pct": 12,
+      "mean_error_pct": 5.41,
+      "median_error_pct": 1.7,
+      "verdict": "PASS"
+    },
+    "batch_test": {
+      "n_pdfs": 27,
+      "n_succeeded": 26,
+      "success_rate": "96.3%",
+      "source": "phase2_v2_results/batch_summary.json"
+    }
+  },
+  "transformations": [
+    "PDF rasterization (PyMuPDF, 300 DPI)",
+    "KM figure detection (figure_classifier.py)",
+    "Axis calibration (enhanced_ocr_axis.py)",
+    "HSV color curve extraction (enhanced_curve_extractor.py)",
+    "Multi-arm separation (simple_multicurve_handler.py, KMeans)",
+    "Guyot IPD reconstruction (improved_guyot_algorithm.py)",
+    "Log-rank HR estimation (improved_hr_estimation.py)"
+  ],
+  "validators": [
+    {
+      "name": "regression_13",
+      "outcome": "PASS",
+      "detail": "13/13 within CI, median 1.7% error"
+    },
+    {
+      "name": "batch_27",
+      "outcome": "PASS",
+      "detail": "26/27 success (96.3%)"
+    }
+  ],
+  "warnings": [
+    "WACA-PVAC: 28.9% relative error (arm orientation issue with derived HR)",
+    "FREEZEAF-30M: CI=null (derived HR used, curve HR too far)",
+    "R IPDfromKM cross-validation: NOT PERFORMED (R not installed)"
+  ]
+}

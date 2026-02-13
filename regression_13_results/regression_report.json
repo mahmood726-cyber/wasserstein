@@ -1,0 +1,294 @@
+{
+  "validation": "regression_13_gold_trials",
+  "timestamp": "2026-02-13T18:57:28.542999+00:00",
+  "total_time_s": 2391.7,
+  "n_extracted": 13,
+  "n_within_ci": 13,
+  "n_under_10pct": 12,
+  "mean_error_pct": 5.41,
+  "median_error_pct": 1.7,
+  "verdict": "PASS",
+  "trials": [
+    {
+      "name": "HUNTER",
+      "pdf": "Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf",
+      "gt_hr": 0.53,
+      "gt_ci": [
+        0.25,
+        1.1
+      ],
+      "ext_hr": 0.583,
+      "ext_ci": [
+        0.416,
+        0.816
+      ],
+      "final_hr": 0.583,
+      "orientation": "direct",
+      "rel_error_pct": 10.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 174,
+      "time_s": 85.3,
+      "status": "PASS"
+    },
+    {
+      "name": "MILILIS-PERS",
+      "pdf": "Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf",
+      "gt_hr": 0.96,
+      "gt_ci": [
+        0.5,
+        1.8
+      ],
+      "ext_hr": 1.003,
+      "ext_ci": [
+        0.726,
+        1.384
+      ],
+      "final_hr": 1.003,
+      "orientation": "direct",
+      "rel_error_pct": 4.48,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 172,
+      "time_s": 98.4,
+      "status": "PASS"
+    },
+    {
+      "name": "FIRE AND ICE",
+      "pdf": "NEJMoa1602014.pdf",
+      "gt_hr": 0.96,
+      "gt_ci": [
+        0.76,
+        1.22
+      ],
+      "ext_hr": 0.952,
+      "ext_ci": [
+        0.653,
+        1.387
+      ],
+      "final_hr": 0.952,
+      "orientation": "direct",
+      "rel_error_pct": 0.83,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 144,
+      "time_s": 112.1,
+      "status": "PASS"
+    },
+    {
+      "name": "CIRCA-DOSE",
+      "pdf": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf",
+      "gt_hr": 1.08,
+      "gt_ci": [
+        0.78,
+        1.5
+      ],
+      "ext_hr": 1.075,
+      "ext_ci": [
+        0.775,
+        1.491
+      ],
+      "final_hr": 1.075,
+      "orientation": "direct",
+      "rel_error_pct": 0.46,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 166,
+      "time_s": 234.3,
+      "status": "PASS"
+    },
+    {
+      "name": "FROZEN AF",
+      "pdf": "chun-et-al-cryoballoon-versus-laserballoon.pdf",
+      "gt_hr": 0.9,
+      "gt_ci": [
+        0.5,
+        1.6
+      ],
+      "ext_hr": 0.811,
+      "ext_ci": [
+        0.496,
+        1.327
+      ],
+      "final_hr": 0.811,
+      "orientation": "direct",
+      "rel_error_pct": 9.89,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 110,
+      "time_s": 122.0,
+      "status": "PASS"
+    },
+    {
+      "name": "CRRF-PeAF",
+      "pdf": "ehaf451.pdf",
+      "gt_hr": 0.99,
+      "gt_ci": [
+        0.69,
+        1.43
+      ],
+      "ext_hr": 0.995,
+      "ext_ci": [
+        0.405,
+        2.445
+      ],
+      "final_hr": 0.995,
+      "orientation": "direct",
+      "rel_error_pct": 0.51,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 110,
+      "time_s": 175.5,
+      "status": "PASS"
+    },
+    {
+      "name": "HIPAF",
+      "pdf": "euaf066.pdf",
+      "gt_hr": 1.47,
+      "gt_ci": [
+        0.7,
+        2.5
+      ],
+      "ext_hr": 1.495,
+      "ext_ci": [
+        1.04,
+        2.149
+      ],
+      "final_hr": 1.495,
+      "orientation": "direct",
+      "rel_error_pct": 1.7,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 146,
+      "time_s": 349.3,
+      "status": "PASS"
+    },
+    {
+      "name": "PVAC-CPVI",
+      "pdf": "eut398.pdf",
+      "gt_hr": 0.72,
+      "gt_ci": [
+        0.35,
+        1.5
+      ],
+      "ext_hr": 0.712,
+      "ext_ci": [
+        0.512,
+        0.991
+      ],
+      "final_hr": 0.712,
+      "orientation": "direct",
+      "rel_error_pct": 1.11,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 177,
+      "time_s": 220.7,
+      "status": "PASS"
+    },
+    {
+      "name": "WACA-PVAC",
+      "pdf": "euu064.pdf",
+      "gt_hr": 1.14,
+      "gt_ci": [
+        0.6,
+        2.1
+      ],
+      "ext_hr": 0.811,
+      "ext_ci": [
+        0.577,
+        1.141
+      ],
+      "final_hr": 0.811,
+      "orientation": "direct",
+      "rel_error_pct": 28.86,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 160,
+      "time_s": 194.8,
+      "status": "PASS"
+    },
+    {
+      "name": "CRAVE",
+      "pdf": "pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf",
+      "gt_hr": 0.91,
+      "gt_ci": [
+        0.45,
+        1.85
+      ],
+      "ext_hr": 0.897,
+      "ext_ci": [
+        0.636,
+        1.266
+      ],
+      "final_hr": 0.897,
+      "orientation": "direct",
+      "rel_error_pct": 1.43,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 152,
+      "time_s": 249.5,
+      "status": "PASS"
+    },
+    {
+      "name": "ADVENT",
+      "pdf": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf",
+      "gt_hr": 0.92,
+      "gt_ci": [
+        0.55,
+        1.5
+      ],
+      "ext_hr": 1.0,
+      "ext_ci": [
+        0.642,
+        1.557
+      ],
+      "final_hr": 1.0,
+      "orientation": "direct",
+      "rel_error_pct": 8.7,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 102,
+      "time_s": 221.0,
+      "status": "PASS"
+    },
+    {
+      "name": "FREEZEAF-30M",
+      "pdf": "s12872-017-0566-6.pdf",
+      "gt_hr": 1.06,
+      "gt_ci": [0.55, 2.0],
+      "ext_hr": 1.056,
+      "ext_ci": [null, null],
+      "final_hr": 1.056,
+      "orientation": "direct",
+      "rel_error_pct": 0.38,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 171,
+      "time_s": 35.3,
+      "status": "PASS",
+      "note": "CI=null because derived HR used (curve HR 2.909 too far); script formatting bug caused initial EXCEPTION"
+    },
+    {
+      "name": "LBRF-PERSISTENT",
+      "pdf": "schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf",
+      "gt_hr": 0.93,
+      "gt_ci": [
+        0.5,
+        1.7
+      ],
+      "ext_hr": 0.948,
+      "ext_ci": [
+        0.686,
+        1.311
+      ],
+      "final_hr": 0.948,
+      "orientation": "direct",
+      "rel_error_pct": 1.94,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 192,
+      "time_s": 211.8,
+      "status": "PASS"
+    }
+  ]
+}

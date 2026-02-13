@@ -234,8 +234,9 @@ def _interpolate_nar(nar_times: np.ndarray,
         return interpolated.astype(int)
 
     except Exception:
-        # Fallback: simple estimation
-        return (np.ones_like(curve_times) * total_n * 0.5).astype(int)
+        # Fallback: estimate NAR proportional to initial N, declining linearly
+        frac = np.linspace(1.0, 0.3, len(curve_times))
+        return np.maximum((frac * total_n).astype(int), 1)
 
 
 def _calculate_events_from_nar(nar_current: np.ndarray,
@@ -310,6 +311,12 @@ def log_rank_test(ipd_treatment: List[IPDRecord],
     events = np.array(all_events)
     arms = np.array(all_arms)
 
+    # Round times to avoid float comparison issues in reconstructed IPD.
+    # Guyot linspace generates times like 0.001, 0.334667, 0.668333...
+    # Without rounding, events at nearly-identical times won't be grouped,
+    # severely reducing statistical power.
+    times = np.round(times, 6)
+
     # Get unique event times
     event_times = np.unique(times[events == 1])
 
@@ -317,9 +324,9 @@ def log_rank_test(ipd_treatment: List[IPDRecord],
         return 0.0, 1.0, 0.0, 0.0, 0.0
 
     # Log-rank calculation
-    O_1 = 0  # Observed events in treatment
-    E_1 = 0  # Expected events in treatment
-    V = 0    # Variance
+    O_1 = 0.0  # Observed events in treatment
+    E_1 = 0.0  # Expected events in treatment
+    V = 0.0    # Variance
 
     for t in event_times:
         # Number at risk just before time t

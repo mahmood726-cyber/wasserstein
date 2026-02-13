@@ -1,0 +1,91 @@
+{
+  "pdf_path": "C:\\Users\\user\\Downloads\\Ablation\\40001_2025_Article_2911.pdf",
+  "pdf_name": "40001_2025_Article_2911.pdf",
+  "hr": 3.344,
+  "ci_lower": 2.287,
+  "ci_upper": 4.889,
+  "p_value": null,
+  "hr_method": "text_hr_match",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 88,
+    "n_events": 76,
+    "n_censored": 12,
+    "n_records": 88
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 66,
+    "n_events": 55,
+    "n_censored": 11,
+    "n_records": 66
+  },
+  "total_ipd_records": 154,
+  "curve1_times": [
+    0.0035525984793646393,
+    0.004065979762509818,
+    0.004579361045654997,
+    0.010739936443397147,
+    0.011253317726542325,
+    0.011766699009687505,
+    0.05386396422759219,
+    0.05437734551073737,
+    0.054890726793882544,
+    0.05951115834218916
+  ],
+  "curve1_times_length": 362,
+  "curve1_survivals": [
+    0.8991772625280479,
+    0.8991772625280479,
+    0.8991772625280479,
+    0.8991772625280479,
+    0.8991772625280479,
+    0.8991772625280479,
+    0.5121166791323859,
+    0.5121166791323859,
+    0.5121166791323859,
+    0.5139865370231862
+  ],
+  "curve1_survivals_length": 362,
+  "curve2_times": [
+    0.6227331540951361,
+    0.623136238496979,
+    0.6235393228988219,
+    0.6239424073006647,
+    0.6243454917025076,
+    0.6247485761043505,
+    0.6251516605061934,
+    0.6255547449080363,
+    0.6259578293098792,
+    0.6263609137117222
+  ],
+  "curve2_times_length": 184,
+  "curve2_survivals": [
+    0.9353645499251657,
+    0.9353645499251657,
+    0.936433611289288,
+    0.9369681419713491,
+    0.9369681419713491,
+    0.9369681419713491,
+    0.9369681419713491,
+    0.9369681419713491,
+    0.9369681419713491,
+    0.9369681419713491
+  ],
+  "curve2_survivals_length": 184,
+  "confidence": 0.7,
+  "orientation_method": "text_hr_match",
+  "text_hr": 8.8,
+  "n_curves_found": 17,
+  "n_pages_scanned": 11,
+  "processing_time_s": 48.97,
+  "warnings": [
+    "Text HR match weak: extracted 3.344 vs text 8.8 (log-err=0.968)",
+    "Extreme HR=3.344: manual review recommended"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.0",
+  "timestamp": "2026-02-09T18:02:33.780459+00:00"
+}

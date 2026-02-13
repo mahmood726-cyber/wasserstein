@@ -1,0 +1,90 @@
+{
+  "pdf_path": "C:\\Users\\user\\Downloads\\Ablation\\qgaf049.pdf",
+  "pdf_name": "qgaf049.pdf",
+  "hr": 0.917,
+  "ci_lower": 0.389,
+  "ci_upper": 2.16,
+  "p_value": null,
+  "hr_method": "closest_to_1",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 71,
+    "n_events": 58,
+    "n_censored": 13,
+    "n_records": 71
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 90,
+    "n_events": 79,
+    "n_censored": 11,
+    "n_records": 90
+  },
+  "total_ipd_records": 161,
+  "curve1_times": [
+    0.07172108708035214,
+    0.07212417518036608,
+    0.07252726328038002,
+    0.23779338428609537,
+    0.2381964723861093,
+    0.23859956048612324,
+    0.23900264858613718,
+    0.23940573668615114,
+    0.23980882478616508,
+    0.24021191288617902
+  ],
+  "curve1_times_length": 348,
+  "curve1_survivals": [
+    0.9381055652090086,
+    0.9381055652090086,
+    0.9381055652090086,
+    0.5205037974363331,
+    0.5180229948555053,
+    0.5163691264682868,
+    0.517196060661896,
+    0.517196060661896,
+    0.517196060661896,
+    0.517196060661896
+  ],
+  "curve1_survivals_length": 348,
+  "curve2_times": [
+    0.07091491088032426,
+    0.0713179989803382,
+    0.07172108708035214,
+    0.07212417518036608,
+    0.07252726328038002,
+    0.07293035138039396,
+    0.0733334394804079,
+    0.07373652758042185,
+    0.07413961568043578,
+    0.07454270378044972
+  ],
+  "curve2_times_length": 1834,
+  "curve2_survivals": [
+    0.8913837832700855,
+    0.7247565432578198,
+    0.7268238787418431,
+    0.7739591277775708,
+    0.7727187264871569,
+    0.7429490955172235,
+    0.7276508129354522,
+    0.7847092722944911,
+    0.8698834942362448,
+    0.8698834942362448
+  ],
+  "curve2_survivals_length": 1834,
+  "confidence": 0.6,
+  "orientation_method": "closest_to_1",
+  "text_hr": null,
+  "n_curves_found": 24,
+  "n_pages_scanned": 12,
+  "processing_time_s": 164.18,
+  "warnings": [
+    "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.0",
+  "timestamp": "2026-02-09T18:47:34.982721+00:00"
+}
