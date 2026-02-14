@@ -132,12 +132,19 @@ class PipelineResult:
 
     @property
     def succeeded(self) -> bool:
-        return self.hr is not None and self.total_ipd_records > 0
+        return self.hr is not None
+
+    @property
+    def has_ipd(self) -> bool:
+        return self.total_ipd_records > 0
 
     def to_dict(self) -> Dict:
         d = {}
         for k, v in self.__dict__.items():
-            if k.startswith('curve') and v is not None:
+            if k == 'pdf_path':
+                # Only emit basename, not full absolute path (P1-10)
+                d[k] = Path(v).name if v else v
+            elif k.startswith('curve') and v is not None:
                 # Truncate curve data for JSON readability
                 d[k] = v[:10] if len(v) > 10 else v
                 d[k + '_length'] = len(v)
@@ -187,6 +194,7 @@ class KMPipeline(RobustKMPipeline):
 
         Returns PipelineResult with both HR and reconstructed IPD data.
         """
+        self._cached_all_curves = None  # Clear stale cache from prior PDFs (P0-2)
         t0 = time.time()
         pdf_path = str(Path(pdf_path).resolve())
         pdf_name = Path(pdf_path).name
@@ -201,6 +209,27 @@ class KMPipeline(RobustKMPipeline):
 
         if not hr_result.succeeded:
             elapsed = time.time() - t0
+            # If curve extraction failed but text HR was found, return that
+            text_hr = hr_result.provenance.text_hr_found
+            if text_hr is not None:
+                logger.info(f"No curve pairs but text HR={text_hr:.3f} found")
+                return PipelineResult(
+                    pdf_path=pdf_path, pdf_name=pdf_name,
+                    hr=round(text_hr, 3),
+                    ci_lower=None, ci_upper=None, p_value=None,
+                    hr_method="text_derived_only",
+                    ipd_arm1=None, ipd_arm2=None, total_ipd_records=0,
+                    curve1_times=None, curve1_survivals=None,
+                    curve2_times=None, curve2_survivals=None,
+                    confidence=0.3,
+                    orientation_method="text_only",
+                    text_hr=text_hr,
+                    n_curves_found=hr_result.provenance.total_curves_extracted,
+                    n_pages_scanned=hr_result.provenance.pages_scanned,
+                    processing_time_s=round(elapsed, 2),
+                    warnings=["Text-derived HR only, no curve pair for IPD"],
+                    timestamp=datetime.now(timezone.utc).isoformat(),
+                )
             return self._empty_result(
                 pdf_path, pdf_name,
                 error=hr_result.error or "HR extraction failed",
@@ -299,15 +328,16 @@ class KMPipeline(RobustKMPipeline):
             n2, nrt2, nrv2 = self._extract_nar_for_curve(c2, arm_index=1)
 
             # Reconstruct IPD for each arm
+            # Use NAR-derived n when available; fall back to n_per_arm
             ipd1_records = reconstruct_ipd_guyot(
                 t1, s1,
                 n_risk_times=nrt1, n_risk_values=nrv1,
-                total_n=n1 if n1 != 100 else self.n_per_arm,
+                total_n=n1 if nrv1 is not None else self.n_per_arm,
             )
             ipd2_records = reconstruct_ipd_guyot(
                 t2, s2,
                 n_risk_times=nrt2, n_risk_values=nrv2,
-                total_n=n2 if n2 != 100 else self.n_per_arm,
+                total_n=n2 if nrv2 is not None else self.n_per_arm,
             )
 
             # Label arms
@@ -472,15 +502,6 @@ def print_summary(result: PipelineResult):
 
 def process_batch(input_dir: str, output_dir: str, **kwargs) -> List[Dict]:
     """Process all PDFs in a directory."""
-    # Ensure UTF-8 stdout for filenames with Unicode characters
-    import io
-    if hasattr(sys.stdout, 'buffer'):
-        sys.stdout = io.TextIOWrapper(
-            sys.stdout.buffer, encoding='utf-8', errors='replace')
-    if hasattr(sys.stderr, 'buffer'):
-        sys.stderr = io.TextIOWrapper(
-            sys.stderr.buffer, encoding='utf-8', errors='replace')
-
     input_path = Path(input_dir)
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
@@ -501,7 +522,7 @@ def process_batch(input_dir: str, output_dir: str, **kwargs) -> List[Dict]:
 
             # Write outputs for each PDF
             stem = _safe_stem(pdf.name)
-            if result.succeeded:
+            if result.has_ipd:
                 write_ipd_csv(result, str(output_path / f"{stem}_ipd.csv"))
                 write_curves_csv(result, str(output_path / f"{stem}_curves.csv"))
 
@@ -626,7 +647,7 @@ Examples:
     stem = _safe_stem(args.input)
 
     if result.succeeded:
-        if 'csv' in formats:
+        if 'csv' in formats and result.has_ipd:
             write_ipd_csv(result, str(output_dir / f"{stem}_ipd.csv"))
             write_curves_csv(result, str(output_dir / f"{stem}_curves.csv"))
         if 'json' in formats:
@@ -639,4 +660,11 @@ Examples:
 
 
 if __name__ == '__main__':
+    import io
+    if hasattr(sys.stdout, 'buffer'):
+        sys.stdout = io.TextIOWrapper(
+            sys.stdout.buffer, encoding='utf-8', errors='replace')
+    if hasattr(sys.stderr, 'buffer'):
+        sys.stderr = io.TextIOWrapper(
+            sys.stderr.buffer, encoding='utf-8', errors='replace')
     main()

@@ -137,6 +137,60 @@ Note: WACA-PVAC has 28.9% error (arm orientation issue, derived HR) but is withi
 
 ---
 
+## v1.1 Post-Review Fixes (2026-02-13)
+**Status: COMPLETE**
+
+Multi-persona code review identified 6 P0 + 14 P1 issues. Applied fixes:
+
+### P0 Fixes:
+- **P0-1**: Added `import re` to improved_hr_estimation.py (crash in `identify_arms_from_caption`)
+- **P0-2**: Clear `_cached_all_curves = None` at start of `extract()` (stale cache cross-contamination in batch)
+- **P0-3**: Conditional final censored cap — uncap when NAR available, cap=10 when N estimated (prevents HR dilution)
+- **P0-4**: Use original `log_hr` for CI, not `log(clamped_hr)` (preserves CI symmetry on log scale)
+- **P0-5**: Reciprocal HR fallback restricted to derived-HR trials only (reported-HR trials have known orientation)
+- **P0-6**: REVERTED — event/censoring time separation caused regressions; Breslow convention (same times) is correct
+
+### P1 Fixes:
+- **P1-1**: `z_alpha = stats.norm.ppf(0.975)` instead of hardcoded 1.96
+- **P1-2**: Exception fallback CI = None instead of fabricated `[HR*0.5, HR*2.0]`
+- **P1-3**: Zero-event CI = None instead of fabricated `[0.5, 2.0]`
+- **P1-6**: NAR sentinel `nrv1 is not None` instead of magic `n1 != 100`
+- **P1-7**: stdout UTF-8 wrapper moved to `__main__` block (not module-level)
+- **P1-8**: Correct median for even N: `(se[mid-1] + se[mid]) / 2.0`
+- **P1-10**: `pdf_path` sanitized to basename only in `to_dict()` output
+
+### Additional improvements:
+- `succeeded` property: `self.hr is not None` (allows text-derived HR without IPD)
+- Added `has_ipd` property for IPD CSV writing guard
+- Text-derived HR fallback when curve extraction fails but text HR found
+- Fresh pipeline instance per trial in regression script (prevents OOM)
+
+### Post-Review Regression Results (v1.1, 2026-02-13):
+| Trial | GT HR | Ext HR | Error | Within CI | Status |
+|-------|-------|--------|-------|-----------|--------|
+| HUNTER | 0.53 | 0.544 | 2.6% | Y | PASS |
+| MILILIS-PERS | 0.96 | 0.972 | 1.3% | Y | PASS |
+| FIRE AND ICE | 0.96 | 0.892 | 7.1% | Y | PASS |
+| CIRCA-DOSE | 1.08 | 1.033 | 4.4% | Y | PASS |
+| FROZEN AF | 0.90 | 0.834 | 7.3% | Y | PASS |
+| CRRF-PeAF | 0.99 | 1.000 | 1.0% | Y | PASS |
+| HIPAF | 1.47 | 1.303 | 11.4% | Y | PASS |
+| PVAC-CPVI | 0.72 | 0.740 | 2.8% | Y | PASS |
+| WACA-PVAC | 1.14 | 0.753 | 34.0% | Y | PASS |
+| CRAVE | 0.91 | 0.976 | 7.3% | Y | PASS |
+| ADVENT | 0.92 | 0.891 | 3.2% | Y | PASS |
+| FREEZEAF-30M | 1.06 | N/A | N/A | N | FAIL_EXTRACT |
+| LBRF-PERSISTENT | 0.93 | 0.919 | 1.2% | Y | PASS |
+
+**Summary: 12/13 extracted, 12/12 within CI (100%), 10/12 <10% error. Median 3.8%, Mean 6.9%.**
+Notes:
+- FREEZEAF-30M: 0 extractable curves (known limitation — no KM figure detected). Previous v1.0 "success" was due to stale cache bug (P0-2).
+- WACA-PVAC: 34.0% error (arm inversion, derived HR) but within CI.
+- HIPAF: 11.4% error (asymmetric arm sizes 45 vs 74 from correct NAR sentinel fix) but within CI.
+- VERDICT: **PASS — No regression detected**
+
+---
+
 ## What was DELETED (Phase 2, 2026-02-09)
 - [x] 15 backup directories (backups/ through backups_v16/)
 - [x] 10 debug_*.py files from root

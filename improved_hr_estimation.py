@@ -11,6 +11,7 @@ Author: Wasserstein KM Extractor Team
 Date: February 2026
 """
 
+import re
 import numpy as np
 from typing import List, Tuple, Dict, Optional
 from dataclasses import dataclass
@@ -48,8 +49,8 @@ class ArmIdentificationResult:
 class HRResult:
     """Hazard ratio estimation result."""
     hr: float
-    ci_lower: float
-    ci_upper: float
+    ci_lower: Optional[float]
+    ci_upper: Optional[float]
     p_value: float
     method: str
     n_events: int
@@ -160,12 +161,14 @@ def reconstruct_ipd_guyot(times: np.ndarray,
             n_censored_interval = max(0, n_censored_interval)
 
         # Generate event times uniformly within interval
+        # Using same linspace for events and censorings (Breslow convention:
+        # censored patients are still at risk at event time). Float ties are
+        # handled by np.round(times, 6) in log_rank_test.
         if n_events_interval > 0:
             event_times = np.linspace(t_prev + 0.001, t_curr - 0.001, n_events_interval)
             for et in event_times:
                 ipd.append(IPDRecord(time=et, event=1, arm=0))
 
-        # Generate censoring times
         if n_censored_interval > 0:
             censor_times = np.linspace(t_prev + 0.001, t_curr - 0.001, n_censored_interval)
             for ct in censor_times:
@@ -174,7 +177,13 @@ def reconstruct_ipd_guyot(times: np.ndarray,
     # Add final censored observations at end of follow-up
     n_remaining = total_n - len(ipd)
     if n_remaining > 0:
-        for _ in range(min(n_remaining, 10)):  # Limit to avoid memory issues
+        if has_nar:
+            # NAR-calibrated N is accurate: add all remaining
+            final_censored = n_remaining
+        else:
+            # Estimated N may be too high: cap to avoid dilution
+            final_censored = min(n_remaining, 10)
+        for _ in range(final_censored):
             ipd.append(IPDRecord(time=times[-1], event=0, arm=0))
 
     return ipd
@@ -404,11 +413,14 @@ def estimate_hr_from_curves(times1: np.ndarray, surv1: np.ndarray,
 
     if total_events == 0:
         return HRResult(
-            hr=1.0, ci_lower=0.5, ci_upper=2.0,
-            p_value=1.0, method="log_rank",
+            hr=1.0, ci_lower=None, ci_upper=None,
+            p_value=1.0, method="log_rank_zero_events",
             n_events=0, n_total=n1+n2,
             log_rank_statistic=0
         )
+
+    # Confidence level for CI (default 95%)
+    z_alpha = stats.norm.ppf(0.975)
 
     # Primary method: HR = exp((O_1 - E_1) / V) with SE(log HR) = 1/sqrt(V)
     # This is the standard Mantel-Haenszel / log-rank derived HR
@@ -417,6 +429,9 @@ def estimate_hr_from_curves(times1: np.ndarray, surv1: np.ndarray,
         se_log_hr = 1.0 / np.sqrt(V)
         hr = np.exp(log_hr)
         hr = max(0.05, min(20.0, hr))
+        # Use ORIGINAL log_hr for CI, not log of clamped hr (P0-4)
+        ci_lower = np.exp(log_hr - z_alpha * se_log_hr)
+        ci_upper = np.exp(log_hr + z_alpha * se_log_hr)
         method = "log_rank_OminusE"
     else:
         # Fallback: median survival ratio for low-event scenarios
@@ -440,18 +455,18 @@ def estimate_hr_from_curves(times1: np.ndarray, surv1: np.ndarray,
         # Approximate SE for median ratio method
         if total_events > 0:
             se_log_hr = np.sqrt(4.0 / total_events)
+            log_hr_fb = np.log(hr)
+            ci_lower = np.exp(log_hr_fb - z_alpha * se_log_hr)
+            ci_upper = np.exp(log_hr_fb + z_alpha * se_log_hr)
         else:
-            se_log_hr = 0.5
+            ci_lower = None
+            ci_upper = None
         method = "median_ratio_fallback"
-
-    log_hr = np.log(hr)
-    ci_lower = np.exp(log_hr - 1.96 * se_log_hr)
-    ci_upper = np.exp(log_hr + 1.96 * se_log_hr)
 
     return HRResult(
         hr=round(hr, 3),
-        ci_lower=round(ci_lower, 3),
-        ci_upper=round(ci_upper, 3),
+        ci_lower=round(ci_lower, 3) if ci_lower is not None else None,
+        ci_upper=round(ci_upper, 3) if ci_upper is not None else None,
         p_value=round(p_value, 4),
         method=method,
         n_events=total_events,
@@ -947,13 +962,13 @@ class ImprovedHREstimator:
         try:
             result = estimate_hr_from_curves(times_trt, surv_trt, times_ctrl, surv_ctrl)
         except Exception as e:
-            # Fallback to simple method
+            # Fallback to simple method — CI unknown (not fabricated)
             hr = estimate_hr_simple(times_trt, surv_trt, times_ctrl, surv_ctrl)
             result = HRResult(
                 hr=round(hr, 3),
-                ci_lower=round(hr * 0.5, 3),
-                ci_upper=round(hr * 2.0, 3),
-                p_value=0.05,
+                ci_lower=None,
+                ci_upper=None,
+                p_value=None,
                 method="simple_median_ratio",
                 n_events=0,
                 n_total=0,
