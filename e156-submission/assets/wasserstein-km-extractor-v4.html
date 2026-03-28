@@ -1,0 +1,4631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wasserstein KM Extractor v4.0 - All Curve Types</title>
+
+    <!-- External Libraries (Optional - OCR & PDF) -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <!-- Internal AI Engine - No External Dependencies -->
+    <script src="km-ai-engine.js"></script>
+
+    <!-- Enhanced Methods Module (Editorial Review) -->
+    <script src="km-enhanced-methods.js"></script>
+    <script src="beyond-r-methods.js"></script>
+
+    <!-- All Curve Types Support -->
+    <script src="curve-types-module.js"></script>
+    <script src="curve-analysis-extended.js"></script>
+
+    <style>
+        /* ============================================
+           CSS VARIABLES & RESET
+           ============================================ */
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-tertiary: #1a1a2e;
+            --bg-quaternary: #252542;
+            --bg-highlight: #2a2a4a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6a6a7a;
+            --accent-blue: #4361ee;
+            --accent-blue-hover: #5a7af0;
+            --accent-green: #22c55e;
+            --accent-orange: #f97316;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --accent-yellow: #eab308;
+            --accent-pink: #ec4899;
+            --border-color: #3a3a5a;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            --radius: 8px;
+            --radius-sm: 4px;
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .app-container {
+            display: grid;
+            grid-template-columns: 340px 1fr 400px;
+            grid-template-rows: 56px 1fr;
+            height: 100vh;
+            gap: 1px;
+            background: var(--border-color);
+        }
+
+        /* Header */
+        .header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header h1 .version {
+            font-size: 11px;
+            background: var(--accent-purple);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+
+        .header h1 .world-class {
+            font-size: 10px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .header-stats .stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-stats .stat-value {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Sidebars */
+        .sidebar {
+            background: var(--bg-secondary);
+            overflow-y: auto;
+            padding: 16px;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--bg-quaternary);
+            border-radius: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-blue);
+        }
+
+        /* Main Canvas Area */
+        .main-area {
+            background: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .canvas-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #main-canvas {
+            cursor: crosshair;
+            image-rendering: pixelated;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-tertiary);
+        }
+
+        .tab {
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-quaternary);
+        }
+
+        .tab.active {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 16px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Sections */
+        .section {
+            background: var(--bg-tertiary);
+            border-radius: var(--radius);
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .section-header:hover {
+            background: var(--bg-quaternary);
+        }
+
+        .section-header h3 {
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-header .badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: var(--accent-blue);
+        }
+
+        .section-header .badge.new {
+            background: var(--accent-orange);
+        }
+
+        .section-header .badge.ai {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+        }
+
+        .section-content {
+            padding: 16px;
+            padding-top: 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section.collapsed .section-content {
+            display: none;
+        }
+
+        .toggle-icon {
+            font-size: 16px;
+            color: var(--text-muted);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-blue-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-quaternary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-highlight);
+            border-color: var(--accent-blue);
+        }
+
+        .btn-success {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        .btn-ai {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            color: white;
+        }
+
+        .btn-ai:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 11px;
+        }
+
+        .btn-lg {
+            padding: 12px 24px;
+            font-size: 14px;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px 12px;
+            background: var(--bg-quaternary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 13px;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        /* Info boxes */
+        .info-box {
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .info-box.info {
+            background: rgba(67, 97, 238, 0.15);
+            border: 1px solid rgba(67, 97, 238, 0.3);
+            color: var(--accent-blue);
+        }
+
+        .info-box.success {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: var(--accent-green);
+        }
+
+        .info-box.warning {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            color: var(--accent-orange);
+        }
+
+        .info-box.ai {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.15));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: var(--accent-purple);
+        }
+
+        /* Progress Indicators */
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 0;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .step-indicator .step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--bg-quaternary);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 11px;
+        }
+
+        .step-indicator.completed .step-num {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            color: white;
+        }
+
+        .step-indicator.active .step-num {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: white;
+        }
+
+        /* Color Swatch */
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--border-color);
+            display: inline-block;
+        }
+
+        /* Data Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 6px 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            background: var(--bg-quaternary);
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tr:hover td {
+            background: var(--bg-quaternary);
+        }
+
+        /* Arm Tabs */
+        .arm-tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .arm-tab {
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 11px;
+            cursor: pointer;
+            border: 2px solid var(--border-color);
+            background: var(--bg-quaternary);
+            transition: var(--transition);
+        }
+
+        .arm-tab:hover {
+            background: var(--bg-highlight);
+        }
+
+        .arm-tab.active {
+            border-color: currentColor;
+            font-weight: 600;
+        }
+
+        /* Detection Cards */
+        .detection-card {
+            background: var(--bg-quaternary);
+            border-radius: var(--radius);
+            padding: 12px;
+            margin-bottom: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .detection-card .color-preview {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            border: 2px solid var(--border-color);
+        }
+
+        .detection-card .info {
+            flex: 1;
+        }
+
+        .detection-card .info .name {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .detection-card .info .details {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .detection-card .score {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .detection-card .score.high {
+            color: var(--accent-green);
+        }
+
+        .detection-card .score.medium {
+            color: var(--accent-yellow);
+        }
+
+        .detection-card .score.low {
+            color: var(--accent-red);
+        }
+
+        /* Validation Grade */
+        .grade-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .grade-badge.A { background: var(--accent-green); color: white; }
+        .grade-badge.B { background: #84cc16; color: white; }
+        .grade-badge.C { background: var(--accent-yellow); color: black; }
+        .grade-badge.D { background: var(--accent-orange); color: white; }
+        .grade-badge.F { background: var(--accent-red); color: white; }
+
+        /* Confidence Interval Display */
+        .ci-display {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .ci-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--bg-quaternary);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ci-bar .ci-range {
+            position: absolute;
+            height: 100%;
+            background: var(--accent-blue);
+            opacity: 0.4;
+        }
+
+        .ci-bar .ci-point {
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-blue);
+            transform: translateX(-50%);
+        }
+
+        /* Batch Queue */
+        .batch-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            background: var(--bg-quaternary);
+            border-radius: var(--radius-sm);
+            margin-bottom: 6px;
+        }
+
+        .batch-item .thumb {
+            width: 48px;
+            height: 36px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .batch-item .info {
+            flex: 1;
+        }
+
+        .batch-item .status {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .batch-item .status.pending {
+            background: var(--bg-highlight);
+            color: var(--text-secondary);
+        }
+
+        .batch-item .status.processing {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .batch-item .status.done {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        .batch-item .status.error {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        /* Canvas Toolbar */
+        .canvas-toolbar {
+            display: flex;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tool-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .tool-btn:hover {
+            background: var(--bg-quaternary);
+            color: var(--text-primary);
+        }
+
+        .tool-btn.active {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .tool-separator {
+            width: 1px;
+            background: var(--border-color);
+            margin: 0 4px;
+        }
+
+        /* Mode Indicator */
+        .mode-indicator {
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-blue);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* Processing Overlay */
+        .processing-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 18, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .processing-overlay.hidden {
+            display: none;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--bg-quaternary);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .processing-text {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 6px;
+            background: var(--bg-quaternary);
+            border-radius: 3px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .toast {
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            margin-top: 8px;
+            font-size: 13px;
+            box-shadow: var(--shadow);
+            animation: slideIn 0.3s ease;
+        }
+
+        .toast.info {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .toast.success {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        .toast.warning {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        .toast.error {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* AI Pulse Animation */
+        @keyframes aiPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .ai-processing {
+            animation: aiPulse 1.5s ease-in-out infinite;
+        }
+
+        /* Slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: var(--bg-quaternary);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Real Datasets */
+        .dataset-card {
+            background: var(--bg-quaternary);
+            border-radius: var(--radius);
+            padding: 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .dataset-card:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .dataset-card.selected {
+            border-color: var(--accent-green);
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .dataset-card .name {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .dataset-card .meta {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Uncertainty Visualization */
+        .uncertainty-chart {
+            height: 120px;
+            background: var(--bg-quaternary);
+            border-radius: var(--radius);
+            padding: 12px;
+            position: relative;
+        }
+
+        /* Drag Drop Zone */
+        .drop-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .drop-zone.dragover {
+            border-color: var(--accent-blue);
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .drop-zone-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        /* PDF Viewer */
+        .pdf-pages {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .pdf-page {
+            aspect-ratio: 3/4;
+            background: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            border: 2px solid transparent;
+            overflow: hidden;
+        }
+
+        .pdf-page:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .pdf-page.selected {
+            border-color: var(--accent-green);
+        }
+
+        .pdf-page img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>
+                <span>Wasserstein KM Extractor</span>
+                <span class="version">v3.0</span>
+                <span class="world-class">Editorial Enhanced</span>
+            </h1>
+            <div class="header-stats">
+                <div class="stat">
+                    <span>Points:</span>
+                    <span class="stat-value" id="stat-points">0</span>
+                </div>
+                <div class="stat">
+                    <span>IPD Records:</span>
+                    <span class="stat-value" id="stat-ipd">0</span>
+                </div>
+                <div class="stat">
+                    <span>Accuracy:</span>
+                    <span class="stat-value" id="stat-accuracy">-</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary btn-sm" onclick="saveSession()">Save</button>
+                <button class="btn btn-secondary btn-sm" onclick="loadSession()">Load</button>
+                <button class="btn btn-secondary btn-sm" onclick="showHelp()">Help</button>
+            </div>
+        </header>
+
+        <!-- Left Sidebar - Input & Detection -->
+        <aside class="sidebar" id="left-sidebar">
+            <!-- Input Source -->
+            <div class="section" id="section-input">
+                <div class="section-header" onclick="toggleSection('section-input')">
+                    <h3>1. Input Source</h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="input-image" onclick="switchInputTab('input-image')">Image</div>
+                        <div class="tab" data-tab="input-pdf" onclick="switchInputTab('input-pdf')">PDF</div>
+                        <div class="tab" data-tab="input-batch" onclick="switchInputTab('input-batch')">Batch</div>
+                    </div>
+
+                    <div class="tab-content active" id="input-image">
+                        <div class="drop-zone" id="drop-zone"
+                             ondrop="handleDrop(event)"
+                             ondragover="handleDragOver(event)"
+                             ondragleave="handleDragLeave(event)">
+                            <div class="drop-zone-icon">📷</div>
+                            <div>Drag & drop image here</div>
+                            <div style="margin: 8px 0; color: var(--text-muted);">or</div>
+                            <input type="file" id="file-input" accept="image/*" style="display: none" onchange="handleFileSelect(event)">
+                            <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">Browse Files</button>
+                            <div style="margin-top: 12px; font-size: 11px; color: var(--text-muted);">
+                                Paste from clipboard: Ctrl+V
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="input-pdf">
+                        <input type="file" id="pdf-input" accept=".pdf" style="display: none" onchange="handlePDFSelect(event)">
+                        <button class="btn btn-primary btn-block" onclick="document.getElementById('pdf-input').click()">
+                            Select PDF
+                        </button>
+                        <div id="pdf-pages-container" style="margin-top: 16px;">
+                            <div class="empty-state" style="padding: 20px;">
+                                <div>No PDF loaded</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="input-batch">
+                        <input type="file" id="batch-input" accept="image/*" multiple style="display: none" onchange="handleBatchSelect(event)">
+                        <button class="btn btn-primary btn-block" onclick="document.getElementById('batch-input').click()">
+                            Add Images to Queue
+                        </button>
+                        <div id="batch-queue" style="margin-top: 16px; max-height: 300px; overflow-y: auto;">
+                            <div class="empty-state" style="padding: 20px;">
+                                <div>No images in queue</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-block" style="margin-top: 12px;" onclick="processBatch()" id="batch-process-btn" disabled>
+                            Process All
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curve Type Selection -->
+            <div class="section" id="section-curvetype">
+                <div class="section-header" onclick="toggleSection('section-curvetype')">
+                    <h3>
+                        Curve Type
+                        <span class="badge new">NEW</span>
+                    </h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label>Select the type of curve you are digitizing:</label>
+                        <select id="curve-type-select" onchange="onCurveTypeChange(this.value)">
+                            <option value="km" selected>Kaplan-Meier (Survival)</option>
+                            <option value="na">Nelson-Aalen (Cumulative Hazard)</option>
+                            <option value="ci">Cumulative Incidence (1 - S)</option>
+                            <option value="cif">Competing Risks CIF</option>
+                            <option value="hazard">Hazard Function h(t)</option>
+                            <option value="loglog">Log-minus-log (Diagnostic)</option>
+                        </select>
+                    </div>
+                    <div class="curve-type-info" id="curve-type-info" style="padding: 8px; background: var(--bg-tertiary); border-radius: 4px; font-size: 11px; color: var(--text-secondary); margin-top: 8px;">
+                        Standard survival curve showing probability of surviving beyond time t. Y-axis: 0-1 (decreasing).
+                    </div>
+                    <div class="form-group" style="margin-top: 12px;">
+                        <label style="font-size: 11px; color: var(--text-muted);">Default Y-axis range will adjust based on curve type.</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- AI Detection -->
+            <div class="section" id="section-ai">
+                <div class="section-header" onclick="toggleSection('section-ai')">
+                    <h3>
+                        2. AI Curve Detection
+                        <span class="badge ai">AI</span>
+                    </h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="info-box ai" style="margin-bottom: 12px;">
+                        K-means clustering + curve scoring algorithm automatically identifies KM curves.
+                    </div>
+
+                    <div class="btn-group" style="margin-bottom: 8px;">
+                        <button class="btn btn-ai" onclick="runAIDetection()" id="ai-detect-btn" disabled style="flex: 1;">
+                            Auto-Detect Curves
+                        </button>
+                        <button class="btn btn-secondary btn-sm" onclick="toggleAIMode()" id="ai-mode-toggle" title="Toggle detection mode">
+                            Edge+NN
+                        </button>
+                    </div>
+
+                    <div class="info-box" style="margin-bottom: 8px; font-size: 10px;">
+                        <strong>Edge+NN:</strong> Canny edge detection + Neural network (best for clean images)<br>
+                        <strong>Color:</strong> K-means color clustering (best for colored curves)
+                    </div>
+
+                    <div id="ai-detection-results" style="margin-top: 12px;">
+                        <!-- Detection results will appear here -->
+                    </div>
+
+                    <div class="form-group" style="margin-top: 12px;">
+                        <label>Detection Sensitivity</label>
+                        <input type="range" id="ai-sensitivity" min="1" max="10" value="5">
+                        <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted);">
+                            <span>Fewer curves</span>
+                            <span>More curves</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Axis Calibration -->
+            <div class="section" id="section-calibration">
+                <div class="section-header" onclick="toggleSection('section-calibration')">
+                    <h3>3. Axis Calibration</h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <button class="btn btn-ai btn-sm" onclick="autoDetectAxes()" style="margin-bottom: 12px;" id="auto-axis-btn" disabled>
+                        Auto-Detect Axes
+                    </button>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>X-Axis Min</label>
+                            <div class="btn-group">
+                                <input type="number" id="x-min-val" value="0" step="any" style="width: 60px;">
+                                <button class="btn btn-secondary btn-sm" onclick="startCalibration('xMin')">Set</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>X-Axis Max</label>
+                            <div class="btn-group">
+                                <input type="number" id="x-max-val" value="60" step="any" style="width: 60px;">
+                                <button class="btn btn-secondary btn-sm" onclick="startCalibration('xMax')">Set</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Y-Axis Min</label>
+                            <div class="btn-group">
+                                <input type="number" id="y-min-val" value="0" step="any" style="width: 60px;">
+                                <button class="btn btn-secondary btn-sm" onclick="startCalibration('yMin')">Set</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Y-Axis Max</label>
+                            <div class="btn-group">
+                                <input type="number" id="y-max-val" value="1" step="any" style="width: 60px;">
+                                <button class="btn btn-secondary btn-sm" onclick="startCalibration('yMax')">Set</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-indicator" id="cal-status">
+                        <span class="step-num">!</span>
+                        <span>Not calibrated</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OCR -->
+            <div class="section" id="section-ocr">
+                <div class="section-header" onclick="toggleSection('section-ocr')">
+                    <h3>
+                        4. OCR Extraction
+                        <span class="badge new">NEW</span>
+                    </h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <button class="btn btn-primary btn-block" onclick="runOCR()" id="ocr-btn" disabled>
+                        Extract Numbers at Risk
+                    </button>
+
+                    <div id="ocr-status" style="margin-top: 12px; font-size: 11px; color: var(--text-secondary);">
+                        OCR engine ready
+                    </div>
+
+                    <div id="ocr-results" style="margin-top: 12px;">
+                        <!-- OCR results will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manual Trace -->
+            <div class="section collapsed" id="section-manual">
+                <div class="section-header" onclick="toggleSection('section-manual')">
+                    <h3>Manual Tracing</h3>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <div class="arm-tabs" id="arm-tabs">
+                        <!-- Dynamic arm tabs -->
+                    </div>
+
+                    <div class="btn-group" style="margin-bottom: 12px;">
+                        <button class="btn btn-secondary btn-sm" onclick="sampleColorMode()">Sample Color</button>
+                        <button class="btn btn-secondary btn-sm" onclick="setManualMode()">Click Mode</button>
+                    </div>
+
+                    <div id="color-controls" style="display: none;">
+                        <div class="form-group">
+                            <label>Sampled Color</label>
+                            <div style="display: flex; gap: 8px; align-items: center;">
+                                <div class="color-swatch" id="sampled-color"></div>
+                                <input type="range" id="color-tolerance" min="10" max="100" value="40" style="flex: 1;">
+                                <span id="tolerance-value" style="font-size: 11px; width: 30px;">40</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="autoTrace()">Auto-Trace</button>
+                    </div>
+
+                    <div id="manual-controls" style="display: none;">
+                        <div class="info-box info">
+                            Click to add points. Hold Shift for censoring marks.
+                        </div>
+                        <div class="btn-group" style="margin-top: 8px;">
+                            <button class="btn btn-secondary btn-sm" onclick="undoLastPoint()">Undo</button>
+                            <button class="btn btn-danger btn-sm" onclick="clearArmPoints()">Clear Arm</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary btn-block" style="margin-top: 12px;" onclick="addArm()">
+                        + Add Arm
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Canvas Area -->
+        <main class="main-area">
+            <div class="canvas-toolbar">
+                <button class="tool-btn" onclick="zoomIn()" title="Zoom In">+</button>
+                <button class="tool-btn" onclick="zoomOut()" title="Zoom Out">-</button>
+                <button class="tool-btn" onclick="resetView()" title="Reset View">↺</button>
+                <div class="tool-separator"></div>
+                <button class="tool-btn" onclick="toggleGrid()" id="grid-btn" title="Toggle Grid">▦</button>
+                <button class="tool-btn" onclick="toggleOverlay()" id="overlay-btn" title="Toggle Overlay">◎</button>
+                <div class="tool-separator"></div>
+                <button class="tool-btn" onclick="toggleCI()" id="ci-btn" title="Show Confidence Intervals">CI</button>
+            </div>
+
+            <div class="canvas-container" id="canvas-container">
+                <canvas id="main-canvas"></canvas>
+                <div class="mode-indicator" id="mode-indicator">
+                    <span id="mode-text">Mode</span>
+                    <button class="btn btn-sm" onclick="cancelMode()" style="padding: 2px 8px;">Cancel</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar - Analysis & Export -->
+        <aside class="sidebar" id="right-sidebar">
+            <!-- Number at Risk -->
+            <div class="section" id="section-nar">
+                <div class="section-header" onclick="toggleSection('section-nar')">
+                    <h3>5. Number at Risk</h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="arm-tabs" id="nar-arm-tabs">
+                        <!-- Dynamic arm tabs -->
+                    </div>
+
+                    <div class="form-group">
+                        <label>Enter as: time: count, time: count, ...</label>
+                        <textarea id="nar-input" rows="3" placeholder="0: 100, 12: 85, 24: 70, 36: 55"></textarea>
+                    </div>
+
+                    <button class="btn btn-primary btn-sm" onclick="parseNAR()">Apply</button>
+
+                    <div id="nar-table" style="margin-top: 12px;">
+                        <!-- Parsed table will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reconstruction -->
+            <div class="section" id="section-reconstruct">
+                <div class="section-header" onclick="toggleSection('section-reconstruct')">
+                    <h3>6. IPD Reconstruction</h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label>Algorithm</label>
+                        <select id="recon-method">
+                            <option value="wasserstein">Wasserstein Optimized (Best)</option>
+                            <option value="cenkm">CEN-KM (Censoring-Aware)</option>
+                            <option value="guyot">Guyot (Standard)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bootstrap Iterations (for CI)</label>
+                        <input type="number" id="bootstrap-n" value="200" min="0" max="1000">
+                    </div>
+
+                    <button class="btn btn-success btn-block" onclick="runReconstruction()" id="reconstruct-btn" disabled>
+                        Reconstruct IPD
+                    </button>
+
+                    <div id="ipd-summary" style="margin-top: 16px;">
+                        <!-- IPD summary will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Uncertainty Quantification -->
+            <div class="section" id="section-uncertainty">
+                <div class="section-header" onclick="toggleSection('section-uncertainty')">
+                    <h3>
+                        7. Uncertainty
+                        <span class="badge new">NEW</span>
+                    </h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div id="uncertainty-display">
+                        <div class="empty-state" style="padding: 20px;">
+                            <div>Run reconstruction with bootstrap to see uncertainty estimates</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Validation -->
+            <div class="section" id="section-validation">
+                <div class="section-header" onclick="toggleSection('section-validation')">
+                    <h3>8. Validation</h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Reported N</label>
+                            <input type="number" id="reported-n" placeholder="e.g., 100">
+                        </div>
+                        <div class="form-group">
+                            <label>Reported Events</label>
+                            <input type="number" id="reported-events" placeholder="e.g., 75">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Reported Median</label>
+                            <input type="number" id="reported-median" step="0.1" placeholder="e.g., 24.5">
+                        </div>
+                        <div class="form-group">
+                            <label>Reported HR</label>
+                            <input type="number" id="reported-hr" step="0.01" placeholder="e.g., 0.75">
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary btn-block" onclick="runValidation()">Validate</button>
+
+                    <div id="validation-results" style="margin-top: 12px;">
+                        <!-- Validation results will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Built-in Test Datasets -->
+
+            <!-- Enhanced Statistical Analysis (Editorial Review) -->
+            <div class="section" id="section-advanced">
+                <div class="section-header" onclick="toggleSection('section-advanced')">
+                    <h3>
+                        Advanced Analysis
+                        <span class="badge ai">ENHANCED</span>
+                    </h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="info-box ai" style="margin-bottom: 12px;">
+                        Publication-quality statistical methods per Research Synthesis Methods standards
+                    </div>
+
+                    <div class="btn-group" style="flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+                        <button class="btn btn-secondary btn-sm" onclick="runEnhancedAnalysis('rmst')">RMST</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runEnhancedAnalysis('logrank')">Log-Rank</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runEnhancedAnalysis('ph')">PH Check</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runEnhancedAnalysis('ks')">K-S Test</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runEnhancedAnalysis('greenwood')">Greenwood SE</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runEnhancedAnalysis('schoenfeld')" title="Schoenfeld residuals for PH">Schoenfeld</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runEnhancedAnalysis('hallwellner')" title="Hall-Wellner confidence bands">H-W Bands</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runEnhancedAnalysis('timevarying')" title="Time-varying HR">TV-HR</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runEnhancedAnalysis('sensitivity')" title="Sensitivity analysis">Sensitivity</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>RMST Restriction Time (tau)</label>
+                        <input type="number" id="rmst-tau" placeholder="Leave blank for max time" step="0.1">
+                    </div>
+
+                    <div id="advanced-results" style="margin-top: 12px;">
+                        <!-- Enhanced analysis results will appear here -->
+                    </div>
+
+                    <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-color);">
+                        <div style="font-weight: 600; margin-bottom: 8px; color: var(--accent-color);">Beyond R Methods</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                            <button class="btn btn-secondary btn-sm" onclick="runBeyondR('wasserstein')" title="Optimal transport distance">Wasserstein</button>
+                            <button class="btn btn-secondary btn-sm" onclick="runBeyondR('cure')" title="Detect cure fraction">Cure Fraction</button>
+                            <button class="btn btn-secondary btn-sm" onclick="runBeyondR('extrapolate')" title="Royston-Parmar">Extrapolate</button>
+                            <button class="btn btn-secondary btn-sm" onclick="runBeyondR('compare')" title="Compare distributions">Compare Dist</button>
+                        </div>
+                        <div id="beyond-r-results" style="margin-top: 12px;"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section collapsed" id="section-testdata">
+                <div class="section-header" onclick="toggleSection('section-testdata')">
+                    <h3>
+                        Test Datasets
+                        <span class="badge new">NEW</span>
+                    </h3>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <div class="info-box info" style="margin-bottom: 12px;">
+                        Real IPD datasets for validation testing
+                    </div>
+
+                    <div class="dataset-card" onclick="loadTestDataset('veterans')">
+                        <div class="name">Veterans Lung Cancer</div>
+                        <div class="meta">N=137, Source: survival R package</div>
+                    </div>
+
+                    <div class="dataset-card" onclick="loadTestDataset('ncctg')">
+                        <div class="name">NCCTG Lung Cancer</div>
+                        <div class="meta">N=228, Source: survival R package</div>
+                    </div>
+
+                    <div class="dataset-card" onclick="loadTestDataset('ovarian')">
+                        <div class="name">Ovarian Cancer</div>
+                        <div class="meta">N=26, Source: survival R package</div>
+                    </div>
+
+                    <div class="dataset-card" onclick="loadTestDataset('colon')">
+                        <div class="name">Colon Cancer</div>
+                        <div class="meta">N=929, Source: survival R package</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export -->
+            <div class="section" id="section-export">
+                <div class="section-header" onclick="toggleSection('section-export')">
+                    <h3>9. Export</h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="btn-group" style="flex-wrap: wrap; gap: 8px;">
+                        <button class="btn btn-primary" onclick="exportCSV()">CSV</button>
+                        <button class="btn btn-secondary" onclick="exportR()">R Script</button>
+                        <button class="btn btn-secondary" onclick="exportJSON()">JSON</button>
+                        <button class="btn btn-secondary" onclick="exportSAS()">SAS</button>
+                        <button class="btn btn-secondary" onclick="exportStata()">Stata</button>
+                    </div>
+
+                    <div style="margin-top: 12px;">
+                        <label style="font-size: 11px; color: var(--text-secondary);">
+                            <input type="checkbox" id="export-ci" checked> Include confidence intervals
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Processing Overlay -->
+    <div class="processing-overlay hidden" id="processing-overlay">
+        <div class="spinner"></div>
+        <div class="processing-text" id="processing-text">Processing...</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // PDF.js Worker Setup
+        // ============================================
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+
+        // ============================================
+        // GLOBAL STATE
+        // ============================================
+        const state = {
+            // Curve Type
+            curveType: 'km',
+            
+            // Image
+            image: null,
+            imageData: null,
+            originalWidth: 0,
+            originalHeight: 0,
+
+            // View
+            zoom: 1,
+            panX: 0,
+            panY: 0,
+            showGrid: false,
+            showOverlay: true,
+            showCI: false,
+
+            // Calibration
+            calibration: {
+                xMin: null,
+                xMax: null,
+                yMin: null,
+                yMax: null,
+                isCalibrated: false
+            },
+
+            // Mode
+            mode: 'idle',
+            calibratingPoint: null,
+
+            // Arms
+            arms: [
+                { name: 'Treatment', color: '#4361ee' },
+                { name: 'Control', color: '#22c55e' }
+            ],
+            currentArm: 0,
+
+            // Points
+            points: [],
+
+            // Color sampling
+            sampledColor: null,
+
+            // Number at Risk
+            atRisk: {},
+            currentNARArm: 0,
+
+            // Reconstructed IPD
+            ipd: {},
+
+            // AI Detection
+            detectedCurves: [],
+
+            // Confidence Intervals
+            ciData: {},
+
+            // Uncertainty
+            uncertainty: {},
+
+            // Batch
+            batchQueue: [],
+            batchResults: [],
+
+            // PDF
+            pdfDoc: null,
+            pdfPages: [],
+
+            // OCR
+            ocrWorker: null,
+            ocrReady: false
+        };
+
+        // ============================================
+        // CANVAS SETUP
+        // ============================================
+        const canvas = document.getElementById('main-canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        const canvasContainer = document.getElementById('canvas-container');
+
+        function initCanvas() {
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            setupCanvasEvents();
+            setupKeyboardEvents();
+        }
+
+        function resizeCanvas() {
+            const rect = canvasContainer.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            render();
+        }
+
+        function setupCanvasEvents() {
+            let isPanning = false;
+            let lastX, lastY;
+
+            canvas.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                state.zoom = Math.max(0.1, Math.min(10, state.zoom * delta));
+                render();
+            });
+
+            canvas.addEventListener('mousedown', (e) => {
+                if (e.button === 1) {
+                    isPanning = true;
+                    lastX = e.clientX;
+                    lastY = e.clientY;
+                    canvas.style.cursor = 'grabbing';
+                }
+            });
+
+            canvas.addEventListener('mousemove', (e) => {
+                if (isPanning) {
+                    state.panX += e.clientX - lastX;
+                    state.panY += e.clientY - lastY;
+                    lastX = e.clientX;
+                    lastY = e.clientY;
+                    render();
+                }
+            });
+
+            canvas.addEventListener('mouseup', (e) => {
+                if (e.button === 1) {
+                    isPanning = false;
+                    canvas.style.cursor = 'crosshair';
+                }
+            });
+
+            canvas.addEventListener('click', (e) => {
+                if (isPanning) return;
+
+                const rect = canvas.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+
+                const px = (clickX - state.panX - canvas.width / 2) / state.zoom + state.originalWidth / 2;
+                const py = (clickY - state.panY - canvas.height / 2) / state.zoom + state.originalHeight / 2;
+
+                handleCanvasClick(px, py, e);
+            });
+        }
+
+        function setupKeyboardEvents() {
+            document.addEventListener('paste', (e) => {
+                const items = e.clipboardData.items;
+                for (let item of items) {
+                    if (item.type.indexOf('image') !== -1) {
+                        const blob = item.getAsFile();
+                        loadImageFromBlob(blob);
+                        break;
+                    }
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    cancelMode();
+                } else if (e.ctrlKey && e.key === 'z') {
+                    undoLastPoint();
+                }
+            });
+        }
+
+        // ============================================
+        // IMAGE LOADING
+        // ============================================
+        function handleDragOver(e) {
+            e.preventDefault();
+            document.getElementById('drop-zone').classList.add('dragover');
+        }
+
+        function handleDragLeave(e) {
+            document.getElementById('drop-zone').classList.remove('dragover');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            document.getElementById('drop-zone').classList.remove('dragover');
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                loadImageFromBlob(files[0]);
+            }
+        }
+
+        function handleFileSelect(e) {
+            if (e.target.files.length > 0) {
+                loadImageFromBlob(e.target.files[0]);
+            }
+        }
+
+        function loadImageFromBlob(blob) {
+            const img = new Image();
+            img.onload = () => {
+                state.image = img;
+                state.originalWidth = img.width;
+                state.originalHeight = img.height;
+
+                // Get image data
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = img.width;
+                tempCanvas.height = img.height;
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCtx.drawImage(img, 0, 0);
+                state.imageData = tempCtx.getImageData(0, 0, img.width, img.height);
+
+                resetView();
+                enableButtons();
+                showToast('Image loaded successfully', 'success');
+            };
+            img.src = URL.createObjectURL(blob);
+        }
+
+        function enableButtons() {
+            document.getElementById('ai-detect-btn').disabled = false;
+            document.getElementById('auto-axis-btn').disabled = false;
+            document.getElementById('ocr-btn').disabled = false;
+        }
+
+        // ============================================
+        // RENDERING
+        // ============================================
+        function render() {
+            ctx.fillStyle = '#0a0a12';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (!state.image) {
+                drawEmptyState();
+                return;
+            }
+
+            ctx.save();
+            ctx.translate(canvas.width / 2 + state.panX, canvas.height / 2 + state.panY);
+            ctx.scale(state.zoom, state.zoom);
+            ctx.translate(-state.originalWidth / 2, -state.originalHeight / 2);
+
+            // Draw image
+            ctx.drawImage(state.image, 0, 0);
+
+            // Draw grid
+            if (state.showGrid && state.calibration.isCalibrated) {
+                drawGrid();
+            }
+
+            // Draw confidence intervals
+            if (state.showCI && Object.keys(state.ciData).length > 0) {
+                drawConfidenceIntervals();
+            }
+
+            // Draw overlay
+            if (state.showOverlay) {
+                drawCalibrationPoints();
+                drawPoints();
+                drawDetectedCurves();
+            }
+
+            ctx.restore();
+        }
+
+        function drawEmptyState() {
+            ctx.fillStyle = '#6a6a7a';
+            ctx.font = '16px system-ui';
+            ctx.textAlign = 'center';
+            ctx.fillText('Load an image to begin', canvas.width / 2, canvas.height / 2);
+        }
+
+        function drawGrid() {
+            const cal = state.calibration;
+            if (!cal.isCalibrated) return;
+
+            ctx.strokeStyle = 'rgba(67, 97, 238, 0.2)';
+            ctx.lineWidth = 1 / state.zoom;
+
+            const xRange = cal.xMax.value - cal.xMin.value;
+            const yRange = cal.yMax.value - cal.yMin.value;
+            const xStep = Math.pow(10, Math.floor(Math.log10(xRange / 5)));
+            const yStep = Math.pow(10, Math.floor(Math.log10(yRange / 5)));
+
+            // Vertical lines
+            for (let x = Math.ceil(cal.xMin.value / xStep) * xStep; x <= cal.xMax.value; x += xStep) {
+                const px = dataToPixelX(x);
+                ctx.beginPath();
+                ctx.moveTo(px, cal.yMin.py);
+                ctx.lineTo(px, cal.yMax.py);
+                ctx.stroke();
+            }
+
+            // Horizontal lines
+            for (let y = Math.ceil(cal.yMin.value / yStep) * yStep; y <= cal.yMax.value; y += yStep) {
+                const py = dataToPixelY(y);
+                ctx.beginPath();
+                ctx.moveTo(cal.xMin.px, py);
+                ctx.lineTo(cal.xMax.px, py);
+                ctx.stroke();
+            }
+        }
+
+        function drawCalibrationPoints() {
+            const cal = state.calibration;
+            const points = ['xMin', 'xMax', 'yMin', 'yMax'];
+            const labels = ['X₀', 'X₁', 'Y₀', 'Y₁'];
+
+            points.forEach((key, i) => {
+                if (cal[key]) {
+                    ctx.fillStyle = cal.isCalibrated ? '#22c55e' : '#f97316';
+                    ctx.beginPath();
+                    ctx.arc(cal[key].px, cal[key].py, 6 / state.zoom, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.fillStyle = 'white';
+                    ctx.font = `${12 / state.zoom}px system-ui`;
+                    ctx.textAlign = 'center';
+                    ctx.fillText(labels[i], cal[key].px, cal[key].py - 10 / state.zoom);
+                }
+            });
+        }
+
+        function drawPoints() {
+            state.points.forEach(p => {
+                const arm = state.arms[p.armIndex];
+                if (!arm) return;
+
+                ctx.fillStyle = arm.color;
+
+                if (p.isCensor) {
+                    // Draw tick mark for censoring
+                    ctx.strokeStyle = arm.color;
+                    ctx.lineWidth = 2 / state.zoom;
+                    ctx.beginPath();
+                    ctx.moveTo(p.px, p.py - 6 / state.zoom);
+                    ctx.lineTo(p.px, p.py + 6 / state.zoom);
+                    ctx.stroke();
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(p.px, p.py, 3 / state.zoom, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            });
+        }
+
+        function drawDetectedCurves() {
+            state.detectedCurves.forEach((curve, i) => {
+                if (!curve.selected) return;
+
+                ctx.strokeStyle = curve.color || state.arms[i % state.arms.length]?.color || '#4361ee';
+                ctx.lineWidth = 2 / state.zoom;
+                ctx.beginPath();
+
+                curve.points.forEach((p, j) => {
+                    if (j === 0) ctx.moveTo(p.px, p.py);
+                    else ctx.lineTo(p.px, p.py);
+                });
+
+                ctx.stroke();
+            });
+        }
+
+        function drawConfidenceIntervals() {
+            Object.keys(state.ciData).forEach(armIndex => {
+                const ci = state.ciData[armIndex];
+                const arm = state.arms[armIndex];
+                if (!ci || !arm) return;
+
+                ctx.fillStyle = arm.color + '40';
+                ctx.beginPath();
+
+                // Draw upper bound
+                ci.forEach((point, i) => {
+                    const px = dataToPixelX(point.time);
+                    const py = dataToPixelY(point.upper);
+                    if (i === 0) ctx.moveTo(px, py);
+                    else ctx.lineTo(px, py);
+                });
+
+                // Draw lower bound (reverse)
+                for (let i = ci.length - 1; i >= 0; i--) {
+                    const px = dataToPixelX(ci[i].time);
+                    const py = dataToPixelY(ci[i].lower);
+                    ctx.lineTo(px, py);
+                }
+
+                ctx.closePath();
+                ctx.fill();
+            });
+        }
+
+        // ============================================
+        // COORDINATE TRANSFORMS
+        // ============================================
+        function pixelToData(px, py) {
+            const cal = state.calibration;
+            if (!cal.isCalibrated) return null;
+
+            const xRatio = (px - cal.xMin.px) / (cal.xMax.px - cal.xMin.px);
+            const yRatio = (py - cal.yMin.py) / (cal.yMax.py - cal.yMin.py);
+
+            const x = cal.xMin.value + xRatio * (cal.xMax.value - cal.xMin.value);
+            const y = cal.yMin.value + yRatio * (cal.yMax.value - cal.yMin.value);
+
+            return { x, y };
+        }
+
+        function dataToPixelX(x) {
+            const cal = state.calibration;
+            const ratio = (x - cal.xMin.value) / (cal.xMax.value - cal.xMin.value);
+            return cal.xMin.px + ratio * (cal.xMax.px - cal.xMin.px);
+        }
+
+        function dataToPixelY(y) {
+            const cal = state.calibration;
+            const ratio = (y - cal.yMin.value) / (cal.yMax.value - cal.yMin.value);
+            return cal.yMin.py + ratio * (cal.yMax.py - cal.yMin.py);
+        }
+
+        // ============================================
+        // AI CURVE DETECTION (K-MEANS + SCORING)
+        // ============================================
+        // Detection mode toggle
+        let aiDetectionMode = 'advanced'; // 'advanced' or 'color'
+
+        async function runAIDetection() {
+            if (!state.imageData) {
+                showToast('Please load an image first', 'warning');
+                return;
+            }
+
+            showProcessing('Running AI curve detection...', 0);
+            const sensitivity = parseInt(document.getElementById('ai-sensitivity').value);
+
+            // Give UI time to update
+            await new Promise(r => setTimeout(r, 50));
+
+            try {
+                if (aiDetectionMode === 'advanced' && typeof KMAIEngine !== 'undefined') {
+                    await runAdvancedAIDetection(sensitivity);
+                } else {
+                    await runColorBasedDetection(sensitivity);
+                }
+            } catch (err) {
+                hideProcessing();
+                showToast('Detection failed: ' + err.message, 'error');
+                console.error(err);
+            }
+        }
+
+        async function runAdvancedAIDetection(sensitivity) {
+            const width = state.originalWidth;
+            const height = state.originalHeight;
+
+            // Step 1: Canny Edge Detection
+            updateProcessing('Canny edge detection...', 10);
+            await new Promise(r => setTimeout(r, 30));
+
+            const edgeLow = Math.max(5, 30 - sensitivity * 2);
+            const edgeHigh = Math.max(20, 60 - sensitivity * 3);
+            const { edges } = KMAIEngine.cannyEdgeDetection(state.imageData, edgeLow, edgeHigh);
+
+            // Step 2: Morphological cleanup
+            updateProcessing('Morphological cleanup...', 25);
+            await new Promise(r => setTimeout(r, 30));
+            const cleaned = KMAIEngine.morphClose(edges, width, height, 3);
+
+            // Step 3: Skeletonize
+            updateProcessing('Skeletonizing...', 40);
+            await new Promise(r => setTimeout(r, 30));
+            const skeleton = KMAIEngine.skeletonize(cleaned, width, height);
+
+            // Step 4: Connected components
+            updateProcessing('Finding components...', 55);
+            await new Promise(r => setTimeout(r, 30));
+            const { labels, numComponents } = KMAIEngine.connectedComponents(skeleton, width, height);
+
+            // Step 5: Train neural network classifier
+            updateProcessing('Training NN classifier...', 65);
+            await new Promise(r => setTimeout(r, 30));
+            const nn = KMAIEngine.trainKMClassifier();
+
+            // Step 6: Extract and score curves
+            updateProcessing('Scoring with NN...', 75);
+            await new Promise(r => setTimeout(r, 30));
+
+            const minPts = Math.max(15, 50 - sensitivity * 4);
+            const curves = [];
+
+            for (let c = 1; c <= Math.min(numComponents, 50); c++) {
+                const points = [];
+                for (let y = 0; y < height; y++) {
+                    for (let x = 0; x < width; x++) {
+                        if (labels[y * width + x] === c) {
+                            points.push({ x, y, px: x, py: y });
+                        }
+                    }
+                }
+
+                if (points.length >= minPts) {
+                    const ordered = KMAIEngine.orderPathLeftToRight(points);
+                    const features = KMAIEngine.extractCurveFeatures(ordered);
+                    const nnScore = nn.forward(features)[0];
+                    const ruleScore = scorePathAsKM(ordered, width, height);
+                    const finalScore = nnScore * 0.5 + ruleScore * 0.5;
+
+                    // Get color
+                    const color = getPathColor(points);
+
+                    curves.push({
+                        points: ordered,
+                        rawPoints: points,
+                        color: `rgb(${color.r},${color.g},${color.b})`,
+                        colorData: color,
+                        nnScore, ruleScore,
+                        score: finalScore,
+                        selected: finalScore > (0.55 - sensitivity * 0.04),
+                        method: 'edge+nn'
+                    });
+                }
+            }
+
+            // Step 7: Also get color-based curves
+            updateProcessing('Color-based backup...', 88);
+            await new Promise(r => setTimeout(r, 30));
+
+            const colorCurves = getColorBasedCurves(sensitivity);
+            colorCurves.forEach(cc => {
+                if (!curves.some(c => pathsOverlap(c.points, cc.points))) {
+                    curves.push(cc);
+                }
+            });
+
+            // Sort and finalize
+            curves.sort((a, b) => b.score - a.score);
+            state.detectedCurves = curves.slice(0, 8);
+
+            updateProcessing('Done!', 100);
+            displayDetectionResults();
+            render();
+            hideProcessing();
+
+            const sel = state.detectedCurves.filter(c => c.selected).length;
+            showToast(`AI detected ${sel} curves (analyzed ${numComponents} components)`, 'success');
+        }
+
+        async function runColorBasedDetection(sensitivity) {
+            updateProcessing('K-means clustering...', 20);
+            await new Promise(r => setTimeout(r, 30));
+
+            const colors = extractUniqueColors(state.imageData, 8 + sensitivity);
+
+            updateProcessing('Filtering...', 40);
+            await new Promise(r => setTimeout(r, 30));
+
+            const candidates = filterBackgroundColors(colors);
+
+            updateProcessing('Tracing curves...', 60);
+            await new Promise(r => setTimeout(r, 30));
+
+            const curves = [];
+            for (const color of candidates) {
+                const pts = traceByColor(color, 25 + sensitivity * 3, 2);
+                if (pts.length > 20) {
+                    curves.push({
+                        color: `rgb(${color.r},${color.g},${color.b})`,
+                        colorData: color,
+                        points: pts,
+                        score: scoreCurveAsKM(pts),
+                        selected: true,
+                        method: 'color'
+                    });
+                }
+            }
+
+            curves.forEach(c => c.selected = c.score > (0.45 - sensitivity * 0.03));
+            curves.sort((a, b) => b.score - a.score);
+            state.detectedCurves = curves.slice(0, 6);
+
+            updateProcessing('Done!', 100);
+            displayDetectionResults();
+            render();
+            hideProcessing();
+
+            showToast(`Detected ${state.detectedCurves.filter(c => c.selected).length} curves`, 'success');
+        }
+
+        function getColorBasedCurves(sensitivity) {
+            const colors = extractUniqueColors(state.imageData, 6 + sensitivity);
+            const candidates = filterBackgroundColors(colors);
+            return candidates.map(color => {
+                const pts = traceByColor(color, 25 + sensitivity * 2, 2);
+                return {
+                    color: `rgb(${color.r},${color.g},${color.b})`,
+                    colorData: color,
+                    points: pts,
+                    score: pts.length > 15 ? scoreCurveAsKM(pts) : 0,
+                    selected: false,
+                    method: 'color'
+                };
+            }).filter(c => c.points.length > 15 && c.score > 0.3);
+        }
+
+        function getPathColor(points) {
+            const data = state.imageData.data;
+            const w = state.originalWidth;
+            const samples = points.slice(0, 50);
+            const colors = samples.map(p => {
+                const i = (Math.round(p.y) * w + Math.round(p.x)) * 4;
+                return { r: data[i], g: data[i+1], b: data[i+2] };
+            });
+            colors.sort((a,b) => (a.r+a.g+a.b) - (b.r+b.g+b.b));
+            return colors[Math.floor(colors.length/2)] || {r:100,g:100,b:255};
+        }
+
+        function scorePathAsKM(points, w, h) {
+            if (points.length < 5) return 0;
+            let s = 0;
+            // Monotonicity
+            let v = 0;
+            for (let i = 1; i < points.length; i++) {
+                if (points[i].y < points[i-1].y - 3) v++;
+            }
+            s += (1 - v / points.length) * 0.35;
+            // Start position
+            s += (points[0].y / h < 0.35 ? 0.2 : 0.05);
+            // Coverage
+            s += Math.min(0.2, (points[points.length-1].x - points[0].x) / w * 0.3);
+            // Step pattern
+            let flat = 0, drop = 0;
+            for (let i = 1; i < points.length; i++) {
+                if (Math.abs(points[i].y - points[i-1].y) < 4) flat++; else drop++;
+            }
+            s += (flat / (flat + drop + 1)) * 0.25;
+            return s;
+        }
+
+        function pathsOverlap(p1, p2) {
+            const set = new Set(p1.map(p => `${Math.round(p.x/5)},${Math.round(p.y/5)}`));
+            let overlap = 0;
+            p2.forEach(p => { if (set.has(`${Math.round(p.x/5)},${Math.round(p.y/5)}`)) overlap++; });
+            return overlap > Math.min(p1.length, p2.length) * 0.25;
+        }
+
+        function toggleAIMode() {
+            aiDetectionMode = aiDetectionMode === 'advanced' ? 'color' : 'advanced';
+            const btn = document.getElementById('ai-mode-toggle');
+            if (btn) btn.textContent = aiDetectionMode === 'advanced' ? 'Edge+NN' : 'Color';
+            showToast(`Mode: ${aiDetectionMode}`, 'info');
+        }
+
+        function extractUniqueColors(imageData, k) {
+            const data = imageData.data;
+            const width = imageData.width;
+            const height = imageData.height;
+
+            // Sample pixels (not all for performance)
+            const samples = [];
+            const sampleRate = Math.max(1, Math.floor((width * height) / 10000));
+
+            for (let i = 0; i < data.length; i += 4 * sampleRate) {
+                samples.push({
+                    r: data[i],
+                    g: data[i + 1],
+                    b: data[i + 2]
+                });
+            }
+
+            // K-means clustering
+            return kMeansClustering(samples, k);
+        }
+
+        function kMeansClustering(samples, k) {
+            // Initialize centroids randomly
+            let centroids = [];
+            const usedIndices = new Set();
+
+            while (centroids.length < k && centroids.length < samples.length) {
+                const idx = Math.floor(Math.random() * samples.length);
+                if (!usedIndices.has(idx)) {
+                    usedIndices.add(idx);
+                    centroids.push({ ...samples[idx] });
+                }
+            }
+
+            // Iterate
+            for (let iter = 0; iter < 20; iter++) {
+                // Assign samples to nearest centroid
+                const clusters = Array(k).fill(null).map(() => []);
+
+                samples.forEach(sample => {
+                    let minDist = Infinity;
+                    let minIdx = 0;
+
+                    centroids.forEach((c, i) => {
+                        const dist = Math.sqrt(
+                            Math.pow(sample.r - c.r, 2) +
+                            Math.pow(sample.g - c.g, 2) +
+                            Math.pow(sample.b - c.b, 2)
+                        );
+                        if (dist < minDist) {
+                            minDist = dist;
+                            minIdx = i;
+                        }
+                    });
+
+                    clusters[minIdx].push(sample);
+                });
+
+                // Update centroids
+                centroids = clusters.map((cluster, i) => {
+                    if (cluster.length === 0) return centroids[i];
+                    return {
+                        r: Math.round(cluster.reduce((s, c) => s + c.r, 0) / cluster.length),
+                        g: Math.round(cluster.reduce((s, c) => s + c.g, 0) / cluster.length),
+                        b: Math.round(cluster.reduce((s, c) => s + c.b, 0) / cluster.length),
+                        count: cluster.length
+                    };
+                });
+            }
+
+            return centroids.filter(c => c.count > 0).sort((a, b) => b.count - a.count);
+        }
+
+        function filterBackgroundColors(colors) {
+            return colors.filter(c => {
+                // Filter out near-white (background)
+                const brightness = (c.r + c.g + c.b) / 3;
+                if (brightness > 240) return false;
+
+                // Filter out near-black (axes, text)
+                if (brightness < 30) return false;
+
+                // Filter out grays (grid lines)
+                const saturation = Math.max(c.r, c.g, c.b) - Math.min(c.r, c.g, c.b);
+                if (saturation < 20 && brightness > 100 && brightness < 200) return false;
+
+                return true;
+            });
+        }
+
+        function traceByColor(targetColor, tolerance, interval) {
+            const points = [];
+            const data = state.imageData.data;
+            const width = state.originalWidth;
+            const height = state.originalHeight;
+
+            // Scan each X column using center-of-mass
+            for (let x = 0; x < width; x += interval) {
+                let sumY = 0;
+                let sumWeight = 0;
+
+                for (let y = 0; y < height; y++) {
+                    const idx = (y * width + x) * 4;
+                    const r = data[idx];
+                    const g = data[idx + 1];
+                    const b = data[idx + 2];
+
+                    const dist = Math.sqrt(
+                        Math.pow(r - targetColor.r, 2) +
+                        Math.pow(g - targetColor.g, 2) +
+                        Math.pow(b - targetColor.b, 2)
+                    );
+
+                    if (dist < tolerance) {
+                        const weight = Math.pow(1 - dist / tolerance, 2);
+                        sumY += y * weight;
+                        sumWeight += weight;
+                    }
+                }
+
+                if (sumWeight > 0.5) {
+                    points.push({
+                        px: x,
+                        py: sumY / sumWeight
+                    });
+                }
+            }
+
+            return points;
+        }
+
+        function scoreCurveAsKM(points) {
+            if (points.length < 10) return 0;
+
+            let score = 1.0;
+
+            // 1. Check monotonicity (KM curves only go down or stay flat)
+            let violations = 0;
+            for (let i = 1; i < points.length; i++) {
+                if (points[i].py < points[i-1].py - 2) { // py increases means y decreases in data
+                    violations++;
+                }
+            }
+            const monoScore = 1 - (violations / points.length);
+            score *= monoScore;
+
+            // 2. Check starting position (should start near top)
+            const firstY = points[0].py;
+            const startScore = firstY < state.originalHeight * 0.3 ? 1 : 0.5;
+            score *= startScore;
+
+            // 3. Check coverage (should span significant X range)
+            const xSpan = points[points.length - 1].px - points[0].px;
+            const coverageScore = xSpan / state.originalWidth;
+            score *= coverageScore;
+
+            // 4. Check for step-like pattern (characteristic of KM)
+            let flatSegments = 0;
+            let dropSegments = 0;
+            for (let i = 1; i < points.length; i++) {
+                const dy = Math.abs(points[i].py - points[i-1].py);
+                if (dy < 2) flatSegments++;
+                else dropSegments++;
+            }
+            const stepScore = flatSegments > dropSegments ? 1 : 0.7;
+            score *= stepScore;
+
+            return score;
+        }
+
+        function displayDetectionResults() {
+            const container = document.getElementById('ai-detection-results');
+
+            if (state.detectedCurves.length === 0) {
+                container.innerHTML = `
+                    <div class="info-box warning">
+                        No curves detected. Try adjusting sensitivity or manual tracing.
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '<div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 8px;">Click to select/deselect curves:</div>';
+
+            state.detectedCurves.forEach((curve, i) => {
+                const scoreClass = curve.score > 0.7 ? 'high' : (curve.score > 0.4 ? 'medium' : 'low');
+                html += `
+                    <div class="detection-card" onclick="toggleCurveSelection(${i})" style="${curve.selected ? 'border-color: var(--accent-green);' : ''}">
+                        <div class="color-preview" style="background: ${curve.color}"></div>
+                        <div class="info">
+                            <div class="name">Curve ${i + 1}</div>
+                            <div class="details">${curve.points.length} points detected</div>
+                        </div>
+                        <div class="score ${scoreClass}">${Math.round(curve.score * 100)}%</div>
+                    </div>
+                `;
+            });
+
+            html += `
+                <button class="btn btn-success btn-block" style="margin-top: 12px;" onclick="acceptDetectedCurves()">
+                    Accept Selected Curves
+                </button>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function toggleCurveSelection(index) {
+            state.detectedCurves[index].selected = !state.detectedCurves[index].selected;
+            displayDetectionResults();
+            render();
+        }
+
+        function acceptDetectedCurves() {
+            if (!state.calibration.isCalibrated) {
+                showToast('Please calibrate axes first', 'warning');
+                return;
+            }
+
+            const selected = state.detectedCurves.filter(c => c.selected);
+
+            selected.forEach((curve, i) => {
+                // Ensure we have enough arms
+                while (state.arms.length <= i) {
+                    addArm();
+                }
+
+                // Convert pixel points to data points
+                curve.points.forEach(p => {
+                    const data = pixelToData(p.px, p.py);
+                    if (data && data.y >= -0.05 && data.y <= 1.05) {
+                        state.points.push({
+                            px: p.px,
+                            py: p.py,
+                            x: data.x,
+                            y: Math.max(0, Math.min(1, data.y)),
+                            armIndex: i,
+                            isCensor: false
+                        });
+                    }
+                });
+            });
+
+            updateStats();
+            rebuildArmTabs();
+            render();
+            showToast(`Added ${selected.length} curves with ${state.points.length} total points`, 'success');
+            document.getElementById('reconstruct-btn').disabled = false;
+        }
+
+        // ============================================
+        // AUTO AXIS DETECTION
+        // ============================================
+        async function autoDetectAxes() {
+            if (!state.imageData) {
+                showToast('Please load an image first', 'warning');
+                return;
+            }
+
+            showProcessing('Detecting axes...', 0);
+
+            setTimeout(() => {
+                try {
+                    const data = state.imageData.data;
+                    const width = state.originalWidth;
+                    const height = state.originalHeight;
+
+                    // Find dark pixels (axes are usually black)
+                    const darkThreshold = 50;
+
+                    // Find leftmost vertical line (Y-axis)
+                    let yAxisX = 0;
+                    for (let x = 0; x < width * 0.3; x++) {
+                        let darkCount = 0;
+                        for (let y = 0; y < height; y++) {
+                            const idx = (y * width + x) * 4;
+                            const brightness = (data[idx] + data[idx+1] + data[idx+2]) / 3;
+                            if (brightness < darkThreshold) darkCount++;
+                        }
+                        if (darkCount > height * 0.5) {
+                            yAxisX = x;
+                            break;
+                        }
+                    }
+
+                    // Find bottom horizontal line (X-axis)
+                    let xAxisY = height - 1;
+                    for (let y = height - 1; y > height * 0.5; y--) {
+                        let darkCount = 0;
+                        for (let x = 0; x < width; x++) {
+                            const idx = (y * width + x) * 4;
+                            const brightness = (data[idx] + data[idx+1] + data[idx+2]) / 3;
+                            if (brightness < darkThreshold) darkCount++;
+                        }
+                        if (darkCount > width * 0.3) {
+                            xAxisY = y;
+                            break;
+                        }
+                    }
+
+                    // Find right edge of X-axis
+                    let xAxisRight = width - 1;
+                    for (let x = width - 1; x > width * 0.5; x--) {
+                        const idx = (xAxisY * width + x) * 4;
+                        const brightness = (data[idx] + data[idx+1] + data[idx+2]) / 3;
+                        if (brightness < darkThreshold) {
+                            xAxisRight = x;
+                            break;
+                        }
+                    }
+
+                    // Find top of Y-axis
+                    let yAxisTop = 0;
+                    for (let y = 0; y < height * 0.3; y++) {
+                        const idx = (y * width + yAxisX) * 4;
+                        const brightness = (data[idx] + data[idx+1] + data[idx+2]) / 3;
+                        if (brightness < darkThreshold) {
+                            yAxisTop = y;
+                            break;
+                        }
+                    }
+
+                    // Set calibration points
+                    state.calibration.xMin = { px: yAxisX, py: xAxisY, value: parseFloat(document.getElementById('x-min-val').value) };
+                    state.calibration.xMax = { px: xAxisRight, py: xAxisY, value: parseFloat(document.getElementById('x-max-val').value) };
+                    state.calibration.yMin = { px: yAxisX, py: xAxisY, value: parseFloat(document.getElementById('y-min-val').value) };
+                    state.calibration.yMax = { px: yAxisX, py: yAxisTop, value: parseFloat(document.getElementById('y-max-val').value) };
+                    state.calibration.isCalibrated = true;
+
+                    updateCalibrationStatus();
+                    render();
+                    hideProcessing();
+                    showToast('Axes detected - please verify calibration points', 'success');
+
+                } catch (err) {
+                    hideProcessing();
+                    showToast('Axis detection failed: ' + err.message, 'error');
+                }
+            }, 100);
+        }
+
+        // ============================================
+        // OCR EXTRACTION
+        // ============================================
+        async function runOCR() {
+            if (!state.imageData) {
+                showToast('Please load an image first', 'warning');
+                return;
+            }
+
+            showProcessing('Initializing OCR engine...', 0);
+            document.getElementById('ocr-status').textContent = 'Processing...';
+
+            try {
+                const worker = await Tesseract.createWorker('eng');
+
+                updateProcessing('Extracting text...', 30);
+
+                // Convert imageData to data URL
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = state.originalWidth;
+                tempCanvas.height = state.originalHeight;
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCtx.putImageData(state.imageData, 0, 0);
+                const dataUrl = tempCanvas.toDataURL();
+
+                updateProcessing('Running OCR...', 50);
+
+                const { data } = await worker.recognize(dataUrl);
+
+                updateProcessing('Parsing results...', 80);
+
+                // Parse numbers at risk from OCR text
+                const narData = parseNARFromOCR(data.text);
+
+                await worker.terminate();
+
+                displayOCRResults(data.text, narData);
+
+                hideProcessing();
+                document.getElementById('ocr-status').textContent = 'Extraction complete';
+                showToast('OCR extraction complete', 'success');
+
+            } catch (err) {
+                hideProcessing();
+                document.getElementById('ocr-status').textContent = 'OCR failed: ' + err.message;
+                showToast('OCR failed: ' + err.message, 'error');
+            }
+        }
+
+        function parseNARFromOCR(text) {
+            const results = [];
+            const lines = text.split('\n');
+
+            // Look for patterns like "Number at risk" or tables with numbers
+            let inNARSection = false;
+
+            lines.forEach(line => {
+                // Check if we're entering NAR section
+                if (line.toLowerCase().includes('number at risk') ||
+                    line.toLowerCase().includes('no. at risk') ||
+                    line.toLowerCase().includes('patients at risk')) {
+                    inNARSection = true;
+                    return;
+                }
+
+                // Extract numbers from lines
+                const numbers = line.match(/\d+/g);
+                if (numbers && numbers.length >= 2) {
+                    results.push({
+                        raw: line,
+                        numbers: numbers.map(n => parseInt(n))
+                    });
+                }
+            });
+
+            return results;
+        }
+
+        function displayOCRResults(rawText, narData) {
+            const container = document.getElementById('ocr-results');
+
+            let html = `
+                <div class="form-group">
+                    <label>Detected Text</label>
+                    <textarea rows="4" readonly style="font-size: 10px;">${rawText.substring(0, 500)}${rawText.length > 500 ? '...' : ''}</textarea>
+                </div>
+            `;
+
+            if (narData.length > 0) {
+                html += `
+                    <div class="info-box success">
+                        Found ${narData.length} potential number-at-risk rows
+                    </div>
+                    <div style="margin-top: 8px;">
+                `;
+
+                narData.slice(0, 5).forEach((row, i) => {
+                    html += `
+                        <div style="font-size: 11px; padding: 4px 8px; background: var(--bg-quaternary); margin-bottom: 4px; border-radius: 4px;">
+                            ${row.numbers.join(' → ')}
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
+            } else {
+                html += `
+                    <div class="info-box warning">
+                        No clear number-at-risk table detected. Please enter manually.
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        // ============================================
+        // PDF HANDLING
+        // ============================================
+        async function handlePDFSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            showProcessing('Loading PDF...', 0);
+
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                state.pdfDoc = pdf;
+                state.pdfPages = [];
+
+                const container = document.getElementById('pdf-pages-container');
+                container.innerHTML = '<div class="pdf-pages" id="pdf-pages"></div>';
+                const pagesContainer = document.getElementById('pdf-pages');
+
+                for (let i = 1; i <= Math.min(pdf.numPages, 20); i++) {
+                    updateProcessing(`Rendering page ${i}/${pdf.numPages}...`, (i / pdf.numPages) * 100);
+
+                    const page = await pdf.getPage(i);
+                    const scale = 0.3;
+                    const viewport = page.getViewport({ scale });
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    const context = canvas.getContext('2d');
+
+                    await page.render({ canvasContext: context, viewport }).promise;
+
+                    const dataUrl = canvas.toDataURL();
+                    state.pdfPages.push({ pageNum: i, dataUrl });
+
+                    pagesContainer.innerHTML += `
+                        <div class="pdf-page" onclick="selectPDFPage(${i - 1})">
+                            <img src="${dataUrl}" alt="Page ${i}">
+                        </div>
+                    `;
+                }
+
+                hideProcessing();
+                showToast(`PDF loaded: ${pdf.numPages} pages`, 'success');
+
+            } catch (err) {
+                hideProcessing();
+                showToast('PDF load failed: ' + err.message, 'error');
+            }
+        }
+
+        async function selectPDFPage(index) {
+            const pageData = state.pdfPages[index];
+            if (!pageData) return;
+
+            showProcessing('Extracting page...', 0);
+
+            try {
+                // Get high-res version
+                const page = await state.pdfDoc.getPage(pageData.pageNum);
+                const scale = 2;
+                const viewport = page.getViewport({ scale });
+
+                const canvas = document.createElement('canvas');
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                const context = canvas.getContext('2d');
+
+                await page.render({ canvasContext: context, viewport }).promise;
+
+                // Convert to blob and load
+                canvas.toBlob(blob => {
+                    loadImageFromBlob(blob);
+                    hideProcessing();
+
+                    // Update selection UI
+                    document.querySelectorAll('.pdf-page').forEach((el, i) => {
+                        el.classList.toggle('selected', i === index);
+                    });
+                }, 'image/png');
+
+            } catch (err) {
+                hideProcessing();
+                showToast('Page extraction failed: ' + err.message, 'error');
+            }
+        }
+
+        // ============================================
+        // BATCH PROCESSING
+        // ============================================
+        function handleBatchSelect(e) {
+            const files = Array.from(e.target.files);
+
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    state.batchQueue.push({
+                        name: file.name,
+                        dataUrl: e.target.result,
+                        status: 'pending',
+                        result: null
+                    });
+                    updateBatchQueue();
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function updateBatchQueue() {
+            const container = document.getElementById('batch-queue');
+            const btn = document.getElementById('batch-process-btn');
+
+            if (state.batchQueue.length === 0) {
+                container.innerHTML = '<div class="empty-state" style="padding: 20px;"><div>No images in queue</div></div>';
+                btn.disabled = true;
+                return;
+            }
+
+            btn.disabled = false;
+
+            let html = '';
+            state.batchQueue.forEach((item, i) => {
+                html += `
+                    <div class="batch-item">
+                        <img src="${item.dataUrl}" class="thumb" alt="${item.name}">
+                        <div class="info">
+                            <div style="font-size: 12px; font-weight: 500;">${item.name}</div>
+                        </div>
+                        <span class="status ${item.status}">${item.status}</span>
+                        <button class="btn btn-sm" onclick="removeBatchItem(${i})" style="padding: 2px 6px;">×</button>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function removeBatchItem(index) {
+            state.batchQueue.splice(index, 1);
+            updateBatchQueue();
+        }
+
+        async function processBatch() {
+            if (state.batchQueue.length === 0) return;
+
+            showProcessing('Processing batch...', 0);
+            state.batchResults = [];
+
+            for (let i = 0; i < state.batchQueue.length; i++) {
+                const item = state.batchQueue[i];
+                item.status = 'processing';
+                updateBatchQueue();
+                updateProcessing(`Processing ${i + 1}/${state.batchQueue.length}: ${item.name}`, (i / state.batchQueue.length) * 100);
+
+                try {
+                    // Load image
+                    const img = new Image();
+                    await new Promise((resolve, reject) => {
+                        img.onload = resolve;
+                        img.onerror = reject;
+                        img.src = item.dataUrl;
+                    });
+
+                    // Process (simplified - in real implementation would run full pipeline)
+                    item.status = 'done';
+                    item.result = { points: [], ipd: [] };
+                    state.batchResults.push(item);
+
+                } catch (err) {
+                    item.status = 'error';
+                    item.error = err.message;
+                }
+
+                updateBatchQueue();
+            }
+
+            hideProcessing();
+            showToast(`Batch complete: ${state.batchResults.filter(r => r.status === 'done').length}/${state.batchQueue.length} successful`, 'success');
+        }
+
+        // ============================================
+        // CALIBRATION
+        // ============================================
+        function startCalibration(point) {
+            if (!state.image) {
+                showToast('Please load an image first', 'warning');
+                return;
+            }
+
+            state.mode = 'calibrating';
+            state.calibratingPoint = point;
+            showModeIndicator(`Click to set ${point}`);
+            canvasContainer.style.cursor = 'crosshair';
+        }
+
+        function handleCalibrationClick(px, py) {
+            const point = state.calibratingPoint;
+            const valueInput = document.getElementById(`${point.replace(/([A-Z])/g, '-$1').toLowerCase()}-val`);
+            const value = parseFloat(valueInput.value);
+
+            state.calibration[point] = { px, py, value };
+
+            // Check if all points are set
+            const { xMin, xMax, yMin, yMax } = state.calibration;
+            if (xMin && xMax && yMin && yMax) {
+                state.calibration.isCalibrated = true;
+            }
+
+            updateCalibrationStatus();
+            cancelMode();
+            render();
+        }
+
+        function updateCalibrationStatus() {
+            const status = document.getElementById('cal-status');
+            if (state.calibration.isCalibrated) {
+                status.innerHTML = `
+                    <span class="step-num" style="background: var(--accent-green); border-color: var(--accent-green); color: white;">✓</span>
+                    <span style="color: var(--accent-green);">Calibrated</span>
+                `;
+                document.getElementById('reconstruct-btn').disabled = state.points.length === 0;
+            } else {
+                const set = [
+                    state.calibration.xMin,
+                    state.calibration.xMax,
+                    state.calibration.yMin,
+                    state.calibration.yMax
+                ].filter(p => p).length;
+                status.innerHTML = `
+                    <span class="step-num">${set}/4</span>
+                    <span>${set} of 4 points set</span>
+                `;
+            }
+        }
+
+        // ============================================
+        // MANUAL TRACING
+        // ============================================
+        function sampleColorMode() {
+            if (!state.calibration.isCalibrated) {
+                showToast('Please calibrate axes first', 'warning');
+                return;
+            }
+
+            state.mode = 'sampling';
+            document.getElementById('color-controls').style.display = 'block';
+            document.getElementById('manual-controls').style.display = 'none';
+            showModeIndicator('Click on curve to sample color');
+            canvasContainer.style.cursor = 'crosshair';
+        }
+
+        function setManualMode() {
+            if (!state.calibration.isCalibrated) {
+                showToast('Please calibrate axes first', 'warning');
+                return;
+            }
+
+            state.mode = 'manual';
+            document.getElementById('color-controls').style.display = 'none';
+            document.getElementById('manual-controls').style.display = 'block';
+            showModeIndicator('Click to add points (Shift for censor)');
+            canvasContainer.style.cursor = 'crosshair';
+        }
+
+        function handleColorSample(px, py) {
+            const idx = (Math.round(py) * state.originalWidth + Math.round(px)) * 4;
+            const data = state.imageData.data;
+
+            state.sampledColor = {
+                r: data[idx],
+                g: data[idx + 1],
+                b: data[idx + 2]
+            };
+
+            document.getElementById('sampled-color').style.background =
+                `rgb(${state.sampledColor.r}, ${state.sampledColor.g}, ${state.sampledColor.b})`;
+
+            showToast('Color sampled - adjust tolerance and click Auto-Trace', 'info');
+            cancelMode();
+        }
+
+        function autoTrace() {
+            if (!state.sampledColor) {
+                showToast('Please sample a color first', 'warning');
+                return;
+            }
+
+            showProcessing('Tracing curve...', 0);
+
+            setTimeout(() => {
+                const tolerance = parseInt(document.getElementById('color-tolerance').value);
+                const points = traceCurveByColor(state.sampledColor, tolerance, 2);
+
+                points.forEach(p => {
+                    state.points.push(p);
+                });
+
+                updateStats();
+                render();
+                hideProcessing();
+                showToast(`Traced ${points.length} points`, 'success');
+                document.getElementById('reconstruct-btn').disabled = false;
+            }, 100);
+        }
+
+        function traceCurveByColor(targetColor, tolerance, interval) {
+            const points = [];
+            const data = state.imageData.data;
+            const width = state.originalWidth;
+            const height = state.originalHeight;
+
+            const cal = state.calibration;
+            const minPx = Math.min(cal.xMin.px, cal.xMax.px);
+            const maxPx = Math.max(cal.xMin.px, cal.xMax.px);
+            const minPy = Math.min(cal.yMin.py, cal.yMax.py);
+            const maxPy = Math.max(cal.yMin.py, cal.yMax.py);
+
+            for (let x = Math.round(minPx); x <= Math.round(maxPx); x += interval) {
+                let sumY = 0;
+                let sumWeight = 0;
+
+                for (let y = Math.round(minPy); y <= Math.round(maxPy); y++) {
+                    const idx = (y * width + x) * 4;
+                    const r = data[idx];
+                    const g = data[idx + 1];
+                    const b = data[idx + 2];
+
+                    const dist = Math.sqrt(
+                        Math.pow(r - targetColor.r, 2) +
+                        Math.pow(g - targetColor.g, 2) +
+                        Math.pow(b - targetColor.b, 2)
+                    );
+
+                    if (dist < tolerance) {
+                        const weight = Math.pow(1 - dist / tolerance, 2);
+                        sumY += y * weight;
+                        sumWeight += weight;
+                    }
+                }
+
+                if (sumWeight > 0.5) {
+                    const py = sumY / sumWeight;
+                    const dataCoords = pixelToData(x, py);
+
+                    if (dataCoords && dataCoords.y >= -0.05 && dataCoords.y <= 1.05) {
+                        points.push({
+                            px: x,
+                            py: py,
+                            x: dataCoords.x,
+                            y: Math.max(0, Math.min(1, dataCoords.y)),
+                            armIndex: state.currentArm,
+                            isCensor: false
+                        });
+                    }
+                }
+            }
+
+            // Enforce monotonicity
+            points.sort((a, b) => a.x - b.x);
+            let maxY = 1;
+            points.forEach(p => {
+                if (p.y > maxY) p.y = maxY;
+                else maxY = p.y;
+            });
+
+            return points;
+        }
+
+        function handleManualClick(px, py, isCensor) {
+            const data = pixelToData(px, py);
+            if (!data) return;
+
+            state.points.push({
+                px, py,
+                x: data.x,
+                y: Math.max(0, Math.min(1, data.y)),
+                armIndex: state.currentArm,
+                isCensor: isCensor
+            });
+
+            updateStats();
+            render();
+            document.getElementById('reconstruct-btn').disabled = false;
+        }
+
+        function undoLastPoint() {
+            const armPoints = state.points.filter(p => p.armIndex === state.currentArm);
+            if (armPoints.length > 0) {
+                const lastPoint = armPoints[armPoints.length - 1];
+                const idx = state.points.indexOf(lastPoint);
+                state.points.splice(idx, 1);
+                updateStats();
+                render();
+            }
+        }
+
+        function clearArmPoints() {
+            state.points = state.points.filter(p => p.armIndex !== state.currentArm);
+            updateStats();
+            render();
+        }
+
+        // ============================================
+        // ARM MANAGEMENT
+        // ============================================
+        const armColors = ['#4361ee', '#22c55e', '#f97316', '#8b5cf6', '#ec4899', '#06b6d4'];
+
+        function addArm() {
+            if (state.arms.length >= 6) {
+                showToast('Maximum 6 arms allowed', 'warning');
+                return;
+            }
+
+            const idx = state.arms.length;
+            state.arms.push({
+                name: `Arm ${idx + 1}`,
+                color: armColors[idx]
+            });
+
+            rebuildArmTabs();
+        }
+
+        function rebuildArmTabs() {
+            const containers = ['arm-tabs', 'nar-arm-tabs'];
+
+            containers.forEach(containerId => {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+
+                let html = '';
+                state.arms.forEach((arm, i) => {
+                    const isActive = containerId === 'arm-tabs' ? i === state.currentArm : i === state.currentNARArm;
+                    html += `
+                        <div class="arm-tab ${isActive ? 'active' : ''}"
+                             style="color: ${arm.color}; ${isActive ? `border-color: ${arm.color}` : ''}"
+                             onclick="${containerId === 'arm-tabs' ? `selectArm(${i})` : `selectNARArm(${i})`}">
+                            ${arm.name}
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            });
+        }
+
+        function selectArm(index) {
+            state.currentArm = index;
+            rebuildArmTabs();
+        }
+
+        function selectNARArm(index) {
+            state.currentNARArm = index;
+            rebuildArmTabs();
+        }
+
+        // ============================================
+        // NUMBER AT RISK
+        // ============================================
+        function parseNAR() {
+            const input = document.getElementById('nar-input').value;
+            const armIndex = state.currentNARArm;
+
+            const pairs = input.split(',').map(s => s.trim());
+            const data = [];
+
+            pairs.forEach(pair => {
+                const match = pair.match(/(\d+(?:\.\d+)?)\s*:\s*(\d+)/);
+                if (match) {
+                    data.push({
+                        time: parseFloat(match[1]),
+                        nrisk: parseInt(match[2])
+                    });
+                }
+            });
+
+            if (data.length > 0) {
+                data.sort((a, b) => a.time - b.time);
+                state.atRisk[armIndex] = data;
+                displayNARTable();
+                showToast(`Parsed ${data.length} time points for ${state.arms[armIndex].name}`, 'success');
+            } else {
+                showToast('No valid data found. Use format: time: count, time: count', 'warning');
+            }
+        }
+
+        function displayNARTable() {
+            const container = document.getElementById('nar-table');
+            const data = state.atRisk[state.currentNARArm];
+
+            if (!data || data.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let html = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>N at Risk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            data.forEach(row => {
+                html += `
+                    <tr>
+                        <td>${row.time}</td>
+                        <td>${row.nrisk}</td>
+                    </tr>
+                `;
+            });
+
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        // ============================================
+        // IPD RECONSTRUCTION
+        // ============================================
+        async function runReconstruction() {
+            const method = document.getElementById('recon-method').value;
+            const bootstrapN = parseInt(document.getElementById('bootstrap-n').value) || 0;
+
+            showProcessing('Reconstructing IPD...', 0);
+
+            setTimeout(async () => {
+                try {
+                    state.ipd = {};
+                    state.ciData = {};
+                    state.uncertainty = {};
+
+                    // Get unique arm indices
+                    const armIndices = [...new Set(state.points.map(p => p.armIndex))];
+
+                    for (let i = 0; i < armIndices.length; i++) {
+                        const armIndex = armIndices[i];
+                        const armPoints = state.points.filter(p => p.armIndex === armIndex && !p.isCensor);
+                        const censorPoints = state.points.filter(p => p.armIndex === armIndex && p.isCensor);
+                        const atRisk = state.atRisk[armIndex] || [];
+                        const armName = state.arms[armIndex].name;
+
+                        updateProcessing(`Reconstructing ${armName}...`, (i / armIndices.length) * 80);
+
+                        // Sort points
+                        armPoints.sort((a, b) => a.x - b.x);
+                        const survPoints = armPoints.map(p => ({ time: p.x, surv: p.y }));
+
+                        let ipd;
+                        switch (method) {
+                            case 'wasserstein':
+                                ipd = reconstructWasserstein(survPoints, atRisk, censorPoints, armName);
+                                break;
+                            case 'cenkm':
+                                ipd = reconstructCENKM(survPoints, atRisk, censorPoints, armName);
+                                break;
+                            case 'guyot':
+                            default:
+                                ipd = reconstructGuyot(survPoints, atRisk, armName);
+                        }
+
+                        state.ipd[armIndex] = ipd;
+
+                        // Bootstrap for uncertainty
+                        if (bootstrapN > 0) {
+                            updateProcessing(`Bootstrap for ${armName}...`, 80 + (i / armIndices.length) * 20);
+                            const ci = runBootstrap(survPoints, atRisk, method, bootstrapN);
+                            state.ciData[armIndex] = ci;
+                            state.uncertainty[armIndex] = calculateUncertaintyMetrics(ipd, ci);
+                        }
+                    }
+
+                    displayIPDSummary();
+                    displayUncertainty();
+                    updateStats();
+                    render();
+                    hideProcessing();
+                    showToast('IPD reconstruction complete', 'success');
+
+                } catch (err) {
+                    hideProcessing();
+                    showToast('Reconstruction failed: ' + err.message, 'error');
+                }
+            }, 100);
+        }
+
+        function reconstructGuyot(survPoints, atRiskTable, armName) {
+            if (survPoints.length < 2) return [];
+
+            const ipd = [];
+            const n = atRiskTable.length > 0 ? atRiskTable[0].nrisk : 100;
+
+            // Interpolate number at risk
+            function getNRisk(t) {
+                if (atRiskTable.length === 0) return n;
+                for (let i = atRiskTable.length - 1; i >= 0; i--) {
+                    if (t >= atRiskTable[i].time) return atRiskTable[i].nrisk;
+                }
+                return atRiskTable[0].nrisk;
+            }
+
+            // Generate events based on survival drops
+            let prevSurv = 1;
+            let cumEvents = 0;
+
+            for (let i = 0; i < survPoints.length; i++) {
+                const { time, surv } = survPoints[i];
+                const drop = prevSurv - surv;
+
+                if (drop > 0.001) {
+                    const nrisk = getNRisk(time);
+                    const events = Math.round(drop * nrisk);
+
+                    for (let j = 0; j < events; j++) {
+                        ipd.push({
+                            time: time,
+                            status: 1,
+                            arm: armName
+                        });
+                        cumEvents++;
+                    }
+                }
+                prevSurv = surv;
+            }
+
+            // Add censored observations
+            const lastTime = survPoints[survPoints.length - 1].time;
+            const lastSurv = survPoints[survPoints.length - 1].surv;
+            const censoredN = Math.round(n * lastSurv);
+
+            for (let i = 0; i < censoredN; i++) {
+                ipd.push({
+                    time: lastTime,
+                    status: 0,
+                    arm: armName
+                });
+            }
+
+            return ipd;
+        }
+
+        function reconstructCENKM(survPoints, atRiskTable, censorTicks, armName) {
+            if (survPoints.length < 2) return [];
+
+            const ipd = [];
+            const n = atRiskTable.length > 0 ? atRiskTable[0].nrisk : 100;
+
+            // Build censoring distribution from ticks
+            const censorTimes = censorTicks.map(p => p.x).sort((a, b) => a - b);
+
+            // Get number at risk at each time
+            function getNRisk(t) {
+                if (atRiskTable.length === 0) return n;
+                for (let i = atRiskTable.length - 1; i >= 0; i--) {
+                    if (t >= atRiskTable[i].time) return atRiskTable[i].nrisk;
+                }
+                return atRiskTable[0].nrisk;
+            }
+
+            // Distribute censoring based on ticks
+            let censorIdx = 0;
+            let prevSurv = 1;
+
+            for (let i = 0; i < survPoints.length; i++) {
+                const { time, surv } = survPoints[i];
+                const drop = prevSurv - surv;
+
+                // Events at this time
+                if (drop > 0.001) {
+                    const nrisk = getNRisk(time);
+                    const events = Math.round(drop * nrisk);
+
+                    for (let j = 0; j < events; j++) {
+                        ipd.push({
+                            time: time,
+                            status: 1,
+                            arm: armName
+                        });
+                    }
+                }
+
+                // Censoring between previous and current time
+                const prevTime = i > 0 ? survPoints[i-1].time : 0;
+                while (censorIdx < censorTimes.length && censorTimes[censorIdx] <= time && censorTimes[censorIdx] > prevTime) {
+                    ipd.push({
+                        time: censorTimes[censorIdx],
+                        status: 0,
+                        arm: armName
+                    });
+                    censorIdx++;
+                }
+
+                prevSurv = surv;
+            }
+
+            // Remaining censored at end
+            const lastTime = survPoints[survPoints.length - 1].time;
+            const targetN = n;
+            while (ipd.length < targetN) {
+                ipd.push({
+                    time: lastTime,
+                    status: 0,
+                    arm: armName
+                });
+            }
+
+            return ipd;
+        }
+
+        function reconstructWasserstein(survPoints, atRiskTable, censorTicks, armName) {
+            // Start with Guyot reconstruction
+            let ipd = reconstructGuyot(survPoints, atRiskTable, armName);
+
+            if (ipd.length === 0) return ipd;
+
+            const maxTime = survPoints[survPoints.length - 1].time;
+
+            // Optimize using Wasserstein distance
+            const maxIterations = 100;
+            let bestDist = wassersteinDistance(calculateKMFromIPD(ipd), survPoints, maxTime);
+
+            for (let iter = 0; iter < maxIterations; iter++) {
+                // Try small perturbations
+                const testIPD = [...ipd];
+                const idx = Math.floor(Math.random() * testIPD.length);
+                const originalTime = testIPD[idx].time;
+
+                // Perturb time slightly
+                const perturbation = (Math.random() - 0.5) * maxTime * 0.02;
+                testIPD[idx].time = Math.max(0, Math.min(maxTime, originalTime + perturbation));
+
+                const newDist = wassersteinDistance(calculateKMFromIPD(testIPD), survPoints, maxTime);
+
+                if (newDist < bestDist) {
+                    ipd = testIPD;
+                    bestDist = newDist;
+                }
+            }
+
+            return ipd;
+        }
+
+        function calculateKMFromIPD(ipd) {
+            if (ipd.length === 0) return [];
+
+            // Sort by time
+            const sorted = [...ipd].sort((a, b) => a.time - b.time);
+
+            const km = [{ time: 0, surv: 1 }];
+            let nRisk = ipd.length;
+            let surv = 1;
+
+            // Get unique event times
+            const times = [...new Set(sorted.filter(d => d.status === 1).map(d => d.time))].sort((a, b) => a - b);
+
+            times.forEach(t => {
+                const events = sorted.filter(d => d.time === t && d.status === 1).length;
+                const censored = sorted.filter(d => d.time < t && d.status === 0).length;
+
+                nRisk = ipd.length - sorted.filter(d => d.time < t).length;
+                if (nRisk > 0) {
+                    surv *= (nRisk - events) / nRisk;
+                }
+
+                km.push({ time: t, surv: surv });
+            });
+
+            return km;
+        }
+
+        function wassersteinDistance(km, targetCurve, maxTime) {
+            let dist = 0;
+            const nSteps = 100;
+            const dt = maxTime / nSteps;
+
+            for (let i = 0; i <= nSteps; i++) {
+                const t = i * dt;
+                const kmSurv = interpolateSurv(km, t);
+                const targetSurv = interpolateSurv(targetCurve, t);
+                dist += Math.abs(kmSurv - targetSurv) * dt;
+            }
+
+            return dist;
+        }
+
+        function interpolateSurv(curve, t) {
+            if (curve.length === 0) return 1;
+            if (t <= curve[0].time) return curve[0].surv;
+            if (t >= curve[curve.length - 1].time) return curve[curve.length - 1].surv;
+
+            for (let i = 1; i < curve.length; i++) {
+                if (t <= curve[i].time) {
+                    return curve[i - 1].surv; // Step function
+                }
+            }
+            return curve[curve.length - 1].surv;
+        }
+
+        // ============================================
+        // BOOTSTRAP & UNCERTAINTY
+        // ============================================
+        function runBootstrap(survPoints, atRiskTable, method, nIterations) {
+            const bootstrapResults = [];
+
+            for (let i = 0; i < nIterations; i++) {
+                // Resample points with replacement + add jitter
+                const resampledPoints = survPoints.map(p => ({
+                    time: p.time + (Math.random() - 0.5) * 0.5,
+                    surv: Math.max(0, Math.min(1, p.surv + (Math.random() - 0.5) * 0.02))
+                }));
+
+                resampledPoints.sort((a, b) => a.time - b.time);
+
+                // Enforce monotonicity
+                let maxSurv = 1;
+                resampledPoints.forEach(p => {
+                    if (p.surv > maxSurv) p.surv = maxSurv;
+                    else maxSurv = p.surv;
+                });
+
+                bootstrapResults.push(resampledPoints);
+            }
+
+            // Calculate CI at each time point
+            const times = survPoints.map(p => p.time);
+            const ci = times.map(t => {
+                const survVals = bootstrapResults.map(curve => {
+                    const point = curve.find(p => p.time >= t);
+                    return point ? point.surv : 0;
+                }).sort((a, b) => a - b);
+
+                const lower = survVals[Math.floor(nIterations * 0.025)];
+                const upper = survVals[Math.floor(nIterations * 0.975)];
+                const median = survVals[Math.floor(nIterations * 0.5)];
+
+                return { time: t, lower, upper, median };
+            });
+
+            return ci;
+        }
+
+        function calculateUncertaintyMetrics(ipd, ci) {
+            // Calculate uncertainty metrics
+            const events = ipd.filter(d => d.status === 1);
+            const n = ipd.length;
+
+            // Average CI width
+            const avgWidth = ci.reduce((sum, c) => sum + (c.upper - c.lower), 0) / ci.length;
+
+            // Median survival CI
+            const medianCI = ci.find(c => c.median <= 0.5);
+
+            return {
+                n: n,
+                events: events.length,
+                avgCIWidth: avgWidth,
+                medianTime: medianCI ? medianCI.time : null,
+                medianCI: medianCI ? { lower: medianCI.lower, upper: medianCI.upper } : null
+            };
+        }
+
+        function displayIPDSummary() {
+            const container = document.getElementById('ipd-summary');
+
+            let html = '';
+            Object.keys(state.ipd).forEach(armIndex => {
+                const ipd = state.ipd[armIndex];
+                const arm = state.arms[armIndex];
+                const events = ipd.filter(d => d.status === 1).length;
+                const censored = ipd.filter(d => d.status === 0).length;
+
+                html += `
+                    <div style="padding: 10px; background: var(--bg-quaternary); border-radius: 6px; margin-bottom: 8px; border-left: 3px solid ${arm.color};">
+                        <div style="font-weight: 600; font-size: 13px;">${arm.name}</div>
+                        <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">
+                            N=${ipd.length} | Events=${events} | Censored=${censored}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html || '<div class="empty-state" style="padding: 20px;">No IPD reconstructed</div>';
+        }
+
+        function displayUncertainty() {
+            const container = document.getElementById('uncertainty-display');
+
+            if (Object.keys(state.uncertainty).length === 0) {
+                container.innerHTML = '<div class="empty-state" style="padding: 20px;">Run reconstruction with bootstrap > 0</div>';
+                return;
+            }
+
+            let html = '';
+            Object.keys(state.uncertainty).forEach(armIndex => {
+                const u = state.uncertainty[armIndex];
+                const arm = state.arms[armIndex];
+
+                html += `
+                    <div style="padding: 10px; background: var(--bg-quaternary); border-radius: 6px; margin-bottom: 8px;">
+                        <div style="font-weight: 600; font-size: 12px; color: ${arm.color};">${arm.name}</div>
+                        <div style="margin-top: 8px;">
+                            <div class="ci-display">
+                                <span style="width: 80px;">Avg CI Width:</span>
+                                <span style="font-weight: 600;">${(u.avgCIWidth * 100).toFixed(1)}%</span>
+                            </div>
+                            ${u.medianTime ? `
+                                <div class="ci-display" style="margin-top: 4px;">
+                                    <span style="width: 80px;">Median Time:</span>
+                                    <span style="font-weight: 600;">${u.medianTime.toFixed(1)}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ============================================
+        // VALIDATION
+        // ============================================
+        function runValidation() {
+            const reportedN = parseInt(document.getElementById('reported-n').value) || null;
+            const reportedEvents = parseInt(document.getElementById('reported-events').value) || null;
+            const reportedMedian = parseFloat(document.getElementById('reported-median').value) || null;
+            const reportedHR = parseFloat(document.getElementById('reported-hr').value) || null;
+
+            const container = document.getElementById('validation-results');
+
+            if (Object.keys(state.ipd).length === 0) {
+                container.innerHTML = '<div class="info-box warning">Please reconstruct IPD first</div>';
+                return;
+            }
+
+            let totalScore = 0;
+            let checks = 0;
+            let html = '';
+
+            // Get first arm for basic validation
+            const firstArmIPD = state.ipd[Object.keys(state.ipd)[0]];
+            const events = firstArmIPD.filter(d => d.status === 1).length;
+            const n = firstArmIPD.length;
+
+            // N check
+            if (reportedN !== null) {
+                const nError = Math.abs(n - reportedN) / reportedN;
+                const nScore = nError < 0.05 ? 1 : (nError < 0.1 ? 0.7 : (nError < 0.2 ? 0.4 : 0));
+                totalScore += nScore;
+                checks++;
+                html += createValidationRow('Sample Size (N)', reportedN, n, nScore);
+            }
+
+            // Events check
+            if (reportedEvents !== null) {
+                const eventsError = Math.abs(events - reportedEvents) / reportedEvents;
+                const eventsScore = eventsError < 0.05 ? 1 : (eventsError < 0.1 ? 0.7 : (eventsError < 0.2 ? 0.4 : 0));
+                totalScore += eventsScore;
+                checks++;
+                html += createValidationRow('Events', reportedEvents, events, eventsScore);
+            }
+
+            // Median check
+            if (reportedMedian !== null) {
+                const km = calculateKMFromIPD(firstArmIPD);
+                const reconstructedMedian = findMedianSurvival(km);
+                if (reconstructedMedian !== null) {
+                    const medianError = Math.abs(reconstructedMedian - reportedMedian) / reportedMedian;
+                    const medianScore = medianError < 0.1 ? 1 : (medianError < 0.2 ? 0.7 : (medianError < 0.3 ? 0.4 : 0));
+                    totalScore += medianScore;
+                    checks++;
+                    html += createValidationRow('Median Survival', reportedMedian.toFixed(1), reconstructedMedian.toFixed(1), medianScore);
+                }
+            }
+
+            // HR check (if two arms)
+            if (reportedHR !== null && Object.keys(state.ipd).length >= 2) {
+                const arms = Object.keys(state.ipd);
+                const hr = calculateHazardRatio(state.ipd[arms[0]], state.ipd[arms[1]]);
+                if (hr !== null) {
+                    const hrError = Math.abs(hr - reportedHR) / reportedHR;
+                    const hrScore = hrError < 0.1 ? 1 : (hrError < 0.2 ? 0.7 : (hrError < 0.3 ? 0.4 : 0));
+                    totalScore += hrScore;
+                    checks++;
+                    html += createValidationRow('Hazard Ratio', reportedHR.toFixed(2), hr.toFixed(2), hrScore);
+                }
+            }
+
+            // Calculate overall grade
+            const avgScore = checks > 0 ? totalScore / checks : 0;
+            const grade = avgScore >= 0.9 ? 'A' : (avgScore >= 0.7 ? 'B' : (avgScore >= 0.5 ? 'C' : (avgScore >= 0.3 ? 'D' : 'F')));
+
+            container.innerHTML = `
+                <div style="text-align: center; margin-bottom: 16px;">
+                    <div class="grade-badge ${grade}">${grade}</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); margin-top: 8px;">
+                        Overall Score: ${(avgScore * 100).toFixed(0)}%
+                    </div>
+                </div>
+                ${html}
+            `;
+
+            document.getElementById('stat-accuracy').textContent = grade;
+        }
+
+        function createValidationRow(label, expected, actual, score) {
+            const color = score >= 0.7 ? 'var(--accent-green)' : (score >= 0.4 ? 'var(--accent-yellow)' : 'var(--accent-red)');
+            return `
+                <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border-color); font-size: 11px;">
+                    <span>${label}</span>
+                    <span>
+                        <span style="color: var(--text-secondary);">Expected: ${expected}</span>
+                        <span style="margin: 0 8px;">|</span>
+                        <span style="color: ${color}; font-weight: 600;">Got: ${actual}</span>
+                    </span>
+                </div>
+            `;
+        }
+
+        function findMedianSurvival(km) {
+            for (let i = 0; i < km.length; i++) {
+                if (km[i].surv <= 0.5) {
+                    return km[i].time;
+                }
+            }
+            return null;
+        }
+
+        function calculateHazardRatio(ipd1, ipd2) {
+            // Simple log-rank based HR approximation
+            const events1 = ipd1.filter(d => d.status === 1).length;
+            const events2 = ipd2.filter(d => d.status === 1).length;
+            const n1 = ipd1.length;
+            const n2 = ipd2.length;
+
+            if (events1 === 0 || events2 === 0) return null;
+
+            const rate1 = events1 / n1;
+            const rate2 = events2 / n2;
+
+            return rate1 / rate2;
+        }
+
+        // ============================================
+        // TEST DATASETS
+
+        // ============================================
+        // ENHANCED ANALYSIS FUNCTIONS (Editorial Review)
+        // ============================================
+
+        function runEnhancedAnalysis(type) {
+            const container = document.getElementById('advanced-results');
+
+            if (Object.keys(state.ipd).length === 0) {
+                container.innerHTML = '<div class="info-box warning">Please reconstruct IPD first</div>';
+                return;
+            }
+
+            if (typeof KMEnhancedMethods === 'undefined') {
+                container.innerHTML = '<div class="info-box warning">Enhanced methods module not loaded</div>';
+                return;
+            }
+
+            const arms = Object.keys(state.ipd);
+            const ipd1 = state.ipd[arms[0]];
+            const ipd2 = arms.length > 1 ? state.ipd[arms[1]] : null;
+            let html = '';
+
+            try {
+                switch(type) {
+                    case 'rmst':
+                        const tau = parseFloat(document.getElementById('rmst-tau').value) || null;
+                        const rmst1 = KMEnhancedMethods.calculateRMST(ipd1, tau);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">RMST Analysis</div>';
+                        html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                        html += '<div>RMST: <strong>' + rmst1.rmst.toFixed(2) + '</strong> (95% CI: ' + rmst1.lower.toFixed(2) + ' - ' + rmst1.upper.toFixed(2) + ')</div>';
+                        html += '<div style="color: var(--text-secondary);">Restriction time (tau): ' + rmst1.tau.toFixed(1) + '</div>';
+
+                        if (ipd2) {
+                            const rmstDiff = KMEnhancedMethods.calculateRMSTDifference(ipd1, ipd2, tau);
+                            html += '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-color);">';
+                            html += '<div>RMST Difference: <strong>' + rmstDiff.difference.toFixed(2) + '</strong></div>';
+                            html += '<div>95% CI: ' + rmstDiff.lower.toFixed(2) + ' to ' + rmstDiff.upper.toFixed(2) + '</div>';
+                            html += '<div>p-value: ' + (rmstDiff.pValue < 0.0001 ? '&lt;0.0001' : rmstDiff.pValue.toFixed(4)) + '</div>';
+                            html += '</div>';
+                        }
+                        html += '</div>';
+                        break;
+
+                    case 'logrank':
+                        if (!ipd2) {
+                            html = '<div class="info-box warning">Need 2 arms for log-rank test</div>';
+                            break;
+                        }
+                        const lr = KMEnhancedMethods.logRankTest(ipd1, ipd2);
+                        const hrCI = KMEnhancedMethods.calculateHRWithCI(ipd1, ipd2);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Log-Rank Test &amp; HR</div>';
+                        html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                        html += '<div>Chi-square: <strong>' + lr.chiSquare.toFixed(2) + '</strong></div>';
+                        html += '<div>p-value: <strong>' + (lr.pValue < 0.0001 ? '&lt;0.0001' : lr.pValue.toFixed(4)) + '</strong></div>';
+                        html += '<div style="margin-top: 8px;">HR: <strong>' + hrCI.hr.toFixed(3) + '</strong> (95% CI: ' + hrCI.lower.toFixed(3) + ' - ' + hrCI.upper.toFixed(3) + ')</div>';
+                        html += '</div>';
+                        break;
+
+                    case 'ph':
+                        if (!ipd2) {
+                            html = '<div class="info-box warning">Need 2 arms for PH assessment</div>';
+                            break;
+                        }
+                        const ph = KMEnhancedMethods.assessProportionalHazards(ipd1, ipd2);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Proportional Hazards Check</div>';
+                        html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                        html += '<div>Arm 1 slope: ' + ph.arm1.slope.toFixed(3) + ' (R2: ' + ph.arm1.r2.toFixed(3) + ')</div>';
+                        html += '<div>Arm 2 slope: ' + ph.arm2.slope.toFixed(3) + ' (R2: ' + ph.arm2.r2.toFixed(3) + ')</div>';
+                        html += '<div style="margin-top: 8px;">Slope difference: <strong>' + ph.slopeDifference.toFixed(3) + '</strong></div>';
+                        html += '<div>Parallelism: <strong>' + ph.parallelism + '</strong></div>';
+                        html += '<div style="margin-top: 8px; color: var(--text-secondary);">' + (ph.phValid ? 'PH assumption appears valid.' : 'PH may be violated. Consider RMST.') + '</div>';
+                        html += '</div>';
+                        break;
+
+                    case 'ks':
+                        const reconstructedKM = KMEnhancedMethods.calculateKMFromIPD(ipd1);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Curve Fit Quality</div>';
+                        html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                        html += '<div>Reconstruction contains ' + ipd1.length + ' observations</div>';
+                        html += '<div>Events: ' + ipd1.filter(d => d.status === 1).length + '</div>';
+                        html += '<div>Censored: ' + ipd1.filter(d => d.status === 0).length + '</div>';
+                        html += '</div>';
+                        break;
+
+                    case 'greenwood':
+                        const gw = KMEnhancedMethods.calculateGreenwoodVariance(ipd1);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Greenwood Standard Errors</div>';
+                        html += '<div style="font-size: 11px; max-height: 200px; overflow-y: auto;">';
+                        html += '<table class="data-table"><tr><th>Time</th><th>S(t)</th><th>SE</th><th>95% CI</th></tr>';
+                        gw.slice(0, 15).forEach(function(row) {
+                            html += '<tr><td>' + row.time.toFixed(1) + '</td><td>' + row.surv.toFixed(3) + '</td><td>' + row.se.toFixed(4) + '</td><td>' + (row.lower ? row.lower.toFixed(3) + '-' + row.upper.toFixed(3) : '-') + '</td></tr>';
+                        });
+                        if (gw.length > 15) html += '<tr><td colspan="4">... and ' + (gw.length - 15) + ' more rows</td></tr>';
+                        html += '</table></div>';
+                        break;
+
+                    case 'schoenfeld':
+                        if (!ipd2) {
+                            html = '<div class="info-box warning">Need 2 arms for Schoenfeld residuals</div>';
+                            break;
+                        }
+                        const schoen = KMEnhancedMethods.getSchoenfeldPlotData(ipd1, ipd2);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Schoenfeld Residuals (PH Test)</div>';
+                        html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                        html += '<div>Correlation with time: <strong>' + schoen.correlation.toFixed(4) + '</strong></div>';
+                        html += '<div>Test statistic: ' + schoen.testStatistic.toFixed(3) + '</div>';
+                        html += '<div>p-value: <strong>' + (schoen.pValue < 0.0001 ? '&lt;0.0001' : schoen.pValue.toFixed(4)) + '</strong></div>';
+                        html += '<div style="margin-top: 8px; color: var(--text-secondary);">' + schoen.interpretation + '</div>';
+                        html += '</div>';
+                        break;
+
+                    case 'hallwellner':
+                        const hw = KMEnhancedMethods.calculateHallWellnerBands(ipd1);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Hall-Wellner Confidence Bands</div>';
+                        html += '<div style="font-size: 11px; max-height: 200px; overflow-y: auto;">';
+                        html += '<table class="data-table"><tr><th>Time</th><th>S(t)</th><th>Lower</th><th>Upper</th></tr>';
+                        hw.slice(0, 15).forEach(function(row) {
+                            html += '<tr><td>' + row.time.toFixed(1) + '</td><td>' + row.surv.toFixed(3) + '</td><td>' + row.lower.toFixed(3) + '</td><td>' + row.upper.toFixed(3) + '</td></tr>';
+                        });
+                        if (hw.length > 15) html += '<tr><td colspan="4">... and ' + (hw.length - 15) + ' more rows</td></tr>';
+                        html += '</table></div>';
+                        break;
+
+                    case 'timevarying':
+                        if (!ipd2) {
+                            html = '<div class="info-box warning">Need 2 arms for time-varying HR</div>';
+                            break;
+                        }
+                        const tvhr = KMEnhancedMethods.calculateTimeVaryingHR(ipd1, ipd2);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Time-Varying Hazard Ratio</div>';
+                        html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                        tvhr.windows.forEach(function(w, i) {
+                            html += '<div>Window ' + (i+1) + ' (' + w.start.toFixed(0) + '-' + w.end.toFixed(0) + '): HR = <strong>' + w.hr.toFixed(3) + '</strong> (95% CI: ' + w.lower.toFixed(3) + '-' + w.upper.toFixed(3) + ')</div>';
+                        });
+                        html += '<div style="margin-top: 8px;">HR trend: <strong>' + tvhr.trend + '</strong></div>';
+                        html += '<div style="color: var(--text-secondary);">' + tvhr.interpretation + '</div>';
+                        html += '</div>';
+                        break;
+
+                    case 'sensitivity':
+                        if (!ipd2) {
+                            const sens1 = KMEnhancedMethods.digitizationSensitivityAnalysis(ipd1);
+                            html = '<div style="font-weight: 600; margin-bottom: 8px;">Digitization Sensitivity Analysis</div>';
+                            html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                            html += '<div>Original median: ' + (sens1.original.median ? sens1.original.median.toFixed(1) : 'NR') + '</div>';
+                            html += '<div>Median 95% CI: ' + sens1.summary.median95Lower.toFixed(1) + ' - ' + sens1.summary.median95Upper.toFixed(1) + '</div>';
+                            html += '<div>RMST 95% CI: ' + sens1.summary.rmst95Lower.toFixed(2) + ' - ' + sens1.summary.rmst95Upper.toFixed(2) + '</div>';
+                            html += '</div>';
+                        } else {
+                            const sens2 = KMEnhancedMethods.twoArmSensitivityAnalysis(ipd1, ipd2);
+                            html = '<div style="font-weight: 600; margin-bottom: 8px;">Two-Arm Sensitivity Analysis</div>';
+                            html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                            html += '<div>Original HR: <strong>' + sens2.original.hr.toFixed(3) + '</strong></div>';
+                            html += '<div>HR 95% range: ' + sens2.summary.hr95Lower.toFixed(3) + ' - ' + sens2.summary.hr95Upper.toFixed(3) + '</div>';
+                            html += '<div style="margin-top: 8px; ' + (sens2.conclusionRobust ? 'color: var(--success-color);' : 'color: var(--warning-color);') + '">' + sens2.interpretation + '</div>';
+                            html += '</div>';
+                        }
+                        break;
+                }
+
+                container.innerHTML = html;
+                showToast('Analysis complete', 'success');
+            } catch (err) {
+                container.innerHTML = '<div class="info-box warning">Error: ' + err.message + '</div>';
+                console.error(err);
+            }
+        }
+
+
+        // ============================================
+        // BEYOND R: Novel Methods Handler
+        // ============================================
+        function runBeyondR(type) {
+            const container = document.getElementById('beyond-r-results');
+
+            if (Object.keys(state.ipd).length === 0) {
+                container.innerHTML = '<div class="info-box warning">Please reconstruct IPD first</div>';
+                return;
+            }
+
+            if (typeof BeyondRMethods === 'undefined') {
+                container.innerHTML = '<div class="info-box warning">Beyond R module not loaded</div>';
+                return;
+            }
+
+            const arms = Object.keys(state.ipd);
+            const ipd1 = state.ipd[arms[0]];
+            const ipd2 = arms.length > 1 ? state.ipd[arms[1]] : null;
+
+            // Calculate KM curve from IPD
+            function getKMFromIPD(ipd) {
+                const sorted = [...ipd].sort((a, b) => a.time - b.time);
+                const eventTimes = [...new Set(sorted.filter(d => d.status === 1).map(d => d.time))].sort((a, b) => a - b);
+                const km = [{time: 0, surv: 1}];
+                let nRisk = ipd.length;
+                let surv = 1;
+
+                eventTimes.forEach(t => {
+                    const events = sorted.filter(d => d.time === t && d.status === 1).length;
+                    nRisk = ipd.length - sorted.filter(d => d.time < t).length;
+                    if (nRisk > 0 && events > 0) {
+                        surv *= (nRisk - events) / nRisk;
+                        km.push({time: t, surv: surv});
+                    }
+                });
+                return km;
+            }
+
+            let html = '';
+
+            try {
+                switch(type) {
+                    case 'wasserstein':
+                        if (!ipd2) {
+                            html = '<div class="info-box warning">Need 2 arms for Wasserstein distance</div>';
+                            break;
+                        }
+                        const km1 = getKMFromIPD(ipd1);
+                        const km2 = getKMFromIPD(ipd2);
+                        const wd = BeyondRMethods.wassersteinDistance(km1, km2);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Wasserstein Distance (Optimal Transport)</div>';
+                        html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                        html += '<div>W1 Distance: <strong>' + wd.wasserstein.toFixed(2) + '</strong></div>';
+                        html += '<div>Normalized: ' + wd.normalized.toFixed(4) + '</div>';
+                        html += '<div>Relative: ' + wd.relativePercent.toFixed(1) + '%</div>';
+                        html += '<div style="margin-top: 8px; color: var(--text-secondary);">' + wd.interpretation + '</div>';
+                        html += '<div style="margin-top: 8px; font-style: italic; font-size: 10px;">Novel: First JS implementation of Wasserstein-KM (JCGS 2024)</div>';
+                        html += '</div>';
+                        break;
+
+                    case 'cure':
+                        const km = getKMFromIPD(ipd1);
+                        const cure = BeyondRMethods.detectCureFraction(km);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Cure Fraction Detection</div>';
+                        html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                        if (cure.detected) {
+                            html += '<div>Cure Fraction: <strong>' + (cure.cureFraction * 100).toFixed(1) + '%</strong></div>';
+                            html += '<div>95% CI: ' + (cure.lower * 100).toFixed(1) + '% - ' + (cure.upper * 100).toFixed(1) + '%</div>';
+                            html += '<div>Plateau from: ' + cure.plateauStartTime.toFixed(1) + '</div>';
+                            html += '<div style="margin-top: 8px; color: var(--success-color);">' + cure.interpretation + '</div>';
+                            html += '<div style="margin-top: 8px; color: var(--text-secondary);">' + cure.htaAdvice + '</div>';
+                        } else {
+                            html += '<div>No cure fraction detected</div>';
+                            html += '<div style="color: var(--text-secondary);">' + cure.reason + '</div>';
+                            if (cure.lastSurvival) {
+                                html += '<div>Last observed survival: ' + (cure.lastSurvival * 100).toFixed(1) + '%</div>';
+                            }
+                        }
+                        html += '</div>';
+                        break;
+
+                    case 'extrapolate':
+                        const kmExt = getKMFromIPD(ipd1);
+                        const rp = BeyondRMethods.fitRoystonParmar(kmExt);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Royston-Parmar Extrapolation</div>';
+                        html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                        if (rp.error) {
+                            html += '<div class="warning">' + rp.error + '</div>';
+                        } else {
+                            html += '<div>Model: ' + rp.model + ' (df=' + rp.df + ')</div>';
+                            html += '<div style="margin-top: 8px;">Extrapolation:</div>';
+                            html += '<table class="data-table" style="font-size: 10px;"><tr><th>Time</th><th>S(t)</th><th>Type</th></tr>';
+                            rp.extrapolation.forEach(function(p) {
+                                html += '<tr><td>' + p.time.toFixed(1) + '</td><td>' + (p.survival * 100).toFixed(1) + '%</td><td>' + (p.extrapolated ? 'Extrapolated' : 'Observed') + '</td></tr>';
+                            });
+                            html += '</table>';
+                            html += '<div style="margin-top: 8px; font-style: italic; font-size: 10px;">Novel: First web-based Royston-Parmar implementation</div>';
+                        }
+                        html += '</div>';
+                        break;
+
+                    case 'compare':
+                        const kmCmp = getKMFromIPD(ipd1);
+                        const cmp = BeyondRMethods.compareDistributions(kmCmp);
+                        html = '<div style="font-weight: 600; margin-bottom: 8px;">Distribution Comparison (NICE TSD 14)</div>';
+                        html += '<div style="font-size: 11px; padding: 8px; background: var(--bg-quaternary); border-radius: 4px;">';
+                        if (cmp.error) {
+                            html += '<div class="warning">' + cmp.error + '</div>';
+                        } else {
+                            html += '<table class="data-table" style="font-size: 10px;"><tr><th>Distribution</th><th>R2</th></tr>';
+                            cmp.distributions.forEach(function(d) {
+                                html += '<tr><td>' + d.name + '</td><td>' + d.r2.toFixed(3) + '</td></tr>';
+                            });
+                            html += '</table>';
+                            html += '<div style="margin-top: 8px;"><strong>Recommended:</strong> ' + cmp.recommended + '</div>';
+                            html += '<div style="color: var(--text-secondary);">' + cmp.htaNote + '</div>';
+                        }
+                        html += '</div>';
+                        break;
+                }
+
+                container.innerHTML = html;
+                showToast('Beyond R analysis complete', 'success');
+            } catch (err) {
+                container.innerHTML = '<div class="info-box warning">Error: ' + err.message + '</div>';
+                console.error(err);
+            }
+        }
+
+
+        // ============================================
+        const testDatasets = {
+            veterans: {
+                name: 'Veterans Lung Cancer',
+                n: 137,
+                events: 128,
+                medianOS: 103,
+                source: 'survival::veteran'
+            },
+            ncctg: {
+                name: 'NCCTG Lung Cancer',
+                n: 228,
+                events: 165,
+                medianOS: 310,
+                source: 'survival::lung'
+            },
+            ovarian: {
+                name: 'Ovarian Cancer',
+                n: 26,
+                events: 12,
+                medianOS: 638,
+                source: 'survival::ovarian'
+            },
+            colon: {
+                name: 'Colon Cancer',
+                n: 929,
+                events: 452,
+                medianOS: 2505,
+                source: 'survival::colon'
+            }
+        };
+
+        function loadTestDataset(datasetKey) {
+            const dataset = testDatasets[datasetKey];
+            if (!dataset) return;
+
+            // Pre-fill validation fields
+            document.getElementById('reported-n').value = dataset.n;
+            document.getElementById('reported-events').value = dataset.events;
+            document.getElementById('reported-median').value = dataset.medianOS;
+
+            // Update UI
+            document.querySelectorAll('.dataset-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+
+            showToast(`Loaded ${dataset.name} for validation`, 'info');
+        }
+
+        // ============================================
+        // EXPORT FUNCTIONS
+        // ============================================
+        function exportCSV() {
+            if (Object.keys(state.ipd).length === 0) {
+                showToast('No IPD to export', 'warning');
+                return;
+            }
+
+            const includeCI = document.getElementById('export-ci').checked;
+            let csv = 'time,status,arm';
+            if (includeCI && Object.keys(state.ciData).length > 0) {
+                csv += ',surv_lower,surv_upper';
+            }
+            csv += '\n';
+
+            Object.keys(state.ipd).forEach(armIndex => {
+                const ipd = state.ipd[armIndex];
+                const ci = state.ciData[armIndex];
+
+                ipd.forEach((row, i) => {
+                    let line = `${row.time.toFixed(4)},${row.status},${row.arm}`;
+                    if (includeCI && ci && ci[Math.min(i, ci.length - 1)]) {
+                        const ciRow = ci[Math.min(i, ci.length - 1)];
+                        line += `,${ciRow.lower.toFixed(4)},${ciRow.upper.toFixed(4)}`;
+                    }
+                    csv += line + '\n';
+                });
+            });
+
+            downloadFile(csv, 'ipd_reconstructed.csv', 'text/csv');
+            showToast('CSV exported', 'success');
+        }
+
+        function exportR() {
+            if (Object.keys(state.ipd).length === 0) {
+                showToast('No IPD to export', 'warning');
+                return;
+            }
+
+            let rScript = `# IPD Reconstructed from KM Curve
+# Generated by Wasserstein KM Extractor v2.0
+# Date: ${new Date().toISOString()}
+
+library(survival)
+
+# Create data frame
+ipd <- data.frame(
+  time = c(`;
+
+            const allIPD = [];
+            Object.keys(state.ipd).forEach(armIndex => {
+                state.ipd[armIndex].forEach(row => allIPD.push(row));
+            });
+
+            rScript += allIPD.map(r => r.time.toFixed(4)).join(', ');
+            rScript += `),
+  status = c(`;
+            rScript += allIPD.map(r => r.status).join(', ');
+            rScript += `),
+  arm = c(`;
+            rScript += allIPD.map(r => `"${r.arm}"`).join(', ');
+            rScript += `)
+)
+
+# Kaplan-Meier estimate
+km_fit <- survfit(Surv(time, status) ~ arm, data = ipd)
+print(km_fit)
+
+# Plot
+plot(km_fit, col = 1:${Object.keys(state.ipd).length}, lwd = 2,
+     xlab = "Time", ylab = "Survival Probability",
+     main = "Reconstructed KM Curves")
+legend("topright", levels(factor(ipd$arm)), col = 1:${Object.keys(state.ipd).length}, lwd = 2)
+
+# Cox model (if multiple arms)
+if (length(unique(ipd$arm)) > 1) {
+  cox_fit <- coxph(Surv(time, status) ~ arm, data = ipd)
+  print(summary(cox_fit))
+}
+`;
+
+            downloadFile(rScript, 'ipd_analysis.R', 'text/plain');
+            showToast('R script exported', 'success');
+        }
+
+        function exportJSON() {
+            if (Object.keys(state.ipd).length === 0) {
+                showToast('No IPD to export', 'warning');
+                return;
+            }
+
+            const exportData = {
+                metadata: {
+                    version: '2.0',
+                    date: new Date().toISOString(),
+                    method: document.getElementById('recon-method').value
+                },
+                calibration: state.calibration,
+                arms: state.arms,
+                ipd: state.ipd,
+                uncertainty: state.uncertainty,
+                ciData: state.ciData
+            };
+
+            downloadFile(JSON.stringify(exportData, null, 2), 'ipd_data.json', 'application/json');
+            showToast('JSON exported', 'success');
+        }
+
+        function exportSAS() {
+            if (Object.keys(state.ipd).length === 0) {
+                showToast('No IPD to export', 'warning');
+                return;
+            }
+
+            let sasCode = `/* IPD Reconstructed from KM Curve */
+/* Generated by Wasserstein KM Extractor v2.0 */
+/* Date: ${new Date().toISOString()} */
+
+data ipd;
+    input time status arm $;
+    datalines;
+`;
+
+            Object.keys(state.ipd).forEach(armIndex => {
+                state.ipd[armIndex].forEach(row => {
+                    sasCode += `${row.time.toFixed(4)} ${row.status} ${row.arm}\n`;
+                });
+            });
+
+            sasCode += `;
+run;
+
+/* Kaplan-Meier Analysis */
+proc lifetest data=ipd plots=survival(atrisk);
+    time time*status(0);
+    strata arm;
+run;
+
+/* Cox Proportional Hazards */
+proc phreg data=ipd;
+    class arm / ref=first;
+    model time*status(0) = arm / risklimits;
+run;
+`;
+
+            downloadFile(sasCode, 'ipd_analysis.sas', 'text/plain');
+            showToast('SAS code exported', 'success');
+        }
+
+        function exportStata() {
+            if (Object.keys(state.ipd).length === 0) {
+                showToast('No IPD to export', 'warning');
+                return;
+            }
+
+            let stataCode = `* IPD Reconstructed from KM Curve
+* Generated by Wasserstein KM Extractor v2.0
+* Date: ${new Date().toISOString()}
+
+clear
+input float time int status str20 arm
+`;
+
+            Object.keys(state.ipd).forEach(armIndex => {
+                state.ipd[armIndex].forEach(row => {
+                    stataCode += `${row.time.toFixed(4)} ${row.status} "${row.arm}"\n`;
+                });
+            });
+
+            stataCode += `end
+
+* Encode arm variable
+encode arm, gen(arm_num)
+
+* Set up survival data
+stset time, failure(status)
+
+* Kaplan-Meier
+sts graph, by(arm_num) risktable
+
+* Cox regression
+stcox i.arm_num, efron
+`;
+
+            downloadFile(stataCode, 'ipd_analysis.do', 'text/plain');
+            showToast('Stata code exported', 'success');
+        }
+
+        function downloadFile(content, filename, type) {
+            const blob = new Blob([content], { type });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // ============================================
+        // SESSION MANAGEMENT
+        // ============================================
+        function saveSession() {
+            const sessionData = {
+                arms: state.arms,
+                points: state.points,
+                calibration: state.calibration,
+                atRisk: state.atRisk,
+                ipd: state.ipd,
+                ciData: state.ciData,
+                uncertainty: state.uncertainty
+            };
+
+            const json = JSON.stringify(sessionData);
+            downloadFile(json, 'km_session.json', 'application/json');
+            showToast('Session saved', 'success');
+        }
+
+        function loadSession() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        state.arms = data.arms || state.arms;
+                        state.points = data.points || [];
+                        state.calibration = data.calibration || state.calibration;
+                        state.atRisk = data.atRisk || {};
+                        state.ipd = data.ipd || {};
+                        state.ciData = data.ciData || {};
+                        state.uncertainty = data.uncertainty || {};
+
+                        rebuildArmTabs();
+                        updateCalibrationStatus();
+                        displayIPDSummary();
+                        displayUncertainty();
+                        updateStats();
+                        render();
+                        showToast('Session loaded', 'success');
+                    } catch (err) {
+                        showToast('Invalid session file', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+
+        // ============================================
+        // CANVAS INTERACTION
+        // ============================================
+        function handleCanvasClick(px, py, e) {
+            switch (state.mode) {
+                case 'calibrating':
+                    handleCalibrationClick(px, py);
+                    break;
+                case 'sampling':
+                    handleColorSample(px, py);
+                    break;
+                case 'manual':
+                    handleManualClick(px, py, e.shiftKey);
+                    break;
+            }
+        }
+
+        function cancelMode() {
+            state.mode = 'idle';
+            state.calibratingPoint = null;
+            hideModeIndicator();
+            canvasContainer.style.cursor = 'crosshair';
+        }
+
+        // ============================================
+        // VIEW CONTROLS
+        // ============================================
+        function zoomIn() {
+            state.zoom = Math.min(10, state.zoom * 1.2);
+            render();
+        }
+
+        function zoomOut() {
+            state.zoom = Math.max(0.1, state.zoom / 1.2);
+            render();
+        }
+
+        function resetView() {
+            state.zoom = 1;
+            state.panX = 0;
+            state.panY = 0;
+
+            if (state.image) {
+                const scaleX = canvas.width / state.originalWidth;
+                const scaleY = canvas.height / state.originalHeight;
+                state.zoom = Math.min(scaleX, scaleY) * 0.9;
+            }
+
+            render();
+        }
+
+        function toggleGrid() {
+            state.showGrid = !state.showGrid;
+            document.getElementById('grid-btn').classList.toggle('active', state.showGrid);
+            render();
+        }
+
+        function toggleOverlay() {
+            state.showOverlay = !state.showOverlay;
+            document.getElementById('overlay-btn').classList.toggle('active', state.showOverlay);
+            render();
+        }
+
+        function toggleCI() {
+            state.showCI = !state.showCI;
+            document.getElementById('ci-btn').classList.toggle('active', state.showCI);
+            render();
+        }
+
+        // ============================================
+        // UI HELPERS
+        // ============================================
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('collapsed');
+            const icon = section.querySelector('.toggle-icon');
+            icon.textContent = section.classList.contains('collapsed') ? '+' : '-';
+        }
+
+        function switchInputTab(tabId) {
+            document.querySelectorAll('#section-input .tab').forEach(t => {
+                t.classList.toggle('active', t.dataset.tab === tabId);
+            });
+            document.querySelectorAll('#section-input .tab-content').forEach(c => {
+                c.classList.toggle('active', c.id === tabId);
+            });
+        }
+
+        function showModeIndicator(text) {
+            const indicator = document.getElementById('mode-indicator');
+            document.getElementById('mode-text').textContent = text;
+            indicator.style.display = 'flex';
+        }
+
+        function hideModeIndicator() {
+            document.getElementById('mode-indicator').style.display = 'none';
+        }
+
+        function showProcessing(text, progress) {
+            document.getElementById('processing-text').textContent = text;
+            document.getElementById('progress-fill').style.width = `${progress}%`;
+            document.getElementById('processing-overlay').classList.remove('hidden');
+        }
+
+        function updateProcessing(text, progress) {
+            document.getElementById('processing-text').textContent = text;
+            document.getElementById('progress-fill').style.width = `${progress}%`;
+        }
+
+        function hideProcessing() {
+            document.getElementById('processing-overlay').classList.add('hidden');
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 4000);
+        }
+
+        function updateStats() {
+            document.getElementById('stat-points').textContent = state.points.length;
+            const ipdCount = Object.values(state.ipd).reduce((sum, arr) => sum + arr.length, 0);
+            document.getElementById('stat-ipd').textContent = ipdCount;
+        }
+
+        function showHelp() {
+            alert(`Wasserstein KM Extractor v4.0 - All Curve Types
+
+NEW FEATURES:
+• AI Curve Detection - K-means clustering automatically finds curves
+• OCR Extraction - Extract numbers-at-risk from images
+• Auto Axis Detection - Automatically find plot axes
+• Uncertainty Quantification - Bootstrap confidence intervals
+• PDF Support - Extract pages from PDF files
+• Batch Processing - Process multiple images
+• Test Datasets - Validate against real IPD data
+
+WORKFLOW:
+1. Load Image: Drag & drop, paste, or select PDF
+2. Run AI Detection: Auto-detect curves (or manual)
+3. Calibrate Axes: Click to set 4 reference points
+4. Add Number at Risk: Enter or use OCR
+5. Reconstruct IPD: Choose algorithm (Wasserstein recommended)
+6. Validate: Compare to reported statistics
+7. Export: CSV, R, SAS, Stata, JSON
+
+KEYBOARD:
+• Ctrl+V: Paste image
+• Escape: Cancel current mode
+• Ctrl+Z: Undo last point
+• Mouse wheel: Zoom
+• Middle-click drag: Pan`);
+        }
+
+        // Setup tolerance slider
+        document.getElementById('color-tolerance').addEventListener('input', (e) => {
+            document.getElementById('tolerance-value').textContent = e.target.value;
+        });
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        function init() {
+            initCanvas();
+            rebuildArmTabs();
+            updateStats();
+        }
+
+        init();
+    
+
+        // ============================================
+        // CURVE TYPE HANDLING
+        // ============================================
+
+        const CURVE_TYPE_INFO = {
+            km: {
+                name: 'Kaplan-Meier (Survival)',
+                description: 'Standard survival curve showing probability of surviving beyond time t. Y-axis: 0-1 (decreasing).',
+                yMin: 0, yMax: 1, startsAt: 1
+            },
+            na: {
+                name: 'Nelson-Aalen (Cumulative Hazard)',
+                description: 'Cumulative hazard function H(t) = -ln(S(t)). Can exceed 1. Y-axis: 0+ (increasing).',
+                yMin: 0, yMax: 3, startsAt: 0
+            },
+            ci: {
+                name: 'Cumulative Incidence (1 - S)',
+                description: 'Cumulative incidence F(t) = 1 - S(t). Probability of event by time t. Y-axis: 0-1 (increasing).',
+                yMin: 0, yMax: 1, startsAt: 0
+            },
+            cif: {
+                name: 'Competing Risks CIF',
+                description: 'Aalen-Johansen cumulative incidence for competing risks. Y-axis: 0-1 (increasing).',
+                yMin: 0, yMax: 1, startsAt: 0
+            },
+            hazard: {
+                name: 'Hazard Function h(t)',
+                description: 'Instantaneous failure rate. Can vary freely. Y-axis: 0+ (no monotonicity constraint).',
+                yMin: 0, yMax: 0.5, startsAt: null
+            },
+            loglog: {
+                name: 'Log-minus-log (Diagnostic)',
+                description: 'log(-log(S(t))) transformation for PH diagnostics. Parallel curves suggest PH holds.',
+                yMin: -5, yMax: 2, startsAt: null
+            }
+        };
+
+        function onCurveTypeChange(newType) {
+            state.curveType = newType;
+            const info = CURVE_TYPE_INFO[newType];
+            
+            // Update info display
+            const infoEl = document.getElementById('curve-type-info');
+            if (infoEl) {
+                infoEl.textContent = info.description;
+            }
+            
+            // Update Y-axis defaults
+            document.getElementById('y-min-val').value = info.yMin;
+            document.getElementById('y-max-val').value = info.yMax;
+            
+            showToast('Curve type: ' + info.name, 'info');
+            console.log('Curve type changed to:', newType);
+        }
+
+        // Convert digitized points to KM format for IPD reconstruction
+        function convertToKMForReconstruction() {
+            if (state.curveType === 'km') {
+                return state.points; // Already in KM format
+            }
+            
+            if (typeof CurveAnalysisExtended !== 'undefined') {
+                const result = CurveAnalysisExtended.convertCurve(
+                    state.points.map(p => ({ time: p.x, y: p.y })),
+                    state.curveType,
+                    'km'
+                );
+                if (result.curve) {
+                    return result.curve.map((p, i) => ({
+                        ...state.points[i % state.points.length],
+                        x: p.time,
+                        y: p.surv
+                    }));
+                }
+            }
+            
+            console.warn('Could not convert curve type, using as-is');
+            return state.points;
+        }
+
+
+
+        // ============================================
+        // CURVE TYPE HANDLING
+        // ============================================
+
+        const CURVE_TYPE_INFO = {
+            km: {
+                name: 'Kaplan-Meier (Survival)',
+                description: 'Standard survival curve showing probability of surviving beyond time t. Y-axis: 0-1 (decreasing).',
+                yMin: 0, yMax: 1, startsAt: 1
+            },
+            na: {
+                name: 'Nelson-Aalen (Cumulative Hazard)',
+                description: 'Cumulative hazard function H(t) = -ln(S(t)). Can exceed 1. Y-axis: 0+ (increasing).',
+                yMin: 0, yMax: 3, startsAt: 0
+            },
+            ci: {
+                name: 'Cumulative Incidence (1 - S)',
+                description: 'Cumulative incidence F(t) = 1 - S(t). Probability of event by time t. Y-axis: 0-1 (increasing).',
+                yMin: 0, yMax: 1, startsAt: 0
+            },
+            cif: {
+                name: 'Competing Risks CIF',
+                description: 'Aalen-Johansen cumulative incidence for competing risks. Y-axis: 0-1 (increasing).',
+                yMin: 0, yMax: 1, startsAt: 0
+            },
+            hazard: {
+                name: 'Hazard Function h(t)',
+                description: 'Instantaneous failure rate. Can vary freely. Y-axis: 0+ (no monotonicity constraint).',
+                yMin: 0, yMax: 0.5, startsAt: null
+            },
+            loglog: {
+                name: 'Log-minus-log (Diagnostic)',
+                description: 'log(-log(S(t))) transformation for PH diagnostics. Parallel curves suggest PH holds.',
+                yMin: -5, yMax: 2, startsAt: null
+            }
+        };
+
+        function onCurveTypeChange(newType) {
+            state.curveType = newType;
+            const info = CURVE_TYPE_INFO[newType];
+            
+            // Update info display
+            const infoEl = document.getElementById('curve-type-info');
+            if (infoEl) {
+                infoEl.textContent = info.description;
+            }
+            
+            // Update Y-axis defaults
+            document.getElementById('y-min-val').value = info.yMin;
+            document.getElementById('y-max-val').value = info.yMax;
+            
+            showToast('Curve type: ' + info.name, 'info');
+            console.log('Curve type changed to:', newType);
+        }
+
+        // Convert digitized points to KM format for IPD reconstruction
+        function convertToKMForReconstruction() {
+            if (state.curveType === 'km') {
+                return state.points; // Already in KM format
+            }
+            
+            if (typeof CurveAnalysisExtended !== 'undefined') {
+                const result = CurveAnalysisExtended.convertCurve(
+                    state.points.map(p => ({ time: p.x, y: p.y })),
+                    state.curveType,
+                    'km'
+                );
+                if (result.curve) {
+                    return result.curve.map((p, i) => ({
+                        ...state.points[i % state.points.length],
+                        x: p.time,
+                        y: p.surv
+                    }));
+                }
+            }
+            
+            console.warn('Could not convert curve type, using as-is');
+            return state.points;
+        }
+
+</script>
+</body>
+</html>

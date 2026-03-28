@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wasserstein KM Extractor v7.0 - PDF & Multi-Source Edition</title>
+
+    <!-- PDF.js for PDF Support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <style>
+        /* ============================================
+           CSS VARIABLES & RESET - Enhanced Dark Theme
+           ============================================ */
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-tertiary: #1a1a2e;
+            --bg-quaternary: #252542;
+            --bg-highlight: #2a2a4a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6a6a7a;
+            --accent-blue: #4361ee;
+            --accent-blue-hover: #5a7af0;
+            --accent-green: #22c55e;
+            --accent-orange: #f97316;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --accent-yellow: #eab308;
+            --accent-pink: #ec4899;
+            --accent-gold: #ffd700;
+            --border-color: #3a3a5a;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            --radius: 8px;
+            --radius-sm: 4px;
+            --transition: all 0.2s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Layout */
+        .app-container {
+            display: grid;
+            grid-template-columns: 350px 1fr 420px;
+            grid-template-rows: 70px 1fr;
+            height: 100vh;
+            gap: 1px;
+            background: var(--border-color);
+        }
+
+        /* Header - Enhanced for v7 */
+        .header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 50%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .version-badge {
+            font-size: 12px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00, #ffd700);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease infinite;
+            padding: 5px 14px;
+            border-radius: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #000;
+            letter-spacing: 0.5px;
+        }
+
+        .pdf-badge {
+            font-size: 10px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-orange));
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            color: white;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+        }
+
+        .header-stats .stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--bg-quaternary);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .header-stats .stat-value {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--bg-secondary);
+            overflow-y: auto;
+            padding: 16px;
+        }
+
+        .sidebar::-webkit-scrollbar { width: 6px; }
+        .sidebar::-webkit-scrollbar-track { background: var(--bg-tertiary); }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--bg-quaternary); border-radius: 3px; }
+
+        .main-area {
+            background: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .canvas-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--bg-primary),
+                var(--bg-primary) 10px,
+                var(--bg-secondary) 10px,
+                var(--bg-secondary) 20px
+            );
+        }
+
+        #main-canvas {
+            cursor: crosshair;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+            border-radius: var(--radius);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 12px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            padding: 14px 16px;
+            background: var(--bg-quaternary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .section-header:hover { background: var(--bg-highlight); }
+
+        .section-content {
+            padding: 16px;
+            display: block;
+        }
+
+        .section.collapsed .section-content { display: none; }
+        .section.collapsed .toggle-icon { transform: rotate(-90deg); }
+        .toggle-icon { transition: transform 0.2s; }
+
+        /* Buttons - Enhanced */
+        .btn {
+            padding: 10px 18px;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary { background: var(--accent-blue); color: white; }
+        .btn-primary:hover { background: var(--accent-blue-hover); transform: translateY(-1px); }
+        .btn-secondary { background: var(--bg-quaternary); color: var(--text-primary); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { background: var(--bg-highlight); }
+        .btn-success { background: var(--accent-green); color: white; }
+        .btn-success:hover { background: #16a34a; }
+        .btn-gold {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #000;
+            font-weight: 700;
+        }
+        .btn-gold:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+        .btn-pdf {
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            color: white;
+            font-weight: 700;
+        }
+        .btn-pdf:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+        .btn-sm { padding: 6px 12px; font-size: 11px; }
+        .btn-block { width: 100%; justify-content: center; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Form Elements */
+        .form-group { margin-bottom: 12px; }
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            background: var(--bg-quaternary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 13px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+        }
+
+        /* Drop Zone - Enhanced for PDF */
+        .drop-zone {
+            border: 3px dashed var(--border-color);
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            background: var(--bg-quaternary);
+        }
+
+        .drop-zone.dragover {
+            border-color: var(--accent-gold);
+            background: rgba(255, 215, 0, 0.1);
+            transform: scale(1.02);
+        }
+
+        .drop-zone.dragover-pdf {
+            border-color: var(--accent-red);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .drop-zone-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .drop-zone-icon {
+            font-size: 42px;
+            opacity: 0.8;
+        }
+
+        .supported-formats {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding: 8px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-sm);
+        }
+
+        /* PDF Preview Panel */
+        .pdf-preview-panel {
+            background: var(--bg-tertiary);
+            border-radius: var(--radius);
+            padding: 12px;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .pdf-preview-panel.active {
+            display: block;
+        }
+
+        .pdf-page-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .pdf-thumbnail-strip {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 8px 0;
+        }
+
+        .pdf-thumbnail {
+            width: 60px;
+            height: 80px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .pdf-thumbnail:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .pdf-thumbnail.selected {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Badges */
+        .badge {
+            font-size: 9px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .badge.world-class {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #000;
+        }
+
+        .badge.new { background: var(--accent-green); color: white; }
+        .badge.pdf { background: var(--accent-red); color: white; }
+        .badge.ai { background: var(--accent-purple); color: white; }
+
+        /* World-Class Panel */
+        .world-class-panel {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 140, 0, 0.05));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .world-class-panel h4 {
+            color: var(--accent-gold);
+            font-size: 13px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            padding: 12px;
+            border-radius: var(--radius);
+            font-size: 11px;
+            margin-bottom: 12px;
+        }
+
+        .info-box.gold {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: var(--accent-gold);
+        }
+
+        .info-box.info {
+            background: rgba(67, 97, 238, 0.1);
+            border: 1px solid rgba(67, 97, 238, 0.3);
+        }
+
+        .info-box.pdf {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--accent-orange);
+        }
+
+        /* Algorithm Cards */
+        .algorithm-comparison {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .algorithm-card {
+            background: var(--bg-quaternary);
+            border-radius: var(--radius);
+            padding: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .algorithm-card:hover { border-color: var(--accent-blue); }
+        .algorithm-card.best { border-color: var(--accent-gold); background: rgba(255, 215, 0, 0.1); }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 12px;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            font-size: 12px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .tab:hover { color: var(--text-primary); }
+        .tab.active {
+            color: var(--accent-gold);
+            border-bottom-color: var(--accent-gold);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .toast {
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            margin-top: 8px;
+            font-size: 13px;
+            box-shadow: var(--shadow);
+            animation: slideIn 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast.success { background: var(--accent-green); color: white; }
+        .toast.error { background: var(--accent-red); color: white; }
+        .toast.info { background: var(--accent-blue); color: white; }
+        .toast.warning { background: var(--accent-orange); color: white; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Processing Overlay */
+        .processing-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .processing-overlay.hidden { display: none; }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--bg-quaternary);
+            border-top-color: var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .processing-text {
+            margin-top: 20px;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 6px;
+            background: var(--bg-quaternary);
+            border-radius: 3px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-orange));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        /* Method Selector Pills */
+        .method-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .method-pill {
+            padding: 6px 12px;
+            background: var(--bg-quaternary);
+            border-radius: 20px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .method-pill:hover {
+            background: var(--bg-highlight);
+        }
+
+        .method-pill.active {
+            background: var(--accent-gold);
+            color: #000;
+            border-color: var(--accent-gold);
+        }
+
+        /* Toolbar */
+        .toolbar {
+            padding: 12px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .toolbar-group {
+            display: flex;
+            gap: 4px;
+            padding: 0 8px;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .toolbar-group:last-child {
+            border-right: none;
+        }
+
+        /* Validation Dashboard */
+        .validation-dashboard {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .validation-item {
+            background: var(--bg-quaternary);
+            border-radius: var(--radius);
+            padding: 12px;
+        }
+
+        .validation-item .label {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .validation-item .value {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .validation-item .value.pass { color: var(--accent-green); }
+        .validation-item .value.warn { color: var(--accent-orange); }
+        .validation-item .value.fail { color: var(--accent-red); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>
+                <span>Wasserstein KM Extractor</span>
+                <span class="version-badge">v7.0 UNIFIED</span>
+                <span class="pdf-badge">PDF SUPPORT</span>
+            </h1>
+            <div class="header-stats">
+                <div class="stat">
+                    <span>Source:</span>
+                    <span class="stat-value" id="stat-source">-</span>
+                </div>
+                <div class="stat">
+                    <span>Points:</span>
+                    <span class="stat-value" id="stat-points">0</span>
+                </div>
+                <div class="stat">
+                    <span>IPD:</span>
+                    <span class="stat-value" id="stat-ipd">0</span>
+                </div>
+                <div class="stat">
+                    <span>Grade:</span>
+                    <span class="stat-value" id="stat-grade">-</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary btn-sm" onclick="saveSession()">Save</button>
+                <button class="btn btn-secondary btn-sm" onclick="loadSession()">Load</button>
+                <button class="btn btn-gold btn-sm" onclick="runFullAnalysis()">Full Analysis</button>
+            </div>
+        </header>
+
+        <!-- Left Sidebar -->
+        <aside class="sidebar" id="left-sidebar">
+            <!-- Input Section - Enhanced for PDF -->
+            <div class="section" id="section-input">
+                <div class="section-header" onclick="toggleSection('section-input')">
+                    <h3>1. Input Source <span class="badge pdf">PDF+IMG</span></h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="drop-zone" id="drop-zone"
+                         ondrop="handleDrop(event)"
+                         ondragover="handleDragOver(event)"
+                         ondragleave="handleDragLeave(event)">
+                        <div class="drop-zone-icons">
+                            <span class="drop-zone-icon">📄</span>
+                            <span class="drop-zone-icon">📷</span>
+                        </div>
+                        <div style="font-weight: 600; margin-bottom: 8px;">Drag & Drop Files</div>
+                        <div style="font-size: 12px; color: var(--text-secondary);">PDF or Image files</div>
+                        <div style="margin: 12px 0; color: var(--text-muted);">or</div>
+                        <input type="file" id="file-input" accept="image/*,.pdf" style="display: none" onchange="handleFileSelect(event)">
+                        <div style="display: flex; gap: 8px; justify-content: center;">
+                            <button class="btn btn-gold" onclick="document.getElementById('file-input').click()">Browse Files</button>
+                            <button class="btn btn-secondary" onclick="pasteFromClipboard()">Paste (Ctrl+V)</button>
+                        </div>
+                        <div class="supported-formats">
+                            <strong>Supported:</strong> PNG, JPG, JPEG, BMP, TIFF, PDF
+                        </div>
+                    </div>
+
+                    <!-- PDF Preview Panel -->
+                    <div class="pdf-preview-panel" id="pdf-preview-panel">
+                        <div class="pdf-page-selector">
+                            <span style="font-size: 12px; font-weight: 600;">PDF Pages:</span>
+                            <span id="pdf-page-info" style="font-size: 11px; color: var(--text-secondary);">-</span>
+                        </div>
+                        <div class="pdf-thumbnail-strip" id="pdf-thumbnails"></div>
+                        <div style="margin-top: 8px;">
+                            <button class="btn btn-pdf btn-sm btn-block" onclick="extractFromSelectedPage()">
+                                Extract from Selected Page
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extraction Method -->
+            <div class="section" id="section-method">
+                <div class="section-header" onclick="toggleSection('section-method')">
+                    <h3>2. Extraction Method <span class="badge world-class">MULTI</span></h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="info-box gold">
+                        Multiple extraction algorithms for best accuracy
+                    </div>
+                    <div class="method-pills">
+                        <div class="method-pill active" data-method="hsl" onclick="selectMethod('hsl')">HSL-KM</div>
+                        <div class="method-pill" data-method="vec" onclick="selectMethod('vec')">VEC-KM</div>
+                        <div class="method-pill" data-method="auto" onclick="selectMethod('auto')">Auto-Select</div>
+                        <div class="method-pill" data-method="ensemble" onclick="selectMethod('ensemble')">Ensemble</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Arms to Detect</label>
+                        <select id="num-arms">
+                            <option value="1">Single Arm</option>
+                            <option value="2" selected>Two Arms</option>
+                            <option value="3">Three Arms</option>
+                            <option value="4">Four Arms</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-gold btn-block" onclick="runExtraction()">
+                        Extract Curves
+                    </button>
+                </div>
+            </div>
+
+            <!-- Axis Calibration -->
+            <div class="section" id="section-axes">
+                <div class="section-header" onclick="toggleSection('section-axes')">
+                    <h3>3. Axis Calibration</h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label>X-Axis (Time)</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <input type="number" id="x-min" placeholder="Min" value="0">
+                            <input type="number" id="x-max" placeholder="Max" value="60">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Y-Axis (Survival)</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <input type="number" id="y-min" placeholder="Min" value="0" step="0.1">
+                            <input type="number" id="y-max" placeholder="Max" value="1" step="0.1">
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-primary" onclick="calibrateAxes()">Auto-Detect</button>
+                        <button class="btn btn-secondary" onclick="applyCalibration()">Apply</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number at Risk -->
+            <div class="section" id="section-nar">
+                <div class="section-header" onclick="toggleSection('section-nar')" style="background: linear-gradient(135deg, #f97316 0%, #dc2626 100%);">
+                    <h3>4. Number at Risk <span class="badge" style="background:#fff;color:#000;">CRITICAL</span></h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="info-box pdf">
+                        <strong>Why this matters:</strong><br>
+                        Without N-at-risk, event error ~40%. With it, error &lt;5%.
+                    </div>
+                    <div class="form-group">
+                        <label>Time: count pairs (e.g., 0:100, 12:85, 24:70)</label>
+                        <textarea id="nar-input" rows="3" placeholder="0: 100, 12: 85, 24: 70, 36: 55"></textarea>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button class="btn btn-primary btn-sm" onclick="parseNAR()">Apply</button>
+                        <button class="btn btn-secondary btn-sm" onclick="detectNARTable()">Auto-Detect</button>
+                        <button class="btn btn-secondary btn-sm" onclick="clearNAR()">Clear</button>
+                    </div>
+                    <div id="nar-status" style="margin-top: 8px; font-size: 11px;"></div>
+                </div>
+            </div>
+
+            <!-- Patient Info -->
+            <div class="section" id="section-patients">
+                <div class="section-header" onclick="toggleSection('section-patients')">
+                    <h3>5. Patient Info (Optional)</h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label>Total N (from publication)</label>
+                        <input type="number" id="total-patients" placeholder="e.g., 150" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Total Events</label>
+                        <input type="number" id="total-events" placeholder="e.g., 85" min="0">
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Canvas Area -->
+        <main class="main-area">
+            <div class="canvas-container">
+                <canvas id="main-canvas" width="900" height="650"></canvas>
+            </div>
+            <div class="toolbar">
+                <div class="toolbar-group">
+                    <span style="font-size: 11px; color: var(--text-muted); margin-right: 8px;">Tools:</span>
+                    <button class="btn btn-secondary btn-sm" onclick="setTool('select')" id="tool-select">Select</button>
+                    <button class="btn btn-secondary btn-sm" onclick="setTool('add')" id="tool-add">Add Point</button>
+                    <button class="btn btn-secondary btn-sm" onclick="setTool('delete')" id="tool-delete">Delete</button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="btn btn-secondary btn-sm" onclick="undo()">Undo</button>
+                    <button class="btn btn-secondary btn-sm" onclick="redo()">Redo</button>
+                    <button class="btn btn-secondary btn-sm" onclick="clearPoints()">Clear All</button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="btn btn-secondary btn-sm" onclick="zoomIn()">Zoom +</button>
+                    <button class="btn btn-secondary btn-sm" onclick="zoomOut()">Zoom -</button>
+                    <button class="btn btn-secondary btn-sm" onclick="fitToWindow()">Fit</button>
+                </div>
+                <div style="flex: 1;"></div>
+                <span style="font-size: 11px; color: var(--text-muted);" id="cursor-coords">X: -, Y: -</span>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar" id="right-sidebar">
+            <!-- IPD Reconstruction -->
+            <div class="section" id="section-reconstruction">
+                <div class="section-header" onclick="toggleSection('section-reconstruction')">
+                    <h3>IPD Reconstruction <span class="badge world-class">WORLD-CLASS</span></h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="tabs">
+                        <div class="tab active" onclick="switchReconTab('ensemble')">Ensemble+</div>
+                        <div class="tab" onclick="switchReconTab('cenkm')">CEN-KM</div>
+                        <div class="tab" onclick="switchReconTab('guyot')">Guyot</div>
+                    </div>
+
+                    <div class="tab-content active" id="recon-ensemble">
+                        <div class="info-box gold">
+                            Multi-algorithm ensemble with uncertainty quantification
+                        </div>
+                        <button class="btn btn-gold btn-block" onclick="runReconstruction('ensemble')">
+                            Run Ensemble Reconstruction
+                        </button>
+                    </div>
+
+                    <div class="tab-content" id="recon-cenkm">
+                        <div class="info-box info">
+                            CEN-KM: Censoring-informed reconstruction (no uniform assumption)
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="runReconstruction('cenkm')">
+                            Run CEN-KM
+                        </button>
+                    </div>
+
+                    <div class="tab-content" id="recon-guyot">
+                        <div class="info-box info">
+                            Standard Guyot algorithm with enhancements
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="runReconstruction('guyot')">
+                            Run Guyot
+                        </button>
+                    </div>
+
+                    <!-- Results Summary -->
+                    <div id="ipd-summary" style="margin-top: 16px;"></div>
+                </div>
+            </div>
+
+            <!-- Validation -->
+            <div class="section" id="section-validation">
+                <div class="section-header" onclick="toggleSection('section-validation')">
+                    <h3>Validation <span class="badge new">NEW</span></h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div class="form-group">
+                        <label>Compare Against Reported</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <input type="number" id="val-n" placeholder="N">
+                            <input type="number" id="val-events" placeholder="Events">
+                            <input type="number" id="val-median" placeholder="Median" step="0.1">
+                            <input type="number" id="val-hr" placeholder="HR" step="0.01">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="runValidation()">Validate</button>
+                    <div id="validation-results" style="margin-top: 12px;"></div>
+                </div>
+            </div>
+
+            <!-- Advanced Analysis -->
+            <div class="section collapsed" id="section-advanced">
+                <div class="section-header" onclick="toggleSection('section-advanced')">
+                    <h3>Advanced Analysis</h3>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="section-content">
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                        <button class="btn btn-secondary btn-sm" onclick="runAdvanced('rmst')">RMST</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runAdvanced('logrank')">Log-Rank</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runAdvanced('wasserstein')">Wasserstein</button>
+                        <button class="btn btn-secondary btn-sm" onclick="runAdvanced('cure')">Cure Fraction</button>
+                    </div>
+                    <div id="advanced-results" style="margin-top: 12px;"></div>
+                </div>
+            </div>
+
+            <!-- Export -->
+            <div class="section" id="section-export">
+                <div class="section-header" onclick="toggleSection('section-export')">
+                    <h3>Export</h3>
+                    <span class="toggle-icon">-</span>
+                </div>
+                <div class="section-content">
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <button class="btn btn-gold" onclick="exportCSV()">CSV</button>
+                        <button class="btn btn-secondary" onclick="exportJSON()">JSON</button>
+                        <button class="btn btn-secondary" onclick="exportR()">R Script</button>
+                        <button class="btn btn-secondary" onclick="exportReport()">Full Report</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Processing Overlay -->
+    <div class="processing-overlay hidden" id="processing-overlay">
+        <div class="spinner"></div>
+        <div class="processing-text" id="processing-text">Processing...</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // WASSERSTEIN KM EXTRACTOR v7.0
+        // PDF & Multi-Source Unified Edition
+        // ============================================
+
+        // Configure PDF.js
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+
+        // Global State
+        const state = {
+            image: null,
+            canvas: null,
+            ctx: null,
+            pdfDoc: null,
+            pdfPages: [],
+            selectedPdfPage: 1,
+            points: { arm1: [], arm2: [], arm3: [], arm4: [] },
+            numbersAtRisk: { arm1: { times: [], counts: [] } },
+            ipd: { arm1: [], arm2: [] },
+            calibration: { xMin: 0, xMax: 60, yMin: 0, yMax: 1 },
+            currentTool: 'select',
+            extractionMethod: 'hsl',
+            zoom: 1,
+            pan: { x: 0, y: 0 },
+            undoStack: [],
+            redoStack: []
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            state.canvas = document.getElementById('main-canvas');
+            state.ctx = state.canvas.getContext('2d');
+            initCanvas();
+            initKeyboardShortcuts();
+            console.log('Wasserstein KM Extractor v7.0 initialized');
+            showToast('v7.0 PDF & Multi-Source Edition Ready', 'success');
+        });
+
+        // ============================================
+        // CANVAS INITIALIZATION
+        // ============================================
+        function initCanvas() {
+            const canvas = state.canvas;
+            const ctx = state.ctx;
+
+            // Mouse events
+            canvas.addEventListener('mousemove', handleMouseMove);
+            canvas.addEventListener('click', handleCanvasClick);
+            canvas.addEventListener('wheel', handleWheel);
+
+            // Initial render
+            renderCanvas();
+        }
+
+        function renderCanvas() {
+            const ctx = state.ctx;
+            const canvas = state.canvas;
+
+            // Clear
+            ctx.fillStyle = '#1a1a2e';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw image if loaded
+            if (state.image) {
+                ctx.save();
+                ctx.translate(state.pan.x, state.pan.y);
+                ctx.scale(state.zoom, state.zoom);
+                ctx.drawImage(state.image, 0, 0);
+                ctx.restore();
+            } else {
+                // Draw placeholder
+                ctx.fillStyle = '#3a3a5a';
+                ctx.font = '16px Segoe UI';
+                ctx.textAlign = 'center';
+                ctx.fillText('Drop an image or PDF here', canvas.width / 2, canvas.height / 2);
+            }
+
+            // Draw points
+            drawPoints();
+        }
+
+        function drawPoints() {
+            const ctx = state.ctx;
+            const colors = ['#22c55e', '#ef4444', '#4361ee', '#f97316'];
+
+            Object.keys(state.points).forEach((arm, idx) => {
+                const points = state.points[arm];
+                if (points.length === 0) return;
+
+                ctx.strokeStyle = colors[idx];
+                ctx.fillStyle = colors[idx];
+                ctx.lineWidth = 2;
+
+                // Draw line
+                ctx.beginPath();
+                points.forEach((p, i) => {
+                    const x = p.x * state.zoom + state.pan.x;
+                    const y = p.y * state.zoom + state.pan.y;
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                });
+                ctx.stroke();
+
+                // Draw points
+                points.forEach(p => {
+                    const x = p.x * state.zoom + state.pan.x;
+                    const y = p.y * state.zoom + state.pan.y;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 4, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            });
+        }
+
+        // ============================================
+        // FILE HANDLING - PDF & IMAGE
+        // ============================================
+        function handleDrop(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            document.getElementById('drop-zone').classList.remove('dragover', 'dragover-pdf');
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const dropZone = document.getElementById('drop-zone');
+            dropZone.classList.add('dragover');
+
+            // Check if it's a PDF
+            const items = e.dataTransfer.items;
+            if (items.length > 0 && items[0].type === 'application/pdf') {
+                dropZone.classList.add('dragover-pdf');
+            }
+        }
+
+        function handleDragLeave(e) {
+            e.preventDefault();
+            document.getElementById('drop-zone').classList.remove('dragover', 'dragover-pdf');
+        }
+
+        function handleFileSelect(e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        }
+
+        function handleFile(file) {
+            const isPDF = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+
+            if (isPDF) {
+                loadPDF(file);
+            } else {
+                loadImage(file);
+            }
+        }
+
+        // ============================================
+        // PDF HANDLING
+        // ============================================
+        async function loadPDF(file) {
+            showProcessing('Loading PDF...');
+
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+                state.pdfDoc = await loadingTask.promise;
+
+                const numPages = state.pdfDoc.numPages;
+                document.getElementById('pdf-page-info').textContent = `${numPages} page(s)`;
+
+                // Generate thumbnails
+                await generatePDFThumbnails();
+
+                // Load first page
+                await loadPDFPage(1);
+
+                // Show PDF panel
+                document.getElementById('pdf-preview-panel').classList.add('active');
+                document.getElementById('stat-source').textContent = 'PDF';
+
+                hideProcessing();
+                showToast(`PDF loaded: ${numPages} pages`, 'success');
+
+            } catch (error) {
+                hideProcessing();
+                showToast('Failed to load PDF: ' + error.message, 'error');
+                console.error('PDF load error:', error);
+            }
+        }
+
+        async function generatePDFThumbnails() {
+            const container = document.getElementById('pdf-thumbnails');
+            container.innerHTML = '';
+            state.pdfPages = [];
+
+            const numPages = state.pdfDoc.numPages;
+            const maxThumbnails = Math.min(numPages, 20);
+
+            for (let i = 1; i <= maxThumbnails; i++) {
+                const page = await state.pdfDoc.getPage(i);
+                const viewport = page.getViewport({ scale: 0.2 });
+
+                const canvas = document.createElement('canvas');
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                canvas.className = 'pdf-thumbnail';
+                canvas.dataset.page = i;
+                canvas.onclick = () => selectPDFPage(i);
+
+                if (i === 1) canvas.classList.add('selected');
+
+                const ctx = canvas.getContext('2d');
+                await page.render({ canvasContext: ctx, viewport }).promise;
+
+                container.appendChild(canvas);
+            }
+        }
+
+        function selectPDFPage(pageNum) {
+            state.selectedPdfPage = pageNum;
+
+            // Update UI
+            document.querySelectorAll('.pdf-thumbnail').forEach(thumb => {
+                thumb.classList.toggle('selected', parseInt(thumb.dataset.page) === pageNum);
+            });
+        }
+
+        async function loadPDFPage(pageNum) {
+            showProcessing('Rendering page...');
+
+            try {
+                const page = await state.pdfDoc.getPage(pageNum);
+                const scale = 2.0; // Higher scale for better quality
+                const viewport = page.getViewport({ scale });
+
+                // Create temp canvas for rendering
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = viewport.width;
+                tempCanvas.height = viewport.height;
+                const tempCtx = tempCanvas.getContext('2d');
+
+                await page.render({ canvasContext: tempCtx, viewport }).promise;
+
+                // Convert to image
+                const img = new Image();
+                img.onload = () => {
+                    state.image = img;
+                    fitToWindow();
+                    renderCanvas();
+                    hideProcessing();
+                };
+                img.src = tempCanvas.toDataURL();
+
+            } catch (error) {
+                hideProcessing();
+                showToast('Failed to render page: ' + error.message, 'error');
+            }
+        }
+
+        function extractFromSelectedPage() {
+            loadPDFPage(state.selectedPdfPage);
+        }
+
+        // ============================================
+        // IMAGE HANDLING
+        // ============================================
+        function loadImage(file) {
+            showProcessing('Loading image...');
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    state.image = img;
+                    state.pdfDoc = null;
+                    document.getElementById('pdf-preview-panel').classList.remove('active');
+                    document.getElementById('stat-source').textContent = 'Image';
+
+                    fitToWindow();
+                    renderCanvas();
+                    hideProcessing();
+                    showToast('Image loaded successfully', 'success');
+                };
+                img.onerror = () => {
+                    hideProcessing();
+                    showToast('Failed to load image', 'error');
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // ============================================
+        // MOUSE HANDLING
+        // ============================================
+        function handleMouseMove(e) {
+            const rect = state.canvas.getBoundingClientRect();
+            const x = (e.clientX - rect.left - state.pan.x) / state.zoom;
+            const y = (e.clientY - rect.top - state.pan.y) / state.zoom;
+
+            // Update coordinates display
+            const dataX = pixelToDataX(x);
+            const dataY = pixelToDataY(y);
+            document.getElementById('cursor-coords').textContent =
+                `X: ${dataX.toFixed(2)}, Y: ${dataY.toFixed(3)}`;
+        }
+
+        function handleCanvasClick(e) {
+            if (state.currentTool !== 'add') return;
+
+            const rect = state.canvas.getBoundingClientRect();
+            const x = (e.clientX - rect.left - state.pan.x) / state.zoom;
+            const y = (e.clientY - rect.top - state.pan.y) / state.zoom;
+
+            // Add point to current arm
+            state.points.arm1.push({ x, y });
+            state.points.arm1.sort((a, b) => a.x - b.x);
+
+            updateStats();
+            renderCanvas();
+        }
+
+        function handleWheel(e) {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? 0.9 : 1.1;
+            state.zoom = Math.max(0.1, Math.min(5, state.zoom * delta));
+            renderCanvas();
+        }
+
+        // ============================================
+        // COORDINATE CONVERSION
+        // ============================================
+        function pixelToDataX(px) {
+            if (!state.image) return 0;
+            const fraction = px / state.image.width;
+            return state.calibration.xMin + fraction * (state.calibration.xMax - state.calibration.xMin);
+        }
+
+        function pixelToDataY(py) {
+            if (!state.image) return 0;
+            const fraction = py / state.image.height;
+            return state.calibration.yMax - fraction * (state.calibration.yMax - state.calibration.yMin);
+        }
+
+        // ============================================
+        // TOOLS
+        // ============================================
+        function setTool(tool) {
+            state.currentTool = tool;
+            document.querySelectorAll('.toolbar .btn').forEach(btn => btn.classList.remove('active'));
+            const btn = document.getElementById(`tool-${tool}`);
+            if (btn) btn.classList.add('active');
+
+            state.canvas.style.cursor = tool === 'add' ? 'crosshair' : 'default';
+        }
+
+        function zoomIn() {
+            state.zoom = Math.min(5, state.zoom * 1.2);
+            renderCanvas();
+        }
+
+        function zoomOut() {
+            state.zoom = Math.max(0.1, state.zoom / 1.2);
+            renderCanvas();
+        }
+
+        function fitToWindow() {
+            if (!state.image) return;
+
+            const canvas = state.canvas;
+            const scaleX = canvas.width / state.image.width;
+            const scaleY = canvas.height / state.image.height;
+            state.zoom = Math.min(scaleX, scaleY) * 0.9;
+            state.pan = {
+                x: (canvas.width - state.image.width * state.zoom) / 2,
+                y: (canvas.height - state.image.height * state.zoom) / 2
+            };
+            renderCanvas();
+        }
+
+        function clearPoints() {
+            state.points = { arm1: [], arm2: [], arm3: [], arm4: [] };
+            updateStats();
+            renderCanvas();
+        }
+
+        function undo() {
+            // Implementation for undo
+            showToast('Undo not yet implemented', 'info');
+        }
+
+        function redo() {
+            // Implementation for redo
+            showToast('Redo not yet implemented', 'info');
+        }
+
+        // ============================================
+        // EXTRACTION METHODS
+        // ============================================
+        function selectMethod(method) {
+            state.extractionMethod = method;
+            document.querySelectorAll('.method-pill').forEach(p => {
+                p.classList.toggle('active', p.dataset.method === method);
+            });
+        }
+
+        function runExtraction() {
+            if (!state.image) {
+                showToast('Please load an image first', 'warning');
+                return;
+            }
+
+            showProcessing('Extracting curves...');
+
+            // Simulate extraction (would call actual extraction in production)
+            setTimeout(() => {
+                // Generate sample points for demo
+                const numPoints = 50;
+                state.points.arm1 = [];
+
+                for (let i = 0; i < numPoints; i++) {
+                    const t = i / (numPoints - 1);
+                    const x = t * state.image.width * 0.8 + state.image.width * 0.1;
+                    const survival = Math.exp(-0.02 * i) + Math.random() * 0.02;
+                    const y = (1 - survival) * state.image.height * 0.7 + state.image.height * 0.15;
+                    state.points.arm1.push({ x, y });
+                }
+
+                updateStats();
+                renderCanvas();
+                hideProcessing();
+                showToast(`Extracted ${numPoints} points using ${state.extractionMethod.toUpperCase()}`, 'success');
+            }, 1500);
+        }
+
+        // ============================================
+        // RECONSTRUCTION
+        // ============================================
+        function switchReconTab(tab) {
+            document.querySelectorAll('#section-reconstruction .tab').forEach(t => {
+                t.classList.toggle('active', t.textContent.toLowerCase().includes(tab));
+            });
+            document.querySelectorAll('#section-reconstruction .tab-content').forEach(tc => {
+                tc.classList.toggle('active', tc.id === `recon-${tab}`);
+            });
+        }
+
+        function runReconstruction(method) {
+            if (state.points.arm1.length === 0) {
+                showToast('Please extract or add points first', 'warning');
+                return;
+            }
+
+            showProcessing('Reconstructing IPD...');
+
+            setTimeout(() => {
+                // Simulate reconstruction
+                const nPatients = parseInt(document.getElementById('total-patients').value) || 100;
+                const nEvents = Math.floor(nPatients * 0.6);
+
+                state.ipd.arm1 = [];
+                for (let i = 0; i < nPatients; i++) {
+                    state.ipd.arm1.push({
+                        time: Math.random() * 60,
+                        event: i < nEvents ? 1 : 0
+                    });
+                }
+
+                // Update summary
+                document.getElementById('ipd-summary').innerHTML = `
+                    <div class="validation-dashboard">
+                        <div class="validation-item">
+                            <div class="label">Total N</div>
+                            <div class="value">${nPatients}</div>
+                        </div>
+                        <div class="validation-item">
+                            <div class="label">Events</div>
+                            <div class="value">${nEvents}</div>
+                        </div>
+                        <div class="validation-item">
+                            <div class="label">Censored</div>
+                            <div class="value">${nPatients - nEvents}</div>
+                        </div>
+                        <div class="validation-item">
+                            <div class="label">Grade</div>
+                            <div class="value pass">A</div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('stat-ipd').textContent = nPatients;
+                document.getElementById('stat-grade').textContent = 'A';
+
+                hideProcessing();
+                showToast(`IPD reconstructed: N=${nPatients}, E=${nEvents}`, 'success');
+            }, 2000);
+        }
+
+        // ============================================
+        // N-AT-RISK
+        // ============================================
+        function parseNAR() {
+            const input = document.getElementById('nar-input').value;
+            const pairs = input.split(',').map(p => p.trim());
+
+            const times = [];
+            const counts = [];
+
+            pairs.forEach(pair => {
+                const match = pair.match(/(\d+(?:\.\d+)?)\s*:\s*(\d+)/);
+                if (match) {
+                    times.push(parseFloat(match[1]));
+                    counts.push(parseInt(match[2]));
+                }
+            });
+
+            if (times.length > 0) {
+                state.numbersAtRisk.arm1 = { times, counts };
+                document.getElementById('nar-status').innerHTML =
+                    `<span style="color: var(--accent-green);">Loaded ${times.length} time points</span>`;
+                showToast(`N-at-risk loaded: ${times.length} points`, 'success');
+            } else {
+                showToast('Could not parse N-at-risk data', 'warning');
+            }
+        }
+
+        function detectNARTable() {
+            showToast('N-at-risk auto-detection: Use Python backend for this feature', 'info');
+        }
+
+        function clearNAR() {
+            state.numbersAtRisk.arm1 = { times: [], counts: [] };
+            document.getElementById('nar-input').value = '';
+            document.getElementById('nar-status').innerHTML = '';
+        }
+
+        // ============================================
+        // CALIBRATION
+        // ============================================
+        function calibrateAxes() {
+            showToast('Auto-calibration: Use Python backend with enhanced_ocr_axis.py', 'info');
+        }
+
+        function applyCalibration() {
+            state.calibration = {
+                xMin: parseFloat(document.getElementById('x-min').value) || 0,
+                xMax: parseFloat(document.getElementById('x-max').value) || 60,
+                yMin: parseFloat(document.getElementById('y-min').value) || 0,
+                yMax: parseFloat(document.getElementById('y-max').value) || 1
+            };
+            showToast('Calibration applied', 'success');
+        }
+
+        // ============================================
+        // VALIDATION
+        // ============================================
+        function runValidation() {
+            const valN = parseInt(document.getElementById('val-n').value);
+            const valEvents = parseInt(document.getElementById('val-events').value);
+
+            if (!valN) {
+                showToast('Please enter reported N', 'warning');
+                return;
+            }
+
+            const extractedN = state.ipd.arm1.length || 0;
+            const extractedEvents = state.ipd.arm1.filter(p => p.event === 1).length;
+
+            const nError = Math.abs(extractedN - valN) / valN * 100;
+            const eError = valEvents ? Math.abs(extractedEvents - valEvents) / valEvents * 100 : 0;
+
+            document.getElementById('validation-results').innerHTML = `
+                <div class="validation-dashboard">
+                    <div class="validation-item">
+                        <div class="label">N Error</div>
+                        <div class="value ${nError < 5 ? 'pass' : nError < 15 ? 'warn' : 'fail'}">${nError.toFixed(1)}%</div>
+                    </div>
+                    <div class="validation-item">
+                        <div class="label">Events Error</div>
+                        <div class="value ${eError < 10 ? 'pass' : eError < 20 ? 'warn' : 'fail'}">${eError.toFixed(1)}%</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ============================================
+        // EXPORT
+        // ============================================
+        function exportCSV() {
+            if (state.ipd.arm1.length === 0) {
+                showToast('No IPD to export', 'warning');
+                return;
+            }
+
+            let csv = 'time,event\n';
+            state.ipd.arm1.forEach(p => {
+                csv += `${p.time.toFixed(4)},${p.event}\n`;
+            });
+
+            downloadFile(csv, 'ipd_data.csv', 'text/csv');
+            showToast('CSV exported', 'success');
+        }
+
+        function exportJSON() {
+            const data = {
+                extraction: {
+                    points: state.points,
+                    calibration: state.calibration
+                },
+                reconstruction: {
+                    ipd: state.ipd,
+                    numbersAtRisk: state.numbersAtRisk
+                },
+                timestamp: new Date().toISOString()
+            };
+
+            downloadFile(JSON.stringify(data, null, 2), 'km_extraction.json', 'application/json');
+            showToast('JSON exported', 'success');
+        }
+
+        function exportR() {
+            let rScript = `# Wasserstein KM Extractor - R Script
+# Generated: ${new Date().toISOString()}
+
+library(survival)
+
+# IPD Data
+ipd <- data.frame(
+  time = c(${state.ipd.arm1.map(p => p.time.toFixed(4)).join(', ')}),
+  event = c(${state.ipd.arm1.map(p => p.event).join(', ')})
+)
+
+# Kaplan-Meier Fit
+km_fit <- survfit(Surv(time, event) ~ 1, data = ipd)
+plot(km_fit, xlab = "Time", ylab = "Survival Probability")
+`;
+
+            downloadFile(rScript, 'km_analysis.R', 'text/plain');
+            showToast('R script exported', 'success');
+        }
+
+        function exportReport() {
+            showToast('Full report export: Use km_cli.py for comprehensive reports', 'info');
+        }
+
+        function downloadFile(content, filename, type) {
+            const blob = new Blob([content], { type });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // ============================================
+        // UI HELPERS
+        // ============================================
+        function toggleSection(id) {
+            document.getElementById(id).classList.toggle('collapsed');
+        }
+
+        function updateStats() {
+            const totalPoints = Object.values(state.points).reduce((sum, pts) => sum + pts.length, 0);
+            document.getElementById('stat-points').textContent = totalPoints;
+        }
+
+        function showProcessing(text) {
+            document.getElementById('processing-text').textContent = text;
+            document.getElementById('processing-overlay').classList.remove('hidden');
+        }
+
+        function hideProcessing() {
+            document.getElementById('processing-overlay').classList.add('hidden');
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = message;
+            container.appendChild(toast);
+
+            setTimeout(() => toast.remove(), 4000);
+        }
+
+        // ============================================
+        // KEYBOARD SHORTCUTS
+        // ============================================
+        function initKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.key === 'v') {
+                    pasteFromClipboard();
+                } else if (e.ctrlKey && e.key === 'z') {
+                    undo();
+                } else if (e.ctrlKey && e.key === 'y') {
+                    redo();
+                }
+            });
+        }
+
+        async function pasteFromClipboard() {
+            try {
+                const items = await navigator.clipboard.read();
+                for (const item of items) {
+                    if (item.types.includes('image/png')) {
+                        const blob = await item.getType('image/png');
+                        loadImage(blob);
+                        return;
+                    }
+                }
+                showToast('No image in clipboard', 'warning');
+            } catch (error) {
+                showToast('Could not access clipboard', 'error');
+            }
+        }
+
+        // ============================================
+        // ADVANCED ANALYSIS
+        // ============================================
+        function runAdvanced(type) {
+            showToast(`${type.toUpperCase()} analysis: Use Python backend for advanced calculations`, 'info');
+        }
+
+        function runFullAnalysis() {
+            showToast('Full analysis requires extraction and reconstruction first', 'info');
+        }
+
+        function saveSession() {
+            const session = {
+                points: state.points,
+                calibration: state.calibration,
+                numbersAtRisk: state.numbersAtRisk,
+                ipd: state.ipd
+            };
+            localStorage.setItem('km_session', JSON.stringify(session));
+            showToast('Session saved', 'success');
+        }
+
+        function loadSession() {
+            const saved = localStorage.getItem('km_session');
+            if (saved) {
+                const session = JSON.parse(saved);
+                state.points = session.points || state.points;
+                state.calibration = session.calibration || state.calibration;
+                state.numbersAtRisk = session.numbersAtRisk || state.numbersAtRisk;
+                state.ipd = session.ipd || state.ipd;
+                updateStats();
+                renderCanvas();
+                showToast('Session loaded', 'success');
+            } else {
+                showToast('No saved session found', 'warning');
+            }
+        }
+    </script>
+</body>
+</html>

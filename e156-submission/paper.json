@@ -1,0 +1,96 @@
+{
+  "title": "Automated Kaplan-Meier Digitization for Hazard Ratio Extraction",
+  "slug": "wasserstein-km-extractor",
+  "author": "Mahmood Ahmad",
+  "date": "2026-03-26",
+  "body": "Can automated Kaplan-Meier digitization from published PDF figures produce hazard ratios accurate enough for meta-analytic pooling? We developed a seven-stage pipeline that rasterizes PDFs, classifies figures, calibrates axes via OCR, extracts curves through HSV color segmentation, separates arms with KMeans clustering, reconstructs individual patient data using the Guyot algorithm, and estimates hazard ratios via log-rank tests. The system was validated on 40 trials spanning 11 therapeutic areas including cardiac ablation, heart failure, and oncology using published hazard ratios as reference. Across 40 trials, 36 produced HR estimates within the published 95% CI, yielding 90 percent concordance with median relative error of 2.5 percent. Cross-validation against R IPDfromKM showed the Python pipeline outperforming with median errors of 1.2 versus 10.4 percent on gold-standard atrial fibrillation trials. Automated KM digitization provides usable effect estimates when individual patient data are unavailable for time-to-event meta-analyses. The limitation of color-dependent curve separation means monochrome or stylized figures may yield unreliable results.",
+  "word_count": 156,
+  "sentence_count": 7,
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "Can automated Kaplan-Meier digitization from published PDF figures produce hazard ratios accurate enough for meta-analytic pooling?"
+    },
+    {
+      "role": "Dataset",
+      "text": "We developed a seven-stage pipeline that rasterizes PDFs, classifies figures, calibrates axes via OCR, extracts curves through HSV color segmentation, separates arms with KMeans clustering, reconstructs individual patient data using the Guyot algorithm, and estimates hazard ratios via log-rank tests."
+    },
+    {
+      "role": "Method",
+      "text": "The system was validated on 40 trials spanning 11 therapeutic areas including cardiac ablation, heart failure, and oncology using published hazard ratios as reference."
+    },
+    {
+      "role": "Primary result",
+      "text": "Across 40 trials, 36 produced HR estimates within the published 95% CI, yielding 90 percent concordance with median relative error of 2.5 percent."
+    },
+    {
+      "role": "Robustness",
+      "text": "Cross-validation against R IPDfromKM showed the Python pipeline outperforming with median errors of 1.2 versus 10.4 percent on gold-standard atrial fibrillation trials."
+    },
+    {
+      "role": "Interpretation",
+      "text": "Automated KM digitization provides usable effect estimates when individual patient data are unavailable for time-to-event meta-analyses."
+    },
+    {
+      "role": "Boundary",
+      "text": "The limitation of color-dependent curve separation means monochrome or stylized figures may yield unreliable results."
+    }
+  ],
+  "notes": {
+    "app": "Wasserstein KM Extractor v1.4",
+    "data": "40 trials, 11 therapeutic areas, 13 gold-standard AF trials",
+    "code": "https://github.com/mahmood726-cyber/wasserstein",
+    "doi": "",
+    "version": "1.4",
+    "date": "2026-03-26",
+    "validation": "DRAFT"
+  },
+  "type": "methods",
+  "primary_estimand": "HR",
+  "validation": {
+    "status": "pass",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": true,
+        "detail": "Found 7 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": true,
+        "detail": "Found 156 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": true,
+        "detail": "Sentence 4 should include a confidence interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": true,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": true,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "schema": "e156-v0.2"
+}
