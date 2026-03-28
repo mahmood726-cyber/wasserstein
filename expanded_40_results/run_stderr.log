@@ -1,0 +1,608 @@
+INFO:km_pipeline:Processing: Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NAR found on page 3: 1 rows, N=78
+INFO:km_pipeline:Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf: 9 curves from 8 pages
+INFO:km_pipeline:Derived HR=0.525 from event rates: [DERIVED from 68.0% vs 48.0%] ocal ablation to isolate PVs. Freedom from AF was 68% with RFCA and 48
+INFO:km_pipeline:Text HR = 0.525  context: '[DERIVED from 68.0% vs 48.0%] ocal ablation to isolate PVs. Freedom from AF was 68% with RFCA and 48% with CRYO (P = 0.05). However'
+INFO:km_pipeline:Using NAR data: n1=100, n2=78
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=78
+INFO:km_pipeline:Using NAR data: n1=100, n2=78
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Curve HR (0.621) too far from derived HR (0.525); using derived HR
+INFO:km_pipeline:Using NAR data: n1=100, n2=78
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=78
+INFO:km_pipeline:Using NAR data: n1=100, n2=78
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Curve HR (1.610) too far from derived HR (1.9047619047619047); using derived HR
+INFO:km_pipeline:IPD reconstructed: 129 treatment (129 events), 89 control (78 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\Cardiovasc electrophysiol - 2015 - HUNTER - Point-by-Point Radiofrequency Ablation Versus the Cryoballoon or a Novel_summary.json
+INFO:km_pipeline:Processing: Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 2: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 2: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:NAR found on page 0: 1 rows, N=2023
+INFO:km_pipeline:Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf: 9 curves from 6 pages
+INFO:km_pipeline:Using NAR data: n1=2023, n2=2023
+INFO:km_pipeline:Using NAR data: n1=2023, n2=100
+INFO:km_pipeline:Using NAR data: n1=2023, n2=100
+INFO:km_pipeline:Using NAR data: n1=2023, n2=100
+INFO:km_pipeline:Using NAR data: n1=2023, n2=100
+INFO:km_pipeline:Using NAR data: n1=2023, n2=100
+INFO:km_pipeline:Using NAR data: n1=2023, n2=100
+INFO:km_pipeline:IPD reconstructed: 100 treatment (89 events), 100 control (90 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with_summary.json
+INFO:km_pipeline:Processing: NEJMoa1602014.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NEJMoa1602014.pdf: 9 curves from 11 pages
+INFO:km_pipeline:Text HR = 0.96  context: 'timates, 34.6% and 35.9%, respectively; hazard ratio, 0.96; 95% confidence interval [CI], 0.76 to 1.22; P<0.001 for noninferiority). The prima'
+INFO:km_pipeline:IPD reconstructed: 100 treatment (86 events), 41 control (29 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\NEJMoa1602014_summary.json
+INFO:km_pipeline:Processing: andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 2 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 6 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf: 16 curves from 10 pages
+INFO:km_pipeline:Text HR = 1.08  context: 'ered together and compared with CF-RF (hazard ratio, 1.08 [95% CI, 0.78-1.50]). Secondary Outcome'
+INFO:km_pipeline:IPD reconstructed: 67 treatment (56 events), 88 control (77 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring_summary.json
+INFO:km_pipeline:Processing: chun-et-al-cryoballoon-versus-laserballoon.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NAR found on page 0: 1 rows, N=2021
+INFO:km_pipeline:Page 6 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:chun-et-al-cryoballoon-versus-laserballoon.pdf: 8 curves from 9 pages
+INFO:km_pipeline:Derived HR=0.898 from event rates: [DERIVED from 80.0% vs 78.0%] nutes, P=0.083). Overall, the primary end point of no atrial tachyarrh
+INFO:km_pipeline:Text HR = 0.898  context: '[DERIVED from 80.0% vs 78.0%] nutes, P=0.083). Overall, the primary end point of no atrial tachyarrhythmia recurrence was met in 79% (cryoballoon: 80.0% versus laserballoon: 78.0%, P=ns). No death, atrio-esop'
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Using NAR data: n1=2021, n2=2021
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Curve HR (0.967) too far from derived HR (0.898); using derived HR
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Using NAR data: n1=2021, n2=2021
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Using NAR data: n1=2021, n2=100
+INFO:km_pipeline:Curve HR (1.034) too far from derived HR (1.1135857461024499); using derived HR
+INFO:km_pipeline:IPD reconstructed: 41 treatment (30 events), 41 control (31 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\chun-et-al-cryoballoon-versus-laserballoon_summary.json
+INFO:km_pipeline:Processing: ehaf451.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NAR found on page 3: 5 rows, N=9
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:NAR found on page 1: 1 rows, N=99
+INFO:km_pipeline:ehaf451.pdf: 21 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.99  context: 'rvival (%) Days since catheter ablation Hazard ratio 0.99 (95% CI 0.69-1.43) P = 0.96 by log-rank test Cryoballoon'
+INFO:km_pipeline:IPD reconstructed: 54 treatment (12 events), 54 control (16 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\ehaf451_summary.json
+INFO:km_pipeline:Processing: euaf066.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 6 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:euaf066.pdf: 11 curves from 8 pages
+INFO:km_pipeline:Derived HR=1.476 from event rates: [DERIVED from 73.8% vs 81.4%] 7.6% (95 CI: -20.1; 4.9) 365d event-free survival vHPSD 73.8% vs. CBA 
+INFO:km_pipeline:Text HR = 1.476  context: '[DERIVED from 73.8% vs 81.4%] 7.6% (95 CI: -20.1; 4.9) 365d event-free survival vHPSD 73.8% vs. CBA 81.4% 70W/ 7s Favours CBA Favours v'
+INFO:km_pipeline:Curve HR (1.303) too far from derived HR (1.476); using derived HR
+INFO:km_pipeline:Curve HR (0.767) too far from derived HR (0.6775067750677507); using derived HR
+INFO:km_pipeline:IPD reconstructed: 45 treatment (32 events), 74 control (64 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\euaf066_summary.json
+INFO:km_pipeline:Processing: eut398.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=0.84), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:eut398.pdf: 11 curves from 6 pages
+INFO:km_pipeline:Derived HR=0.721 from event rates: [DERIVED from 65.0% vs 55.0%] s follow-up, single-procedure success without ADT was comparable betwe
+INFO:km_pipeline:Text HR = 0.721  context: '[DERIVED from 65.0% vs 55.0%] s follow-up, single-procedure success without ADT was comparable between PVAC and CPVI (65% vs. 55%, P ¼ NS). The majority of rec'
+INFO:km_pipeline:IPD reconstructed: 82 treatment (71 events), 75 control (65 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\eut398_summary.json
+INFO:km_pipeline:Processing: euu064.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:euu064.pdf: 16 curves from 9 pages
+INFO:km_pipeline:Derived HR=0.881 from event rates: [DERIVED from 60.0% vs 56.0%] randomized patients. Overall, 60% of the PVAC patients were free of AF
+INFO:km_pipeline:Text HR = 0.881  context: '[DERIVED from 60.0% vs 56.0%] randomized patients. Overall, 60% of the PVAC patients were free of AF and atrial arrhythmias off anti-dysrhythmics on 7-day Holter 12 months post ablation. This compares with 56% of the WACA group at 12 month'
+INFO:km_pipeline:Curve HR (0.753) too far from derived HR (0.881); using derived HR
+INFO:km_pipeline:Curve HR (1.329) too far from derived HR (1.1350737797956867); using derived HR
+INFO:km_pipeline:IPD reconstructed: 93 treatment (81 events), 92 control (79 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\euu064_summary.json
+INFO:km_pipeline:Processing: pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 2 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf: 20 curves from 11 pages
+INFO:km_pipeline:Derived HR=0.954 from event rates: [DERIVED from 81.7% vs 80.9%] follow-up, neither the early recurrence rate within 3 months of the AF
+INFO:km_pipeline:Text HR = 0.954  context: '[DERIVED from 81.7% vs 80.9%] follow-up, neither the early recurrence rate within 3 months of the AFCA (18.3% versus 19.1%; P=0.855) nor the clinical re'
+INFO:km_pipeline:IPD reconstructed: 98 treatment (86 events), 98 control (87 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients_summary.json
+INFO:km_pipeline:Processing: reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 7 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf: 15 curves from 12 pages
+INFO:km_pipeline:Derived HR=0.918 from event rates: [DERIVED from 73.3% vs 71.3%] usly reported for ADVENT, the primary endpoint of treatment success, w
+INFO:km_pipeline:Text HR = 0.918  context: '[DERIVED from 73.3% vs 71.3%] usly reported for ADVENT, the primary endpoint of treatment success, which incorporated the “traditional” dichotomous endpoint of 30-second AA recurrence, was 73.3% with pentaspline PFA and 71.3% with thermal ablation (betwee'
+INFO:km_pipeline:IPD reconstructed: 98 treatment (87 events), 93 control (82 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation_summary.json
+INFO:km_pipeline:Processing: s12872-017-0566-6.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Added dashed blue curve: 43 points
+INFO:simple_multicurve_handler:Panel 0: fallback cascade found 2 curves
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:s12872-017-0566-6.pdf: 2 curves from 8 pages
+INFO:km_pipeline:Derived HR=1.056 from event rates: [DERIVED from 40.0% vs 42.0%] ere similar. Single-procedure success was achieved by 40% of patients 
+INFO:km_pipeline:Text HR = 1.056  context: '[DERIVED from 40.0% vs 42.0%] ere similar. Single-procedure success was achieved by 40% of patients in the RF group and 42% of the CB group (p < 0.001 fo'
+INFO:km_pipeline:Curve HR (1.134) too far from derived HR (1.056); using derived HR
+INFO:km_pipeline:Curve HR (0.882) too far from derived HR (0.9469696969696969); using derived HR
+INFO:km_pipeline:IPD reconstructed: 46 treatment (35 events), 100 control (95 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\s12872-017-0566-6_summary.json
+INFO:km_pipeline:Processing: schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 8 NAR detection timed out (4.5s), skipping
+INFO:km_pipeline:schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf: 18 curves from 10 pages
+INFO:km_pipeline:Derived HR=0.926 from event rates: [DERIVED from 71.2% vs 69.3%] 128±51 and 11±9 minutes). The primary efficacy end point was met by 71
+INFO:km_pipeline:Text HR = 0.926  context: '[DERIVED from 71.2% vs 69.3%] 128±51 and 11±9 minutes). The primary efficacy end point was met by 71.2% versus 69.3%, in the LB and RF groups, re'
+INFO:km_pipeline:IPD reconstructed: 111 treatment (110 events), 42 control (30 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial_summary.json
+INFO:km_pipeline:Processing: NEJMoa2107038.pdf
+INFO:km_pipeline:NEJMoa2107038.pdf: 1 curves from 11 pages
+INFO:km_pipeline:Text HR = 0.79  context: 'patients (17.1%) in the placebo group (hazard ratio, 0.79; 95% confidence interval [CI], 0.69 to 0.90; P<0.001). This effect was mainly rela'
+INFO:km_pipeline:No curve pairs but text HR=0.790 found
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\NEJMoa2107038_summary.json
+INFO:km_pipeline:Processing: NEJMoa2206286.pdf
+INFO:km_pipeline:NEJMoa2206286.pdf: 4 curves from 10 pages
+INFO:km_pipeline:Text HR = 0.82  context: 'patients (19.5%) in the placebo group (hazard ratio, 0.82; 95% confidence interval [CI], 0.73 to 0.92; P<0.001). Worsening heart failure occ'
+INFO:km_pipeline:IPD reconstructed: 48 treatment (24 events), 42 control (16 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\NEJMoa2206286_summary.json
+INFO:km_pipeline:Processing: NEJMoa2307563.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NEJMoa2307563.pdf: 4 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.8  context: 'patients (8.0%) in the placebo group (hazard ratio, 0.80; 95% confidence interval, 0.72 to 0.90; P<0.001). Adverse events leading to pe'
+INFO:km_pipeline:IPD reconstructed: 57 treatment (43 events), 55 control (44 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\NEJMoa2307563_summary.json
+INFO:km_pipeline:Processing: NEJMoa1904143.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:km_pipeline:NEJMoa1904143.pdf: 1 curves from 11 pages
+INFO:km_pipeline:Text HR = 0.72  context: 'nd 5.75% per patientyear, respectively (hazard ratio, 0.72; 95% confidence interval [CI], 0.55 to 0.95; P<0.001 for noninferiority). Rivaroxa'
+INFO:km_pipeline:No curve pairs but text HR=0.720 found
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\NEJMoa1904143_summary.json
+INFO:km_pipeline:Processing: Partner3.pdf
+INFO:km_pipeline:Partner3.pdf: 0 curves from 11 pages
+INFO:km_pipeline:Text HR = 0.54  context: '8 to \u22122.5; P<0.001 for noninferiority; hazard ratio, 0.54; 95% CI, 0.37 to 0.79; P = 0.001 for su'
+INFO:km_pipeline:No curve pairs but text HR=0.540 found
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\Partner3_summary.json
+INFO:km_pipeline:Processing: Augustus.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Augustus.pdf: 3 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.69  context: 'hose receiving a vitamin K antagonist (hazard ratio, 0.69; 95% confidence interval [CI], 0.58 to 0.81; P<0.001 for both noninferiority and s'
+INFO:km_pipeline:Curve HR (0.349) wildly divergent from text HR (0.69), log-err=0.68; rejecting curve-based result
+INFO:km_pipeline:No curve pairs but text HR=0.690 found
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\Augustus_summary.json
+INFO:km_pipeline:Processing: IvabradineandoutcomesinchronicheartfailureSHIFT-arandomisedplacebo-controlledstudy.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NAR found on page 7: 1 rows, N=3144
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 5 NAR detection timed out (2.3s), skipping
+INFO:km_pipeline:IvabradineandoutcomesinchronicheartfailureSHIFT-arandomisedplacebo-controlledstudy.pdf: 14 curves from 11 pages
+INFO:km_pipeline:Text HR = 0.82  context: 'placebo had a primary endpoint event (HR 0.82, 95% CI 0.75-0.90, p<0.0001). The e\ufb00 ects were driven mai'
+INFO:km_pipeline:Using NAR data: n1=3144, n2=3144
+INFO:km_pipeline:Using NAR data: n1=3144, n2=3144
+INFO:km_pipeline:Using NAR data: n1=100, n2=3144
+INFO:km_pipeline:Using NAR data: n1=100, n2=3144
+INFO:km_pipeline:Using NAR data: n1=100, n2=3144
+INFO:km_pipeline:Using NAR data: n1=100, n2=3144
+INFO:km_pipeline:Using NAR data: n1=3144, n2=100
+INFO:km_pipeline:IPD reconstructed: 95 treatment (84 events), 33 control (23 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\IvabradineandoutcomesinchronicheartfailureSHIFT-arandomisedplacebo-controlledstudy_summary.json
+INFO:km_pipeline:Processing: EffectofmetoprololCR-XLinchronicheartfailure.pdf
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:NAR found on page 4: 1 rows, N=2200
+INFO:km_pipeline:EffectofmetoprololCR-XLinchronicheartfailure.pdf: 6 curves from 7 pages
+INFO:km_pipeline:Text HR = 0.66  context: 'of follow-up]) vs 217 deaths [11.0 %], relative risk 0.66 [95% CI 0.53-0.81]; p=0.00009 or adjusted for interim ana'
+INFO:km_pipeline:Using NAR data: n1=2200, n2=2200
+INFO:km_pipeline:Using NAR data: n1=2200, n2=100
+INFO:km_pipeline:Using NAR data: n1=100, n2=2200
+INFO:km_pipeline:Using NAR data: n1=100, n2=2200
+INFO:km_pipeline:Using NAR data: n1=2200, n2=100
+INFO:km_pipeline:Using NAR data: n1=100, n2=2200
+INFO:km_pipeline:Using NAR data: n1=100, n2=2200
+INFO:km_pipeline:Using NAR data: n1=100, n2=2200
+INFO:km_pipeline:IPD reconstructed: 5643 treatment (3840 events), 99 control (87 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\EffectofmetoprololCR-XLinchronicheartfailure_summary.json
+INFO:km_pipeline:Processing: entrust.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:entrust.pdf: 12 curves from 9 pages
+INFO:km_pipeline:Text HR = 0.83  context: '25.6%) patients with the VKA regimen; hazard ratio 0.83 (95% CI 0.65-1.05; p=0.0010 for non-inferiority, margin h'
+INFO:km_pipeline:IPD reconstructed: 56 treatment (43 events), 92 control (80 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\entrust_summary.json
+INFO:km_pipeline:Processing: Pioneer AF.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Pioneer AF.pdf: 5 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.59  context: '8.0% in group 2, and 26.7% in group 3; hazard ratio for group 1 vs. group 3, 0.59; 95% confidence interval [CI], 0.47 to 0.76; P<0.001; hazard ratio for group 2 vs.'
+INFO:km_pipeline:IPD reconstructed: 63 treatment (50 events), 57 control (46 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\Pioneer AF_summary.json
+INFO:km_pipeline:Processing: NEJMoa0802987.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NEJMoa0802987.pdf: 2 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.86  context: 'microvascular events (9.4% vs. 10.9%; hazard ratio, 0.86; 95% CI, 0.77 to 0.97; P = 0.01), prima'
+INFO:km_pipeline:IPD reconstructed: 70 treatment (59 events), 28 control (18 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\NEJMoa0802987_summary.json
+INFO:km_pipeline:Processing: TheLancet1999Investigators.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:TheLancet1999Investigators.pdf: 2 curves from 5 pages
+INFO:km_pipeline:Text HR = 0.66  context: 'l group and 13.2% in the placebo group (hazard ratio 0.66 [95% CI 0.54-0.81], figure 2). There we'
+INFO:km_pipeline:IPD reconstructed: 46 treatment (36 events), 99 control (86 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\TheLancet1999Investigators_summary.json
+INFO:km_pipeline:Processing: PMC10115555.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 10 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 4 NAR detection timed out (2.2s), skipping
+INFO:km_pipeline:PMC10115555.pdf: 21 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.82  context: 'median OS was 15.7 versus 13.2 months (HR, 0.82; 95% CI, 0.69 to 0.97). Among patients with CPS $ 20, the med'
+INFO:km_pipeline:IPD reconstructed: 65 treatment (54 events), 83 control (71 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC10115555_summary.json
+INFO:km_pipeline:Processing: PMC10427418.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 2 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC10427418.pdf: 17 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.678  context: 'nths versus 6.08 months, respectively; HR = 0.678; 95% CI, 0.546-0.841; P = 0.0002) (Extended Data Fig. 1). O'
+INFO:km_pipeline:IPD reconstructed: 100 treatment (93 events), 79 control (68 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC10427418_summary.json
+INFO:km_pipeline:Processing: PMC10553121.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=0.97), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC10553121.pdf: 16 curves from 12 pages
+INFO:km_pipeline:Text HR = 5.0  context: '(HR) 5 0.86 (0.75 to 0.99), P 5 .03 and HR 5 0.77 (0.68 to 0.87), P < .001 respectiv'
+INFO:km_pipeline:IPD reconstructed: 88 treatment (56 events), 88 control (40 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC10553121_summary.json
+INFO:km_pipeline:Processing: PMC11943310.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 7 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 2 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC11943310.pdf: 30 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.87  context: 'come rate (13.0% vs. 14.9% in placebo), HR = 0.87 Nausea, vomiting [2] SUSTAIN-6 Trial 32'
+INFO:km_pipeline:IPD reconstructed: 100 treatment (94 events), 92 control (82 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC11943310_summary.json
+INFO:km_pipeline:Processing: 40036884_Effects of SGLT2 inhibition on insulin u.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=0.88), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 2 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:40036884_Effects of SGLT2 inhibition on insulin u.pdf: 12 curves from 9 pages
+INFO:km_pipeline:Text HR = 0.81  context: 'ification by 19% compared with placebo [HR 0.81 (95% CI 0.71-0.93); Fig. 1 ]. Among the 1517 (34.5%) part'
+INFO:km_pipeline:IPD reconstructed: 59 treatment (47 events), 66 control (54 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\40036884_Effects of SGLT2 inhibition on insulin u_summary.json
+INFO:km_pipeline:Processing: 40978864_Sodium-Glucose Cotransporter 2 SGLT2 Inh.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=0.87), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NAR found on page 8: 1 rows, N=2025
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 4 NAR detection timed out (2.2s), skipping
+INFO:km_pipeline:40978864_Sodium-Glucose Cotransporter 2 SGLT2 Inh.pdf: 28 curves from 11 pages
+INFO:km_pipeline:Text HR = 0.73  context: 'th was similar in nondiabetic patients (HR 0.73; 95% CI, 0.60-0.88) compared to the overall trial populati'
+INFO:km_pipeline:Using NAR data: n1=2025, n2=2025
+INFO:km_pipeline:Using NAR data: n1=100, n2=2025
+INFO:km_pipeline:Using NAR data: n1=100, n2=2025
+INFO:km_pipeline:Using NAR data: n1=2025, n2=2025
+INFO:km_pipeline:Using NAR data: n1=2025, n2=100
+INFO:km_pipeline:IPD reconstructed: 89 treatment (78 events), 100 control (93 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\40978864_Sodium-Glucose Cotransporter 2 SGLT2 Inh_summary.json
+INFO:km_pipeline:Processing: PMC10323201.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NAR found on page 1: 1 rows, N=3
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 3 NAR detection timed out (3.0s), skipping
+INFO:km_pipeline:PMC10323201.pdf: 16 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.5  context: 'er mortality risk in overall patients (hazard ratio [HR], 0.50; p=0.010). Also, bronchoscopic-ACT (B\u2212'
+INFO:km_pipeline:IPD reconstructed: 87 treatment (77 events), 90 control (76 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC10323201_summary.json
+INFO:km_pipeline:Processing: PMC10952210.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 2 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 8 NAR detection timed out (4.9s), skipping
+INFO:km_pipeline:PMC10952210.pdf: 18 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.61  context: 'amous cell cancer subtype was improved (HR 0.61; 95% CI 0.40-0.93). • Lung cancer is common in IPF. Some'
+INFO:km_pipeline:IPD reconstructed: 100 treatment (91 events), 64 control (53 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC10952210_summary.json
+INFO:km_pipeline:Processing: PMC10990610.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC10990610.pdf: 13 curves from 11 pages
+INFO:km_pipeline:Text HR = 1.83  context: 'nd disease progression in ILD patients (hazard ratio [HR], 1.83; 95% confidence interval [CI], 1.40 to'
+INFO:km_pipeline:IPD reconstructed: 98 treatment (87 events), 91 control (78 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC10990610_summary.json
+INFO:km_pipeline:Processing: PMC10805160.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 2: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 2: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC10805160.pdf: 19 curves from 6 pages
+INFO:km_pipeline:Text HR = 0.59  context: 'kappa clone 48 0.03 Li et al., 2018 RCT HR: 0.59, 95% CI: 0.54-0.64, OS: HR: 0.93, 95% CI: 0.87-1.00 0.001'
+INFO:km_pipeline:IPD reconstructed: 34 treatment (23 events), 100 control (93 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC10805160_summary.json
+INFO:km_pipeline:Processing: PMC11296275.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 2 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 6 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC11296275.pdf: 14 curves from 11 pages
+INFO:km_pipeline:Text HR = 0.33  context: 'oembolic ischemic stroke): 5.3 vs. 16% (HR 0.33, 95% CI 0.18-0.59) LoDoCo trial28 (2020) Double-blind RCT'
+INFO:km_pipeline:IPD reconstructed: 97 treatment (86 events), 85 control (74 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC11296275_summary.json
+INFO:km_pipeline:Processing: PMC11448330.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 6 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC11448330.pdf: 10 curves from 9 pages
+INFO:km_pipeline:Text HR = 0.8  context: 'ic arterial embolism during follow-up (HR 0.80; 95% CI 0.61-1.05; P = 0.11).6 The randomized SCREEN-AF t'
+INFO:km_pipeline:IPD reconstructed: 96 treatment (85 events), 96 control (86 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC11448330_summary.json
+INFO:km_pipeline:Processing: PMC10052578.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 2: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 2: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 9 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC10052578.pdf: 17 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.91  context: 'ms: A 5-year-OS rate of 71% versus 72% (HR, 0.91; 95% CI, 0.70-1.18) and a 5-year-PFS rate of 61% versus 6'
+INFO:km_pipeline:IPD reconstructed: 95 treatment (84 events), 98 control (84 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC10052578_summary.json
+INFO:km_pipeline:Processing: PMC10105623.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 2: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 2: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:PMC10105623.pdf: 14 curves from 9 pages
+INFO:km_pipeline:Text HR = 0.39  context: '001) and results reporting compliance (hazard ratio 0.39, 95% con\ufb01dence interval 0.28-0.55, P <'
+INFO:km_pipeline:IPD reconstructed: 68 treatment (55 events), 97 control (85 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC10105623_summary.json
+INFO:km_pipeline:Processing: PMC11103724.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=0.99), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 6 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (3.4s), skipping
+INFO:km_pipeline:PMC11103724.pdf: 23 curves from 11 pages
+INFO:km_pipeline:Text HR = 0.33  context: 'ose treated with trastuzumab emtansine [hazard ratio 0.33 (95% CI 0.26-0.43), p < 0.0001] (18). TDXt is also curren'
+INFO:km_pipeline:IPD reconstructed: 100 treatment (91 events), 76 control (66 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC11103724_summary.json

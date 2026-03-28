@@ -1,0 +1,1584 @@
+{
+  "timestamp_utc": "2026-02-24T06:04:09.354582+00:00",
+  "source_audit_files": [
+    "C:\\Users\\user\\Downloads\\wasserstein\\run_2026-02-23_ablation_full\\final_ablation_audit_2026-02-23.json",
+    "C:\\Users\\user\\Downloads\\wasserstein\\run_2026-02-24_SGL2\\final_SGL2_audit_2026-02-24.json",
+    "C:\\Users\\user\\Downloads\\wasserstein\\run_2026-02-24_lancet_sglt2\\final_lancet_sglt2_audit_2026-02-24.json"
+  ],
+  "corpora": [
+    {
+      "corpus": "Ablation",
+      "input_pdf_count": 27,
+      "summary_file_count": 27,
+      "hr_present_count": 24,
+      "hr_missing_count": 3,
+      "with_ipd_count": 24,
+      "total_ipd_records": 3481,
+      "run_status_counts": {
+        "ok": 18,
+        "skipped_existing": 7,
+        "timeout": 0,
+        "error": 2
+      }
+    },
+    {
+      "corpus": "SGL2",
+      "input_pdf_count": 29,
+      "summary_file_count": 29,
+      "hr_present_count": 28,
+      "hr_missing_count": 1,
+      "with_ipd_count": 28,
+      "total_ipd_records": 9066,
+      "run_status_counts": {
+        "ok": 28,
+        "skipped_existing": 0,
+        "timeout": 0,
+        "error": 1
+      }
+    },
+    {
+      "corpus": "lancet_sglt2",
+      "input_pdf_count": 34,
+      "summary_file_count": 34,
+      "hr_present_count": 33,
+      "hr_missing_count": 1,
+      "with_ipd_count": 33,
+      "total_ipd_records": 12899,
+      "run_status_counts": {
+        "ok": 33,
+        "skipped_existing": 0,
+        "timeout": 0,
+        "error": 1
+      }
+    }
+  ],
+  "combined": {
+    "input_pdf_count": 90,
+    "summary_file_count": 90,
+    "hr_present_count": 85,
+    "hr_missing_count": 5,
+    "with_ipd_count": 85,
+    "total_ipd_records": 25446,
+    "run_status_counts": {
+      "ok": 79,
+      "skipped_existing": 7,
+      "timeout": 0,
+      "error": 4
+    }
+  },
+  "failed_files": [
+    {
+      "corpus": "Ablation",
+      "pdf_name": "BMRI2018-3629384.pdf",
+      "summary_file": "BMRI2018-3629384_summary.json",
+      "warnings": [
+        "Insufficient curves: 1"
+      ]
+    },
+    {
+      "corpus": "Ablation",
+      "pdf_name": "Supplemental Appendix.pdf",
+      "summary_file": "Supplemental_Appendix_summary.json",
+      "warnings": [
+        "Insufficient curves: 1"
+      ]
+    },
+    {
+      "corpus": "Ablation",
+      "pdf_name": "Supplemental Tables 1 and 2.pdf",
+      "summary_file": "Supplemental_Tables_1_and_2_summary.json",
+      "warnings": [
+        "Insufficient curves: 1"
+      ]
+    },
+    {
+      "corpus": "SGL2",
+      "pdf_name": "nejmoa1504720_appendix.pdf",
+      "summary_file": "nejmoa1504720_appendix_summary.json",
+      "warnings": [
+        "Insufficient curves: 0"
+      ]
+    },
+    {
+      "corpus": "lancet_sglt2",
+      "pdf_name": "NEJM200105313442201.pdf",
+      "summary_file": "NEJM200105313442201_summary.json",
+      "warnings": [
+        "Insufficient curves: 1"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "pdf_name": "1-s2.0-S2666501824001533-main.pdf",
+      "summary_file": "1-s2.0-S2666501824001533-main_summary.json",
+      "hr": 1.0,
+      "ci_lower": 0.104,
+      "ci_upper": 9.614,
+      "ipd_records": 23,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "40001_2025_Article_2911.pdf",
+      "summary_file": "40001_2025_Article_2911_summary.json",
+      "hr": 8.8,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 165,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD.",
+        "Extreme HR=8.800: manual review recommended"
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "BMRI2018-3629384.pdf",
+      "summary_file": "BMRI2018-3629384_summary.json",
+      "hr": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 0,
+      "orientation_method": "none",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Insufficient curves: 1"
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf",
+      "summary_file": "Cardiovasc_electrophysiol_-_2015_-_HUNTER_-_Point-by-Point_Radiofrequency_Ablation_Versus_the_Cryoballoon_or_a_Novel_summary.json",
+      "hr": 0.503,
+      "ci_lower": 0.367,
+      "ci_upper": 0.689,
+      "ipd_records": 193,
+      "orientation_method": "derived_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "skipped_existing",
+      "run_exit_code": null,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf",
+      "summary_file": "Cardiovasc_electrophysiol_-_2023_-_Mililis_-_Radiofrequency_versus_cryoballoon_catheter_ablation_in_patients_with_summary.json",
+      "hr": 0.972,
+      "ci_lower": 0.684,
+      "ci_upper": 1.38,
+      "ipd_records": 61,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "NEJMoa1602014.pdf",
+      "summary_file": "NEJMoa1602014_summary.json",
+      "hr": 0.96,
+      "ci_lower": 0.616,
+      "ci_upper": 1.549,
+      "ipd_records": 141,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "Supplemental Appendix.pdf",
+      "summary_file": "Supplemental_Appendix_summary.json",
+      "hr": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 0,
+      "orientation_method": "none",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Insufficient curves: 1"
+      ],
+      "run_status": "error",
+      "run_exit_code": 1,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "Supplemental Figures.pdf",
+      "summary_file": "Supplemental_Figures_summary.json",
+      "hr": 1.0,
+      "ci_lower": 0.323,
+      "ci_upper": 3.101,
+      "ipd_records": 119,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "Supplemental Table 3.pdf",
+      "summary_file": "Supplemental_Table_3_summary.json",
+      "hr": 0.597,
+      "ci_lower": 0.428,
+      "ci_upper": 0.833,
+      "ipd_records": 178,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "Supplemental Table 6.pdf",
+      "summary_file": "Supplemental_Table_6_summary.json",
+      "hr": 0.878,
+      "ci_lower": 0.648,
+      "ci_upper": 1.189,
+      "ipd_records": 195,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "Supplemental Tables 1 and 2.pdf",
+      "summary_file": "Supplemental_Tables_1_and_2_summary.json",
+      "hr": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 0,
+      "orientation_method": "none",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Insufficient curves: 1"
+      ],
+      "run_status": "error",
+      "run_exit_code": 1,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "Supplemental Tables 4 and 5.pdf",
+      "summary_file": "Supplemental_Tables_4_and_5_summary.json",
+      "hr": 0.972,
+      "ci_lower": 0.686,
+      "ci_upper": 1.378,
+      "ipd_records": 173,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf",
+      "summary_file": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring_summary.json",
+      "hr": 1.08,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 131,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "chun-et-al-cryoballoon-versus-laserballoon.pdf",
+      "summary_file": "chun-et-al-cryoballoon-versus-laserballoon_summary.json",
+      "hr": 0.898,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 82,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Used derived HR from event rates (curve extraction failed: 0.967 vs derived 0.898)"
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "circ_circulationaha-2019-042622_supp1.pdf",
+      "summary_file": "circ_circulationaha-2019-042622_supp1_summary.json",
+      "hr": 1.008,
+      "ci_lower": 0.717,
+      "ci_upper": 1.415,
+      "ipd_records": 169,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "ehaf451.pdf",
+      "summary_file": "ehaf451_summary.json",
+      "hr": 0.99,
+      "ci_lower": 0.407,
+      "ci_upper": 2.458,
+      "ipd_records": 108,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "euaf066.pdf",
+      "summary_file": "euaf066_summary.json",
+      "hr": 1.476,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 150,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Used derived HR from event rates (curve extraction failed: 1.342 vs derived 1.476)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "eus084.pdf",
+      "summary_file": "eus084_summary.json",
+      "hr": 1.232,
+      "ci_lower": 0.913,
+      "ci_upper": 1.664,
+      "ipd_records": 194,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "eut104.pdf",
+      "summary_file": "eut104_summary.json",
+      "hr": 1.001,
+      "ci_lower": 0.554,
+      "ci_upper": 1.808,
+      "ipd_records": 66,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "eut398.pdf",
+      "summary_file": "eut398_summary.json",
+      "hr": 0.721,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 172,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Used derived HR from event rates (curve extraction failed: 0.757 vs derived 0.721)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "euu064.pdf",
+      "summary_file": "euu064_summary.json",
+      "hr": 0.881,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 185,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Used derived HR from event rates (curve extraction failed: 0.753 vs derived 0.881)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "nejmoa1602014_appendix.pdf",
+      "summary_file": "nejmoa1602014_appendix_summary.json",
+      "hr": 0.7582,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 80,
+      "orientation_method": "closest_to_1_reciprocal_prior",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)",
+        "No text HR and CI crossed 1.0; applied reciprocal prior for ambiguous orientation."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf",
+      "summary_file": "pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients_summary.json",
+      "hr": 0.987,
+      "ci_lower": 0.733,
+      "ci_upper": 1.329,
+      "ipd_records": 196,
+      "orientation_method": "derived_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "qgaf049.pdf",
+      "summary_file": "qgaf049_summary.json",
+      "hr": 1.004,
+      "ci_lower": 0.688,
+      "ci_upper": 1.465,
+      "ipd_records": 154,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf",
+      "summary_file": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation_summary.json",
+      "hr": 0.918,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 197,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Used derived HR from event rates (curve extraction failed: 0.974 vs derived 0.918)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "s12872-017-0566-6.pdf",
+      "summary_file": "s12872-017-0566-6_summary.json",
+      "hr": 1.056,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 4.342 vs text 1.056 (log-err=1.414)",
+        "Used derived HR from event rates (curve extraction failed: 4.342 vs derived 1.056)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf",
+      "summary_file": "schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial_summary.json",
+      "hr": 0.931,
+      "ci_lower": 0.594,
+      "ci_upper": 1.456,
+      "ipd_records": 149,
+      "orientation_method": "derived_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "corpus": "Ablation"
+    },
+    {
+      "pdf_name": "1-s2.0-S014067361832261X.pdf",
+      "summary_file": "1-s2.0-S014067361832261X_summary.json",
+      "hr": 0.904,
+      "ci_lower": 0.634,
+      "ci_upper": 1.288,
+      "ipd_records": 166,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 44.5,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "1-s2.0-S0140673619311493.pdf",
+      "summary_file": "1-s2.0-S0140673619311493_summary.json",
+      "hr": 0.88,
+      "ci_lower": 0.6,
+      "ci_upper": 1.305,
+      "ipd_records": 147,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 39.97,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "1-s2.0-S0735109720302485-main.pdf",
+      "summary_file": "1-s2.0-S0735109720302485-main_summary.json",
+      "hr": 0.81,
+      "ci_lower": 0.564,
+      "ci_upper": 1.13,
+      "ipd_records": 159,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 74.94,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa1305889.pdf",
+      "summary_file": "NEJMoa1305889_summary.json",
+      "hr": 0.96,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 15.58,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa1504720.pdf",
+      "summary_file": "NEJMoa1504720_summary.json",
+      "hr": 0.62,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 221,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.923 vs text 0.62 (log-err=0.398)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 13.04,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa1509225.pdf",
+      "summary_file": "NEJMoa1509225_summary.json",
+      "hr": 1.02,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 19.44,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa1603827.pdf",
+      "summary_file": "NEJMoa1603827_summary.json",
+      "hr": 0.87,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 42.99,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa1607141.pdf",
+      "summary_file": "NEJMoa1607141_summary.json",
+      "hr": 0.67,
+      "ci_lower": 0.428,
+      "ci_upper": 1.05,
+      "ipd_records": 127,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 30.41,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa1611925.pdf",
+      "summary_file": "NEJMoa1611925_summary.json",
+      "hr": 0.86,
+      "ci_lower": 0.646,
+      "ci_upper": 1.161,
+      "ipd_records": 283,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 26.54,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa1612917.pdf",
+      "summary_file": "NEJMoa1612917_summary.json",
+      "hr": 0.91,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 118,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.586 vs text 0.91 (log-err=0.440)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 23.79,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa1811744.pdf",
+      "summary_file": "NEJMoa1811744_summary.json",
+      "hr": 0.808,
+      "ci_lower": 0.508,
+      "ci_upper": 1.284,
+      "ipd_records": 103,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 34.86,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa1812389.pdf",
+      "summary_file": "NEJMoa1812389_summary.json",
+      "hr": 0.953,
+      "ci_lower": 0.487,
+      "ci_upper": 1.864,
+      "ipd_records": 62,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 25.76,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa1911303.pdf",
+      "summary_file": "NEJMoa1911303_summary.json",
+      "hr": 0.74,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 101,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.999 vs text 0.74 (log-err=0.300)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 66.43,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa2022190.pdf",
+      "summary_file": "NEJMoa2022190_summary.json",
+      "hr": 0.69,
+      "ci_lower": 0.469,
+      "ci_upper": 1.014,
+      "ipd_records": 141,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 50.28,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa2024816.pdf",
+      "summary_file": "NEJMoa2024816_summary.json",
+      "hr": 0.61,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 85,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.978 vs text 0.61 (log-err=0.472)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 25.87,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa2030183.pdf",
+      "summary_file": "NEJMoa2030183_summary.json",
+      "hr": 0.67,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 40.35,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa2030186.pdf",
+      "summary_file": "NEJMoa2030186_summary.json",
+      "hr": 0.74,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 163,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 28.03,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa2107038.pdf",
+      "summary_file": "NEJMoa2107038_summary.json",
+      "hr": 0.79,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 25.22,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa2108269.pdf",
+      "summary_file": "NEJMoa2108269_summary.json",
+      "hr": 0.73,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 54.15,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa2204233.pdf",
+      "summary_file": "NEJMoa2204233_summary.json",
+      "hr": 0.72,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 53,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.996 vs text 0.72 (log-err=0.324)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 16.53,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "NEJMoa2206286.pdf",
+      "summary_file": "NEJMoa2206286_summary.json",
+      "hr": 0.82,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 90,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 14.78,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "PIIS2666756823000326.pdf",
+      "summary_file": "PIIS2666756823000326_summary.json",
+      "hr": 0.72,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 156,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 129.02,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "lam-et-al-efpeglenatide-and-clinical-outcomes-with-and-without-concomitant-sodium-glucose-cotransporter-2-inhibition.pdf",
+      "summary_file": "lam-et-al-efpeglenatide-and-clinical-outcomes-with-and-without-concomitant-sodium-glucose-cotransporter-2-inhibition_summary.json",
+      "hr": 0.688,
+      "ci_lower": 0.404,
+      "ci_upper": 1.172,
+      "ipd_records": 81,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 52.28,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "mcguire-et-al-linagliptin-effects-on-heart-failure-and-related-outcomes-in-individuals-with-type-2-diabetes-mellitus-at.pdf",
+      "summary_file": "mcguire-et-al-linagliptin-effects-on-heart-failure-and-related-outcomes-in-individuals-with-type-2-diabetes-mellitus-at_summary.json",
+      "hr": 0.814,
+      "ci_lower": 0.765,
+      "ci_upper": 0.867,
+      "ipd_records": 5106,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 38.7,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "nejmoa1305889_appendix.pdf",
+      "summary_file": "nejmoa1305889_appendix_summary.json",
+      "hr": 0.95,
+      "ci_lower": 0.323,
+      "ci_upper": 3.101,
+      "ipd_records": 33,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 45.33,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "nejmoa1504720_appendix.pdf",
+      "summary_file": "nejmoa1504720_appendix_summary.json",
+      "hr": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 0,
+      "orientation_method": "none",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Insufficient curves: 0"
+      ],
+      "run_status": "error",
+      "run_exit_code": 1,
+      "duration_s": 28.57,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "s12872-019-1036-0.pdf",
+      "summary_file": "s12872-019-1036-0_summary.json",
+      "hr": 1.0,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 149,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.744 vs text 1.0 (log-err=0.296)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 44.02,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "scirica-et-al-heart-failure-saxagliptin-and-diabetes-mellitus-observations-from-the-savor-timi-53-randomized-trial.pdf",
+      "summary_file": "scirica-et-al-heart-failure-saxagliptin-and-diabetes-mellitus-observations-from-the-savor-timi-53-randomized-trial_summary.json",
+      "hr": 1.46,
+      "ci_lower": 0.893,
+      "ci_upper": 2.329,
+      "ipd_records": 132,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 62.0,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "white-et-al-angiotensin-converting-enzyme-inhibitor-use-and-major-cardiovascular-outcomes-in-type-2-diabetes-mellitus.pdf",
+      "summary_file": "white-et-al-angiotensin-converting-enzyme-inhibitor-use-and-major-cardiovascular-outcomes-in-type-2-diabetes-mellitus_summary.json",
+      "hr": 0.97,
+      "ci_lower": 0.706,
+      "ci_upper": 1.296,
+      "ipd_records": 190,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 38.16,
+      "corpus": "SGL2"
+    },
+    {
+      "pdf_name": "1-s2.0-S0002914922011213.pdf",
+      "summary_file": "1-s2.0-S0002914922011213_summary.json",
+      "hr": 1.455,
+      "ci_lower": 1.063,
+      "ci_upper": 1.991,
+      "ipd_records": 183,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 51.36,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "1-s2.0-S0140673622014295-mmc1.pdf",
+      "summary_file": "1-s2.0-S0140673622014295-mmc1_summary.json",
+      "hr": 0.892,
+      "ci_lower": 0.596,
+      "ci_upper": 1.334,
+      "ipd_records": 130,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 85.0,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "1-s2.0-S0140673622014295.pdf",
+      "summary_file": "1-s2.0-S0140673622014295_summary.json",
+      "hr": 0.925,
+      "ci_lower": 0.661,
+      "ci_upper": 1.294,
+      "ipd_records": 166,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 53.18,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "1_s2.0_S221317792100442X_main.pdf",
+      "summary_file": "1_s2.0_S221317792100442X_main_summary.json",
+      "hr": 0.44,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 49.5,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "Anatomy+of+a+Research+Note.pdf",
+      "summary_file": "Anatomy_of_a_Research_Note_summary.json",
+      "hr": 1.972,
+      "ci_lower": 1.384,
+      "ci_upper": 2.81,
+      "ipd_records": 153,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 11.11,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJM199909023411001.pdf",
+      "summary_file": "NEJM199909023411001_summary.json",
+      "hr": 1.275,
+      "ci_lower": 0.257,
+      "ci_upper": 6.319,
+      "ipd_records": 34,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 17.46,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJM200105313442201.pdf",
+      "summary_file": "NEJM200105313442201_summary.json",
+      "hr": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 0,
+      "orientation_method": "none",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Insufficient curves: 1"
+      ],
+      "run_status": "error",
+      "run_exit_code": 1,
+      "duration_s": 22.48,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJMoa1009492.pdf",
+      "summary_file": "NEJMoa1009492_summary.json",
+      "hr": 0.63,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 58.8,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJMoa1313731.pdf",
+      "summary_file": "NEJMoa1313731_summary.json",
+      "hr": 0.83,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 39.41,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJMoa1409077.pdf",
+      "summary_file": "NEJMoa1409077_summary.json",
+      "hr": 0.8,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 109,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.471 vs text 0.8 (log-err=0.530)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 37.09,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJMoa1908655.pdf",
+      "summary_file": "NEJMoa1908655_summary.json",
+      "hr": 0.95,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 163,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.258 vs text 0.95 (log-err=1.304)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 24.55,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJMoa1911303.pdf",
+      "summary_file": "NEJMoa1911303_summary.json",
+      "hr": 0.74,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 101,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.999 vs text 0.74 (log-err=0.300)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 25.96,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJMoa2022190.pdf",
+      "summary_file": "NEJMoa2022190_summary.json",
+      "hr": 0.69,
+      "ci_lower": 0.469,
+      "ci_upper": 1.014,
+      "ipd_records": 141,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 33.49,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJMoa2030183.pdf",
+      "summary_file": "NEJMoa2030183_summary.json",
+      "hr": 0.67,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 39.87,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJMoa2107038 (1).pdf",
+      "summary_file": "NEJMoa2107038_1_summary.json",
+      "hr": 0.79,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 28.51,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJMoa2107038.pdf",
+      "summary_file": "NEJMoa2107038_summary.json",
+      "hr": 0.79,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 29.42,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "NEJMoa2206286.pdf",
+      "summary_file": "NEJMoa2206286_summary.json",
+      "hr": 0.82,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 90,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 19.19,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "Vaduganathan_DELIVER-EMPEROR-Preserved-Meta-Analysis.pdf",
+      "summary_file": "Vaduganathan_DELIVER-EMPEROR-Preserved-Meta-Analysis_summary.json",
+      "hr": 0.8,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 201,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 45.91,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "bmj.i1855.full.pdf",
+      "summary_file": "bmj.i1855.full_summary.json",
+      "hr": 1.447,
+      "ci_lower": 1.088,
+      "ci_upper": 1.924,
+      "ipd_records": 200,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 41.75,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "burnett-et-al-thirty-years-of-evidence-on-the-efficacy-of-drug-treatments-for-chronic-heart-failure-with-reduced.pdf",
+      "summary_file": "burnett-et-al-thirty-years-of-evidence-on-the-efficacy-of-drug-treatments-for-chronic-heart-failure-with-reduced_summary.json",
+      "hr": 0.37,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.494 vs text 0.37 (log-err=0.289)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 70.77,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "cherbi-et-al-early-initiation-of-sodium-glucose-cotransporter-2-inhibitors-in-acute-heart-failure-a-systematic-review.pdf",
+      "summary_file": "cherbi-et-al-early-initiation-of-sodium-glucose-cotransporter-2-inhibitors-in-acute-heart-failure-a-systematic-review_summary.json",
+      "hr": 0.972,
+      "ci_lower": 0.794,
+      "ci_upper": 1.189,
+      "ipd_records": 8135,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 122.63,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "ehi115.pdf",
+      "summary_file": "ehi115_summary.json",
+      "hr": 0.937,
+      "ci_lower": 0.4,
+      "ci_upper": 2.192,
+      "ipd_records": 43,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 37.33,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "fcvm-11-1388337.pdf",
+      "summary_file": "fcvm-11-1388337_summary.json",
+      "hr": 1.019,
+      "ci_lower": 0.728,
+      "ci_upper": 1.427,
+      "ipd_records": 200,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 122.57,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "jcm-11-00348-v2.pdf",
+      "summary_file": "jcm-11-00348-v2_summary.json",
+      "hr": 0.923,
+      "ci_lower": 0.613,
+      "ci_upper": 1.389,
+      "ipd_records": 115,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 124.75,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "nejmoa2107038_appendix.pdf",
+      "summary_file": "nejmoa2107038_appendix_summary.json",
+      "hr": 1.017,
+      "ci_lower": 0.527,
+      "ci_upper": 1.965,
+      "ipd_records": 58,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 62.67,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "s0140-67362904440-2.pdf",
+      "summary_file": "s0140-67362904440-2_summary.json",
+      "hr": 0.66,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 50.84,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "s0140-67362911181-9.pdf",
+      "summary_file": "s0140-67362911181-9_summary.json",
+      "hr": 0.66,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 27.65,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "s0140-67362961373-8.pdf",
+      "summary_file": "s0140-67362961373-8_summary.json",
+      "hr": 0.73,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 126,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.980 vs text 0.73 (log-err=0.295)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 52.88,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "s12933-022-01455-2.pdf",
+      "summary_file": "s12933-022-01455-2_summary.json",
+      "hr": 1.005,
+      "ci_lower": 0.624,
+      "ci_upper": 1.619,
+      "ipd_records": 176,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 31.35,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "s12933-022-01679-2.pdf",
+      "summary_file": "s12933-022-01679-2_summary.json",
+      "hr": 1.116,
+      "ci_lower": 0.728,
+      "ci_upper": 1.709,
+      "ipd_records": 67,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 62.91,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "s41591-021-01659-1.pdf",
+      "summary_file": "s41591-021-01659-1_summary.json",
+      "hr": 0.69,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 101,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 70.27,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "s41591-022-01703-8.pdf",
+      "summary_file": "s41591-022-01703-8_summary.json",
+      "hr": 1.132,
+      "ci_lower": 0.812,
+      "ci_upper": 1.578,
+      "ipd_records": 171,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 61.0,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "xiang_2022_oi_220915_1663087733.39363.pdf",
+      "summary_file": "xiang_2022_oi_220915_1663087733.39363_summary.json",
+      "hr": 0.71,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 42,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 128.25,
+      "corpus": "lancet_sglt2"
+    },
+    {
+      "pdf_name": "zafeiropoulos-et-al-pharmacological-treatments-in-heart-failure-with-mildly-reduced-and-preserved-ejection-fraction.pdf",
+      "summary_file": "zafeiropoulos-et-al-pharmacological-treatments-in-heart-failure-with-mildly-reduced-and-preserved-ejection-fraction_summary.json",
+      "hr": 0.47,
+      "ci_lower": 0.326,
+      "ci_upper": 0.611,
+      "ipd_records": 194,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 69.32,
+      "corpus": "lancet_sglt2"
+    }
+  ]
+}

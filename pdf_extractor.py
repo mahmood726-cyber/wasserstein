@@ -381,6 +381,7 @@ class PDFExtractor:
         os.makedirs(output_dir, exist_ok=True)
 
         saved_paths = []
+        saved_figures = []
         pdf_name = os.path.splitext(os.path.basename(result.pdf_path))[0]
 
         for fig in result.figures:
@@ -390,8 +391,9 @@ class PDFExtractor:
             filename = f"{pdf_name}_p{fig.page_number}_f{fig.figure_index}.{format}"
             filepath = os.path.join(output_dir, filename)
 
-            cv2.imwrite(filepath, fig.image)
-            saved_paths.append(filepath)
+            if cv2.imwrite(filepath, fig.image):
+                saved_paths.append(filepath)
+                saved_figures.append(fig)
 
         # Save metadata
         metadata = {
@@ -402,11 +404,11 @@ class PDFExtractor:
             'figures': [
                 {
                     'filename': os.path.basename(p),
-                    'page': result.figures[i].page_number,
-                    'is_km': result.figures[i].is_potential_km,
-                    'confidence': result.figures[i].confidence
+                    'page': fig.page_number,
+                    'is_km': fig.is_potential_km,
+                    'confidence': fig.confidence
                 }
-                for i, p in enumerate(saved_paths)
+                for p, fig in zip(saved_paths, saved_figures)
             ]
         }
 

@@ -1,0 +1,90 @@
+{
+  "pdf_path": "40739638_Efficacy and safety of dapagliflozin in .pdf",
+  "pdf_name": "40739638_Efficacy and safety of dapagliflozin in .pdf",
+  "hr": 0.86,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 38,
+    "n_events": 26,
+    "n_censored": 12,
+    "n_records": 38
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 62,
+    "n_events": 50,
+    "n_censored": 12,
+    "n_records": 62
+  },
+  "total_ipd_records": 100,
+  "curve1_times": [
+    0.02732746641963872,
+    0.02779064381658175,
+    0.02825382121352478,
+    0.02871699861046781,
+    0.029180176007410838,
+    0.03381194997684113,
+    0.03427512737378416,
+    0.03473830477072719,
+    0.03520148216767022,
+    0.035664659564613246
+  ],
+  "curve1_times_length": 253,
+  "curve1_survivals": [
+    0.4104984894259819,
+    0.40634441087613293,
+    0.40634441087613293,
+    0.40634441087613293,
+    0.40634441087613293,
+    0.4082326283987915,
+    0.4082326283987915,
+    0.4082326283987915,
+    0.40785498489425986,
+    0.40785498489425986
+  ],
+  "curve1_survivals_length": 253,
+  "curve2_times": [
+    0.1278962001853568,
+    0.12882298424467098,
+    0.12974976830398516,
+    0.13067655236329936,
+    0.13160333642261354,
+    0.13253012048192772,
+    0.1334569045412419,
+    0.13438368860055608,
+    0.13531047265987026,
+    0.13623725671918444
+  ],
+  "curve2_times_length": 582,
+  "curve2_survivals": [
+    0.5707898658718331,
+    0.5707898658718331,
+    0.5707898658718331,
+    0.5722801788375559,
+    0.5722801788375559,
+    0.5722801788375559,
+    0.5692995529061102,
+    0.5573770491803278,
+    0.5573770491803278,
+    0.5573770491803278
+  ],
+  "curve2_survivals_length": 582,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 0.86,
+  "n_curves_found": 5,
+  "n_pages_scanned": 12,
+  "processing_time_s": 75.84,
+  "warnings": [
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:21:20.030169+00:00"
+}

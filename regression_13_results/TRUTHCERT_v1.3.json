@@ -1,0 +1,70 @@
+{
+  "truthcert_version": "1.3",
+  "certification_status": "PASS",
+  "timestamp": "2026-02-14T22:00:00+00:00",
+  "product": {
+    "name": "Wasserstein KM Extractor",
+    "version": "1.3",
+    "description": "PDF -> KM curve digitization -> IPD reconstruction -> HR estimation",
+    "changelog": [
+      "Derived HR fallback threshold tightened: 0.10 -> 0.07 (FROZEN AF 7.4% -> 0.2%, FREEZEAF-30M 7.0% -> 0.4%)",
+      "Global np.random.seed(42) for run-to-run determinism",
+      "NAR detector prefers embedded figure images over full-page rasterizations"
+    ]
+  },
+  "evidence": {
+    "regression_report": {
+      "locator": "regression_13_results/regression_report.json",
+      "sha256": "f844ac02b65bc36cfd4e01ad2d1706149d4ae7f4b213af041083052c539579aa",
+      "type": "validation_report"
+    },
+    "source_code": {
+      "files": {
+        "km_pipeline.py": "e46fe895d0faa0b4432a4918ec78741bba2356a0007429e6368323711588dab7",
+        "robust_km_pipeline.py": "16f7a8a60eb857dbe765a733c40b967c24bbf9985bd4eb0becb939a00ddf2e95"
+      },
+      "type": "pipeline_source"
+    },
+    "ground_truth": {
+      "locator": "ground_truth_300.json",
+      "type": "reference_data"
+    }
+  },
+  "validation": {
+    "gold_tier_regression": {
+      "n_trials": 13,
+      "n_extracted": 13,
+      "n_within_ci": 13,
+      "n_under_10pct": 13,
+      "mean_error_pct": 2.1,
+      "median_error_pct": 1.2,
+      "verdict": "PASS"
+    },
+    "prior_version_comparison": {
+      "v1.2_mean_error": 3.1,
+      "v1.3_mean_error": 2.1,
+      "improvement": "-1.0pp mean, -1.4pp median"
+    }
+  },
+  "transformations": [
+    "PDF rasterization (PyMuPDF, 300 DPI)",
+    "KM figure detection (figure_classifier.py)",
+    "Axis calibration (enhanced_ocr_axis.py)",
+    "HSV color curve extraction (enhanced_curve_extractor.py)",
+    "Multi-arm separation (simple_multicurve_handler.py, KMeans)",
+    "Guyot IPD reconstruction (improved_guyot_algorithm.py)",
+    "Log-rank HR estimation (improved_hr_estimation.py)",
+    "NAR table detection and OCR (nar_detector.py, nar_ocr_extractor.py)"
+  ],
+  "validators": [
+    {
+      "name": "regression_13",
+      "outcome": "PASS",
+      "detail": "13/13 extracted, 13/13 within CI, 13/13 <10% error, mean 2.1%, median 1.2%"
+    }
+  ],
+  "warnings": [
+    "CRAVE (7.3%) remains the highest-error trial; its text-derived HR is itself 4.8% off from GT",
+    "KMeans clustering is deterministic with np.random.seed(42) + random_state=42"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "pdf_path": "PMC10624988.pdf",
+  "pdf_name": "PMC10624988.pdf",
+  "hr": 0.89,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 96,
+    "n_events": 84,
+    "n_censored": 12,
+    "n_records": 96
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 86,
+    "n_events": 74,
+    "n_censored": 12,
+    "n_records": 86
+  },
+  "total_ipd_records": 182,
+  "curve1_times": [
+    0.030106530801296896,
+    0.030569708198239925,
+    0.031032885595182955,
+    0.031496062992125984,
+    0.03195924038906901,
+    0.03242241778601204,
+    0.03288559518295507,
+    0.0333487725798981,
+    0.03381194997684113,
+    0.03427512737378416
+  ],
+  "curve1_times_length": 1766,
+  "curve1_survivals": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "curve1_survivals_length": 1766,
+  "curve2_times": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "curve2_times_length": 2151,
+  "curve2_survivals": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "curve2_survivals_length": 2151,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 0.89,
+  "n_curves_found": 20,
+  "n_pages_scanned": 12,
+  "processing_time_s": 131.18,
+  "warnings": [
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:27:17.534479+00:00"
+}

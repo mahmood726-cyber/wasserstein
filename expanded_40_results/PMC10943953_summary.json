@@ -1,0 +1,90 @@
+{
+  "pdf_path": "PMC10943953.pdf",
+  "pdf_name": "PMC10943953.pdf",
+  "hr": 0.718,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 83,
+    "n_events": 69,
+    "n_censored": 14,
+    "n_records": 83
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 30,
+    "n_events": 19,
+    "n_censored": 11,
+    "n_records": 30
+  },
+  "total_ipd_records": 113,
+  "curve1_times": [
+    0.22613531047265986,
+    0.22706209453197404,
+    0.22798887859128822,
+    0.2289156626506024,
+    0.23354958294717332,
+    0.2344763670064875,
+    0.23540315106580167,
+    0.23632993512511585,
+    0.23725671918443003,
+    0.2381835032437442
+  ],
+  "curve1_times_length": 139,
+  "curve1_survivals": [
+    0.7516163793103449,
+    0.7494612068965517,
+    0.7494612068965517,
+    0.7489224137931034,
+    0.7543103448275862,
+    0.7532327586206897,
+    0.7510775862068966,
+    0.4735991379310345,
+    0.4725215517241379,
+    0.4725215517241379
+  ],
+  "curve1_survivals_length": 139,
+  "curve2_times": [
+    0.060240963855421686,
+    0.061167747914735865,
+    0.06209453197405004,
+    0.06302131603336422,
+    0.07136237256719184,
+    0.07228915662650602,
+    0.0732159406858202,
+    0.07414272474513438,
+    0.07506950880444857,
+    0.07970342910101946
+  ],
+  "curve2_times_length": 337,
+  "curve2_survivals": [
+    0.7916666666666666,
+    0.7916666666666666,
+    0.7916666666666666,
+    0.7916666666666666,
+    0.7828282828282829,
+    0.7840909090909091,
+    0.7853535353535354,
+    0.7853535353535354,
+    0.7916666666666666,
+    0.7878787878787878
+  ],
+  "curve2_survivals_length": 337,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 0.718,
+  "n_curves_found": 18,
+  "n_pages_scanned": 12,
+  "processing_time_s": 141.47,
+  "warnings": [
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:29:28.028278+00:00"
+}

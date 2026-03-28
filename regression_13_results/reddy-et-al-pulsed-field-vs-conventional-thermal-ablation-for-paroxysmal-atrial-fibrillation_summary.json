@@ -1,9 +1,9 @@
 {
   "pdf_path": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf",
   "pdf_name": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf",
-  "hr": 0.891,
-  "ci_lower": 0.653,
-  "ci_upper": 1.216,
+  "hr": 0.974,
+  "ci_lower": 0.718,
+  "ci_upper": 1.32,
   "p_value": null,
   "hr_method": "derived_hr_match",
   "ipd_arm1": {
@@ -75,14 +75,14 @@
     0.7750798722044728
   ],
   "curve2_survivals_length": 614,
-  "confidence": 0.6,
+  "confidence": 0.65,
   "orientation_method": "derived_hr_match",
   "text_hr": 0.918,
-  "n_curves_found": 17,
+  "n_curves_found": 12,
   "n_pages_scanned": 12,
-  "processing_time_s": 155.25,
+  "processing_time_s": 129.5,
   "warnings": [],
   "certification_status": "UNCERTIFIED",
-  "pipeline_version": "1.0",
-  "timestamp": "2026-02-13T22:56:03.801548+00:00"
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-16T21:56:39.501452+00:00"
 }

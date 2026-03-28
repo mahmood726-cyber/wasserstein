@@ -1,0 +1,566 @@
+{
+  "corpus": "lancet_sglt2",
+  "timestamp_utc": "2026-02-24T05:54:25.133568+00:00",
+  "input_pdf_count": 34,
+  "summary_file_count": 34,
+  "hr_present_count": 33,
+  "hr_missing_count": 1,
+  "with_ipd_count": 33,
+  "total_ipd_records": 12899,
+  "run_status_counts": {
+    "ok": 33,
+    "skipped_existing": 0,
+    "timeout": 0,
+    "error": 1
+  },
+  "failed_files": [
+    {
+      "pdf_name": "NEJM200105313442201.pdf",
+      "summary_file": "NEJM200105313442201_summary.json",
+      "warnings": [
+        "Insufficient curves: 1"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "pdf_name": "1-s2.0-S0002914922011213.pdf",
+      "summary_file": "1-s2.0-S0002914922011213_summary.json",
+      "hr": 1.455,
+      "ci_lower": 1.063,
+      "ci_upper": 1.991,
+      "ipd_records": 183,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 51.36
+    },
+    {
+      "pdf_name": "1-s2.0-S0140673622014295-mmc1.pdf",
+      "summary_file": "1-s2.0-S0140673622014295-mmc1_summary.json",
+      "hr": 0.892,
+      "ci_lower": 0.596,
+      "ci_upper": 1.334,
+      "ipd_records": 130,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 85.0
+    },
+    {
+      "pdf_name": "1-s2.0-S0140673622014295.pdf",
+      "summary_file": "1-s2.0-S0140673622014295_summary.json",
+      "hr": 0.925,
+      "ci_lower": 0.661,
+      "ci_upper": 1.294,
+      "ipd_records": 166,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 53.18
+    },
+    {
+      "pdf_name": "1_s2.0_S221317792100442X_main.pdf",
+      "summary_file": "1_s2.0_S221317792100442X_main_summary.json",
+      "hr": 0.44,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 49.5
+    },
+    {
+      "pdf_name": "Anatomy+of+a+Research+Note.pdf",
+      "summary_file": "Anatomy_of_a_Research_Note_summary.json",
+      "hr": 1.972,
+      "ci_lower": 1.384,
+      "ci_upper": 2.81,
+      "ipd_records": 153,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 11.11
+    },
+    {
+      "pdf_name": "bmj.i1855.full.pdf",
+      "summary_file": "bmj.i1855.full_summary.json",
+      "hr": 1.447,
+      "ci_lower": 1.088,
+      "ci_upper": 1.924,
+      "ipd_records": 200,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 41.75
+    },
+    {
+      "pdf_name": "burnett-et-al-thirty-years-of-evidence-on-the-efficacy-of-drug-treatments-for-chronic-heart-failure-with-reduced.pdf",
+      "summary_file": "burnett-et-al-thirty-years-of-evidence-on-the-efficacy-of-drug-treatments-for-chronic-heart-failure-with-reduced_summary.json",
+      "hr": 0.37,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.494 vs text 0.37 (log-err=0.289)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 70.77
+    },
+    {
+      "pdf_name": "cherbi-et-al-early-initiation-of-sodium-glucose-cotransporter-2-inhibitors-in-acute-heart-failure-a-systematic-review.pdf",
+      "summary_file": "cherbi-et-al-early-initiation-of-sodium-glucose-cotransporter-2-inhibitors-in-acute-heart-failure-a-systematic-review_summary.json",
+      "hr": 0.972,
+      "ci_lower": 0.794,
+      "ci_upper": 1.189,
+      "ipd_records": 8135,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 122.63
+    },
+    {
+      "pdf_name": "ehi115.pdf",
+      "summary_file": "ehi115_summary.json",
+      "hr": 0.937,
+      "ci_lower": 0.4,
+      "ci_upper": 2.192,
+      "ipd_records": 43,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 37.33
+    },
+    {
+      "pdf_name": "fcvm-11-1388337.pdf",
+      "summary_file": "fcvm-11-1388337_summary.json",
+      "hr": 1.019,
+      "ci_lower": 0.728,
+      "ci_upper": 1.427,
+      "ipd_records": 200,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 122.57
+    },
+    {
+      "pdf_name": "jcm-11-00348-v2.pdf",
+      "summary_file": "jcm-11-00348-v2_summary.json",
+      "hr": 0.923,
+      "ci_lower": 0.613,
+      "ci_upper": 1.389,
+      "ipd_records": 115,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 124.75
+    },
+    {
+      "pdf_name": "NEJM199909023411001.pdf",
+      "summary_file": "NEJM199909023411001_summary.json",
+      "hr": 1.275,
+      "ci_lower": 0.257,
+      "ci_upper": 6.319,
+      "ipd_records": 34,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 17.46
+    },
+    {
+      "pdf_name": "NEJM200105313442201.pdf",
+      "summary_file": "NEJM200105313442201_summary.json",
+      "hr": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 0,
+      "orientation_method": "none",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Insufficient curves: 1"
+      ],
+      "run_status": "error",
+      "run_exit_code": 1,
+      "duration_s": 22.48
+    },
+    {
+      "pdf_name": "NEJMoa1009492.pdf",
+      "summary_file": "NEJMoa1009492_summary.json",
+      "hr": 0.63,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 58.8
+    },
+    {
+      "pdf_name": "NEJMoa1313731.pdf",
+      "summary_file": "NEJMoa1313731_summary.json",
+      "hr": 0.83,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 39.41
+    },
+    {
+      "pdf_name": "NEJMoa1409077.pdf",
+      "summary_file": "NEJMoa1409077_summary.json",
+      "hr": 0.8,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 109,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.471 vs text 0.8 (log-err=0.530)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 37.09
+    },
+    {
+      "pdf_name": "NEJMoa1908655.pdf",
+      "summary_file": "NEJMoa1908655_summary.json",
+      "hr": 0.95,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 163,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.258 vs text 0.95 (log-err=1.304)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 24.55
+    },
+    {
+      "pdf_name": "NEJMoa1911303.pdf",
+      "summary_file": "NEJMoa1911303_summary.json",
+      "hr": 0.74,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 101,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.999 vs text 0.74 (log-err=0.300)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 25.96
+    },
+    {
+      "pdf_name": "NEJMoa2022190.pdf",
+      "summary_file": "NEJMoa2022190_summary.json",
+      "hr": 0.69,
+      "ci_lower": 0.469,
+      "ci_upper": 1.014,
+      "ipd_records": 141,
+      "orientation_method": "text_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 33.49
+    },
+    {
+      "pdf_name": "NEJMoa2030183.pdf",
+      "summary_file": "NEJMoa2030183_summary.json",
+      "hr": 0.67,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 39.87
+    },
+    {
+      "pdf_name": "NEJMoa2107038 (1).pdf",
+      "summary_file": "NEJMoa2107038_1_summary.json",
+      "hr": 0.79,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 28.51
+    },
+    {
+      "pdf_name": "nejmoa2107038_appendix.pdf",
+      "summary_file": "nejmoa2107038_appendix_summary.json",
+      "hr": 1.017,
+      "ci_lower": 0.527,
+      "ci_upper": 1.965,
+      "ipd_records": 58,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 62.67
+    },
+    {
+      "pdf_name": "NEJMoa2107038.pdf",
+      "summary_file": "NEJMoa2107038_summary.json",
+      "hr": 0.79,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 29.42
+    },
+    {
+      "pdf_name": "NEJMoa2206286.pdf",
+      "summary_file": "NEJMoa2206286_summary.json",
+      "hr": 0.82,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 90,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 19.19
+    },
+    {
+      "pdf_name": "s0140-67362904440-2.pdf",
+      "summary_file": "s0140-67362904440-2_summary.json",
+      "hr": 0.66,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 50.84
+    },
+    {
+      "pdf_name": "s0140-67362911181-9.pdf",
+      "summary_file": "s0140-67362911181-9_summary.json",
+      "hr": 0.66,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "text_synthetic_ipd",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 27.65
+    },
+    {
+      "pdf_name": "s0140-67362961373-8.pdf",
+      "summary_file": "s0140-67362961373-8_summary.json",
+      "hr": 0.73,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 126,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 0.980 vs text 0.73 (log-err=0.295)",
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 52.88
+    },
+    {
+      "pdf_name": "s12933-022-01455-2.pdf",
+      "summary_file": "s12933-022-01455-2_summary.json",
+      "hr": 1.005,
+      "ci_lower": 0.624,
+      "ci_upper": 1.619,
+      "ipd_records": 176,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 31.35
+    },
+    {
+      "pdf_name": "s12933-022-01679-2.pdf",
+      "summary_file": "s12933-022-01679-2_summary.json",
+      "hr": 1.116,
+      "ci_lower": 0.728,
+      "ci_upper": 1.709,
+      "ipd_records": 67,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 62.91
+    },
+    {
+      "pdf_name": "s41591-021-01659-1.pdf",
+      "summary_file": "s41591-021-01659-1_summary.json",
+      "hr": 0.69,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 101,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 70.27
+    },
+    {
+      "pdf_name": "s41591-022-01703-8.pdf",
+      "summary_file": "s41591-022-01703-8_summary.json",
+      "hr": 1.132,
+      "ci_lower": 0.812,
+      "ci_upper": 1.578,
+      "ipd_records": 171,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 61.0
+    },
+    {
+      "pdf_name": "Vaduganathan_DELIVER-EMPEROR-Preserved-Meta-Analysis.pdf",
+      "summary_file": "Vaduganathan_DELIVER-EMPEROR-Preserved-Meta-Analysis_summary.json",
+      "hr": 0.8,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 201,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 45.91
+    },
+    {
+      "pdf_name": "xiang_2022_oi_220915_1663087733.39363.pdf",
+      "summary_file": "xiang_2022_oi_220915_1663087733.39363_summary.json",
+      "hr": 0.71,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 42,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 128.25
+    },
+    {
+      "pdf_name": "zafeiropoulos-et-al-pharmacological-treatments-in-heart-failure-with-mildly-reduced-and-preserved-ejection-fraction.pdf",
+      "summary_file": "zafeiropoulos-et-al-pharmacological-treatments-in-heart-failure-with-mildly-reduced-and-preserved-ejection-fraction_summary.json",
+      "hr": 0.47,
+      "ci_lower": 0.326,
+      "ci_upper": 0.611,
+      "ipd_records": 194,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0,
+      "duration_s": 69.32
+    }
+  ]
+}

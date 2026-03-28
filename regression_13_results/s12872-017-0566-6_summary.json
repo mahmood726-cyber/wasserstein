@@ -1,0 +1,28 @@
+{
+  "pdf_path": "s12872-017-0566-6.pdf",
+  "pdf_name": "s12872-017-0566-6.pdf",
+  "hr": 1.056,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_derived_only",
+  "ipd_arm1": null,
+  "ipd_arm2": null,
+  "total_ipd_records": 0,
+  "curve1_times": null,
+  "curve1_survivals": null,
+  "curve2_times": null,
+  "curve2_survivals": null,
+  "confidence": 0.3,
+  "orientation_method": "text_only",
+  "text_hr": 1.056,
+  "n_curves_found": 1,
+  "n_pages_scanned": 8,
+  "processing_time_s": 50.83,
+  "warnings": [
+    "Text-derived HR only, no curve pair for IPD"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-16T21:57:30.370747+00:00"
+}

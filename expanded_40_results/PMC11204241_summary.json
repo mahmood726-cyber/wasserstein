@@ -1,0 +1,92 @@
+{
+  "pdf_path": "PMC11204241.pdf",
+  "pdf_name": "PMC11204241.pdf",
+  "hr": 0.21,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 67,
+    "n_events": 56,
+    "n_censored": 11,
+    "n_records": 67
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 56,
+    "n_events": 43,
+    "n_censored": 13,
+    "n_records": 56
+  },
+  "total_ipd_records": 123,
+  "curve1_times": [
+    0.4006484483557202,
+    0.4011116257526633,
+    0.4015748031496063,
+    0.4020379805465493,
+    0.40250115794349234,
+    0.4099119962945808,
+    0.4103751736915239,
+    0.4108383510884669,
+    0.4113015284854099,
+    0.4117647058823529
+  ],
+  "curve1_times_length": 88,
+  "curve1_survivals": [
+    0.6306980056980057,
+    0.6306980056980057,
+    0.6306980056980057,
+    0.6306980056980057,
+    0.6264245014245013,
+    0.6331908831908832,
+    0.9013532763532763,
+    0.9013532763532763,
+    0.900997150997151,
+    0.900997150997151
+  ],
+  "curve1_survivals_length": 88,
+  "curve2_times": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.000998003992015968,
+    0.001996007984031936
+  ],
+  "curve2_times_length": 757,
+  "curve2_survivals": [
+    0.8015414258188824,
+    0.7996146435452793,
+    0.49710982658959535,
+    0.49325626204238926,
+    0.48169556840077077,
+    0.4624277456647399,
+    0.4277456647398844,
+    0.4084778420038536,
+    0.4450867052023122,
+    0.4624277456647399
+  ],
+  "curve2_survivals_length": 757,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 0.21,
+  "n_curves_found": 9,
+  "n_pages_scanned": 11,
+  "processing_time_s": 167.35,
+  "warnings": [
+    "Text HR match weak: extracted 0.300 vs text 0.21 (log-err=0.357)",
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD.",
+    "Extreme HR=0.210: manual review recommended"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:36:46.235960+00:00"
+}

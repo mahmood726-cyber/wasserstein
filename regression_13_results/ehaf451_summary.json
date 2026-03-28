@@ -78,11 +78,11 @@
   "confidence": 0.9,
   "orientation_method": "text_hr_match",
   "text_hr": 0.99,
-  "n_curves_found": 21,
+  "n_curves_found": 20,
   "n_pages_scanned": 12,
-  "processing_time_s": 140.62,
+  "processing_time_s": 116.07,
   "warnings": [],
   "certification_status": "UNCERTIFIED",
-  "pipeline_version": "1.0",
-  "timestamp": "2026-02-13T22:40:35.433300+00:00"
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-16T21:43:49.088565+00:00"
 }

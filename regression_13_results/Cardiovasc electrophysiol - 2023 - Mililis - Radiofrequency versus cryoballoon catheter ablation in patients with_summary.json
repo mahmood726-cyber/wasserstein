@@ -80,11 +80,11 @@
   "text_hr": null,
   "n_curves_found": 9,
   "n_pages_scanned": 6,
-  "processing_time_s": 48.07,
+  "processing_time_s": 107.11,
   "warnings": [
     "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
   ],
   "certification_status": "UNCERTIFIED",
-  "pipeline_version": "1.0",
-  "timestamp": "2026-02-13T22:33:58.851143+00:00"
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-15T14:46:23.101477+00:00"
 }

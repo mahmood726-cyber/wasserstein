@@ -1,11 +1,11 @@
 {
   "pdf_path": "euu064.pdf",
   "pdf_name": "euu064.pdf",
-  "hr": 0.753,
-  "ci_lower": 0.549,
-  "ci_upper": 1.032,
+  "hr": 0.881,
+  "ci_lower": null,
+  "ci_upper": null,
   "p_value": null,
-  "hr_method": "derived_hr_match",
+  "hr_method": "derived_hr_fallback",
   "ipd_arm1": {
     "arm_label": "treatment",
     "arm_index": 1,
@@ -76,13 +76,15 @@
   ],
   "curve2_survivals_length": 1772,
   "confidence": 0.7,
-  "orientation_method": "derived_hr_match",
+  "orientation_method": "derived_hr_fallback",
   "text_hr": 0.881,
   "n_curves_found": 15,
   "n_pages_scanned": 9,
-  "processing_time_s": 184.54,
-  "warnings": [],
+  "processing_time_s": 157.17,
+  "warnings": [
+    "Used derived HR from event rates (curve extraction failed: 0.753 vs derived 0.881)"
+  ],
   "certification_status": "UNCERTIFIED",
-  "pipeline_version": "1.0",
-  "timestamp": "2026-02-13T22:50:17.408523+00:00"
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-16T21:52:06.163990+00:00"
 }

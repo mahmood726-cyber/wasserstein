@@ -1,0 +1,92 @@
+{
+  "pdf_path": "PMC10368201.pdf",
+  "pdf_name": "PMC10368201.pdf",
+  "hr": 0.22,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 90,
+    "n_events": 80,
+    "n_censored": 10,
+    "n_records": 90
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 87,
+    "n_events": 75,
+    "n_censored": 12,
+    "n_records": 87
+  },
+  "total_ipd_records": 177,
+  "curve1_times": [
+    0.07845868152274837,
+    0.07892293407613742,
+    0.07938718662952646,
+    0.07985143918291551,
+    0.08031569173630455,
+    0.0807799442896936,
+    0.08124419684308264,
+    0.08170844939647168,
+    0.08217270194986072,
+    0.08263695450324977
+  ],
+  "curve1_times_length": 824,
+  "curve1_survivals": [
+    0.867704280155642,
+    0.867704280155642,
+    0.867704280155642,
+    0.8239299610894941,
+    0.8239299610894941,
+    0.8239299610894941,
+    0.8239299610894941,
+    0.867704280155642,
+    0.9095330739299611,
+    0.8317120622568093
+  ],
+  "curve1_survivals_length": 824,
+  "curve2_times": [
+    0.002785515320334262,
+    0.0032497678737233053,
+    0.003714020427112349,
+    0.004178272980501393,
+    0.004642525533890436,
+    0.00510677808727948,
+    0.005571030640668524,
+    0.0060352831940575676,
+    0.0064995357474466105,
+    0.006963788300835654
+  ],
+  "curve2_times_length": 1096,
+  "curve2_survivals": [
+    0.9701834862385321,
+    0.9701834862385321,
+    0.9701834862385321,
+    0.9686544342507646,
+    0.9686544342507646,
+    0.9686544342507646,
+    0.9625382262996942,
+    0.9625382262996942,
+    0.9625382262996942,
+    0.9625382262996942
+  ],
+  "curve2_survivals_length": 1096,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 0.22,
+  "n_curves_found": 12,
+  "n_pages_scanned": 12,
+  "processing_time_s": 106.96,
+  "warnings": [
+    "Text HR match weak: extracted 0.329 vs text 0.22 (log-err=0.402)",
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD.",
+    "Extreme HR=0.220: manual review recommended"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:25:03.004777+00:00"
+}

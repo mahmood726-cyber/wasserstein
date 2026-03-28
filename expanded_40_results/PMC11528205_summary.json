@@ -1,0 +1,90 @@
+{
+  "pdf_path": "PMC11528205.pdf",
+  "pdf_name": "PMC11528205.pdf",
+  "hr": 0.49,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 100,
+    "n_events": 88,
+    "n_censored": 12,
+    "n_records": 100
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 95,
+    "n_events": 83,
+    "n_censored": 12,
+    "n_records": 95
+  },
+  "total_ipd_records": 195,
+  "curve1_times": [
+    0.058666666666666666,
+    0.059333333333333335,
+    0.06,
+    0.06066666666666667,
+    0.06133333333333333,
+    0.062,
+    0.06266666666666666,
+    0.06333333333333334,
+    0.064,
+    0.06466666666666666
+  ],
+  "curve1_times_length": 212,
+  "curve1_survivals": [
+    0.9477777777777778,
+    0.9477777777777778,
+    0.9477777777777778,
+    0.9477777777777778,
+    0.9466666666666667,
+    0.9477777777777778,
+    0.9488888888888889,
+    0.95,
+    0.9488888888888889,
+    0.9488888888888889
+  ],
+  "curve1_survivals_length": 212,
+  "curve2_times": [
+    0.01413760603204524,
+    0.014608859566446749,
+    0.015080113100848256,
+    0.015551366635249765,
+    0.016022620169651274,
+    0.01649387370405278,
+    0.016965127238454288,
+    0.017436380772855798,
+    0.017907634307257305,
+    0.018378887841658812
+  ],
+  "curve2_times_length": 378,
+  "curve2_survivals": [
+    0.9149797570850202,
+    0.9149797570850202,
+    0.9149797570850202,
+    0.9149797570850202,
+    0.9136302294197031,
+    0.9149797570850202,
+    0.9163292847503374,
+    0.9176788124156545,
+    0.9163292847503374,
+    0.9163292847503374
+  ],
+  "curve2_survivals_length": 378,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 0.49,
+  "n_curves_found": 11,
+  "n_pages_scanned": 12,
+  "processing_time_s": 74.93,
+  "warnings": [
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:51:38.245995+00:00"
+}

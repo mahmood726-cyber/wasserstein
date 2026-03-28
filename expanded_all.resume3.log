@@ -1,0 +1,1179 @@
+===========================================================================
+EXPANDED VALIDATION: 135 Trials (40 v1.4 + 95 Phase 4)
+Started: 2026-02-17T09:09:20.482398+00:00
+===========================================================================
+
+[1/135] HUNTER (AF-ablation)
+  PDF: Cardiovasc electrophysiol - 2015 - HUNTER - Point‐by‐Point Radiof...
+  Ground Truth: HR=0.53 [0.25, 1.1]
+  Resume cache: Cardiovasc_electrophysiol_-_2015_-_HUNTER_-_Point-by-Point_Radiofrequency_Ablation_Versus_the_Cryoballoon_or_a_Novel_summary.json
+  Cached: HR=0.525 [N/A]
+  Rel Error: 0.9% OK
+  Within CI: True -> PASS
+  Method: derived_hr_fallback
+  Time: 40.3s  IPD: 302
+
+[2/135] MILILIS-PERS (AF-ablation)
+  PDF: Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versu...
+  Ground Truth: HR=0.96 [0.5, 1.8]
+  Resume cache: Cardiovasc_electrophysiol_-_2023_-_Mililis_-_Radiofrequency_versus_cryoballoon_catheter_ablation_in_patients_with_summary.json
+  Cached: HR=0.972 [0.684, 1.380]
+  Rel Error: 1.3% OK
+  Within CI: True -> PASS
+  Method: closest_to_1
+  Time: 39.3s  IPD: 61
+
+[3/135] FIRE AND ICE (AF-ablation)
+  PDF: NEJMoa1602014.pdf...
+  Ground Truth: HR=0.96 [0.76, 1.22]
+  Resume cache: NEJMoa1602014_summary.json
+  Cached: HR=0.977 [0.616, 1.549]
+  Rel Error: 1.8% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 43.2s  IPD: 141
+
+[4/135] CIRCA-DOSE (AF-ablation)
+  PDF: andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-f...
+  Ground Truth: HR=1.08 [0.78, 1.5]
+  Resume cache: andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring_summary.json
+  Cached: HR=1.080 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 89.4s  IPD: 0
+
+[5/135] FROZEN AF (AF-ablation)
+  PDF: chun-et-al-cryoballoon-versus-laserballoon.pdf...
+  Ground Truth: HR=0.9 [0.5, 1.6]
+  Resume cache: chun-et-al-cryoballoon-versus-laserballoon_summary.json
+  Cached: HR=0.898 [N/A]
+  Rel Error: 0.2% OK
+  Within CI: True -> PASS
+  Method: derived_hr_fallback
+  Time: 92.8s  IPD: 82
+
+[6/135] CRRF-PeAF (AF-ablation)
+  PDF: ehaf451.pdf...
+  Ground Truth: HR=0.99 [0.69, 1.43]
+  Resume cache: ehaf451_summary.json
+  Cached: HR=1.000 [0.407, 2.458]
+  Rel Error: 1.0% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 100.6s  IPD: 108
+
+[7/135] HIPAF (AF-ablation)
+  PDF: euaf066.pdf...
+  Ground Truth: HR=1.47 [0.7, 2.5]
+  Resume cache: euaf066_summary.json
+  Cached: HR=1.476 [N/A]
+  Rel Error: 0.4% OK
+  Within CI: True -> PASS
+  Method: derived_hr_fallback
+  Time: 114.0s  IPD: 140
+
+[8/135] PVAC-CPVI (AF-ablation)
+  PDF: eut398.pdf...
+  Ground Truth: HR=0.72 [0.35, 1.5]
+  Resume cache: eut398_summary.json
+  Cached: HR=0.757 [0.547, 1.046]
+  Rel Error: 5.1% OK
+  Within CI: True -> PASS
+  Method: derived_hr_match
+  Time: 74.5s  IPD: 157
+
+[9/135] WACA-PVAC (AF-ablation)
+  PDF: euu064.pdf...
+  Ground Truth: HR=1.14 [0.6, 2.1]
+  Resume cache: euu064_summary.json
+  Cached: HR=0.881 [N/A]
+  Rel Error: 22.7% >10%
+  Within CI: True -> PASS
+  Method: derived_hr_fallback
+  Time: 122.5s  IPD: 185
+
+[10/135] CRAVE (AF-ablation)
+  PDF: pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequ...
+  Ground Truth: HR=0.91 [0.45, 1.85]
+  Resume cache: pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients_summary.json
+  Cached: HR=0.987 [0.733, 1.329]
+  Rel Error: 8.5% OK
+  Within CI: True -> PASS
+  Method: derived_hr_match
+  Time: 130.7s  IPD: 196
+
+[11/135] ADVENT (AF-ablation)
+  PDF: reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-par...
+  Ground Truth: HR=0.92 [0.55, 1.5]
+  Resume cache: reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation_summary.json
+  Cached: HR=0.974 [0.718, 1.320]
+  Rel Error: 5.9% OK
+  Within CI: True -> PASS
+  Method: derived_hr_match
+  Time: 120.0s  IPD: 191
+
+[12/135] FREEZEAF-30M (AF-ablation)
+  PDF: s12872-017-0566-6.pdf...
+  Ground Truth: HR=1.06 [0.55, 2.0]
+  Resume cache: s12872-017-0566-6_summary.json
+  Cached: HR=1.056 [N/A]
+  Rel Error: 0.4% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 49.2s  IPD: 0
+
+[13/135] LBRF-PERSISTENT (AF-ablation)
+  PDF: schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigate...
+  Ground Truth: HR=0.93 [0.5, 1.7]
+  Resume cache: schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial_summary.json
+  Cached: HR=0.931 [0.594, 1.456]
+  Rel Error: 0.1% OK
+  Within CI: True -> PASS
+  Method: derived_hr_match
+  Time: 69.8s  IPD: 150
+
+[14/135] EMPEROR-Preserved (heart-failure)
+  PDF: NEJMoa2107038.pdf...
+  Ground Truth: HR=0.79 [0.69, 0.9]
+  Resume cache: NEJMoa2107038_summary.json
+  Cached: HR=0.790 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 47.4s  IPD: 0
+
+[15/135] DELIVER (heart-failure)
+  PDF: NEJMoa2206286.pdf...
+  Ground Truth: HR=0.82 [0.73, 0.92]
+  Resume cache: NEJMoa2206286_summary.json
+  Cached: HR=0.820 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 48.5s  IPD: 0
+
+[16/135] SELECT (obesity-CV)
+  PDF: NEJMoa2307563.pdf...
+  Ground Truth: HR=0.8 [0.72, 0.9]
+  Resume cache: NEJMoa2307563_summary.json
+  Cached: HR=0.800 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 57.6s  IPD: 0
+
+[17/135] AFIRE (AF-CAD)
+  PDF: NEJMoa1904143.pdf...
+  Ground Truth: HR=0.72 [0.55, 0.95]
+  Resume cache: NEJMoa1904143_summary.json
+  Cached: HR=0.720 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 53.2s  IPD: 0
+
+[18/135] PARTNER 3 (TAVR)
+  PDF: Partner3.pdf...
+  Ground Truth: HR=0.54 [0.37, 0.79]
+  Resume cache: Partner3_summary.json
+  Cached: HR=0.540 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 43.6s  IPD: 0
+
+[19/135] AUGUSTUS (AF-ACS)
+  PDF: Augustus.pdf...
+  Ground Truth: HR=0.69 [0.58, 0.81]
+  Resume cache: Augustus_summary.json
+  Cached: HR=0.690 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 79.3s  IPD: 0
+
+[20/135] SHIFT (heart-failure)
+  PDF: IvabradineandoutcomesinchronicheartfailureSHIFT-arandomisedplaceb...
+  Ground Truth: HR=0.82 [0.75, 0.9]
+  Resume cache: IvabradineandoutcomesinchronicheartfailureSHIFT-arandomisedplacebo-controlledstudy_summary.json
+  Cached: HR=0.834 [0.508, 1.370]
+  Rel Error: 1.7% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 105.2s  IPD: 128
+
+[21/135] MERIT-HF (heart-failure)
+  PDF: EffectofmetoprololCR-XLinchronicheartfailure.pdf...
+  Ground Truth: HR=0.66 [0.53, 0.81]
+  Resume cache: EffectofmetoprololCR-XLinchronicheartfailure_summary.json
+  Cached: HR=0.660 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 69.5s  IPD: 0
+
+[22/135] ENTRUST-AF PCI (AF-PCI)
+  PDF: entrust.pdf...
+  Ground Truth: HR=0.83 [0.65, 1.05]
+  Resume cache: entrust_summary.json
+  Cached: HR=0.883 [0.608, 1.281]
+  Rel Error: 6.4% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 103.1s  IPD: 148
+
+[23/135] PIONEER AF-PCI (AF-PCI)
+  PDF: Pioneer AF.pdf...
+  Ground Truth: HR=0.59 [0.47, 0.76]
+  Resume cache: Pioneer_AF_summary.json
+  Cached: HR=0.601 [0.408, 0.884]
+  Rel Error: 1.9% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 51.1s  IPD: 126
+
+[24/135] ADVANCE (diabetes)
+  PDF: NEJMoa0802987.pdf...
+  Ground Truth: HR=0.9 [0.82, 0.98]
+  Resume cache: NEJMoa0802987_summary.json
+  Cached: HR=0.860 [N/A]
+  Rel Error: 4.4% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 49.4s  IPD: 0
+
+[25/135] CIBIS-II (heart-failure)
+  PDF: TheLancet1999Investigators.pdf...
+  Ground Truth: HR=0.66 [0.54, 0.81]
+  Resume cache: TheLancet1999Investigators_summary.json
+  Cached: HR=0.660 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 31.5s  IPD: 0
+
+[26/135] PMC10115555 (oncology)
+  PDF: PMC10115555.pdf...
+  Ground Truth: HR=0.82 [0.69, 0.97]
+  Resume cache: PMC10115555_summary.json
+  Cached: HR=0.874 [0.569, 1.342]
+  Rel Error: 6.6% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 153.6s  IPD: 161
+
+[27/135] PMC10427418 (oncology)
+  PDF: PMC10427418.pdf...
+  Ground Truth: HR=0.678 [0.546, 0.841]
+  Resume cache: PMC10427418_summary.json
+  Cached: HR=0.678 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 145.1s  IPD: 0
+
+[28/135] PMC10553121 (oncology)
+  PDF: PMC10553121.pdf...
+  Ground Truth: HR=0.73 [0.62, 0.86]
+  Resume cache: PMC10553121_summary.json
+  Cached: HR=0.770 [N/A]
+  Rel Error: 5.5% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 158.8s  IPD: 0
+
+[29/135] SUSTAIN-6 (diabetes)
+  PDF: PMC11943310.pdf...
+  Ground Truth: HR=0.74 [0.58, 0.95]
+  Resume cache: PMC11943310_summary.json
+  Cached: HR=0.889 [0.661, 1.194]
+  Rel Error: 20.1% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 248.3s  IPD: 176
+
+[30/135] SGLT2-insulin (diabetes)
+  PDF: 40036884_Effects of SGLT2 inhibition on insulin u.pdf...
+  Ground Truth: HR=0.81 [0.71, 0.93]
+  Resume cache: 40036884_Effects_of_SGLT2_inhibition_on_insulin_u_summary.json
+  Cached: HR=0.874 [0.593, 1.289]
+  Rel Error: 7.9% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 150.3s  IPD: 125
+
+[31/135] SGLT2-nonDM (diabetes)
+  PDF: 40978864_Sodium-Glucose Cotransporter 2 SGLT2 Inh.pdf...
+  Ground Truth: HR=0.73 [0.6, 0.88]
+  Resume cache: 40978864_Sodium-Glucose_Cotransporter_2_SGLT2_Inh_summary.json
+  Cached: HR=0.799 [0.596, 1.072]
+  Rel Error: 9.5% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 187.8s  IPD: 200
+
+[32/135] PMC10323201 (respiratory)
+  PDF: PMC10323201.pdf...
+  Ground Truth: HR=0.62 [0.38, 0.99]
+  Resume cache: PMC10323201_summary.json
+  Cached: HR=0.457 [0.322, 0.648]
+  Rel Error: 26.3% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 130.2s  IPD: 177
+
+[33/135] PMC10952210 (respiratory)
+  PDF: PMC10952210.pdf...
+  Ground Truth: HR=0.32 [0.14, 0.76]
+  Resume cache: PMC10952210_summary.json
+  Cached: HR=0.610 [N/A]
+  Rel Error: 90.6% >10%
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 170.9s  IPD: 0
+
+[34/135] PMC10990610 (respiratory)
+  PDF: PMC10990610.pdf...
+  Ground Truth: HR=0.66 [0.53, 0.83]
+  Resume cache: PMC10990610_summary.json
+  Cached: HR=0.712 [0.521, 0.973]
+  Rel Error: 7.9% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 206.8s  IPD: 188
+
+[35/135] PMC10805160 (neurology)
+  PDF: PMC10805160.pdf...
+  Ground Truth: HR=0.59 [0.54, 0.64]
+  Resume cache: PMC10805160_summary.json
+  Cached: HR=0.646 [0.401, 1.040]
+  Rel Error: 9.5% OK
+  Within CI: False -> FAIL
+  Method: text_hr_match
+  Time: 145.4s  IPD: 98
+
+[36/135] PMC11296275 (neurology)
+  PDF: PMC11296275.pdf...
+  Ground Truth: HR=0.69 [0.57, 0.83]
+  Resume cache: PMC11296275_summary.json
+  Cached: HR=0.299 [0.207, 0.433]
+  Rel Error: 56.7% >10%
+  Within CI: False -> FAIL
+  Method: text_hr_match
+  Time: 138.3s  IPD: 182
+
+[37/135] PMC11448330 (neurology)
+  PDF: PMC11448330.pdf...
+  Ground Truth: HR=0.8 [0.61, 1.05]
+  Resume cache: PMC11448330_summary.json
+  Cached: HR=0.788 [0.538, 1.154]
+  Rel Error: 1.5% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 86.5s  IPD: 123
+
+[38/135] PMC10052578 (infectious)
+  PDF: PMC10052578.pdf...
+  Ground Truth: HR=0.69 [0.56, 0.85]
+  Resume cache: PMC10052578_summary.json
+  Cached: HR=0.923 [0.686, 1.242]
+  Rel Error: 33.8% >10%
+  Within CI: False -> FAIL
+  Method: text_hr_match
+  Time: 136.9s  IPD: 196
+
+[39/135] PMC10105623 (infectious)
+  PDF: PMC10105623.pdf...
+  Ground Truth: HR=0.35 [0.24, 0.51]
+  Resume cache: PMC10105623_summary.json
+  Cached: HR=0.403 [0.270, 0.602]
+  Rel Error: 15.1% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 96.1s  IPD: 161
+
+[40/135] PMC11103724 (infectious)
+  PDF: PMC11103724.pdf...
+  Ground Truth: HR=0.33 [0.26, 0.43]
+  Resume cache: PMC11103724_summary.json
+  Cached: HR=0.345 [0.248, 0.479]
+  Rel Error: 4.5% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 183.6s  IPD: 86
+
+[41/135] PMC10192282 (cardiology)
+  PDF: PMC10192282.pdf...
+  Ground Truth: HR=0.26 [0.12, 0.57]
+  Resume cache: PMC10192282_summary.json
+  Cached: HR=0.293 [0.208, 0.413]
+  Rel Error: 12.7% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 197.8s  IPD: 118
+
+[42/135] PMC10918378 (cardiology)
+  PDF: PMC10918378.pdf...
+  Ground Truth: HR=0.55 [0.5, 0.61]
+  Resume cache: PMC10918378_summary.json
+  Cached: HR=0.520 [0.206, 1.309]
+  Rel Error: 5.5% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 54.5s  IPD: 47
+
+[43/135] PMC11205945 (cardiology)
+  PDF: PMC11205945.pdf...
+  Ground Truth: HR=0.84 [0.72, 0.98]
+  Resume cache: PMC11205945_summary.json
+  Cached: HR=0.910 [0.573, 1.445]
+  Rel Error: 8.3% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 171.5s  IPD: 108
+
+[44/135] PMC11333279 (cardiology)
+  PDF: PMC11333279.pdf...
+  Ground Truth: HR=1.44 [1.38, 1.5]
+  Resume cache: PMC11333279_summary.json
+  Cached: HR=2.259 [1.442, 3.537]
+  Rel Error: 56.9% >10%
+  Within CI: False -> FAIL
+  Method: text_hr_match
+  Time: 174.9s  IPD: 108
+
+[45/135] PMC11292321 (cardiology)
+  PDF: PMC11292321.pdf...
+  Ground Truth: HR=0.79 [0.69, 0.91]
+  Resume cache: PMC11292321_summary.json
+  Cached: HR=0.807 [0.306, 2.128]
+  Rel Error: 2.2% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 170.8s  IPD: 152
+
+[46/135] PMC10242061 (cardiology)
+  PDF: PMC10242061.pdf...
+  Ground Truth: HR=0.59 [0.44, 0.79]
+  Resume cache: PMC10242061_summary.json
+  Cached: HR=0.590 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 148.2s  IPD: 0
+
+[47/135] PMC10774583 (cardiology)
+  PDF: PMC10774583.pdf...
+  Ground Truth: HR=0.77 [0.61, 0.96]
+  Resume cache: PMC10774583_summary.json
+  Cached: HR=0.704 [0.507, 0.977]
+  Rel Error: 8.6% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 54.2s  IPD: 180
+
+[48/135] PMC10972401 (cardiology)
+  PDF: PMC10972401.pdf...
+  Ground Truth: HR=0.76 [0.62, 0.94]
+  Resume cache: PMC10972401_summary.json
+  Cached: HR=0.887 [0.615, 1.279]
+  Rel Error: 16.7% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 132.6s  IPD: 151
+
+[49/135] PMC10810805 (cardiology)
+  PDF: PMC10810805.pdf...
+  Ground Truth: HR=0.88 [0.83, 0.95]
+  Resume cache: PMC10810805_summary.json
+  Cached: HR=0.723 [0.477, 1.096]
+  Rel Error: 17.8% >10%
+  Within CI: False -> FAIL
+  Method: text_hr_match
+  Time: 85.2s  IPD: 113
+
+[50/135] PMC10958307 (cardiology)
+  PDF: PMC10958307.pdf...
+  Ground Truth: HR=1.11 [1.01, 1.23]
+  Resume cache: PMC10958307_summary.json
+  Cached: HR=1.000 [N/A]
+  Rel Error: 9.9% OK
+  Within CI: False -> FAIL
+  Method: text_derived_only
+  Time: 91.2s  IPD: 0
+
+[51/135] PMC10643919 (cardiology)
+  PDF: PMC10643919.pdf...
+  Ground Truth: HR=0.79 [0.57, 1.11]
+  Resume cache: PMC10643919_summary.json
+  Cached: HR=0.790 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 103.2s  IPD: 0
+
+[52/135] PMC10709228 (cardiology)
+  PDF: PMC10709228.pdf...
+  Ground Truth: HR=0.65 [0.35, 1.2]
+  Resume cache: PMC10709228_summary.json
+  Cached: HR=1.034 [0.738, 1.450]
+  Rel Error: 59.1% >10%
+  Within CI: True -> PASS
+  Method: closest_to_1
+  Time: 154.9s  IPD: 85
+
+[53/135] PMC10872694 (cardiology)
+  PDF: PMC10872694.pdf...
+  Ground Truth: HR=0.51 [0.29, 0.86]
+  Resume cache: PMC10872694_summary.json
+  Cached: HR=1.170 [N/A]
+  Rel Error: 129.4% >10%
+  Within CI: False -> FAIL
+  Method: text_derived_only
+  Time: 166.4s  IPD: 0
+
+[54/135] PMC11297513 (cardiology)
+  PDF: PMC11297513.pdf...
+  Ground Truth: HR=0.51 [0.29, 0.88]
+  Resume cache: PMC11297513_summary.json
+  Cached: HR=0.810 [N/A]
+  Rel Error: 58.8% >10%
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 516.4s  IPD: 0
+
+[55/135] PMC10810919 (cardiology)
+  PDF: PMC10810919.pdf...
+  Ground Truth: HR=0.8 [0.5, 1.3]
+  Resume cache: PMC10810919_summary.json
+  Cached: HR=0.811 [0.578, 1.138]
+  Rel Error: 1.4% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 126.6s  IPD: 162
+
+[56/135] PMC10968587 (cardiology)
+  PDF: PMC10968587.pdf...
+  Ground Truth: HR=1.25 [0.97, 1.61]
+  Resume cache: PMC10968587_summary.json
+  Cached: HR=1.008 [0.743, 1.368]
+  Rel Error: 19.4% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 417.0s  IPD: 191
+
+[57/135] PMC10140742 (cardiology)
+  PDF: PMC10140742.pdf...
+  Ground Truth: HR=0.41 [0.21, 0.81]
+  Resume cache: PMC10140742_summary.json
+  Cached: HR=0.429 [0.291, 0.634]
+  Rel Error: 4.6% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 82.5s  IPD: 130
+
+[58/135] PMC11395793 (cardiology)
+  PDF: PMC11395793.pdf...
+  Ground Truth: HR=0.29 [0.12, 0.72]
+  Resume cache: PMC11395793_summary.json
+  Cached: HR=0.290 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 261.9s  IPD: 0
+
+[59/135] PMC11262592 (cardiology)
+  PDF: PMC11262592.pdf...
+  Ground Truth: HR=0.871 [0.585, 1.295]
+  Resume cache: PMC11262592_summary.json
+  Cached: HR=0.871 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 297.4s  IPD: 0
+
+[60/135] PMC10062319 (cardiology)
+  PDF: PMC10062319.pdf...
+  Ground Truth: HR=0.65 [0.56, 0.75]
+  Resume cache: PMC10062319_summary.json
+  Cached: HR=0.695 [0.491, 0.983]
+  Rel Error: 6.9% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 263.5s  IPD: 174
+
+[61/135] 40728174_Impact of Dapagliflozin on Cardiometabol (diabetes)
+  PDF: 40728174_Impact of Dapagliflozin on Cardiometabol.pdf...
+  Ground Truth: HR=0.4 [0.15, 1.03]
+  Resume cache: 40728174_Impact_of_Dapagliflozin_on_Cardiometabol_summary.json
+  Cached: HR=0.368 [0.254, 0.532]
+  Rel Error: 8.0% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 73.5s  IPD: 147
+
+[62/135] 40510065_Evaluating the Clinical Outcomes of Empa (diabetes)
+  PDF: 40510065_Evaluating the Clinical Outcomes of Empa.pdf...
+  Ground Truth: HR=0.71 [0.6, 0.83]
+  Resume cache: 40510065_Evaluating_the_Clinical_Outcomes_of_Empa_summary.json
+  Cached: HR=0.767 [0.561, 1.048]
+  Rel Error: 8.0% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 86.9s  IPD: 200
+
+[63/135] 40739638_Efficacy and safety of dapagliflozin in  (diabetes)
+  PDF: 40739638_Efficacy and safety of dapagliflozin in .pdf...
+  Ground Truth: HR=0.86 [0.55, 1.35]
+  Resume cache: 40739638_Efficacy_and_safety_of_dapagliflozin_in_summary.json
+  Cached: HR=0.860 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 81.5s  IPD: 0
+
+[64/135] 40337145_Effects of Intensive Systolic Blood Pres (diabetes)
+  PDF: 40337145_Effects of Intensive Systolic Blood Pres.pdf...
+  Ground Truth: HR=1.21 [1.1, 1.34]
+  Resume cache: 40337145_Effects_of_Intensive_Systolic_Blood_Pres_summary.json
+  Cached: HR=0.870 [0.515, 1.470]
+  Rel Error: 28.1% >10%
+  Within CI: False -> FAIL
+  Method: text_hr_match
+  Time: 27.1s  IPD: 79
+
+[65/135] 41192934_Hemoglobin A1c time-in-range mortality a (diabetes)
+  PDF: 41192934_Hemoglobin A1c time-in-range mortality a.pdf...
+  Ground Truth: HR=1.22 [1.2, 1.23]
+  Resume cache: 41192934_Hemoglobin_A1c_time-in-range_mortality_a_summary.json
+  Cached: HR=1.220 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 90.8s  IPD: 0
+
+[66/135] 40955256_Empagliflozin and Cardiovascular Outcome (diabetes)
+  PDF: 40955256_Empagliflozin and Cardiovascular Outcome.pdf...
+  Ground Truth: HR=0.7 [0.58, 0.85]
+  Resume cache: 40955256_Empagliflozin_and_Cardiovascular_Outcome_summary.json
+  Cached: HR=0.680 [0.504, 0.918]
+  Rel Error: 2.9% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 208.4s  IPD: 199
+
+[67/135] 41029853_Cardiovascular and renal outcomes of dua (diabetes)
+  PDF: 41029853_Cardiovascular and renal outcomes of dua.pdf...
+  Ground Truth: HR=0.59 [0.47, 0.75]
+  Resume cache: 41029853_Cardiovascular_and_renal_outcomes_of_dua_summary.json
+  Cached: HR=0.592 [0.440, 0.798]
+  Rel Error: 0.3% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 146.7s  IPD: 180
+
+[68/135] 40795846_Berberine for preventing colorectal aden (diabetes)
+  PDF: 40795846_Berberine for preventing colorectal aden.pdf...
+  Ground Truth: HR=0.83 [0.69, 1.01]
+  Resume cache: 40795846_Berberine_for_preventing_colorectal_aden_summary.json
+  Cached: HR=0.610 [N/A]
+  Rel Error: 26.5% >10%
+  Within CI: False -> FAIL
+  Method: text_derived_only
+  Time: 147.4s  IPD: 0
+
+[69/135] 40901584_Risk factors for hepatic encephalopathy  (diabetes)
+  PDF: 40901584_Risk factors for hepatic encephalopathy .pdf...
+  Ground Truth: HR=0.895 [0.808, 0.992]
+  Resume cache: 40901584_Risk_factors_for_hepatic_encephalopathy_summary.json
+  Cached: HR=0.911 [0.634, 1.308]
+  Rel Error: 1.8% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 165.3s  IPD: 143
+
+[70/135] 40929147_Effect of aspirin on grip strength and g (diabetes)
+  PDF: 40929147_Effect of aspirin on grip strength and g.pdf...
+  Ground Truth: HR=1.05 [1.0, 1.1]
+  Resume cache: 40929147_Effect_of_aspirin_on_grip_strength_and_g_summary.json
+  Cached: HR=1.000 [N/A]
+  Rel Error: 4.8% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 236.7s  IPD: 0
+
+[71/135] PMC10368201 (infectious)
+  PDF: PMC10368201.pdf...
+  Ground Truth: HR=0.27 [0.14, 0.49]
+  Resume cache: PMC10368201_summary.json
+  Cached: HR=0.220 [N/A]
+  Rel Error: 18.5% >10%
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 344.3s  IPD: 0
+
+[72/135] PMC10668417 (infectious)
+  PDF: PMC10668417.pdf...
+  Ground Truth: HR=0.67 [0.54, 0.82]
+  Resume cache: PMC10668417_summary.json
+  Cached: HR=0.588 [0.424, 0.817]
+  Rel Error: 12.2% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 142.4s  IPD: 180
+
+[73/135] PMC11477297 (infectious)
+  PDF: PMC11477297.pdf...
+  Ground Truth: HR=0.99 [0.51, 1.9]
+  Resume cache: PMC11477297_summary.json
+  Cached: HR=0.988 [0.734, 1.329]
+  Rel Error: 0.2% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 584.1s  IPD: 200
+
+[74/135] PMC11359694 (infectious)
+  PDF: PMC11359694.pdf...
+  Ground Truth: HR=2.55 [1.18, 5.24]
+  Resume cache: PMC11359694_summary.json
+  Cached: HR=2.550 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 336.1s  IPD: 0
+
+[75/135] PMC10405997 (infectious)
+  PDF: PMC10405997.pdf...
+  Ground Truth: HR=0.49 [0.32, 0.74]
+  Resume cache: PMC10405997_summary.json
+  Cached: HR=0.531 [0.342, 0.825]
+  Rel Error: 8.4% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 374.2s  IPD: 129
+
+[76/135] PMC10320168 (infectious)
+  PDF: PMC10320168.pdf...
+  Ground Truth: HR=0.48 [0.4, 0.59]
+  Resume cache: PMC10320168_summary.json
+  Cached: HR=0.480 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 260.5s  IPD: 0
+
+[77/135] PMC10741667 (infectious)
+  PDF: PMC10741667.pdf...
+  Ground Truth: HR=0.73 [0.61, 0.87]
+  Resume cache: PMC10741667_summary.json
+  Cached: HR=0.754 [0.528, 1.078]
+  Rel Error: 3.3% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 529.1s  IPD: 165
+
+[78/135] PMC10936748 (infectious)
+  PDF: PMC10936748.pdf...
+  Ground Truth: HR=0.71 [0.63, 0.8]
+  Resume cache: PMC10936748_summary.json
+  Cached: HR=0.764 [0.535, 1.090]
+  Rel Error: 7.6% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 446.9s  IPD: 151
+
+[79/135] PMC11238147 (infectious)
+  PDF: PMC11238147.pdf...
+  Ground Truth: HR=0.63 [0.53, 0.76]
+  Resume cache: PMC11238147_summary.json
+  Cached: HR=0.568 [0.351, 0.919]
+  Rel Error: 9.8% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 526.7s  IPD: 99
+
+[80/135] PMC11305801 (infectious)
+  PDF: PMC11305801.pdf...
+  Ground Truth: HR=0.71 [0.59, 0.85]
+  Resume cache: PMC11305801_summary.jsonINFO:km_pipeline:Processing: PMC11046044.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NAR found on page 5: 1 rows, N=323
+INFO:km_pipeline:NAR found on page 0: 1 rows, N=221
+INFO:km_pipeline:Page 7 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC11046044.pdf: 24 curves from 11 pages
+INFO:km_pipeline:Text HR = 0.7  context: 'BO versus SUN (49.5 versus 35.5 months; HR 0.70; 95% CI 0.56-0.87). ORR (95% CI) was higher with NIVO � C'
+INFO:km_pipeline:Using NAR data: n1=221, n2=221
+INFO:km_pipeline:Using NAR data: n1=221, n2=221
+INFO:km_pipeline:Using NAR data: n1=221, n2=221
+INFO:km_pipeline:Using NAR data: n1=221, n2=221
+INFO:km_pipeline:Using NAR data: n1=323, n2=323
+INFO:km_pipeline:Using NAR data: n1=323, n2=323
+INFO:km_pipeline:Using NAR data: n1=323, n2=323
+INFO:km_pipeline:Using NAR data: n1=323, n2=323
+INFO:km_pipeline:Using NAR data: n1=323, n2=323
+INFO:km_pipeline:Curve HR (0.886) wildly divergent from text HR (0.7), log-err=0.24; rejecting curve-based result
+INFO:km_pipeline:No curve pairs but text HR=0.700 found
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC11046044_summary.json
+
+  Cached: HR=0.822 [0.591, 1.143]
+  Rel Error: 15.8% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 379.7s  IPD: 176
+
+[81/135] PMC11311698 (neurology)
+  PDF: PMC11311698.pdf...
+  Ground Truth: HR=0.15 [0.04, 0.6]
+  Resume cache: PMC11311698_summary.json
+  Cached: HR=0.150 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 488.1s  IPD: 0
+
+[82/135] PMC10796984 (neurology)
+  PDF: PMC10796984.pdf...
+  Ground Truth: HR=0.59 [0.55, 0.63]
+  Resume cache: PMC10796984_summary.json
+  Cached: HR=0.586 [0.426, 0.805]
+  Rel Error: 0.7% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 369.9s  IPD: 192
+
+[83/135] PMC11366999 (neurology)
+  PDF: PMC11366999.pdf...
+  Ground Truth: HR=0.96 [0.81, 1.13]
+  Resume cache: PMC11366999_summary.json
+  Cached: HR=0.997 [0.374, 2.657]
+  Rel Error: 3.9% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 361.6s  IPD: 40
+
+[84/135] PMC11267211 (neurology)
+  PDF: PMC11267211.pdf...
+  Ground Truth: HR=1.54 [1.37, 1.71]
+  Resume cache: PMC11267211_summary.json
+  Cached: HR=1.695 [0.961, 2.989]
+  Rel Error: 10.1% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 567.6s  IPD: 88
+
+[85/135] PMC11353159 (neurology)
+  PDF: PMC11353159.pdf...
+  Ground Truth: HR=0.79 [0.66, 0.92]
+  Resume cache: PMC11353159_summary.json
+  Cached: HR=0.815 [0.610, 1.089]
+  Rel Error: 3.2% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 351.2s  IPD: 200
+
+[86/135] PMC11255623 (neurology)
+  PDF: PMC11255623.pdf...
+  Ground Truth: HR=1.19 [1.02, 1.38]
+  Resume cache: PMC11255623_summary.json
+  Cached: HR=1.225 [0.855, 1.756]
+  Rel Error: 2.9% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 215.9s  IPD: 145
+
+[87/135] PMC11325898 (neurology)
+  PDF: PMC11325898.pdf...
+  Ground Truth: HR=1.1 [1.01, 1.19]
+  Resume cache: PMC11325898_summary.json
+  Cached: HR=1.040 [0.715, 1.513]
+  Rel Error: 5.5% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 159.2s  IPD: 168
+
+[88/135] PMC10943953 (neurology)
+  PDF: PMC10943953.pdf...
+  Ground Truth: HR=0.718 [0.546, 0.945]
+  Resume cache: PMC10943953_summary.json
+  Cached: HR=0.718 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 305.5s  IPD: 0
+
+[89/135] PMC10891404 (neurology)
+  PDF: PMC10891404.pdf...
+  Ground Truth: HR=0.66 [0.41, 1.07]
+  Resume cache: PMC10891404_summary.json
+  Cached: HR=0.660 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 261.9s  IPD: 0
+
+[90/135] PMC10624988 (neurology)
+  PDF: PMC10624988.pdf...
+  Ground Truth: HR=0.89 [0.48, 1.63]
+  Resume cache: PMC10624988_summary.json
+  Cached: HR=0.890 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 252.7s  IPD: 0
+
+[91/135] PMC11483706 (oncology)
+  PDF: PMC11483706.pdf...
+  Ground Truth: HR=0.33 [0.22, 0.5]
+  Resume cache: PMC11483706_summary.json
+  Cached: HR=0.410 [N/A]
+  Rel Error: 24.2% >10%
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 208.0s  IPD: 0
+
+[92/135] PMC10713185 (oncology)
+  PDF: PMC10713185.pdf...
+  Ground Truth: HR=0.7 [0.61, 0.81]
+  Resume cache: PMC10713185_summary.json
+  Cached: HR=0.693 [0.475, 1.012]
+  Rel Error: 1.0% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 2082.0s  IPD: 139
+
+[93/135] PMC11758124 (oncology)
+  PDF: PMC11758124.pdf...
+  Ground Truth: HR=0.82 [0.69, 0.98]
+  Resume cache: PMC11758124_summary.json
+  Cached: HR=0.828 [0.533, 1.284]
+  Rel Error: 1.0% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 147.1s  IPD: 108
+
+[94/135] PMC10613141 (oncology)
+  PDF: PMC10613141.pdf...
+  Ground Truth: HR=1.21 [0.69, 2.13]
+  Resume cache: PMC10613141_summary.json
+  Cached: HR=1.093 [0.765, 1.563]
+  Rel Error: 9.7% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 161.1s  IPD: 137
+
+[95/135] PMC11094424 (oncology)
+  PDF: PMC11094424.pdf...
+  Ground Truth: HR=0.52 [0.42, 0.66]
+  Resume cache: PMC11094424_summary.json
+  Cached: HR=0.499 [0.358, 0.694]
+  Rel Error: 4.0% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 301.8s  IPD: 173
+
+[96/135] PMC11406080 (oncology)
+  PDF: PMC11406080.pdf...
+  Ground Truth: HR=0.5 [0.38, 0.65]
+  Resume cache: PMC11406080_summary.json
+  Cached: HR=0.488 [0.345, 0.691]
+  Rel Error: 2.4% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 149.8s  IPD: 107
+
+[97/135] PMC11484657 (oncology)
+  PDF: PMC11484657.pdf...
+  Ground Truth: HR=0.61 [0.49, 0.77]
+  Resume cache: PMC11484657_summary.json
+  Cached: HR=0.480 [N/A]
+  Rel Error: 21.3% >10%
+  Within CI: False -> FAIL
+  Method: text_derived_only
+  Time: 144.0s  IPD: 0
+
+[98/135] PMC11528205 (oncology)
+  PDF: PMC11528205.pdf...
+  Ground Truth: HR=0.59 [0.47, 0.74]
+  Resume cache: PMC11528205_summary.json
+  Cached: HR=0.490 [N/A]
+  Rel Error: 16.9% >10%
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 215.1s  IPD: 0
+
+[99/135] PMC11620791 (oncology)
+  PDF: PMC11620791.pdf...
+  Ground Truth: HR=0.79 [0.66, 0.95]
+  Resume cache: PMC11620791_summary.json
+  Cached: HR=0.768 [0.562, 1.051]
+  Rel Error: 2.8% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 102.5s  IPD: 200
+
+[100/135] PMC11686335 (oncology)
+  PDF: PMC11686335.pdf...
+  Ground Truth: HR=0.63 [0.51, 0.78]
+  Resume cache: PMC11686335_summary.json
+  Cached: HR=0.730 [0.486, 1.097]
+  Rel Error: 15.9% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 157.8s  IPD: 153
+
+[101/135] PMC11687940 (oncology)
+  PDF: PMC11687940.pdf...
+  Ground Truth: HR=0.72 [0.59, 0.88]
+  Resume cache: PMC11687940_summary.json
+  Cached: HR=0.693 [0.503, 0.955]
+  Rel Error: 3.8% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 90.7s  IPD: 100
+
+[102/135] PMC10062393 (oncology)
+  PDF: PMC10062393.pdf...
+  Ground Truth: HR=0.78 [0.61, 1.0]
+  Resume cache: PMC10062393_summary.json
+  Cached: HR=1.073 [0.618, 1.863]
+  Rel Error: 37.6% >10%
+  Within CI: False -> FAIL
+  Method: text_hr_match
+  Time: 136.9s  IPD: 100
+
+[103/135] PMC10387776 (oncology)
+  PDF: PMC10387776.pdf...
+  Ground Truth: HR=0.68 [0.53, 0.87]
+  Resume cache: PMC10387776_summary.json
+  Cached: HR=0.885 [0.655, 1.195]
+  Rel Error: 30.1% >10%
+  Within CI: False -> FAIL
+  Method: text_hr_match
+  Time: 146.5s  IPD: 197
+
+[104/135] PMC10638879 (oncology)
+  PDF: PMC10638879.pdf...
+  Ground Truth: HR=0.56 [0.37, 0.84]
+  Resume cache: PMC10638879_summary.json
+  Cached: HR=0.613 [0.437, 0.860]
+  Rel Error: 9.5% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 38.6s  IPD: 305
+
+[105/135] PMC10655973 (oncology)
+  PDF: PMC10655973.pdf...
+  Ground Truth: HR=0.57 [0.44, 0.74]
+  Resume cache: PMC10655973_summary.json
+  Cached: HR=0.549 [0.395, 0.762]
+  Rel Error: 3.7% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 308.1s  IPD: 101
+
+[106/135] PMC10774956 (oncology)
+  PDF: PMC10774956.pdf...
+  Ground Truth: HR=0.69 [0.5, 0.97]
+  Resume cache: PMC10774956_summary.json
+  Cached: HR=0.817 [0.558, 1.197]
+  Rel Error: 18.4% >10%
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 239.7s  IPD: 142
+
+[107/135] PMC10836324 (oncology)
+  PDF: PMC10836324.pdf...
+  Ground Truth: HR=0.63 [0.5, 0.8]
+  Resume cache: PMC10836324_summary.json
+  Cached: HR=0.592 [0.316, 1.111]
+  Rel Error: 6.0% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 283.9s  IPD: 65
+
+[108/135] PMC10944099 (oncology)
+  PDF: PMC10944099.pdf...
+  Ground Truth: HR=0.67 [0.48, 0.93]
+  Resume cache: PMC10944099_summary.json
+  Cached: HR=0.658 [0.362, 1.194]
+  Rel Error: 1.8% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 141.6s  IPD: 66
+
+[109/135] PMC11046044 (oncology)
+  PDF: PMC11046044.pdf...
+  Ground Truth: HR=0.7 [0.56, 0.87]
+  Extracted: HR=0.700 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 40.5s  IPD: 0
+
+[110/135] PMC11056588 (oncology)
+  PDF: PMC11056588.pdf...
+  Ground Truth: HR=0.53 [0.36, 0.79]INFO:km_pipeline:Processing: PMC11056588.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC11056588.pdf: 17 curves from 10 pages
+INFO:km_pipeline:Text HR = 0.53  context: 'ement over placebo included: docetaxel (HR, 0.53; 95% CI, 0.36-0.79), abiraterone acetate (HR, 0.81; 95% CI'
+INFO:km_pipeline:IPD reconstructed: 100 treatment (96 events), 92 control (82 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC11056588_summary.json
+INFO:km_pipeline:Processing: PMC11185856.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:PMC11185856.pdf: 9 curves from 10 pages
+INFO:km_pipeline:Text HR = 0.66  context: 'll survival (OS) (19.2 vs. 13.4 months, hazard ratio [HR] 0.66) and median progression-free survival ('
+INFO:km_pipeline:IPD reconstructed: 80 treatment (70 events), 55 control (43 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC11185856_summary.json
+INFO:km_pipeline:Processing: PMC11228234.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 7 NAR detection timed out (2.3s), skipping
+INFO:km_pipeline:PMC11228234.pdf: 13 curves from 9 pages
+INFO:km_pipeline:Text HR = 0.65  context: '(CI): 0.51 to 1.00, p = 0.052] and DFS (HR 0.65, 95% CI: 0.38 to 1.14, p = 0.132) between NACT+S and CCRT. Su'
+INFO:km_pipeline:Curve HR (0.468) wildly divergent from text HR (0.65), log-err=0.33; rejecting curve-based result
+INFO:km_pipeline:No curve pairs but text HR=0.650 found
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\PMC11228234_summary.json
+INFO:km_pipeline:Processing: PMC11250169.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)

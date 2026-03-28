@@ -1,0 +1,49 @@
+INFO:km_pipeline:Processing: Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Added dashed orange curve: 103 points
+INFO:simple_multicurve_handler:Panel 1: fallback cascade found 2 curves
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:NAR found on page 3: 1 rows, N=78
+INFO:km_pipeline:Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf: 5 curves from 8 pages
+INFO:km_pipeline:Derived HR=0.525 from event rates: [DERIVED from 68.0% vs 48.0%] ocal ablation to isolate PVs. Freedom from AF was 68% with RFCA and 48
+INFO:km_pipeline:Text HR = 0.525  context: '[DERIVED from 68.0% vs 48.0%] ocal ablation to isolate PVs. Freedom from AF was 68% with RFCA and 48% with CRYO (P = 0.05). However'
+INFO:km_pipeline:Using NAR data: n1=78, n2=78
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Curve HR (0.472) too far from derived HR (0.525); using derived HR
+INFO:km_pipeline:Using NAR data: n1=78, n2=78
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Using NAR data: n1=78, n2=100
+INFO:km_pipeline:Curve HR (2.118) too far from derived HR (1.9047619047619047); using derived HR
+INFO:km_pipeline:IPD reconstructed: 173 treatment (173 events), 129 control (129 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\regression_13_results\Cardiovasc_electrophysiol_-_2015_-_HUNTER_-_Point-by-Point_Radiofrequency_Ablation_Versus_the_Cryoballoon_or_a_Novel_summary.json
+INFO:km_pipeline:Processing: Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 2: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 2: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf: 9 curves from 6 pages
+INFO:km_pipeline:IPD reconstructed: 28 treatment (14 events), 33 control (20 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\regression_13_results\Cardiovasc_electrophysiol_-_2023_-_Mililis_-_Radiofrequency_versus_cryoballoon_catheter_ablation_in_patients_with_summary.json
+INFO:km_pipeline:Processing: NEJMoa1602014.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)

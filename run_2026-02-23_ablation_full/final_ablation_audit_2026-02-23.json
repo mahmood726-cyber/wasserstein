@@ -1,0 +1,439 @@
+{
+  "corpus": "Ablation",
+  "timestamp_utc": "2026-02-23T21:24:40.135279Z",
+  "input_pdf_count": 27,
+  "summary_file_count": 27,
+  "hr_present_count": 24,
+  "hr_missing_count": 3,
+  "with_ipd_count": 24,
+  "total_ipd_records": 3481,
+  "run_status_counts": {
+    "ok": 18,
+    "skipped_existing": 7,
+    "timeout": 0,
+    "error": 2
+  },
+  "failed_files": [
+    {
+      "pdf_name": "BMRI2018-3629384.pdf",
+      "summary_file": "BMRI2018-3629384_summary.json",
+      "warnings": [
+        "Insufficient curves: 1"
+      ]
+    },
+    {
+      "pdf_name": "Supplemental Appendix.pdf",
+      "summary_file": "Supplemental_Appendix_summary.json",
+      "warnings": [
+        "Insufficient curves: 1"
+      ]
+    },
+    {
+      "pdf_name": "Supplemental Tables 1 and 2.pdf",
+      "summary_file": "Supplemental_Tables_1_and_2_summary.json",
+      "warnings": [
+        "Insufficient curves: 1"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "pdf_name": "1-s2.0-S2666501824001533-main.pdf",
+      "summary_file": "1-s2.0-S2666501824001533-main_summary.json",
+      "hr": 1.0,
+      "ci_lower": 0.104,
+      "ci_upper": 9.614,
+      "ipd_records": 23,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null
+    },
+    {
+      "pdf_name": "40001_2025_Article_2911.pdf",
+      "summary_file": "40001_2025_Article_2911_summary.json",
+      "hr": 8.8,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 165,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD.",
+        "Extreme HR=8.800: manual review recommended"
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null
+    },
+    {
+      "pdf_name": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf",
+      "summary_file": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring_summary.json",
+      "hr": 1.08,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 131,
+      "orientation_method": "text_hr_pair_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null
+    },
+    {
+      "pdf_name": "BMRI2018-3629384.pdf",
+      "summary_file": "BMRI2018-3629384_summary.json",
+      "hr": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 0,
+      "orientation_method": "none",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Insufficient curves: 1"
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null
+    },
+    {
+      "pdf_name": "Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf",
+      "summary_file": "Cardiovasc_electrophysiol_-_2015_-_HUNTER_-_Point-by-Point_Radiofrequency_Ablation_Versus_the_Cryoballoon_or_a_Novel_summary.json",
+      "hr": 0.503,
+      "ci_lower": 0.367,
+      "ci_upper": 0.689,
+      "ipd_records": 193,
+      "orientation_method": "derived_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "skipped_existing",
+      "run_exit_code": null
+    },
+    {
+      "pdf_name": "Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf",
+      "summary_file": "Cardiovasc_electrophysiol_-_2023_-_Mililis_-_Radiofrequency_versus_cryoballoon_catheter_ablation_in_patients_with_summary.json",
+      "hr": 0.972,
+      "ci_lower": 0.684,
+      "ci_upper": 1.38,
+      "ipd_records": 61,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null
+    },
+    {
+      "pdf_name": "chun-et-al-cryoballoon-versus-laserballoon.pdf",
+      "summary_file": "chun-et-al-cryoballoon-versus-laserballoon_summary.json",
+      "hr": 0.898,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 82,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Used derived HR from event rates (curve extraction failed: 0.967 vs derived 0.898)"
+      ],
+      "run_status": "skipped_existing",
+      "run_exit_code": null
+    },
+    {
+      "pdf_name": "circ_circulationaha-2019-042622_supp1.pdf",
+      "summary_file": "circ_circulationaha-2019-042622_supp1_summary.json",
+      "hr": 1.008,
+      "ci_lower": 0.717,
+      "ci_upper": 1.415,
+      "ipd_records": 169,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "ehaf451.pdf",
+      "summary_file": "ehaf451_summary.json",
+      "hr": 0.99,
+      "ci_lower": 0.407,
+      "ci_upper": 2.458,
+      "ipd_records": 108,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "euaf066.pdf",
+      "summary_file": "euaf066_summary.json",
+      "hr": 1.476,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 150,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Used derived HR from event rates (curve extraction failed: 1.342 vs derived 1.476)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "eus084.pdf",
+      "summary_file": "eus084_summary.json",
+      "hr": 1.232,
+      "ci_lower": 0.913,
+      "ci_upper": 1.664,
+      "ipd_records": 194,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "eut104.pdf",
+      "summary_file": "eut104_summary.json",
+      "hr": 1.001,
+      "ci_lower": 0.554,
+      "ci_upper": 1.808,
+      "ipd_records": 66,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "eut398.pdf",
+      "summary_file": "eut398_summary.json",
+      "hr": 0.721,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 172,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Used derived HR from event rates (curve extraction failed: 0.757 vs derived 0.721)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "euu064.pdf",
+      "summary_file": "euu064_summary.json",
+      "hr": 0.881,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 185,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Used derived HR from event rates (curve extraction failed: 0.753 vs derived 0.881)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "nejmoa1602014_appendix.pdf",
+      "summary_file": "nejmoa1602014_appendix_summary.json",
+      "hr": 0.7582,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 80,
+      "orientation_method": "closest_to_1_reciprocal_prior",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)",
+        "No text HR and CI crossed 1.0; applied reciprocal prior for ambiguous orientation."
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "NEJMoa1602014.pdf",
+      "summary_file": "NEJMoa1602014_summary.json",
+      "hr": 0.96,
+      "ci_lower": 0.616,
+      "ci_upper": 1.549,
+      "ipd_records": 141,
+      "orientation_method": "text_hr_snap",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf",
+      "summary_file": "pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients_summary.json",
+      "hr": 0.987,
+      "ci_lower": 0.733,
+      "ci_upper": 1.329,
+      "ipd_records": 196,
+      "orientation_method": "derived_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "qgaf049.pdf",
+      "summary_file": "qgaf049_summary.json",
+      "hr": 1.004,
+      "ci_lower": 0.688,
+      "ci_upper": 1.465,
+      "ipd_records": 154,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf",
+      "summary_file": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation_summary.json",
+      "hr": 0.918,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 197,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Used derived HR from event rates (curve extraction failed: 0.974 vs derived 0.918)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "s12872-017-0566-6.pdf",
+      "summary_file": "s12872-017-0566-6_summary.json",
+      "hr": 1.056,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 200,
+      "orientation_method": "derived_hr_fallback",
+      "verification_level": "consistent",
+      "warnings": [
+        "Text HR match weak: extracted 4.342 vs text 1.056 (log-err=1.414)",
+        "Used derived HR from event rates (curve extraction failed: 4.342 vs derived 1.056)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf",
+      "summary_file": "schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial_summary.json",
+      "hr": 0.931,
+      "ci_lower": 0.594,
+      "ci_upper": 1.456,
+      "ipd_records": 149,
+      "orientation_method": "derived_hr_match",
+      "verification_level": "consistent",
+      "warnings": [],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "Supplemental Appendix.pdf",
+      "summary_file": "Supplemental_Appendix_summary.json",
+      "hr": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 0,
+      "orientation_method": "none",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Insufficient curves: 1"
+      ],
+      "run_status": "error",
+      "run_exit_code": 1
+    },
+    {
+      "pdf_name": "Supplemental Figures.pdf",
+      "summary_file": "Supplemental_Figures_summary.json",
+      "hr": 1.0,
+      "ci_lower": 0.323,
+      "ci_upper": 3.101,
+      "ipd_records": 119,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "Supplemental Table 3.pdf",
+      "summary_file": "Supplemental_Table_3_summary.json",
+      "hr": 0.597,
+      "ci_lower": 0.428,
+      "ci_upper": 0.833,
+      "ipd_records": 178,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "Supplemental Table 6.pdf",
+      "summary_file": "Supplemental_Table_6_summary.json",
+      "hr": 0.878,
+      "ci_lower": 0.648,
+      "ci_upper": 1.189,
+      "ipd_records": 195,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    },
+    {
+      "pdf_name": "Supplemental Tables 1 and 2.pdf",
+      "summary_file": "Supplemental_Tables_1_and_2_summary.json",
+      "hr": null,
+      "ci_lower": null,
+      "ci_upper": null,
+      "ipd_records": 0,
+      "orientation_method": "none",
+      "verification_level": "unchecked",
+      "warnings": [
+        "Insufficient curves: 1"
+      ],
+      "run_status": "error",
+      "run_exit_code": 1
+    },
+    {
+      "pdf_name": "Supplemental Tables 4 and 5.pdf",
+      "summary_file": "Supplemental_Tables_4_and_5_summary.json",
+      "hr": 0.972,
+      "ci_lower": 0.686,
+      "ci_upper": 1.378,
+      "ipd_records": 173,
+      "orientation_method": "closest_to_1",
+      "verification_level": "consistent",
+      "warnings": [
+        "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+      ],
+      "run_status": "ok",
+      "run_exit_code": 0
+    }
+  ]
+}

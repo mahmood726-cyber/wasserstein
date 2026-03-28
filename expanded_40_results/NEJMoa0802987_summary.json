@@ -1,0 +1,91 @@
+{
+  "pdf_path": "NEJMoa0802987.pdf",
+  "pdf_name": "NEJMoa0802987.pdf",
+  "hr": 0.86,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 62,
+    "n_events": 51,
+    "n_censored": 11,
+    "n_records": 62
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 95,
+    "n_events": 84,
+    "n_censored": 11,
+    "n_records": 95
+  },
+  "total_ipd_records": 157,
+  "curve1_times": [
+    0.044975688816855756,
+    0.04538087520259319,
+    0.04578606158833063,
+    0.046191247974068074,
+    0.04659643435980551,
+    0.04700162074554295,
+    0.04740680713128039,
+    0.04781199351701783,
+    0.048217179902755265,
+    0.04862236628849271
+  ],
+  "curve1_times_length": 1546,
+  "curve1_survivals": [
+    0.6574803149606299,
+    0.6601049868766404,
+    0.6614173228346456,
+    0.662729658792651,
+    0.6653543307086613,
+    0.6679790026246719,
+    0.6719160104986877,
+    0.6745406824146982,
+    0.6771653543307087,
+    0.6811023622047244
+  ],
+  "curve1_survivals_length": 1546,
+  "curve2_times": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "curve2_times_length": 2062,
+  "curve2_survivals": [
+    0.8652384243261921,
+    0.866620594333103,
+    0.8673116793365584,
+    0.08569454042847269,
+    0.08638562543192818,
+    0.08707671043538356,
+    0.08707671043538356,
+    0.08707671043538356,
+    0.8707671043538355,
+    0.8714581893572909
+  ],
+  "curve2_survivals_length": 2062,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 0.86,
+  "n_curves_found": 2,
+  "n_pages_scanned": 13,
+  "processing_time_s": 70.28,
+  "warnings": [
+    "Text HR match weak: extracted 0.282 vs text 0.86 (log-err=1.115)",
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:22:45.351618+00:00"
+}

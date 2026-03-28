@@ -1,0 +1,28 @@
+{
+  "pdf_path": "NEJMoa1904143.pdf",
+  "pdf_name": "NEJMoa1904143.pdf",
+  "hr": 0.72,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_derived_only",
+  "ipd_arm1": null,
+  "ipd_arm2": null,
+  "total_ipd_records": 0,
+  "curve1_times": null,
+  "curve1_survivals": null,
+  "curve2_times": null,
+  "curve2_survivals": null,
+  "confidence": 0.3,
+  "orientation_method": "text_only",
+  "text_hr": 0.72,
+  "n_curves_found": 1,
+  "n_pages_scanned": 11,
+  "processing_time_s": 63.75,
+  "warnings": [
+    "Text-derived HR only, no curve pair for IPD"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.0",
+  "timestamp": "2026-02-14T12:50:43.566843+00:00"
+}

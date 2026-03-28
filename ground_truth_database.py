@@ -119,6 +119,7 @@ class RCTGroundTruth:
     figure_caption: str = ""
 
     # Outcome information
+    therapeutic_area: str = ""
     outcome_type: str = ""  # "OS", "PFS", "DFS", "EFS"
     median_followup_months: Optional[float] = None
 
@@ -452,6 +453,22 @@ class GroundTruthDatabase:
             hasher.update(pdf_id.encode())
             hasher.update(self.pdfs[pdf_id].pdf_hash.encode())
 
+        # Hash validations
+        for val_id in sorted(self.validations.keys()):
+            val = self.validations[val_id]
+            hasher.update(val_id.encode())
+            hasher.update(str(val.hr_true).encode())
+            hasher.update(str(val.hr_extracted).encode())
+            hasher.update(str(val.extraction_success).encode())
+
+        # Hash RCT ground-truth payload (stored in a separate file)
+        rct_file = self.db_path / "rct_ground_truth.json"
+        if rct_file.exists():
+            try:
+                hasher.update(rct_file.read_bytes())
+            except Exception as e:
+                logger.debug(f"Could not hash RCT ground truth file: {e}")
+
         self._db_hash = hasher.hexdigest()[:16]
 
     def get_db_hash(self) -> str:
@@ -498,6 +515,7 @@ class GroundTruthDatabase:
 
         self.entries[entry.entry_id] = entry
         self._save_entries()
+        self._update_db_hash()
         return entry.entry_id
 
     def add_pdf(self, pdf: PDFMetadata) -> str:
@@ -519,6 +537,7 @@ class GroundTruthDatabase:
 
         self.pdfs[pdf.pdf_id] = pdf
         self._save_pdfs()
+        self._update_db_hash()
         return pdf.pdf_id
 
     def add_validation(self, validation: ValidationResult) -> str:
@@ -548,6 +567,7 @@ class GroundTruthDatabase:
 
         self.validations[val_id] = validation
         self._save_validations()
+        self._update_db_hash()
         return val_id
 
     def get_entry(self, entry_id: str) -> Optional[GroundTruthEntry]:
@@ -756,6 +776,7 @@ class GroundTruthDatabase:
         entry.modified_date = datetime.now().isoformat()
 
         self._save_entries()
+        self._update_db_hash()
         return True
 
     def get_unverified_entries(self) -> List[GroundTruthEntry]:
@@ -960,6 +981,7 @@ class GroundTruthDatabase:
         # Save
         with open(rct_file, 'w', encoding='utf-8') as f:
             json.dump(rct_data, f, indent=2, ensure_ascii=False)
+        self._update_db_hash()
 
         logger.info(f"Added RCT ground truth: {rct.paper_id}")
         return rct.paper_id
@@ -1047,6 +1069,10 @@ class GroundTruthDatabase:
             if verified_only and not rct.verified:
                 continue
 
+            if (therapeutic_area and
+                    rct.therapeutic_area.lower() != therapeutic_area.lower()):
+                continue
+
             if has_nar is not None and rct.has_nar_table != has_nar:
                 continue
 
@@ -1083,6 +1109,7 @@ class GroundTruthDatabase:
             'figure_page': rct.figure_page,
             'figure_panel': rct.figure_panel,
             'figure_caption': rct.figure_caption,
+            'therapeutic_area': rct.therapeutic_area,
             'outcome_type': rct.outcome_type,
             'median_followup_months': rct.median_followup_months,
             'n_total': rct.n_total,
@@ -1171,6 +1198,7 @@ class GroundTruthDatabase:
             figure_page=data.get('figure_page', 0),
             figure_panel=data.get('figure_panel', ''),
             figure_caption=data.get('figure_caption', ''),
+            therapeutic_area=data.get('therapeutic_area', ''),
             outcome_type=data.get('outcome_type', ''),
             median_followup_months=data.get('median_followup_months'),
             n_total=data.get('n_total', 0),

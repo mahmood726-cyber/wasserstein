@@ -1,13 +1,13 @@
-# CLAUDE.md — Wasserstein KM Extractor v1.0
+# CLAUDE.md — Wasserstein KM Extractor v1.4
 
 ## Project Overview
 **KM curve digitizer**: PDF → rasterize → HSV color detect → Guyot IPD → log-rank → HR.
 Extracts Kaplan-Meier survival curves from published PDF figures and derives hazard ratios.
 
-## File Structure (13 core Python files)
+## File Structure (15 core Python files)
 ```
-km_pipeline.py                 CLI entry point (643 lines)
-robust_km_pipeline.py          Full extraction engine v3.8 (62K)
+km_pipeline.py                 CLI entry point (v1.4)
+robust_km_pipeline.py          Full extraction engine v3.8
 improved_hr_estimation.py      Log-rank test + HR calculation
 simple_multicurve_handler.py   Multi-arm curve separation (HSV + KMeans)
 improved_guyot_algorithm.py    Guyot IPD reconstruction
@@ -17,6 +17,8 @@ enhanced_curve_extractor.py    HSV color-based curve extraction
 pdf_extractor.py               PDF rasterization (PyMuPDF)
 pdf_figure_extractor.py        PDF figure region extraction
 legend_extractor.py            Arm label extraction from legends
+nar_detector.py                Number-at-risk table detection (v1.2)
+nar_ocr_extractor.py           NAR table OCR extraction (v1.2)
 ground_truth_database.py       1,836 validated entries
 regression_validate_13.py      Regression validation script
 ```
@@ -30,10 +32,14 @@ regression_validate_13.py      Regression validation script
 6. **Reconstruct IPD**: Guyot algorithm (time, event, arm)
 7. **Estimate HR**: Log-rank test → HR + 95% CI + p-value
 
-## Validation Results (v1.0, 2026-02-13)
-- **13/13 gold trials**: 100% within CI, median 1.7% error, mean 5.4%
-- **26/27 batch PDFs**: 96.3% success rate
-- **Performance**: 35-350s per PDF (median ~120s)
+## Validation Results (v1.4, 2026-02-15)
+- **40 trials, 11 therapeutic areas**: 36/40 (90%) within CI, 30/40 <10% error, median 2.5%
+- **13/13 gold AF trials**: 100% within CI, 13/13 <10% error, median 1.2% (unchanged from v1.3)
+- **Cardio/Metabolic (12)**: 12/12 within CI, mean 2.8%
+- **Phase 2 Diverse (15)**: 11/15 within CI, 4 failures from wrong text HR in review papers
+- **Performance**: 15-137s per PDF (median ~58s)
+- **F5 threshold**: 0.15 (rejects curve HR diverging >16% from text HR)
+- **R cross-validated**: Python pipeline vs R IPDfromKM v0.1.10 (Python outperforms R: 1.2% vs 10.4% median error)
 
 ## Critical Warnings
 - **Non-inferiority trials** (HR~1.0): do NOT penalize overlapping curves

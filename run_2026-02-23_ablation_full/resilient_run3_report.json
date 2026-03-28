@@ -1,0 +1,167 @@
+{
+  "total": 27,
+  "results": [
+    {
+      "pdf": "1-s2.0-S2666501824001533-main.pdf",
+      "status": "skipped_existing",
+      "exit_code": null,
+      "duration_s": 0.0
+    },
+    {
+      "pdf": "40001_2025_Article_2911.pdf",
+      "status": "skipped_existing",
+      "exit_code": null,
+      "duration_s": 0.0
+    },
+    {
+      "pdf": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf",
+      "status": "skipped_existing",
+      "exit_code": null,
+      "duration_s": 0.0
+    },
+    {
+      "pdf": "BMRI2018-3629384.pdf",
+      "status": "skipped_existing",
+      "exit_code": null,
+      "duration_s": 0.0
+    },
+    {
+      "pdf": "Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf",
+      "status": "skipped_existing",
+      "exit_code": null,
+      "duration_s": 0.0
+    },
+    {
+      "pdf": "Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf",
+      "status": "skipped_existing",
+      "exit_code": null,
+      "duration_s": 0.0
+    },
+    {
+      "pdf": "chun-et-al-cryoballoon-versus-laserballoon.pdf",
+      "status": "skipped_existing",
+      "exit_code": null,
+      "duration_s": 0.0
+    },
+    {
+      "pdf": "circ_circulationaha-2019-042622_supp1.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 82.91
+    },
+    {
+      "pdf": "ehaf451.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 129.87
+    },
+    {
+      "pdf": "euaf066.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 160.51
+    },
+    {
+      "pdf": "eus084.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 87.81
+    },
+    {
+      "pdf": "eut104.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 85.47
+    },
+    {
+      "pdf": "eut398.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 122.5
+    },
+    {
+      "pdf": "euu064.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 118.35
+    },
+    {
+      "pdf": "NEJMoa1602014.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 60.65
+    },
+    {
+      "pdf": "nejmoa1602014_appendix.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 134.09
+    },
+    {
+      "pdf": "pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 118.06
+    },
+    {
+      "pdf": "qgaf049.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 121.52
+    },
+    {
+      "pdf": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 110.86
+    },
+    {
+      "pdf": "s12872-017-0566-6.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 92.95
+    },
+    {
+      "pdf": "schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 78.85
+    },
+    {
+      "pdf": "Supplemental Appendix.pdf",
+      "status": "error",
+      "exit_code": 1,
+      "duration_s": 29.91
+    },
+    {
+      "pdf": "Supplemental Figures.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 222.88
+    },
+    {
+      "pdf": "Supplemental Table 3.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 99.59
+    },
+    {
+      "pdf": "Supplemental Table 6.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 55.39
+    },
+    {
+      "pdf": "Supplemental Tables 1 and 2.pdf",
+      "status": "error",
+      "exit_code": 1,
+      "duration_s": 50.42
+    },
+    {
+      "pdf": "Supplemental Tables 4 and 5.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 44.46
+    }
+  ]
+}

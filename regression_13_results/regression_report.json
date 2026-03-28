@@ -1,12 +1,12 @@
 {
   "validation": "regression_13_gold_trials",
-  "timestamp": "2026-02-13T22:59:03.246976+00:00",
-  "total_time_s": 1597.6,
-  "n_extracted": 12,
-  "n_within_ci": 12,
-  "n_under_10pct": 10,
-  "mean_error_pct": 6.94,
-  "median_error_pct": 3.75,
+  "timestamp": "2026-02-16T21:58:49.803872+00:00",
+  "total_time_s": 1347.7,
+  "n_extracted": 13,
+  "n_within_ci": 13,
+  "n_under_10pct": 13,
+  "mean_error_pct": 2.0,
+  "median_error_pct": 0.94,
   "verdict": "PASS",
   "trials": [
     {
@@ -17,18 +17,18 @@
         0.25,
         1.1
       ],
-      "ext_hr": 0.544,
+      "ext_hr": 0.525,
       "ext_ci": [
-        0.388,
-        0.762
+        null,
+        null
       ],
-      "final_hr": 0.544,
+      "final_hr": 0.525,
       "orientation": "direct",
-      "rel_error_pct": 2.64,
+      "rel_error_pct": 0.94,
       "within_ci": "True",
       "error_under_10pct": "True",
-      "ipd_records": 189,
-      "time_s": 45.2,
+      "ipd_records": 302,
+      "time_s": 40.2,
       "status": "PASS"
     },
     {
@@ -49,8 +49,8 @@
       "rel_error_pct": 1.25,
       "within_ci": "True",
       "error_under_10pct": "True",
-      "ipd_records": 200,
-      "time_s": 48.1,
+      "ipd_records": 61,
+      "time_s": 39.8,
       "status": "PASS"
     },
     {
@@ -61,18 +61,18 @@
         0.76,
         1.22
       ],
-      "ext_hr": 0.892,
+      "ext_hr": 0.977,
       "ext_ci": [
-        0.66,
-        1.204
+        0.616,
+        1.549
       ],
-      "final_hr": 0.892,
+      "final_hr": 0.977,
       "orientation": "direct",
-      "rel_error_pct": 7.08,
+      "rel_error_pct": 1.77,
       "within_ci": "True",
       "error_under_10pct": "True",
-      "ipd_records": 200,
-      "time_s": 52.7,
+      "ipd_records": 141,
+      "time_s": 42.2,
       "status": "PASS"
     },
     {
@@ -83,18 +83,18 @@
         0.78,
         1.5
       ],
-      "ext_hr": 1.033,
+      "ext_hr": 1.08,
       "ext_ci": [
-        0.729,
-        1.462
+        null,
+        null
       ],
-      "final_hr": 1.033,
+      "final_hr": 1.08,
       "orientation": "direct",
-      "rel_error_pct": 4.35,
-      "within_ci": "True",
-      "error_under_10pct": "True",
-      "ipd_records": 155,
-      "time_s": 99.4,
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 0,
+      "time_s": 105.5,
       "status": "PASS"
     },
     {
@@ -105,18 +105,18 @@
         0.5,
         1.6
       ],
-      "ext_hr": 0.834,
+      "ext_hr": 0.898,
       "ext_ci": [
-        0.535,
-        1.299
+        null,
+        null
       ],
-      "final_hr": 0.834,
+      "final_hr": 0.898,
       "orientation": "direct",
-      "rel_error_pct": 7.33,
+      "rel_error_pct": 0.22,
       "within_ci": "True",
       "error_under_10pct": "True",
-      "ipd_records": 101,
-      "time_s": 103.9,
+      "ipd_records": 82,
+      "time_s": 103.1,
       "status": "PASS"
     },
     {
@@ -138,7 +138,7 @@
       "within_ci": "True",
       "error_under_10pct": "True",
       "ipd_records": 108,
-      "time_s": 140.6,
+      "time_s": 116.1,
       "status": "PASS"
     },
     {
@@ -149,18 +149,18 @@
         0.7,
         2.5
       ],
-      "ext_hr": 1.303,
+      "ext_hr": 1.476,
       "ext_ci": [
-        0.831,
-        2.044
+        null,
+        null
       ],
-      "final_hr": 1.303,
+      "final_hr": 1.476,
       "orientation": "direct",
-      "rel_error_pct": 11.36,
+      "rel_error_pct": 0.41,
       "within_ci": "True",
-      "error_under_10pct": "False",
-      "ipd_records": 119,
-      "time_s": 247.4,
+      "error_under_10pct": "True",
+      "ipd_records": 140,
+      "time_s": 169.7,
       "status": "PASS"
     },
     {
@@ -171,18 +171,18 @@
         0.35,
         1.5
       ],
-      "ext_hr": 0.74,
+      "ext_hr": 0.757,
       "ext_ci": [
-        0.525,
-        1.043
+        0.547,
+        1.046
       ],
-      "final_hr": 0.74,
+      "final_hr": 0.757,
       "orientation": "direct",
-      "rel_error_pct": 2.78,
+      "rel_error_pct": 5.14,
       "within_ci": "True",
       "error_under_10pct": "True",
       "ipd_records": 157,
-      "time_s": 149.9,
+      "time_s": 170.1,
       "status": "PASS"
     },
     {
@@ -193,18 +193,18 @@
         0.6,
         2.1
       ],
-      "ext_hr": 0.753,
+      "ext_hr": 0.881,
       "ext_ci": [
-        0.549,
-        1.032
+        null,
+        null
       ],
-      "final_hr": 0.753,
-      "orientation": "direct",
-      "rel_error_pct": 33.95,
+      "final_hr": 1.1350737797956867,
+      "orientation": "reciprocal",
+      "rel_error_pct": 0.43,
       "within_ci": "True",
-      "error_under_10pct": "False",
+      "error_under_10pct": "True",
       "ipd_records": 185,
-      "time_s": 184.5,
+      "time_s": 157.2,
       "status": "PASS"
     },
     {
@@ -215,18 +215,18 @@
         0.45,
         1.85
       ],
-      "ext_hr": 0.976,
+      "ext_hr": 0.987,
       "ext_ci": [
-        0.724,
-        1.315
+        0.733,
+        1.329
       ],
-      "final_hr": 0.976,
+      "final_hr": 0.987,
       "orientation": "direct",
-      "rel_error_pct": 7.25,
+      "rel_error_pct": 8.46,
       "within_ci": "True",
       "error_under_10pct": "True",
       "ipd_records": 196,
-      "time_s": 191.1,
+      "time_s": 143.8,
       "status": "PASS"
     },
     {
@@ -237,30 +237,41 @@
         0.55,
         1.5
       ],
-      "ext_hr": 0.891,
+      "ext_hr": 0.974,
       "ext_ci": [
-        0.653,
-        1.216
+        0.718,
+        1.32
       ],
-      "final_hr": 0.891,
+      "final_hr": 0.974,
       "orientation": "direct",
-      "rel_error_pct": 3.15,
+      "rel_error_pct": 5.87,
       "within_ci": "True",
       "error_under_10pct": "True",
       "ipd_records": 191,
-      "time_s": 155.2,
+      "time_s": 129.5,
       "status": "PASS"
     },
     {
       "name": "FREEZEAF-30M",
       "pdf": "s12872-017-0566-6.pdf",
       "gt_hr": 1.06,
-      "ext_hr": null,
-      "within_ci": false,
-      "error_under_10pct": false,
-      "time_s": 71.8,
-      "status": "FAIL_EXTRACT",
-      "error": "Insufficient curves: 0"
+      "gt_ci": [
+        0.55,
+        2.0
+      ],
+      "ext_hr": 1.056,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 1.056,
+      "orientation": "direct",
+      "rel_error_pct": 0.38,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 0,
+      "time_s": 50.9,
+      "status": "PASS"
     },
     {
       "name": "LBRF-PERSISTENT",
@@ -270,18 +281,18 @@
         0.5,
         1.7
       ],
-      "ext_hr": 0.919,
+      "ext_hr": 0.931,
       "ext_ci": [
-        0.593,
-        1.426
+        0.594,
+        1.456
       ],
-      "final_hr": 0.919,
+      "final_hr": 0.931,
       "orientation": "direct",
-      "rel_error_pct": 1.18,
+      "rel_error_pct": 0.11,
       "within_ci": "True",
       "error_under_10pct": "True",
-      "ipd_records": 153,
-      "time_s": 107.6,
+      "ipd_records": 150,
+      "time_s": 79.4,
       "status": "PASS"
     }
   ]

@@ -1,0 +1,53 @@
+=== start 2026-02-24T05:24:15.197763+00:00 ===\n[1/34] 1-s2.0-S0002914922011213.pdf exit=0 time=51.36s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[2/34] 1-s2.0-S0140673622014295-mmc1.pdf exit=0 time=85.0s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (1) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[3/34] 1-s2.0-S0140673622014295.pdf exit=0 time=53.18s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[4/34] 1_s2.0_S221317792100442X_main.pdf exit=0 time=49.5s\n[5/34] Anatomy+of+a+Research+Note.pdf exit=0 time=11.11s\n[6/34] bmj.i1855.full.pdf exit=0 time=41.75s\n[7/34] burnett-et-al-thirty-years-of-evidence-on-the-efficacy-of-drug-treatments-for-chronic-heart-failure-with-reduced.pdf exit=0 time=70.77s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[8/34] cherbi-et-al-early-initiation-of-sodium-glucose-cotransporter-2-inhibitors-in-acute-heart-failure-a-systematic-review.pdf exit=0 time=122.63s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (1) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[9/34] ehi115.pdf exit=0 time=37.33s\n[10/34] fcvm-11-1388337.pdf exit=0 time=122.57s\n[11/34] jcm-11-00348-v2.pdf exit=0 time=124.75s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[12/34] NEJM199909023411001.pdf exit=0 time=17.46s\n[13/34] NEJM200105313442201.pdf exit=1 time=22.48s\n[14/34] NEJMoa1009492.pdf exit=0 time=58.8s\n[15/34] NEJMoa1313731.pdf exit=0 time=39.41s\n[16/34] NEJMoa1409077.pdf exit=0 time=37.09s\n[17/34] NEJMoa1908655.pdf exit=0 time=24.55s\n[18/34] NEJMoa1911303.pdf exit=0 time=25.96s\n[19/34] NEJMoa2022190.pdf exit=0 time=33.49s\n[20/34] NEJMoa2030183.pdf exit=0 time=39.87s\n[21/34] NEJMoa2107038 (1).pdf exit=0 time=28.51s\n[22/34] NEJMoa2107038.pdf exit=0 time=29.42s\n[23/34] nejmoa2107038_appendix.pdf exit=0 time=62.67s\n[24/34] NEJMoa2206286.pdf exit=0 time=19.19s\n[25/34] s0140-67362904440-2.pdf exit=0 time=50.84s\nMuPDF error: format error: cmsOpenProfileFromMem failed
+
+MuPDF error: format error: cmsOpenProfileFromMem failed
+
+MuPDF error: format error: cmsOpenProfileFromMem failed
+
+MuPDF error: format error: cmsOpenProfileFromMem failed
+
+\n[26/34] s0140-67362911181-9.pdf exit=0 time=27.65s\n[27/34] s0140-67362961373-8.pdf exit=0 time=52.88s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[28/34] s12933-022-01455-2.pdf exit=0 time=31.35s\n[29/34] s12933-022-01679-2.pdf exit=0 time=62.91s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[30/34] s41591-021-01659-1.pdf exit=0 time=70.27s\n[31/34] s41591-022-01703-8.pdf exit=0 time=61.0s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[32/34] Vaduganathan_DELIVER-EMPEROR-Preserved-Meta-Analysis.pdf exit=0 time=45.91s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[33/34] xiang_2022_oi_220915_1663087733.39363.pdf exit=0 time=128.25s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n[34/34] zafeiropoulos-et-al-pharmacological-treatments-in-heart-failure-with-mildly-reduced-and-preserved-ejection-fraction.pdf exit=0 time=69.32s\nC:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+\n=== end 2026-02-24T05:54:24.550849+00:00 ===\n

@@ -1,0 +1,180 @@
+{
+  "corpus": "SGL2",
+  "total": 29,
+  "results": [
+    {
+      "pdf": "1-s2.0-S014067361832261X.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 44.5
+    },
+    {
+      "pdf": "1-s2.0-S0140673619311493.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 39.97
+    },
+    {
+      "pdf": "1-s2.0-S0735109720302485-main.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 74.94
+    },
+    {
+      "pdf": "lam-et-al-efpeglenatide-and-clinical-outcomes-with-and-without-concomitant-sodium-glucose-cotransporter-2-inhibition.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 52.28
+    },
+    {
+      "pdf": "mcguire-et-al-linagliptin-effects-on-heart-failure-and-related-outcomes-in-individuals-with-type-2-diabetes-mellitus-at.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 38.7
+    },
+    {
+      "pdf": "NEJMoa1305889.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 15.58
+    },
+    {
+      "pdf": "nejmoa1305889_appendix.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 45.33
+    },
+    {
+      "pdf": "NEJMoa1504720.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 13.04
+    },
+    {
+      "pdf": "nejmoa1504720_appendix.pdf",
+      "status": "error",
+      "exit_code": 1,
+      "duration_s": 28.57
+    },
+    {
+      "pdf": "NEJMoa1509225.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 19.44
+    },
+    {
+      "pdf": "NEJMoa1603827.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 42.99
+    },
+    {
+      "pdf": "NEJMoa1607141.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 30.41
+    },
+    {
+      "pdf": "NEJMoa1611925.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 26.54
+    },
+    {
+      "pdf": "NEJMoa1612917.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 23.79
+    },
+    {
+      "pdf": "NEJMoa1811744.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 34.86
+    },
+    {
+      "pdf": "NEJMoa1812389.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 25.76
+    },
+    {
+      "pdf": "NEJMoa1911303.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 66.43
+    },
+    {
+      "pdf": "NEJMoa2022190.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 50.28
+    },
+    {
+      "pdf": "NEJMoa2024816.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 25.87
+    },
+    {
+      "pdf": "NEJMoa2030183.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 40.35
+    },
+    {
+      "pdf": "NEJMoa2030186.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 28.03
+    },
+    {
+      "pdf": "NEJMoa2107038.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 25.22
+    },
+    {
+      "pdf": "NEJMoa2108269.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 54.15
+    },
+    {
+      "pdf": "NEJMoa2204233.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 16.53
+    },
+    {
+      "pdf": "NEJMoa2206286.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 14.78
+    },
+    {
+      "pdf": "PIIS2666756823000326.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 129.02
+    },
+    {
+      "pdf": "s12872-019-1036-0.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 44.02
+    },
+    {
+      "pdf": "scirica-et-al-heart-failure-saxagliptin-and-diabetes-mellitus-observations-from-the-savor-timi-53-randomized-trial.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 62.0
+    },
+    {
+      "pdf": "white-et-al-angiotensin-converting-enzyme-inhibitor-use-and-major-cardiovascular-outcomes-in-type-2-diabetes-mellitus.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 38.16
+    }
+  ]
+}

@@ -1,0 +1,660 @@
+{
+  "validation": "expanded_25_gold_trials",
+  "timestamp": "2026-02-14T13:03:20.544235+00:00",
+  "total_time_s": 2452.1,
+  "overall": {
+    "subset": "OVERALL",
+    "n_trials": 25,
+    "n_extracted": 25,
+    "n_within_ci": 24,
+    "n_under_10pct": 22,
+    "mean_error_pct": 6.08,
+    "median_error_pct": 3.89
+  },
+  "original_ablation": {
+    "subset": "Original Ablation",
+    "n_trials": 13,
+    "n_extracted": 13,
+    "n_within_ci": 13,
+    "n_under_10pct": 11,
+    "mean_error_pct": 6.44,
+    "median_error_pct": 3.15
+  },
+  "new_diverse": {
+    "subset": "New Diverse",
+    "n_trials": 12,
+    "n_extracted": 12,
+    "n_within_ci": 11,
+    "n_under_10pct": 11,
+    "mean_error_pct": 5.7,
+    "median_error_pct": 4.07
+  },
+  "verdict": "PASS",
+  "trials": [
+    {
+      "name": "HUNTER",
+      "pdf": "Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.53,
+      "gt_ci": [
+        0.25,
+        1.1
+      ],
+      "ext_hr": 0.544,
+      "ext_ci": [
+        0.388,
+        0.762
+      ],
+      "final_hr": 0.544,
+      "orientation": "direct",
+      "rel_error_pct": 2.64,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 189,
+      "time_s": 50.2,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "derived_hr_match"
+    },
+    {
+      "name": "MILILIS-PERS",
+      "pdf": "Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.96,
+      "gt_ci": [
+        0.5,
+        1.8
+      ],
+      "ext_hr": 0.972,
+      "ext_ci": [
+        0.684,
+        1.38
+      ],
+      "final_hr": 0.972,
+      "orientation": "direct",
+      "rel_error_pct": 1.25,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 200,
+      "time_s": 44.8,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "closest_to_1"
+    },
+    {
+      "name": "FIRE AND ICE",
+      "pdf": "NEJMoa1602014.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.96,
+      "gt_ci": [
+        0.76,
+        1.22
+      ],
+      "ext_hr": 0.892,
+      "ext_ci": [
+        0.66,
+        1.204
+      ],
+      "final_hr": 0.892,
+      "orientation": "direct",
+      "rel_error_pct": 7.08,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 200,
+      "time_s": 44.3,
+      "status": "PASS",
+      "n_curves_found": 6,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "CIRCA-DOSE",
+      "pdf": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 1.08,
+      "gt_ci": [
+        0.78,
+        1.5
+      ],
+      "ext_hr": 1.033,
+      "ext_ci": [
+        0.729,
+        1.462
+      ],
+      "final_hr": 1.033,
+      "orientation": "direct",
+      "rel_error_pct": 4.35,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 155,
+      "time_s": 64.2,
+      "status": "PASS",
+      "n_curves_found": 16,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "FROZEN AF",
+      "pdf": "chun-et-al-cryoballoon-versus-laserballoon.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.9,
+      "gt_ci": [
+        0.5,
+        1.6
+      ],
+      "ext_hr": 0.834,
+      "ext_ci": [
+        0.535,
+        1.299
+      ],
+      "final_hr": 0.834,
+      "orientation": "direct",
+      "rel_error_pct": 7.33,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 101,
+      "time_s": 60.4,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "derived_hr_match"
+    },
+    {
+      "name": "CRRF-PeAF",
+      "pdf": "ehaf451.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.99,
+      "gt_ci": [
+        0.69,
+        1.43
+      ],
+      "ext_hr": 1.0,
+      "ext_ci": [
+        0.407,
+        2.458
+      ],
+      "final_hr": 1.0,
+      "orientation": "direct",
+      "rel_error_pct": 1.01,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 108,
+      "time_s": 112.0,
+      "status": "PASS",
+      "n_curves_found": 21,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "HIPAF",
+      "pdf": "euaf066.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 1.47,
+      "gt_ci": [
+        0.7,
+        2.5
+      ],
+      "ext_hr": 1.303,
+      "ext_ci": [
+        0.831,
+        2.044
+      ],
+      "final_hr": 1.303,
+      "orientation": "direct",
+      "rel_error_pct": 11.36,
+      "within_ci": "True",
+      "error_under_10pct": "False",
+      "ipd_records": 119,
+      "time_s": 250.8,
+      "status": "PASS",
+      "n_curves_found": 14,
+      "hr_method": "derived_hr_match"
+    },
+    {
+      "name": "PVAC-CPVI",
+      "pdf": "eut398.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.72,
+      "gt_ci": [
+        0.35,
+        1.5
+      ],
+      "ext_hr": 0.74,
+      "ext_ci": [
+        0.525,
+        1.043
+      ],
+      "final_hr": 0.74,
+      "orientation": "direct",
+      "rel_error_pct": 2.78,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 157,
+      "time_s": 101.6,
+      "status": "PASS",
+      "n_curves_found": 8,
+      "hr_method": "derived_hr_match"
+    },
+    {
+      "name": "WACA-PVAC",
+      "pdf": "euu064.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 1.14,
+      "gt_ci": [
+        0.6,
+        2.1
+      ],
+      "ext_hr": 0.753,
+      "ext_ci": [
+        0.549,
+        1.032
+      ],
+      "final_hr": 0.753,
+      "orientation": "direct",
+      "rel_error_pct": 33.95,
+      "within_ci": "True",
+      "error_under_10pct": "False",
+      "ipd_records": 185,
+      "time_s": 151.6,
+      "status": "PASS",
+      "n_curves_found": 15,
+      "hr_method": "derived_hr_match"
+    },
+    {
+      "name": "CRAVE",
+      "pdf": "pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.91,
+      "gt_ci": [
+        0.45,
+        1.85
+      ],
+      "ext_hr": 0.976,
+      "ext_ci": [
+        0.724,
+        1.315
+      ],
+      "final_hr": 0.976,
+      "orientation": "direct",
+      "rel_error_pct": 7.25,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 196,
+      "time_s": 193.9,
+      "status": "PASS",
+      "n_curves_found": 20,
+      "hr_method": "derived_hr_match"
+    },
+    {
+      "name": "ADVENT",
+      "pdf": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.92,
+      "gt_ci": [
+        0.55,
+        1.5
+      ],
+      "ext_hr": 0.891,
+      "ext_ci": [
+        0.653,
+        1.216
+      ],
+      "final_hr": 0.891,
+      "orientation": "direct",
+      "rel_error_pct": 3.15,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 191,
+      "time_s": 162.4,
+      "status": "PASS",
+      "n_curves_found": 17,
+      "hr_method": "derived_hr_match"
+    },
+    {
+      "name": "FREEZEAF-30M",
+      "pdf": "s12872-017-0566-6.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 1.06,
+      "gt_ci": [
+        0.55,
+        2.0
+      ],
+      "ext_hr": 1.056,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 1.056,
+      "orientation": "direct",
+      "rel_error_pct": 0.38,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 0,
+      "time_s": 61.5,
+      "status": "PASS",
+      "n_curves_found": 0,
+      "hr_method": "text_derived_only"
+    },
+    {
+      "name": "LBRF-PERSISTENT",
+      "pdf": "schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.93,
+      "gt_ci": [
+        0.5,
+        1.7
+      ],
+      "ext_hr": 0.919,
+      "ext_ci": [
+        0.593,
+        1.426
+      ],
+      "final_hr": 0.919,
+      "orientation": "direct",
+      "rel_error_pct": 1.18,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 153,
+      "time_s": 94.7,
+      "status": "PASS",
+      "n_curves_found": 18,
+      "hr_method": "derived_hr_match"
+    },
+    {
+      "name": "EMPEROR-Preserved",
+      "pdf": "NEJMoa2107038.pdf",
+      "area": "heart-failure",
+      "gt_hr": 0.79,
+      "gt_ci": [
+        0.69,
+        0.9
+      ],
+      "ext_hr": 0.79,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.79,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 0,
+      "time_s": 89.5,
+      "status": "PASS",
+      "n_curves_found": 1,
+      "hr_method": "text_derived_only"
+    },
+    {
+      "name": "DELIVER",
+      "pdf": "NEJMoa2206286.pdf",
+      "area": "heart-failure",
+      "gt_hr": 0.82,
+      "gt_ci": [
+        0.73,
+        0.92
+      ],
+      "ext_hr": 0.594,
+      "ext_ci": [
+        0.418,
+        0.844
+      ],
+      "final_hr": 0.594,
+      "orientation": "direct",
+      "rel_error_pct": 27.56,
+      "within_ci": "False",
+      "error_under_10pct": "False",
+      "ipd_records": 199,
+      "time_s": 71.5,
+      "status": "FAIL",
+      "n_curves_found": 2,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "SELECT",
+      "pdf": "NEJMoa2307563.pdf",
+      "area": "obesity-CV",
+      "gt_hr": 0.8,
+      "gt_ci": [
+        0.72,
+        0.9
+      ],
+      "ext_hr": 0.73,
+      "ext_ci": [
+        0.476,
+        1.121
+      ],
+      "final_hr": 0.73,
+      "orientation": "direct",
+      "rel_error_pct": 8.75,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 112,
+      "time_s": 77.7,
+      "status": "PASS",
+      "n_curves_found": 4,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "AFIRE",
+      "pdf": "NEJMoa1904143.pdf",
+      "area": "AF-CAD",
+      "gt_hr": 0.72,
+      "gt_ci": [
+        0.55,
+        0.95
+      ],
+      "ext_hr": 0.72,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.72,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 0,
+      "time_s": 63.8,
+      "status": "PASS",
+      "n_curves_found": 1,
+      "hr_method": "text_derived_only"
+    },
+    {
+      "name": "PARTNER 3",
+      "pdf": "Partner3.pdf",
+      "area": "TAVR",
+      "gt_hr": 0.54,
+      "gt_ci": [
+        0.37,
+        0.79
+      ],
+      "ext_hr": 0.54,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.54,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 0,
+      "time_s": 51.2,
+      "status": "PASS",
+      "n_curves_found": 0,
+      "hr_method": "text_derived_only"
+    },
+    {
+      "name": "AUGUSTUS",
+      "pdf": "Augustus.pdf",
+      "area": "AF-ACS",
+      "gt_hr": 0.69,
+      "gt_ci": [
+        0.58,
+        0.81
+      ],
+      "ext_hr": 0.69,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.69,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 0,
+      "time_s": 92.4,
+      "status": "PASS",
+      "n_curves_found": 2,
+      "hr_method": "text_derived_only"
+    },
+    {
+      "name": "SHIFT",
+      "pdf": "IvabradineandoutcomesinchronicheartfailureSHIFT-arandomisedplacebo-controlledstudy.pdf",
+      "area": "heart-failure",
+      "gt_hr": 0.82,
+      "gt_ci": [
+        0.75,
+        0.9
+      ],
+      "ext_hr": 0.834,
+      "ext_ci": [
+        0.508,
+        1.37
+      ],
+      "final_hr": 0.834,
+      "orientation": "direct",
+      "rel_error_pct": 1.71,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 128,
+      "time_s": 120.7,
+      "status": "PASS",
+      "n_curves_found": 13,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "MERIT-HF",
+      "pdf": "EffectofmetoprololCR-XLinchronicheartfailure.pdf",
+      "area": "heart-failure",
+      "gt_hr": 0.66,
+      "gt_ci": [
+        0.53,
+        0.81
+      ],
+      "ext_hr": 0.722,
+      "ext_ci": [
+        0.523,
+        0.997
+      ],
+      "final_hr": 0.722,
+      "orientation": "direct",
+      "rel_error_pct": 9.39,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 179,
+      "time_s": 84.0,
+      "status": "PASS",
+      "n_curves_found": 6,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "ENTRUST-AF PCI",
+      "pdf": "entrust.pdf",
+      "area": "AF-PCI",
+      "gt_hr": 0.83,
+      "gt_ci": [
+        0.65,
+        1.05
+      ],
+      "ext_hr": 0.881,
+      "ext_ci": [
+        0.607,
+        1.277
+      ],
+      "final_hr": 0.881,
+      "orientation": "direct",
+      "rel_error_pct": 6.14,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 148,
+      "time_s": 140.8,
+      "status": "PASS",
+      "n_curves_found": 8,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PIONEER AF-PCI",
+      "pdf": "Pioneer AF.pdf",
+      "area": "AF-PCI",
+      "gt_hr": 0.59,
+      "gt_ci": [
+        0.47,
+        0.76
+      ],
+      "ext_hr": 0.565,
+      "ext_ci": [
+        0.367,
+        0.87
+      ],
+      "final_hr": 0.565,
+      "orientation": "direct",
+      "rel_error_pct": 4.24,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 120,
+      "time_s": 113.5,
+      "status": "PASS",
+      "n_curves_found": 5,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "ADVANCE",
+      "pdf": "NEJMoa0802987.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.9,
+      "gt_ci": [
+        0.82,
+        0.98
+      ],
+      "ext_hr": 0.935,
+      "ext_ci": [
+        0.54,
+        1.617
+      ],
+      "final_hr": 0.935,
+      "orientation": "direct",
+      "rel_error_pct": 3.89,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 98,
+      "time_s": 97.5,
+      "status": "PASS",
+      "n_curves_found": 2,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "CIBIS-II",
+      "pdf": "TheLancet1999Investigators.pdf",
+      "area": "heart-failure",
+      "gt_hr": 0.66,
+      "gt_ci": [
+        0.54,
+        0.81
+      ],
+      "ext_hr": 0.616,
+      "ext_ci": [
+        0.424,
+        0.894
+      ],
+      "final_hr": 0.616,
+      "orientation": "direct",
+      "rel_error_pct": 6.67,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 145,
+      "time_s": 54.7,
+      "status": "PASS",
+      "n_curves_found": 2,
+      "hr_method": "text_hr_match"
+    }
+  ]
+}

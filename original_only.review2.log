@@ -1,0 +1,369 @@
+INFO:km_pipeline:Processing: Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf: 5 curves from 8 pages
+INFO:km_pipeline:Derived HR=0.525 from event rates: [DERIVED from 68.0% vs 48.0%] ocal ablation to isolate PVs. Freedom from AF was 68% with RFCA and 48
+INFO:km_pipeline:Text HR = 0.525  context: '[DERIVED from 68.0% vs 48.0%] ocal ablation to isolate PVs. Freedom from AF was 68% with RFCA and 48% with CRYO (P = 0.05). However'
+INFO:km_pipeline:Curve HR (0.375) too far from derived HR (0.525); using derived HR
+INFO:km_pipeline:Curve HR (2.670) too far from derived HR (1.9047619047619047); using derived HR
+INFO:km_pipeline:IPD reconstructed: 10 treatment (0 events), 73 control (61 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\Cardiovasc_electrophysiol_-_2015_-_HUNTER_-_Point-by-Point_Radiofrequency_Ablation_Versus_the_Cryoballoon_or_a_Novel_summary.json
+INFO:km_pipeline:Processing: Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 2: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 2: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf: 9 curves from 6 pages
+INFO:km_pipeline:IPD reconstructed: 28 treatment (14 events), 33 control (20 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\Cardiovasc_electrophysiol_-_2023_-_Mililis_-_Radiofrequency_versus_cryoballoon_catheter_ablation_in_patients_with_summary.json
+INFO:km_pipeline:Processing: NEJMoa1602014.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 2 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:NEJMoa1602014.pdf: 9 curves from 11 pages
+INFO:km_pipeline:Text HR = 0.96  context: 'timates, 34.6% and 35.9%, respectively; hazard ratio, 0.96; 95% confidence interval [CI], 0.76 to 1.22; P<0.001 for noninferiority). The prima'
+INFO:km_pipeline:IPD reconstructed: 100 treatment (86 events), 41 control (29 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\NEJMoa1602014_summary.json
+INFO:km_pipeline:Processing: andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 6 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 2 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf: 13 curves from 10 pages
+INFO:km_pipeline:Text HR = 1.08  context: 'ered together and compared with CF-RF (hazard ratio, 1.08 [95% CI, 0.78-1.50]). Secondary Outcome'
+INFO:km_pipeline:Curve HR (1.344) wildly divergent from text HR (1.08), log-err=0.22; rejecting curve-based result
+INFO:km_pipeline:No curve pairs but text HR=1.080 found
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring_summary.json
+INFO:km_pipeline:Processing: chun-et-al-cryoballoon-versus-laserballoon.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 6 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:chun-et-al-cryoballoon-versus-laserballoon.pdf: 8 curves from 9 pages
+INFO:km_pipeline:Derived HR=0.898 from event rates: [DERIVED from 80.0% vs 78.0%] nutes, P=0.083). Overall, the primary end point of no atrial tachyarrh
+INFO:km_pipeline:Text HR = 0.898  context: '[DERIVED from 80.0% vs 78.0%] nutes, P=0.083). Overall, the primary end point of no atrial tachyarrhythmia recurrence was met in 79% (cryoballoon: 80.0% versus laserballoon: 78.0%, P=ns). No death, atrio-esop'
+INFO:km_pipeline:Curve HR (0.967) too far from derived HR (0.898); using derived HR
+INFO:km_pipeline:Curve HR (1.034) too far from derived HR (1.1135857461024499); using derived HR
+INFO:km_pipeline:IPD reconstructed: 41 treatment (30 events), 41 control (31 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\chun-et-al-cryoballoon-versus-laserballoon_summary.json
+INFO:km_pipeline:Processing: ehaf451.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:NAR found on page 1: 1 rows, N=99
+INFO:km_pipeline:ehaf451.pdf: 20 curves from 12 pages
+INFO:km_pipeline:Text HR = 0.99  context: 'rvival (%) Days since catheter ablation Hazard ratio 0.99 (95% CI 0.69-1.43) P = 0.96 by log-rank test Cryoballoon'
+INFO:km_pipeline:IPD reconstructed: 54 treatment (12 events), 54 control (16 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\ehaf451_summary.json
+INFO:km_pipeline:Processing: euaf066.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:euaf066.pdf: 10 curves from 8 pages
+INFO:km_pipeline:Derived HR=1.476 from event rates: [DERIVED from 73.8% vs 81.4%] 7.6% (95 CI: -20.1; 4.9) 365d event-free survival vHPSD 73.8% vs. CBA 
+INFO:km_pipeline:Text HR = 1.476  context: '[DERIVED from 73.8% vs 81.4%] 7.6% (95 CI: -20.1; 4.9) 365d event-free survival vHPSD 73.8% vs. CBA 81.4% 70W/ 7s Favours CBA Favours v'
+INFO:km_pipeline:Curve HR (1.342) too far from derived HR (1.476); using derived HR
+INFO:km_pipeline:Curve HR (0.745) too far from derived HR (0.6775067750677507); using derived HR
+INFO:km_pipeline:IPD reconstructed: 65 treatment (54 events), 75 control (63 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\euaf066_summary.json
+INFO:km_pipeline:Processing: eut398.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=0.84), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:eut398.pdf: 11 curves from 6 pages
+INFO:km_pipeline:Derived HR=0.721 from event rates: [DERIVED from 65.0% vs 55.0%] s follow-up, single-procedure success without ADT was comparable betwe
+INFO:km_pipeline:Text HR = 0.721  context: '[DERIVED from 65.0% vs 55.0%] s follow-up, single-procedure success without ADT was comparable between PVAC and CPVI (65% vs. 55%, P ¼ NS). The majority of rec'
+INFO:km_pipeline:Curve HR (0.757) too far from derived HR (0.721); using derived HR
+INFO:km_pipeline:Curve HR (1.322) too far from derived HR (1.3869625520110958); using derived HR
+INFO:km_pipeline:IPD reconstructed: 82 treatment (71 events), 75 control (65 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\eut398_summary.json
+INFO:km_pipeline:Processing: euu064.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 3: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 3: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 3 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (4.7s), skipping
+INFO:km_pipeline:euu064.pdf: 15 curves from 9 pages
+INFO:km_pipeline:Derived HR=0.881 from event rates: [DERIVED from 60.0% vs 56.0%] randomized patients. Overall, 60% of the PVAC patients were free of AF
+INFO:km_pipeline:Text HR = 0.881  context: '[DERIVED from 60.0% vs 56.0%] randomized patients. Overall, 60% of the PVAC patients were free of AF and atrial arrhythmias off anti-dysrhythmics on 7-day Holter 12 months post ablation. This compares with 56% of the WACA group at 12 month'
+INFO:km_pipeline:Curve HR (0.753) too far from derived HR (0.881); using derived HR
+INFO:km_pipeline:Curve HR (1.329) too far from derived HR (1.1350737797956867); using derived HR
+INFO:km_pipeline:IPD reconstructed: 93 treatment (81 events), 92 control (79 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\euu064_summary.json
+INFO:km_pipeline:Processing: pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 2 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf: 20 curves from 11 pages
+INFO:km_pipeline:Derived HR=0.954 from event rates: [DERIVED from 81.7% vs 80.9%] follow-up, neither the early recurrence rate within 3 months of the AF
+INFO:km_pipeline:Text HR = 0.954  context: '[DERIVED from 81.7% vs 80.9%] follow-up, neither the early recurrence rate within 3 months of the AFCA (18.3% versus 19.1%; P=0.855) nor the clinical re'
+INFO:km_pipeline:IPD reconstructed: 98 treatment (86 events), 98 control (87 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients_summary.json
+INFO:km_pipeline:Processing: reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Added dashed green curve: 75 points
+INFO:simple_multicurve_handler:Added dotted magenta curve: 60 points
+INFO:simple_multicurve_handler:Panel 0: fallback cascade found 3 curves
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 0: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 7 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf: 12 curves from 12 pages
+INFO:km_pipeline:Derived HR=0.918 from event rates: [DERIVED from 73.3% vs 71.3%] usly reported for ADVENT, the primary endpoint of treatment success, w
+INFO:km_pipeline:Text HR = 0.918  context: '[DERIVED from 73.3% vs 71.3%] usly reported for ADVENT, the primary endpoint of treatment success, which incorporated the “traditional” dichotomous endpoint of 30-second AA recurrence, was 73.3% with pentaspline PFA and 71.3% with thermal ablation (betwee'
+INFO:km_pipeline:Curve HR (0.974) too far from derived HR (0.918); using derived HR
+INFO:km_pipeline:Curve HR (1.027) too far from derived HR (1.0893246187363834); using derived HR
+INFO:km_pipeline:IPD reconstructed: 98 treatment (87 events), 93 control (82 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation_summary.json
+INFO:km_pipeline:Processing: s12872-017-0566-6.pdf
+INFO:simple_multicurve_handler:Panel 0: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Added dashed blue curve: 43 points
+INFO:simple_multicurve_handler:Panel 0: fallback cascade found 2 curves
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:s12872-017-0566-6.pdf: 1 curves from 8 pages
+INFO:km_pipeline:Derived HR=1.056 from event rates: [DERIVED from 40.0% vs 42.0%] ere similar. Single-procedure success was achieved by 40% of patients 
+INFO:km_pipeline:Text HR = 1.056  context: '[DERIVED from 40.0% vs 42.0%] ere similar. Single-procedure success was achieved by 40% of patients in the RF group and 42% of the CB group (p < 0.001 fo'
+INFO:km_pipeline:No curve pairs but text HR=1.056 found
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\s12872-017-0566-6_summary.json
+INFO:km_pipeline:Processing: schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
+INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
+INFO:km_pipeline:Page 5 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 1 NAR detection timed out (5.0s), skipping
+INFO:km_pipeline:Page 4 NAR detection timed out (1.6s), skipping
+INFO:km_pipeline:schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf: 16 curves from 10 pages
+INFO:km_pipeline:Derived HR=0.926 from event rates: [DERIVED from 71.2% vs 69.3%] 128±51 and 11±9 minutes). The primary efficacy end point was met by 71
+INFO:km_pipeline:Text HR = 0.926  context: '[DERIVED from 71.2% vs 69.3%] 128±51 and 11±9 minutes). The primary efficacy end point was met by 71.2% versus 69.3%, in the LB and RF groups, re'
+INFO:km_pipeline:IPD reconstructed: 42 treatment (30 events), 108 control (104 events)
+INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_40_results\schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial_summary.json
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365: ConvergenceWarning: Number of distinct clusters (2) found smaller than n_clusters (3). Possibly due to duplicate points in X.
+  return fit_method(estimator, *args, **kwargs)
+===========================================================================
+EXPANDED VALIDATION: 13 Original Ablation Trials
+Started: 2026-02-17T10:33:20.253031+00:00
+===========================================================================
+
+[1/13] HUNTER (AF-ablation)
+  PDF: Cardiovasc electrophysiol - 2015 - HUNTER - Pointâ€byâ€Point Radiof...
+  Ground Truth: HR=0.53 [0.25, 1.1]
+  Extracted: HR=0.525 [N/A]
+  Rel Error: 0.9% OK
+  Within CI: True -> PASS
+  Method: derived_hr_fallback
+  Time: 66.5s  IPD: 83
+
+[2/13] MILILIS-PERS (AF-ablation)
+  PDF: Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versu...
+  Ground Truth: HR=0.96 [0.5, 1.8]
+  Extracted: HR=0.972 [0.684, 1.380]
+  Rel Error: 1.3% OK
+  Within CI: True -> PASS
+  Method: closest_to_1
+  Time: 55.4s  IPD: 61
+
+[3/13] FIRE AND ICE (AF-ablation)
+  PDF: NEJMoa1602014.pdf...
+  Ground Truth: HR=0.96 [0.76, 1.22]
+  Extracted: HR=0.977 [0.616, 1.549]
+  Rel Error: 1.8% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 63.0s  IPD: 141
+
+[4/13] CIRCA-DOSE (AF-ablation)
+  PDF: andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-f...
+  Ground Truth: HR=1.08 [0.78, 1.5]
+  Extracted: HR=1.080 [N/A]
+  Rel Error: 0.0% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 67.0s  IPD: 0
+
+[5/13] FROZEN AF (AF-ablation)
+  PDF: chun-et-al-cryoballoon-versus-laserballoon.pdf...
+  Ground Truth: HR=0.9 [0.5, 1.6]
+  Extracted: HR=0.898 [N/A]
+  Rel Error: 0.2% OK
+  Within CI: True -> PASS
+  Method: derived_hr_fallback
+  Time: 63.5s  IPD: 82
+
+[6/13] CRRF-PeAF (AF-ablation)
+  PDF: ehaf451.pdf...
+  Ground Truth: HR=0.99 [0.69, 1.43]
+  Extracted: HR=1.000 [0.407, 2.458]
+  Rel Error: 1.0% OK
+  Within CI: True -> PASS
+  Method: text_hr_match
+  Time: 86.3s  IPD: 108
+
+[7/13] HIPAF (AF-ablation)
+  PDF: euaf066.pdf...
+  Ground Truth: HR=1.47 [0.7, 2.5]
+  Extracted: HR=1.476 [N/A]
+  Rel Error: 0.4% OK
+  Within CI: True -> PASS
+  Method: derived_hr_fallback
+  Time: 136.5s  IPD: 140
+
+[8/13] PVAC-CPVI (AF-ablation)
+  PDF: eut398.pdf...
+  Ground Truth: HR=0.72 [0.35, 1.5]
+  Extracted: HR=0.721 [N/A]
+  Rel Error: 0.1% OK
+  Within CI: True -> PASS
+  Method: derived_hr_fallback
+  Time: 61.1s  IPD: 157
+
+[9/13] WACA-PVAC (AF-ablation)
+  PDF: euu064.pdf...
+  Ground Truth: HR=1.14 [0.6, 2.1]
+  Extracted: HR=0.881 [N/A]
+  Rel Error: 22.7% >10%
+  Within CI: True -> PASS
+  Method: derived_hr_fallback
+  Time: 119.3s  IPD: 185
+
+[10/13] CRAVE (AF-ablation)
+  PDF: pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequ...
+  Ground Truth: HR=0.91 [0.45, 1.85]
+  Extracted: HR=0.987 [0.733, 1.329]
+  Rel Error: 8.5% OK
+  Within CI: True -> PASS
+  Method: derived_hr_match
+  Time: 138.1s  IPD: 196
+
+[11/13] ADVENT (AF-ablation)
+  PDF: reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-par...
+  Ground Truth: HR=0.92 [0.55, 1.5]
+  Extracted: HR=0.918 [N/A]
+  Rel Error: 0.2% OK
+  Within CI: True -> PASS
+  Method: derived_hr_fallback
+  Time: 106.6s  IPD: 191
+
+[12/13] FREEZEAF-30M (AF-ablation)
+  PDF: s12872-017-0566-6.pdf...
+  Ground Truth: HR=1.06 [0.55, 2.0]
+  Extracted: HR=1.056 [N/A]
+  Rel Error: 0.4% OK
+  Within CI: True -> PASS
+  Method: text_derived_only
+  Time: 39.1s  IPD: 0
+
+[13/13] LBRF-PERSISTENT (AF-ablation)
+  PDF: schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigate...
+  Ground Truth: HR=0.93 [0.5, 1.7]
+  Extracted: HR=0.931 [0.594, 1.456]
+  Rel Error: 0.1% OK
+  Within CI: True -> PASS
+  Method: derived_hr_match
+  Time: 65.7s  IPD: 150
+
+===========================================================================
+EXPANDED VALIDATION SUMMARY
+===========================================================================
+
+  OVERALL (13 trials):
+    Extracted:   13/13
+    Within CI:   13/13
+    Error <10%:  12/13
+    Mean Error:  2.9%
+    Median Error:0.4%
+    MARGINAL: ['WACA-PVAC']
+    TEXT_ONLY: ['CIRCA-DOSE', 'FREEZEAF-30M']
+
+  Original Ablation (13 trials):
+    Extracted:   13/13
+    Within CI:   13/13
+    Error <10%:  12/13
+    Mean Error:  2.9%
+    Median Error:0.4%
+    MARGINAL: ['WACA-PVAC']
+    TEXT_ONLY: ['CIRCA-DOSE', 'FREEZEAF-30M']
+
+  Total Time: 1068s (17.8 min)
+
+Trial                  Area            GT HR  Ext HR   Err%  CI?          Cat             Method   Time
+---------------------------------------------------------------------------------------------------------
+HUNTER                 AF-ablation      0.53   0.525    0.9    Y         PASS  derived_hr_fallba    66s
+MILILIS-PERS           AF-ablation      0.96   0.972    1.2    Y         PASS       closest_to_1    55s
+FIRE AND ICE           AF-ablation      0.96   0.977    1.8    Y         PASS      text_hr_match    63s
+CIRCA-DOSE             AF-ablation      1.08   1.080    0.0    Y    TEXT_ONLY  text_derived_only    67s
+FROZEN AF              AF-ablation      0.90   0.898    0.2    Y         PASS  derived_hr_fallba    64s
+CRRF-PeAF              AF-ablation      0.99   1.000    1.0    Y         PASS      text_hr_match    86s
+HIPAF                  AF-ablation      1.47   1.476    0.4    Y         PASS  derived_hr_fallba   136s
+PVAC-CPVI              AF-ablation      0.72   0.721    0.1    Y         PASS  derived_hr_fallba    61s
+WACA-PVAC              AF-ablation      1.14   0.881   22.7    Y     MARGINAL  derived_hr_fallba   119s
+CRAVE                  AF-ablation      0.91   0.987    8.5    Y         PASS   derived_hr_match   138s
+ADVENT                 AF-ablation      0.92   0.918    0.2    Y         PASS  derived_hr_fallba   107s
+FREEZEAF-30M           AF-ablation      1.06   1.056    0.4    Y    TEXT_ONLY  text_derived_only    39s
+LBRF-PERSISTENT        AF-ablation      0.93   0.931    0.1    Y         PASS   derived_hr_match    66s
+
+  v1.4 TARGETS:
+    80%+ within CI:     13/13 = 100.0% PASS
+    Median error <5%:   0.4% PASS
+    5+ areas with PASS: 1 (['AF-ablation']) FAIL
+
+  Known limitations: {'FREEZEAF-30M'}
+
+VERDICT: FAIL -- Not all v1.4 targets met (see above)
+
+Full report: C:\Users\user\Downloads\wasserstein\expanded_40_results\expanded_report.json

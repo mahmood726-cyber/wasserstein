@@ -1,0 +1,51 @@
+{
+  "pdf_path": "NEJMoa1313731.pdf",
+  "pdf_name": "NEJMoa1313731.pdf",
+  "hr": 0.83,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_synthetic_ipd",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 100,
+    "n_events": 21,
+    "n_censored": 79,
+    "n_records": 100
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 100,
+    "n_events": 33,
+    "n_censored": 67,
+    "n_records": 100
+  },
+  "total_ipd_records": 200,
+  "curve1_times": null,
+  "curve1_survivals": null,
+  "curve2_times": null,
+  "curve2_survivals": null,
+  "confidence": 0.2,
+  "orientation_method": "text_synthetic_ipd",
+  "text_hr": 0.83,
+  "n_curves_found": 1,
+  "n_pages_scanned": 10,
+  "processing_time_s": 36.89,
+  "warnings": [
+    "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+  ],
+  "text_hr_context": "55 0.25 0.05 0 12 24 36 48 60 72 Months Hazard ratio, 0.83 (95% CI, 0.69-0.99) P=0.04 by log-rank test No. at Risk Sp",
+  "pair_description": "",
+  "pair_rank": 0,
+  "pair_quality_score": 0.0,
+  "pair_orientation": "",
+  "certification_status": "UNCERTIFIED",
+  "verification_level": "unchecked",
+  "verification_checks_passed": [],
+  "verification_checks_failed": [],
+  "verification_hash": "",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-24T05:39:22.934856+00:00"
+}

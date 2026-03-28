@@ -1,0 +1,90 @@
+{
+  "pdf_path": "40929147_Effect of aspirin on grip strength and g.pdf",
+  "pdf_name": "40929147_Effect of aspirin on grip strength and g.pdf",
+  "hr": 1.0,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 70,
+    "n_events": 60,
+    "n_censored": 10,
+    "n_records": 70
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 71,
+    "n_events": 59,
+    "n_censored": 12,
+    "n_records": 71
+  },
+  "total_ipd_records": 141,
+  "curve1_times": [
+    0.31647940074906367,
+    0.31741573033707865,
+    0.31835205992509363,
+    0.6104868913857678,
+    0.6114232209737828,
+    0.6123595505617978,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "curve1_times_length": 12,
+  "curve1_survivals": [
+    0.9379072441548486,
+    0.9379072441548486,
+    0.9379072441548486,
+    0.475661172863166,
+    0.3384438482177079,
+    0.3384438482177079,
+    0.5235722499041778,
+    0.5235722499041778,
+    0.5235722499041778,
+    0.5251054043694903
+  ],
+  "curve1_survivals_length": 12,
+  "curve2_times": [
+    0.2743445692883895,
+    0.2752808988764045,
+    0.2762172284644195,
+    0.2808988764044944,
+    0.2818352059925094,
+    0.28277153558052437,
+    0.30711610486891383,
+    0.3080524344569288,
+    0.3089887640449438,
+    0.3099250936329588
+  ],
+  "curve2_times_length": 239,
+  "curve2_survivals": [
+    0.9402069758528172,
+    0.9402069758528172,
+    0.9402069758528172,
+    0.9390571100038329,
+    0.9390571100038329,
+    0.9390571100038329,
+    0.9413568417018015,
+    0.9413568417018015,
+    0.9382905327711767,
+    0.9382905327711767
+  ],
+  "curve2_survivals_length": 239,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 1.0,
+  "n_curves_found": 19,
+  "n_pages_scanned": 11,
+  "processing_time_s": 86.81,
+  "warnings": [
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:21:30.992864+00:00"
+}

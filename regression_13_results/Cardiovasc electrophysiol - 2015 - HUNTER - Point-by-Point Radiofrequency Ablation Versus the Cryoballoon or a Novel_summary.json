@@ -75,14 +75,14 @@
     1.0
   ],
   "curve2_survivals_length": 973,
-  "confidence": 0.6,
+  "confidence": 0.65,
   "orientation_method": "derived_hr_match",
   "text_hr": 0.525,
   "n_curves_found": 9,
   "n_pages_scanned": 8,
-  "processing_time_s": 45.16,
+  "processing_time_s": 75.67,
   "warnings": [],
   "certification_status": "UNCERTIFIED",
-  "pipeline_version": "1.0",
-  "timestamp": "2026-02-13T22:33:10.775066+00:00"
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-15T14:44:35.978277+00:00"
 }

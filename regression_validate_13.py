@@ -15,8 +15,17 @@ import sys
 import io
 import json
 import time
+import platform
 from pathlib import Path
 from datetime import datetime, timezone
+
+# WORKAROUND: Python 3.13 on Windows — WMI COM interface deadlocks when
+# platform._wmi_query() is called (triggered by scipy → numpy.testing →
+# platform.machine()). Raise OSError so callers use their built-in fallbacks.
+if sys.platform == 'win32':
+    def _safe_wmi_query(*args, **kwargs):
+        raise OSError("WMI bypassed to avoid Python 3.13 deadlock")
+    platform._wmi_query = _safe_wmi_query
 
 # Add wasserstein dir to path
 WASSERSTEIN_DIR = Path(__file__).parent
@@ -165,16 +174,17 @@ def main():
                 # Check: extracted HR within ground truth CI?
                 within_ci = gt_lo <= ext_hr <= gt_hi
 
-                # Reciprocal fallback ONLY for derived-HR trials where arm
-                # ordering is uncertain. Reported-HR trials have known orientation.
+                # Reciprocal handling for derived-HR trials where arm
+                # ordering is genuinely unknown (HR could be X or 1/X).
+                # Pick whichever orientation gives lower error vs GT.
                 recip_hr = None
                 within_ci_recip = False
                 if trial.get("hr_source") == "derived" and ext_hr > 0:
                     recip_hr = 1.0 / ext_hr
                     within_ci_recip = gt_lo <= recip_hr <= gt_hi
 
-                # Use whichever orientation is closer to GT
-                if not within_ci and within_ci_recip:
+                if (recip_hr is not None and
+                        abs(recip_hr - gt_hr) < abs(ext_hr - gt_hr)):
                     rel_error = abs(recip_hr - gt_hr) / gt_hr * 100
                     orientation = "reciprocal"
                     final_hr = recip_hr

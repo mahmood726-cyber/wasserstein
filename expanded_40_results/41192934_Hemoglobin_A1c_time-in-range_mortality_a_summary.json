@@ -1,0 +1,90 @@
+{
+  "pdf_path": "41192934_Hemoglobin A1c time-in-range mortality a.pdf",
+  "pdf_name": "41192934_Hemoglobin A1c time-in-range mortality a.pdf",
+  "hr": 1.22,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 75,
+    "n_events": 63,
+    "n_censored": 12,
+    "n_records": 75
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 74,
+    "n_events": 62,
+    "n_censored": 12,
+    "n_records": 74
+  },
+  "total_ipd_records": 149,
+  "curve1_times": [
+    0.1175925925925926,
+    0.1685185185185185,
+    0.16944444444444445,
+    0.17037037037037037,
+    0.1712962962962963,
+    0.17222222222222222,
+    0.17962962962962964,
+    0.18055555555555555,
+    0.1814814814814815,
+    0.1824074074074074
+  ],
+  "curve1_times_length": 110,
+  "curve1_survivals": [
+    0.6869335347432024,
+    0.690332326283988,
+    0.6899546827794563,
+    0.6899546827794563,
+    0.08761329305135956,
+    0.08723564954682783,
+    0.08912386706948638,
+    0.08912386706948638,
+    0.08799093655589119,
+    0.08723564954682783
+  ],
+  "curve1_survivals_length": 110,
+  "curve2_times": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "curve2_times_length": 833,
+  "curve2_survivals": [
+    1.0,
+    0.1523012552301255,
+    0.1523012552301255,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "curve2_survivals_length": 833,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 1.22,
+  "n_curves_found": 10,
+  "n_pages_scanned": 9,
+  "processing_time_s": 66.22,
+  "warnings": [
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:21:10.453508+00:00"
+}

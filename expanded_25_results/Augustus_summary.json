@@ -1,0 +1,28 @@
+{
+  "pdf_path": "Augustus.pdf",
+  "pdf_name": "Augustus.pdf",
+  "hr": 0.69,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_derived_only",
+  "ipd_arm1": null,
+  "ipd_arm2": null,
+  "total_ipd_records": 0,
+  "curve1_times": null,
+  "curve1_survivals": null,
+  "curve2_times": null,
+  "curve2_survivals": null,
+  "confidence": 0.3,
+  "orientation_method": "text_only",
+  "text_hr": 0.69,
+  "n_curves_found": 2,
+  "n_pages_scanned": 12,
+  "processing_time_s": 92.43,
+  "warnings": [
+    "Text-derived HR only, no curve pair for IPD"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.0",
+  "timestamp": "2026-02-14T12:53:07.230327+00:00"
+}

@@ -1,0 +1,3729 @@
+{
+  "validation": "expanded_135_trials_v1.5",
+  "timestamp": "2026-02-17T19:49:09.144622+00:00",
+  "pipeline_version": "1.5",
+  "total_time_s": 0.2,
+  "overall": {
+    "subset": "OVERALL",
+    "n_trials": 135,
+    "n_extracted": 135,
+    "n_within_ci": 118,
+    "n_under_10pct": 94,
+    "mean_error_pct": 13.69,
+    "median_error_pct": 4.86,
+    "categories": {
+      "PASS": [
+        "HUNTER",
+        "MILILIS-PERS",
+        "FIRE AND ICE",
+        "CIRCA-DOSE",
+        "FROZEN AF",
+        "CRRF-PeAF",
+        "HIPAF",
+        "PVAC-CPVI",
+        "CRAVE",
+        "ADVENT",
+        "FREEZEAF-30M",
+        "LBRF-PERSISTENT",
+        "EMPEROR-Preserved",
+        "DELIVER",
+        "SELECT",
+        "AFIRE",
+        "PARTNER 3",
+        "AUGUSTUS",
+        "SHIFT",
+        "MERIT-HF",
+        "ENTRUST-AF PCI",
+        "PIONEER AF-PCI",
+        "ADVANCE",
+        "CIBIS-II",
+        "PMC10115555",
+        "PMC10427418",
+        "PMC10553121",
+        "SGLT2-insulin",
+        "SGLT2-nonDM",
+        "PMC10990610",
+        "PMC11448330",
+        "PMC11103724",
+        "PMC10918378",
+        "PMC11205945",
+        "PMC11292321",
+        "PMC10242061",
+        "PMC10774583",
+        "PMC10643919",
+        "PMC10810919",
+        "PMC10140742",
+        "PMC11395793",
+        "PMC11262592",
+        "PMC10062319",
+        "40728174_Impact of Dapagliflozin on Cardiometabol",
+        "40510065_Evaluating the Clinical Outcomes of Empa",
+        "40739638_Efficacy and safety of dapagliflozin in ",
+        "41192934_Hemoglobin A1c time-in-range mortality a",
+        "40955256_Empagliflozin and Cardiovascular Outcome",
+        "41029853_Cardiovascular and renal outcomes of dua",
+        "40901584_Risk factors for hepatic encephalopathy ",
+        "40929147_Effect of aspirin on grip strength and g",
+        "PMC11477297",
+        "PMC11359694",
+        "PMC10405997",
+        "PMC10320168",
+        "PMC10741667",
+        "PMC10936748",
+        "PMC11238147",
+        "PMC11311698",
+        "PMC10796984",
+        "PMC11366999",
+        "PMC11353159",
+        "PMC11255623",
+        "PMC11325898",
+        "PMC10943953",
+        "PMC10891404",
+        "PMC10624988",
+        "PMC10713185",
+        "PMC11758124",
+        "PMC10613141",
+        "PMC11094424",
+        "PMC11406080",
+        "PMC11620791",
+        "PMC11687940",
+        "PMC10638879",
+        "PMC10655973",
+        "PMC10836324",
+        "PMC10944099",
+        "PMC11046044",
+        "PMC11056588",
+        "PMC11185856",
+        "PMC11116590",
+        "PMC12024468",
+        "PMC11759330",
+        "PMC11251083",
+        "PMC12013682",
+        "PMC12059390",
+        "PMC12027513",
+        "PMC12107056",
+        "PMC10949559",
+        "PMC11205390",
+        "PMC11204241"
+      ],
+      "MARGINAL": [
+        "WACA-PVAC",
+        "SUSTAIN-6",
+        "PMC10323201",
+        "PMC10952210",
+        "PMC10105623",
+        "PMC10192282",
+        "PMC10972401",
+        "PMC10709228",
+        "PMC11297513",
+        "PMC10968587",
+        "PMC10368201",
+        "PMC10668417",
+        "PMC11305801",
+        "PMC11267211",
+        "PMC11483706",
+        "PMC11528205",
+        "PMC11686335",
+        "PMC10774956",
+        "PMC11228234",
+        "PMC11333275",
+        "PMC11416116",
+        "PMC11907552",
+        "PMC11508213",
+        "PMC12209358",
+        "PMC11499952",
+        "PMC10849177"
+      ],
+      "FAIL_ACCURACY": [
+        "PMC10805160",
+        "PMC11296275",
+        "PMC10052578",
+        "PMC11333279",
+        "PMC10810805",
+        "PMC10958307",
+        "PMC10872694",
+        "40337145_Effects of Intensive Systolic Blood Pres",
+        "40795846_Berberine for preventing colorectal aden",
+        "PMC11484657",
+        "PMC10062393",
+        "PMC10387776",
+        "PMC11250169",
+        "PMC10540713",
+        "PMC10923855",
+        "PMC12236988",
+        "PMC10672715"
+      ]
+    }
+  },
+  "original_ablation": {
+    "subset": "Original Ablation",
+    "n_trials": 13,
+    "n_extracted": 13,
+    "n_within_ci": 13,
+    "n_under_10pct": 12,
+    "mean_error_pct": 2.89,
+    "median_error_pct": 0.41,
+    "categories": {
+      "PASS": [
+        "HUNTER",
+        "MILILIS-PERS",
+        "FIRE AND ICE",
+        "CIRCA-DOSE",
+        "FROZEN AF",
+        "CRRF-PeAF",
+        "HIPAF",
+        "PVAC-CPVI",
+        "CRAVE",
+        "ADVENT",
+        "FREEZEAF-30M",
+        "LBRF-PERSISTENT"
+      ],
+      "MARGINAL": [
+        "WACA-PVAC"
+      ]
+    }
+  },
+  "cardio_metabolic": {
+    "subset": "Cardio/Metabolic",
+    "n_trials": 107,
+    "n_extracted": 107,
+    "n_within_ci": 93,
+    "n_under_10pct": 73,
+    "mean_error_pct": 14.16,
+    "median_error_pct": 4.86,
+    "categories": {
+      "PASS": [
+        "EMPEROR-Preserved",
+        "DELIVER",
+        "SELECT",
+        "AFIRE",
+        "PARTNER 3",
+        "AUGUSTUS",
+        "SHIFT",
+        "MERIT-HF",
+        "ENTRUST-AF PCI",
+        "PIONEER AF-PCI",
+        "ADVANCE",
+        "CIBIS-II",
+        "PMC10918378",
+        "PMC11205945",
+        "PMC11292321",
+        "PMC10242061",
+        "PMC10774583",
+        "PMC10643919",
+        "PMC10810919",
+        "PMC10140742",
+        "PMC11395793",
+        "PMC11262592",
+        "PMC10062319",
+        "40728174_Impact of Dapagliflozin on Cardiometabol",
+        "40510065_Evaluating the Clinical Outcomes of Empa",
+        "40739638_Efficacy and safety of dapagliflozin in ",
+        "41192934_Hemoglobin A1c time-in-range mortality a",
+        "40955256_Empagliflozin and Cardiovascular Outcome",
+        "41029853_Cardiovascular and renal outcomes of dua",
+        "40901584_Risk factors for hepatic encephalopathy ",
+        "40929147_Effect of aspirin on grip strength and g",
+        "PMC11477297",
+        "PMC11359694",
+        "PMC10405997",
+        "PMC10320168",
+        "PMC10741667",
+        "PMC10936748",
+        "PMC11238147",
+        "PMC11311698",
+        "PMC10796984",
+        "PMC11366999",
+        "PMC11353159",
+        "PMC11255623",
+        "PMC11325898",
+        "PMC10943953",
+        "PMC10891404",
+        "PMC10624988",
+        "PMC10713185",
+        "PMC11758124",
+        "PMC10613141",
+        "PMC11094424",
+        "PMC11406080",
+        "PMC11620791",
+        "PMC11687940",
+        "PMC10638879",
+        "PMC10655973",
+        "PMC10836324",
+        "PMC10944099",
+        "PMC11046044",
+        "PMC11056588",
+        "PMC11185856",
+        "PMC11116590",
+        "PMC12024468",
+        "PMC11759330",
+        "PMC11251083",
+        "PMC12013682",
+        "PMC12059390",
+        "PMC12027513",
+        "PMC12107056",
+        "PMC10949559",
+        "PMC11205390",
+        "PMC11204241"
+      ],
+      "MARGINAL": [
+        "PMC10192282",
+        "PMC10972401",
+        "PMC10709228",
+        "PMC11297513",
+        "PMC10968587",
+        "PMC10368201",
+        "PMC10668417",
+        "PMC11305801",
+        "PMC11267211",
+        "PMC11483706",
+        "PMC11528205",
+        "PMC11686335",
+        "PMC10774956",
+        "PMC11228234",
+        "PMC11333275",
+        "PMC11416116",
+        "PMC11907552",
+        "PMC11508213",
+        "PMC12209358",
+        "PMC11499952",
+        "PMC10849177"
+      ],
+      "FAIL_ACCURACY": [
+        "PMC11333279",
+        "PMC10810805",
+        "PMC10958307",
+        "PMC10872694",
+        "40337145_Effects of Intensive Systolic Blood Pres",
+        "40795846_Berberine for preventing colorectal aden",
+        "PMC11484657",
+        "PMC10062393",
+        "PMC10387776",
+        "PMC11250169",
+        "PMC10540713",
+        "PMC10923855",
+        "PMC12236988",
+        "PMC10672715"
+      ]
+    }
+  },
+  "phase2_diverse": {
+    "subset": "Phase 2 Diverse",
+    "n_trials": 15,
+    "n_extracted": 15,
+    "n_within_ci": 12,
+    "n_under_10pct": 9,
+    "mean_error_pct": 19.7,
+    "median_error_pct": 9.45,
+    "categories": {
+      "PASS": [
+        "PMC10115555",
+        "PMC10427418",
+        "PMC10553121",
+        "SGLT2-insulin",
+        "SGLT2-nonDM",
+        "PMC10990610",
+        "PMC11448330",
+        "PMC11103724"
+      ],
+      "MARGINAL": [
+        "SUSTAIN-6",
+        "PMC10323201",
+        "PMC10952210",
+        "PMC10105623"
+      ],
+      "FAIL_ACCURACY": [
+        "PMC10805160",
+        "PMC11296275",
+        "PMC10052578"
+      ]
+    }
+  },
+  "targets": {
+    "within_ci_pct": 87.4,
+    "within_ci_target": 85,
+    "median_error_pct": 4.9,
+    "median_error_target": 5,
+    "n_areas_with_pass": 14,
+    "areas_target": 7,
+    "all_met": true
+  },
+  "verdict": "PASS",
+  "trials": [
+    {
+      "name": "HUNTER",
+      "pdf": "Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.53,
+      "gt_ci": [
+        0.25,
+        1.1
+      ],
+      "ext_hr": 0.525,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.525,
+      "orientation": "direct",
+      "rel_error_pct": 0.94,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 83,
+      "time_s": 51.0,
+      "status": "PASS",
+      "n_curves_found": 5,
+      "hr_method": "derived_hr_fallback"
+    },
+    {
+      "name": "MILILIS-PERS",
+      "pdf": "Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.96,
+      "gt_ci": [
+        0.5,
+        1.8
+      ],
+      "ext_hr": 0.972,
+      "ext_ci": [
+        0.684,
+        1.38
+      ],
+      "final_hr": 0.972,
+      "orientation": "direct",
+      "rel_error_pct": 1.25,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 61,
+      "time_s": 36.0,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "closest_to_1"
+    },
+    {
+      "name": "FIRE AND ICE",
+      "pdf": "NEJMoa1602014.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.96,
+      "gt_ci": [
+        0.76,
+        1.22
+      ],
+      "ext_hr": 0.977,
+      "ext_ci": [
+        0.616,
+        1.549
+      ],
+      "final_hr": 0.977,
+      "orientation": "direct",
+      "rel_error_pct": 1.77,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 141,
+      "time_s": 63.0,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "CIRCA-DOSE",
+      "pdf": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 1.08,
+      "gt_ci": [
+        0.78,
+        1.5
+      ],
+      "ext_hr": 1.08,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 1.08,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 131,
+      "time_s": 47.0,
+      "status": "PASS",
+      "n_curves_found": 13,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "FROZEN AF",
+      "pdf": "chun-et-al-cryoballoon-versus-laserballoon.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.9,
+      "gt_ci": [
+        0.5,
+        1.6
+      ],
+      "ext_hr": 0.898,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.898,
+      "orientation": "direct",
+      "rel_error_pct": 0.22,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 82,
+      "time_s": 31.5,
+      "status": "PASS",
+      "n_curves_found": 8,
+      "hr_method": "derived_hr_fallback"
+    },
+    {
+      "name": "CRRF-PeAF",
+      "pdf": "ehaf451.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.99,
+      "gt_ci": [
+        0.69,
+        1.43
+      ],
+      "ext_hr": 1.0,
+      "ext_ci": [
+        0.407,
+        2.458
+      ],
+      "final_hr": 1.0,
+      "orientation": "direct",
+      "rel_error_pct": 1.01,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 108,
+      "time_s": 86.3,
+      "status": "PASS",
+      "n_curves_found": 20,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "HIPAF",
+      "pdf": "euaf066.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 1.47,
+      "gt_ci": [
+        0.7,
+        2.5
+      ],
+      "ext_hr": 1.476,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 1.476,
+      "orientation": "direct",
+      "rel_error_pct": 0.41,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 140,
+      "time_s": 67.2,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "derived_hr_fallback"
+    },
+    {
+      "name": "PVAC-CPVI",
+      "pdf": "eut398.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.72,
+      "gt_ci": [
+        0.35,
+        1.5
+      ],
+      "ext_hr": 0.721,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.721,
+      "orientation": "direct",
+      "rel_error_pct": 0.14,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 157,
+      "time_s": 45.9,
+      "status": "PASS",
+      "n_curves_found": 11,
+      "hr_method": "derived_hr_fallback"
+    },
+    {
+      "name": "WACA-PVAC",
+      "pdf": "euu064.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 1.14,
+      "gt_ci": [
+        0.6,
+        2.1
+      ],
+      "ext_hr": 0.881,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.881,
+      "orientation": "direct",
+      "rel_error_pct": 22.72,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 185,
+      "time_s": 60.9,
+      "status": "PASS",
+      "n_curves_found": 15,
+      "hr_method": "derived_hr_fallback"
+    },
+    {
+      "name": "CRAVE",
+      "pdf": "pak-et-al-cryoballoon-versus-high-power-short-duration-radiofrequency-ablation-for-pulmonary-vein-isolation-in-patients.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.91,
+      "gt_ci": [
+        0.45,
+        1.85
+      ],
+      "ext_hr": 0.987,
+      "ext_ci": [
+        0.733,
+        1.329
+      ],
+      "final_hr": 0.987,
+      "orientation": "direct",
+      "rel_error_pct": 8.46,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 196,
+      "time_s": 54.8,
+      "status": "PASS",
+      "n_curves_found": 20,
+      "hr_method": "derived_hr_match"
+    },
+    {
+      "name": "ADVENT",
+      "pdf": "reddy-et-al-pulsed-field-vs-conventional-thermal-ablation-for-paroxysmal-atrial-fibrillation.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.92,
+      "gt_ci": [
+        0.55,
+        1.5
+      ],
+      "ext_hr": 0.918,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.918,
+      "orientation": "direct",
+      "rel_error_pct": 0.22,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 191,
+      "time_s": 53.1,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "derived_hr_fallback"
+    },
+    {
+      "name": "FREEZEAF-30M",
+      "pdf": "s12872-017-0566-6.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 1.06,
+      "gt_ci": [
+        0.55,
+        2.0
+      ],
+      "ext_hr": 1.056,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 1.056,
+      "orientation": "direct",
+      "rel_error_pct": 0.38,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 38.4,
+      "status": "PASS",
+      "n_curves_found": 3,
+      "hr_method": "derived_hr_fallback"
+    },
+    {
+      "name": "LBRF-PERSISTENT",
+      "pdf": "schmidt-et-al-laser-balloon-or-wide-area-circumferential-irrigated-radiofrequency-ablation-for-persistent-atrial.pdf",
+      "area": "AF-ablation",
+      "gt_hr": 0.93,
+      "gt_ci": [
+        0.5,
+        1.7
+      ],
+      "ext_hr": 0.931,
+      "ext_ci": [
+        0.594,
+        1.456
+      ],
+      "final_hr": 0.931,
+      "orientation": "direct",
+      "rel_error_pct": 0.11,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 150,
+      "time_s": 38.7,
+      "status": "PASS",
+      "n_curves_found": 16,
+      "hr_method": "derived_hr_match"
+    },
+    {
+      "name": "EMPEROR-Preserved",
+      "pdf": "NEJMoa2107038.pdf",
+      "area": "heart-failure",
+      "gt_hr": 0.79,
+      "gt_ci": [
+        0.69,
+        0.9
+      ],
+      "ext_hr": 0.79,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.79,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 36.2,
+      "status": "PASS",
+      "n_curves_found": 1,
+      "hr_method": "text_synthetic_ipd"
+    },
+    {
+      "name": "DELIVER",
+      "pdf": "NEJMoa2206286.pdf",
+      "area": "heart-failure",
+      "gt_hr": 0.82,
+      "gt_ci": [
+        0.73,
+        0.92
+      ],
+      "ext_hr": 0.82,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.82,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 90,
+      "time_s": 19.2,
+      "status": "PASS",
+      "n_curves_found": 4,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "SELECT",
+      "pdf": "NEJMoa2307563.pdf",
+      "area": "obesity-CV",
+      "gt_hr": 0.8,
+      "gt_ci": [
+        0.72,
+        0.9
+      ],
+      "ext_hr": 0.8,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.8,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 137,
+      "time_s": 26.8,
+      "status": "PASS",
+      "n_curves_found": 4,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "AFIRE",
+      "pdf": "NEJMoa1904143.pdf",
+      "area": "AF-CAD",
+      "gt_hr": 0.72,
+      "gt_ci": [
+        0.55,
+        0.95
+      ],
+      "ext_hr": 0.72,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.72,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 140,
+      "time_s": 33.4,
+      "status": "PASS",
+      "n_curves_found": 2,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PARTNER 3",
+      "pdf": "Partner3.pdf",
+      "area": "TAVR",
+      "gt_hr": 0.54,
+      "gt_ci": [
+        0.37,
+        0.79
+      ],
+      "ext_hr": 0.54,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.54,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 28.2,
+      "status": "PASS",
+      "n_curves_found": 0,
+      "hr_method": "text_synthetic_ipd"
+    },
+    {
+      "name": "AUGUSTUS",
+      "pdf": "Augustus.pdf",
+      "area": "AF-ACS",
+      "gt_hr": 0.69,
+      "gt_ci": [
+        0.58,
+        0.81
+      ],
+      "ext_hr": 0.69,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.69,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 100,
+      "time_s": 48.9,
+      "status": "PASS",
+      "n_curves_found": 6,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "SHIFT",
+      "pdf": "IvabradineandoutcomesinchronicheartfailureSHIFT-arandomisedplacebo-controlledstudy.pdf",
+      "area": "heart-failure",
+      "gt_hr": 0.82,
+      "gt_ci": [
+        0.75,
+        0.9
+      ],
+      "ext_hr": 0.834,
+      "ext_ci": [
+        0.508,
+        1.37
+      ],
+      "final_hr": 0.834,
+      "orientation": "direct",
+      "rel_error_pct": 1.71,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 128,
+      "time_s": 105.2,
+      "status": "PASS",
+      "n_curves_found": 13,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "MERIT-HF",
+      "pdf": "EffectofmetoprololCR-XLinchronicheartfailure.pdf",
+      "area": "heart-failure",
+      "gt_hr": 0.66,
+      "gt_ci": [
+        0.53,
+        0.81
+      ],
+      "ext_hr": 0.66,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.66,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 53.5,
+      "status": "PASS",
+      "n_curves_found": 1,
+      "hr_method": "text_synthetic_ipd"
+    },
+    {
+      "name": "ENTRUST-AF PCI",
+      "pdf": "entrust.pdf",
+      "area": "AF-PCI",
+      "gt_hr": 0.83,
+      "gt_ci": [
+        0.65,
+        1.05
+      ],
+      "ext_hr": 0.883,
+      "ext_ci": [
+        0.608,
+        1.281
+      ],
+      "final_hr": 0.883,
+      "orientation": "direct",
+      "rel_error_pct": 6.39,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 148,
+      "time_s": 103.1,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PIONEER AF-PCI",
+      "pdf": "Pioneer AF.pdf",
+      "area": "AF-PCI",
+      "gt_hr": 0.59,
+      "gt_ci": [
+        0.47,
+        0.76
+      ],
+      "ext_hr": 0.601,
+      "ext_ci": [
+        0.408,
+        0.884
+      ],
+      "final_hr": 0.601,
+      "orientation": "direct",
+      "rel_error_pct": 1.86,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 126,
+      "time_s": 51.1,
+      "status": "PASS",
+      "n_curves_found": 5,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "ADVANCE",
+      "pdf": "NEJMoa0802987.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.9,
+      "gt_ci": [
+        0.82,
+        0.98
+      ],
+      "ext_hr": 0.86,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.86,
+      "orientation": "direct",
+      "rel_error_pct": 4.44,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 157,
+      "time_s": 70.3,
+      "status": "PASS",
+      "n_curves_found": 2,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "CIBIS-II",
+      "pdf": "TheLancet1999Investigators.pdf",
+      "area": "heart-failure",
+      "gt_hr": 0.66,
+      "gt_ci": [
+        0.54,
+        0.81
+      ],
+      "ext_hr": 0.66,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.66,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 25.1,
+      "status": "PASS",
+      "n_curves_found": 0,
+      "hr_method": "text_synthetic_ipd"
+    },
+    {
+      "name": "PMC10115555",
+      "pdf": "PMC10115555.pdf",
+      "area": "oncology",
+      "gt_hr": 0.82,
+      "gt_ci": [
+        0.69,
+        0.97
+      ],
+      "ext_hr": 0.874,
+      "ext_ci": [
+        0.569,
+        1.342
+      ],
+      "final_hr": 0.874,
+      "orientation": "direct",
+      "rel_error_pct": 6.59,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 161,
+      "time_s": 153.6,
+      "status": "PASS",
+      "n_curves_found": 21,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10427418",
+      "pdf": "PMC10427418.pdf",
+      "area": "oncology",
+      "gt_hr": 0.678,
+      "gt_ci": [
+        0.546,
+        0.841
+      ],
+      "ext_hr": 0.678,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.678,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 190,
+      "time_s": 90.3,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10553121",
+      "pdf": "PMC10553121.pdf",
+      "area": "oncology",
+      "gt_hr": 0.73,
+      "gt_ci": [
+        0.62,
+        0.86
+      ],
+      "ext_hr": 0.77,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.77,
+      "orientation": "direct",
+      "rel_error_pct": 5.48,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 181,
+      "time_s": 72.7,
+      "status": "PASS",
+      "n_curves_found": 13,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "SUSTAIN-6",
+      "pdf": "PMC11943310.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.74,
+      "gt_ci": [
+        0.58,
+        0.95
+      ],
+      "ext_hr": 0.889,
+      "ext_ci": [
+        0.661,
+        1.194
+      ],
+      "final_hr": 0.889,
+      "orientation": "direct",
+      "rel_error_pct": 20.14,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 176,
+      "time_s": 248.3,
+      "status": "PASS",
+      "n_curves_found": 21,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "SGLT2-insulin",
+      "pdf": "40036884_Effects of SGLT2 inhibition on insulin u.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.81,
+      "gt_ci": [
+        0.71,
+        0.93
+      ],
+      "ext_hr": 0.874,
+      "ext_ci": [
+        0.593,
+        1.289
+      ],
+      "final_hr": 0.874,
+      "orientation": "direct",
+      "rel_error_pct": 7.9,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 125,
+      "time_s": 150.3,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "SGLT2-nonDM",
+      "pdf": "40978864_Sodium-Glucose Cotransporter 2 SGLT2 Inh.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.73,
+      "gt_ci": [
+        0.6,
+        0.88
+      ],
+      "ext_hr": 0.799,
+      "ext_ci": [
+        0.596,
+        1.072
+      ],
+      "final_hr": 0.799,
+      "orientation": "direct",
+      "rel_error_pct": 9.45,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 187.8,
+      "status": "PASS",
+      "n_curves_found": 28,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10323201",
+      "pdf": "PMC10323201.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.62,
+      "gt_ci": [
+        0.38,
+        0.99
+      ],
+      "ext_hr": 0.457,
+      "ext_ci": [
+        0.322,
+        0.648
+      ],
+      "final_hr": 0.457,
+      "orientation": "direct",
+      "rel_error_pct": 26.29,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 177,
+      "time_s": 130.2,
+      "status": "PASS",
+      "n_curves_found": 11,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10952210",
+      "pdf": "PMC10952210.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.32,
+      "gt_ci": [
+        0.14,
+        0.76
+      ],
+      "ext_hr": 0.61,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.61,
+      "orientation": "direct",
+      "rel_error_pct": 90.62,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 103,
+      "time_s": 134.9,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10990610",
+      "pdf": "PMC10990610.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.66,
+      "gt_ci": [
+        0.53,
+        0.83
+      ],
+      "ext_hr": 0.712,
+      "ext_ci": [
+        0.521,
+        0.973
+      ],
+      "final_hr": 0.712,
+      "orientation": "direct",
+      "rel_error_pct": 7.88,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 188,
+      "time_s": 206.8,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10805160",
+      "pdf": "PMC10805160.pdf",
+      "area": "neurology",
+      "gt_hr": 0.59,
+      "gt_ci": [
+        0.54,
+        0.64
+      ],
+      "ext_hr": 0.646,
+      "ext_ci": [
+        0.401,
+        1.04
+      ],
+      "final_hr": 0.646,
+      "orientation": "direct",
+      "rel_error_pct": 9.49,
+      "within_ci": false,
+      "error_under_10pct": true,
+      "ipd_records": 98,
+      "time_s": 145.4,
+      "status": "FAIL",
+      "n_curves_found": 14,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11296275",
+      "pdf": "PMC11296275.pdf",
+      "area": "neurology",
+      "gt_hr": 0.69,
+      "gt_ci": [
+        0.57,
+        0.83
+      ],
+      "ext_hr": 0.299,
+      "ext_ci": [
+        0.207,
+        0.433
+      ],
+      "final_hr": 0.299,
+      "orientation": "direct",
+      "rel_error_pct": 56.67,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 182,
+      "time_s": 138.3,
+      "status": "FAIL",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11448330",
+      "pdf": "PMC11448330.pdf",
+      "area": "neurology",
+      "gt_hr": 0.8,
+      "gt_ci": [
+        0.61,
+        1.05
+      ],
+      "ext_hr": 0.788,
+      "ext_ci": [
+        0.538,
+        1.154
+      ],
+      "final_hr": 0.788,
+      "orientation": "direct",
+      "rel_error_pct": 1.5,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 123,
+      "time_s": 86.5,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10052578",
+      "pdf": "PMC10052578.pdf",
+      "area": "infectious",
+      "gt_hr": 0.69,
+      "gt_ci": [
+        0.56,
+        0.85
+      ],
+      "ext_hr": 0.923,
+      "ext_ci": [
+        0.686,
+        1.242
+      ],
+      "final_hr": 0.923,
+      "orientation": "direct",
+      "rel_error_pct": 33.77,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 196,
+      "time_s": 136.9,
+      "status": "FAIL",
+      "n_curves_found": 7,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10105623",
+      "pdf": "PMC10105623.pdf",
+      "area": "infectious",
+      "gt_hr": 0.35,
+      "gt_ci": [
+        0.24,
+        0.51
+      ],
+      "ext_hr": 0.403,
+      "ext_ci": [
+        0.27,
+        0.602
+      ],
+      "final_hr": 0.403,
+      "orientation": "direct",
+      "rel_error_pct": 15.14,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 161,
+      "time_s": 96.1,
+      "status": "PASS",
+      "n_curves_found": 12,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11103724",
+      "pdf": "PMC11103724.pdf",
+      "area": "infectious",
+      "gt_hr": 0.33,
+      "gt_ci": [
+        0.26,
+        0.43
+      ],
+      "ext_hr": 0.345,
+      "ext_ci": [
+        0.248,
+        0.479
+      ],
+      "final_hr": 0.345,
+      "orientation": "direct",
+      "rel_error_pct": 4.55,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 86,
+      "time_s": 183.6,
+      "status": "PASS",
+      "n_curves_found": 21,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10192282",
+      "pdf": "PMC10192282.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.26,
+      "gt_ci": [
+        0.12,
+        0.57
+      ],
+      "ext_hr": 0.293,
+      "ext_ci": [
+        0.208,
+        0.413
+      ],
+      "final_hr": 0.293,
+      "orientation": "direct",
+      "rel_error_pct": 12.69,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 118,
+      "time_s": 197.8,
+      "status": "PASS",
+      "n_curves_found": 25,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10918378",
+      "pdf": "PMC10918378.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.55,
+      "gt_ci": [
+        0.5,
+        0.61
+      ],
+      "ext_hr": 0.52,
+      "ext_ci": [
+        0.206,
+        1.309
+      ],
+      "final_hr": 0.52,
+      "orientation": "direct",
+      "rel_error_pct": 5.45,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 47,
+      "time_s": 54.5,
+      "status": "PASS",
+      "n_curves_found": 3,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11205945",
+      "pdf": "PMC11205945.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.84,
+      "gt_ci": [
+        0.72,
+        0.98
+      ],
+      "ext_hr": 0.91,
+      "ext_ci": [
+        0.573,
+        1.445
+      ],
+      "final_hr": 0.91,
+      "orientation": "direct",
+      "rel_error_pct": 8.33,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 108,
+      "time_s": 171.5,
+      "status": "PASS",
+      "n_curves_found": 16,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11333279",
+      "pdf": "PMC11333279.pdf",
+      "area": "cardiology",
+      "gt_hr": 1.44,
+      "gt_ci": [
+        1.38,
+        1.5
+      ],
+      "ext_hr": 2.259,
+      "ext_ci": [
+        1.442,
+        3.537
+      ],
+      "final_hr": 2.259,
+      "orientation": "direct",
+      "rel_error_pct": 56.88,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 108,
+      "time_s": 174.9,
+      "status": "FAIL",
+      "n_curves_found": 7,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11292321",
+      "pdf": "PMC11292321.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.79,
+      "gt_ci": [
+        0.69,
+        0.91
+      ],
+      "ext_hr": 0.807,
+      "ext_ci": [
+        0.306,
+        2.128
+      ],
+      "final_hr": 0.807,
+      "orientation": "direct",
+      "rel_error_pct": 2.15,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 152,
+      "time_s": 170.8,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10242061",
+      "pdf": "PMC10242061.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.59,
+      "gt_ci": [
+        0.44,
+        0.79
+      ],
+      "ext_hr": 0.59,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.59,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 195,
+      "time_s": 93.7,
+      "status": "PASS",
+      "n_curves_found": 21,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10774583",
+      "pdf": "PMC10774583.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.77,
+      "gt_ci": [
+        0.61,
+        0.96
+      ],
+      "ext_hr": 0.704,
+      "ext_ci": [
+        0.507,
+        0.977
+      ],
+      "final_hr": 0.704,
+      "orientation": "direct",
+      "rel_error_pct": 8.57,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 180,
+      "time_s": 54.2,
+      "status": "PASS",
+      "n_curves_found": 11,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10972401",
+      "pdf": "PMC10972401.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.76,
+      "gt_ci": [
+        0.62,
+        0.94
+      ],
+      "ext_hr": 0.887,
+      "ext_ci": [
+        0.615,
+        1.279
+      ],
+      "final_hr": 0.887,
+      "orientation": "direct",
+      "rel_error_pct": 16.71,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 151,
+      "time_s": 132.6,
+      "status": "PASS",
+      "n_curves_found": 7,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10810805",
+      "pdf": "PMC10810805.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.88,
+      "gt_ci": [
+        0.83,
+        0.95
+      ],
+      "ext_hr": 0.723,
+      "ext_ci": [
+        0.477,
+        1.096
+      ],
+      "final_hr": 0.723,
+      "orientation": "direct",
+      "rel_error_pct": 17.84,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 113,
+      "time_s": 85.2,
+      "status": "FAIL",
+      "n_curves_found": 7,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10958307",
+      "pdf": "PMC10958307.pdf",
+      "area": "cardiology",
+      "gt_hr": 1.11,
+      "gt_ci": [
+        1.01,
+        1.23
+      ],
+      "ext_hr": 1.0,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 1.0,
+      "orientation": "direct",
+      "rel_error_pct": 9.91,
+      "within_ci": false,
+      "error_under_10pct": true,
+      "ipd_records": 113,
+      "time_s": 121.4,
+      "status": "FAIL",
+      "n_curves_found": 12,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10643919",
+      "pdf": "PMC10643919.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.79,
+      "gt_ci": [
+        0.57,
+        1.11
+      ],
+      "ext_hr": 0.79,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.79,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 178,
+      "time_s": 113.2,
+      "status": "PASS",
+      "n_curves_found": 25,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10709228",
+      "pdf": "PMC10709228.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.65,
+      "gt_ci": [
+        0.35,
+        1.2
+      ],
+      "ext_hr": 0.7342,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.7342,
+      "orientation": "direct",
+      "rel_error_pct": 12.95,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 184,
+      "time_s": 56.0,
+      "status": "PASS",
+      "n_curves_found": 7,
+      "hr_method": "closest_to_1_reciprocal_prior"
+    },
+    {
+      "name": "PMC10872694",
+      "pdf": "PMC10872694.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.51,
+      "gt_ci": [
+        0.29,
+        0.86
+      ],
+      "ext_hr": 1.153,
+      "ext_ci": [
+        0.804,
+        1.653
+      ],
+      "final_hr": 1.153,
+      "orientation": "direct",
+      "rel_error_pct": 126.08,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 114,
+      "time_s": 89.4,
+      "status": "FAIL",
+      "n_curves_found": 18,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11297513",
+      "pdf": "PMC11297513.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.51,
+      "gt_ci": [
+        0.29,
+        0.88
+      ],
+      "ext_hr": 0.81,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.81,
+      "orientation": "direct",
+      "rel_error_pct": 58.82,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 184,
+      "time_s": 101.0,
+      "status": "PASS",
+      "n_curves_found": 16,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10810919",
+      "pdf": "PMC10810919.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.8,
+      "gt_ci": [
+        0.5,
+        1.3
+      ],
+      "ext_hr": 0.811,
+      "ext_ci": [
+        0.578,
+        1.138
+      ],
+      "final_hr": 0.811,
+      "orientation": "direct",
+      "rel_error_pct": 1.38,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 162,
+      "time_s": 126.6,
+      "status": "PASS",
+      "n_curves_found": 8,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10968587",
+      "pdf": "PMC10968587.pdf",
+      "area": "cardiology",
+      "gt_hr": 1.25,
+      "gt_ci": [
+        0.97,
+        1.61
+      ],
+      "ext_hr": 1.008,
+      "ext_ci": [
+        0.743,
+        1.368
+      ],
+      "final_hr": 1.008,
+      "orientation": "direct",
+      "rel_error_pct": 19.36,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 191,
+      "time_s": 417.0,
+      "status": "PASS",
+      "n_curves_found": 22,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10140742",
+      "pdf": "PMC10140742.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.41,
+      "gt_ci": [
+        0.21,
+        0.81
+      ],
+      "ext_hr": 0.429,
+      "ext_ci": [
+        0.291,
+        0.634
+      ],
+      "final_hr": 0.429,
+      "orientation": "direct",
+      "rel_error_pct": 4.63,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 130,
+      "time_s": 82.5,
+      "status": "PASS",
+      "n_curves_found": 5,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11395793",
+      "pdf": "PMC11395793.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.29,
+      "gt_ci": [
+        0.12,
+        0.72
+      ],
+      "ext_hr": 0.305,
+      "ext_ci": [
+        0.208,
+        0.447
+      ],
+      "final_hr": 0.305,
+      "orientation": "direct",
+      "rel_error_pct": 5.17,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 135,
+      "time_s": 153.2,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11262592",
+      "pdf": "PMC11262592.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.871,
+      "gt_ci": [
+        0.585,
+        1.295
+      ],
+      "ext_hr": 0.871,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.871,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 125,
+      "time_s": 193.7,
+      "status": "PASS",
+      "n_curves_found": 27,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10062319",
+      "pdf": "PMC10062319.pdf",
+      "area": "cardiology",
+      "gt_hr": 0.65,
+      "gt_ci": [
+        0.56,
+        0.75
+      ],
+      "ext_hr": 0.695,
+      "ext_ci": [
+        0.491,
+        0.983
+      ],
+      "final_hr": 0.695,
+      "orientation": "direct",
+      "rel_error_pct": 6.92,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 174,
+      "time_s": 263.5,
+      "status": "PASS",
+      "n_curves_found": 13,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "40728174_Impact of Dapagliflozin on Cardiometabol",
+      "pdf": "40728174_Impact of Dapagliflozin on Cardiometabol.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.4,
+      "gt_ci": [
+        0.15,
+        1.03
+      ],
+      "ext_hr": 0.368,
+      "ext_ci": [
+        0.254,
+        0.532
+      ],
+      "final_hr": 0.368,
+      "orientation": "direct",
+      "rel_error_pct": 8.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 147,
+      "time_s": 73.5,
+      "status": "PASS",
+      "n_curves_found": 20,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "40510065_Evaluating the Clinical Outcomes of Empa",
+      "pdf": "40510065_Evaluating the Clinical Outcomes of Empa.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.71,
+      "gt_ci": [
+        0.6,
+        0.83
+      ],
+      "ext_hr": 0.767,
+      "ext_ci": [
+        0.561,
+        1.048
+      ],
+      "final_hr": 0.767,
+      "orientation": "direct",
+      "rel_error_pct": 8.03,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 86.9,
+      "status": "PASS",
+      "n_curves_found": 23,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "40739638_Efficacy and safety of dapagliflozin in ",
+      "pdf": "40739638_Efficacy and safety of dapagliflozin in .pdf",
+      "area": "diabetes",
+      "gt_hr": 0.86,
+      "gt_ci": [
+        0.55,
+        1.35
+      ],
+      "ext_hr": 0.86,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.86,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 100,
+      "time_s": 75.8,
+      "status": "PASS",
+      "n_curves_found": 5,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "40337145_Effects of Intensive Systolic Blood Pres",
+      "pdf": "40337145_Effects of Intensive Systolic Blood Pres.pdf",
+      "area": "diabetes",
+      "gt_hr": 1.21,
+      "gt_ci": [
+        1.1,
+        1.34
+      ],
+      "ext_hr": 0.87,
+      "ext_ci": [
+        0.515,
+        1.47
+      ],
+      "final_hr": 0.87,
+      "orientation": "direct",
+      "rel_error_pct": 28.1,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 79,
+      "time_s": 27.1,
+      "status": "FAIL",
+      "n_curves_found": 3,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "41192934_Hemoglobin A1c time-in-range mortality a",
+      "pdf": "41192934_Hemoglobin A1c time-in-range mortality a.pdf",
+      "area": "diabetes",
+      "gt_hr": 1.22,
+      "gt_ci": [
+        1.2,
+        1.23
+      ],
+      "ext_hr": 1.22,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 1.22,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 149,
+      "time_s": 66.2,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "40955256_Empagliflozin and Cardiovascular Outcome",
+      "pdf": "40955256_Empagliflozin and Cardiovascular Outcome.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.7,
+      "gt_ci": [
+        0.58,
+        0.85
+      ],
+      "ext_hr": 0.68,
+      "ext_ci": [
+        0.504,
+        0.918
+      ],
+      "final_hr": 0.68,
+      "orientation": "direct",
+      "rel_error_pct": 2.86,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 199,
+      "time_s": 208.4,
+      "status": "PASS",
+      "n_curves_found": 39,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "41029853_Cardiovascular and renal outcomes of dua",
+      "pdf": "41029853_Cardiovascular and renal outcomes of dua.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.59,
+      "gt_ci": [
+        0.47,
+        0.75
+      ],
+      "ext_hr": 0.592,
+      "ext_ci": [
+        0.44,
+        0.798
+      ],
+      "final_hr": 0.592,
+      "orientation": "direct",
+      "rel_error_pct": 0.34,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 180,
+      "time_s": 146.7,
+      "status": "PASS",
+      "n_curves_found": 17,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "40795846_Berberine for preventing colorectal aden",
+      "pdf": "40795846_Berberine for preventing colorectal aden.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.83,
+      "gt_ci": [
+        0.69,
+        1.01
+      ],
+      "ext_hr": 0.61,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.61,
+      "orientation": "direct",
+      "rel_error_pct": 26.51,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 117,
+      "time_s": 50.9,
+      "status": "FAIL",
+      "n_curves_found": 23,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "40901584_Risk factors for hepatic encephalopathy ",
+      "pdf": "40901584_Risk factors for hepatic encephalopathy .pdf",
+      "area": "diabetes",
+      "gt_hr": 0.895,
+      "gt_ci": [
+        0.808,
+        0.992
+      ],
+      "ext_hr": 0.911,
+      "ext_ci": [
+        0.634,
+        1.308
+      ],
+      "final_hr": 0.911,
+      "orientation": "direct",
+      "rel_error_pct": 1.79,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 143,
+      "time_s": 165.3,
+      "status": "PASS",
+      "n_curves_found": 8,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "40929147_Effect of aspirin on grip strength and g",
+      "pdf": "40929147_Effect of aspirin on grip strength and g.pdf",
+      "area": "diabetes",
+      "gt_hr": 1.05,
+      "gt_ci": [
+        1.0,
+        1.1
+      ],
+      "ext_hr": 1.0,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 1.0,
+      "orientation": "direct",
+      "rel_error_pct": 4.76,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 141,
+      "time_s": 86.8,
+      "status": "PASS",
+      "n_curves_found": 19,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10368201",
+      "pdf": "PMC10368201.pdf",
+      "area": "infectious",
+      "gt_hr": 0.27,
+      "gt_ci": [
+        0.14,
+        0.49
+      ],
+      "ext_hr": 0.22,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.22,
+      "orientation": "direct",
+      "rel_error_pct": 18.52,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 177,
+      "time_s": 107.0,
+      "status": "PASS",
+      "n_curves_found": 12,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10668417",
+      "pdf": "PMC10668417.pdf",
+      "area": "infectious",
+      "gt_hr": 0.67,
+      "gt_ci": [
+        0.54,
+        0.82
+      ],
+      "ext_hr": 0.588,
+      "ext_ci": [
+        0.424,
+        0.817
+      ],
+      "final_hr": 0.588,
+      "orientation": "direct",
+      "rel_error_pct": 12.24,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 180,
+      "time_s": 142.4,
+      "status": "PASS",
+      "n_curves_found": 4,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11477297",
+      "pdf": "PMC11477297.pdf",
+      "area": "infectious",
+      "gt_hr": 0.99,
+      "gt_ci": [
+        0.51,
+        1.9
+      ],
+      "ext_hr": 0.988,
+      "ext_ci": [
+        0.734,
+        1.329
+      ],
+      "final_hr": 0.988,
+      "orientation": "direct",
+      "rel_error_pct": 0.2,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 584.1,
+      "status": "PASS",
+      "n_curves_found": 26,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11359694",
+      "pdf": "PMC11359694.pdf",
+      "area": "infectious",
+      "gt_hr": 2.55,
+      "gt_ci": [
+        1.18,
+        5.24
+      ],
+      "ext_hr": 2.55,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 2.55,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 27,
+      "time_s": 148.4,
+      "status": "PASS",
+      "n_curves_found": 7,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10405997",
+      "pdf": "PMC10405997.pdf",
+      "area": "infectious",
+      "gt_hr": 0.49,
+      "gt_ci": [
+        0.32,
+        0.74
+      ],
+      "ext_hr": 0.531,
+      "ext_ci": [
+        0.342,
+        0.825
+      ],
+      "final_hr": 0.531,
+      "orientation": "direct",
+      "rel_error_pct": 8.37,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 129,
+      "time_s": 374.2,
+      "status": "PASS",
+      "n_curves_found": 19,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10320168",
+      "pdf": "PMC10320168.pdf",
+      "area": "infectious",
+      "gt_hr": 0.48,
+      "gt_ci": [
+        0.4,
+        0.59
+      ],
+      "ext_hr": 0.466,
+      "ext_ci": [
+        0.324,
+        0.67
+      ],
+      "final_hr": 0.466,
+      "orientation": "direct",
+      "rel_error_pct": 2.92,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 157,
+      "time_s": 100.8,
+      "status": "PASS",
+      "n_curves_found": 14,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10741667",
+      "pdf": "PMC10741667.pdf",
+      "area": "infectious",
+      "gt_hr": 0.73,
+      "gt_ci": [
+        0.61,
+        0.87
+      ],
+      "ext_hr": 0.754,
+      "ext_ci": [
+        0.528,
+        1.078
+      ],
+      "final_hr": 0.754,
+      "orientation": "direct",
+      "rel_error_pct": 3.29,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 165,
+      "time_s": 529.1,
+      "status": "PASS",
+      "n_curves_found": 21,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10936748",
+      "pdf": "PMC10936748.pdf",
+      "area": "infectious",
+      "gt_hr": 0.71,
+      "gt_ci": [
+        0.63,
+        0.8
+      ],
+      "ext_hr": 0.764,
+      "ext_ci": [
+        0.535,
+        1.09
+      ],
+      "final_hr": 0.764,
+      "orientation": "direct",
+      "rel_error_pct": 7.61,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 151,
+      "time_s": 446.9,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11238147",
+      "pdf": "PMC11238147.pdf",
+      "area": "infectious",
+      "gt_hr": 0.63,
+      "gt_ci": [
+        0.53,
+        0.76
+      ],
+      "ext_hr": 0.568,
+      "ext_ci": [
+        0.351,
+        0.919
+      ],
+      "final_hr": 0.568,
+      "orientation": "direct",
+      "rel_error_pct": 9.84,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 99,
+      "time_s": 526.7,
+      "status": "PASS",
+      "n_curves_found": 15,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11305801",
+      "pdf": "PMC11305801.pdf",
+      "area": "infectious",
+      "gt_hr": 0.71,
+      "gt_ci": [
+        0.59,
+        0.85
+      ],
+      "ext_hr": 0.822,
+      "ext_ci": [
+        0.591,
+        1.143
+      ],
+      "final_hr": 0.822,
+      "orientation": "direct",
+      "rel_error_pct": 15.77,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 176,
+      "time_s": 379.7,
+      "status": "PASS",
+      "n_curves_found": 8,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11311698",
+      "pdf": "PMC11311698.pdf",
+      "area": "neurology",
+      "gt_hr": 0.15,
+      "gt_ci": [
+        0.04,
+        0.6
+      ],
+      "ext_hr": 0.15,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.15,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 136,
+      "time_s": 88.3,
+      "status": "PASS",
+      "n_curves_found": 5,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10796984",
+      "pdf": "PMC10796984.pdf",
+      "area": "neurology",
+      "gt_hr": 0.59,
+      "gt_ci": [
+        0.55,
+        0.63
+      ],
+      "ext_hr": 0.586,
+      "ext_ci": [
+        0.426,
+        0.805
+      ],
+      "final_hr": 0.586,
+      "orientation": "direct",
+      "rel_error_pct": 0.68,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 192,
+      "time_s": 369.9,
+      "status": "PASS",
+      "n_curves_found": 19,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11366999",
+      "pdf": "PMC11366999.pdf",
+      "area": "neurology",
+      "gt_hr": 0.96,
+      "gt_ci": [
+        0.81,
+        1.13
+      ],
+      "ext_hr": 0.997,
+      "ext_ci": [
+        0.374,
+        2.657
+      ],
+      "final_hr": 0.997,
+      "orientation": "direct",
+      "rel_error_pct": 3.85,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 40,
+      "time_s": 361.6,
+      "status": "PASS",
+      "n_curves_found": 22,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11267211",
+      "pdf": "PMC11267211.pdf",
+      "area": "neurology",
+      "gt_hr": 1.54,
+      "gt_ci": [
+        1.37,
+        1.71
+      ],
+      "ext_hr": 1.695,
+      "ext_ci": [
+        0.961,
+        2.989
+      ],
+      "final_hr": 1.695,
+      "orientation": "direct",
+      "rel_error_pct": 10.06,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 88,
+      "time_s": 567.6,
+      "status": "PASS",
+      "n_curves_found": 22,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11353159",
+      "pdf": "PMC11353159.pdf",
+      "area": "neurology",
+      "gt_hr": 0.79,
+      "gt_ci": [
+        0.66,
+        0.92
+      ],
+      "ext_hr": 0.815,
+      "ext_ci": [
+        0.61,
+        1.089
+      ],
+      "final_hr": 0.815,
+      "orientation": "direct",
+      "rel_error_pct": 3.16,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 351.2,
+      "status": "PASS",
+      "n_curves_found": 27,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11255623",
+      "pdf": "PMC11255623.pdf",
+      "area": "neurology",
+      "gt_hr": 1.19,
+      "gt_ci": [
+        1.02,
+        1.38
+      ],
+      "ext_hr": 1.225,
+      "ext_ci": [
+        0.855,
+        1.756
+      ],
+      "final_hr": 1.225,
+      "orientation": "direct",
+      "rel_error_pct": 2.94,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 145,
+      "time_s": 215.9,
+      "status": "PASS",
+      "n_curves_found": 18,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11325898",
+      "pdf": "PMC11325898.pdf",
+      "area": "neurology",
+      "gt_hr": 1.1,
+      "gt_ci": [
+        1.01,
+        1.19
+      ],
+      "ext_hr": 1.04,
+      "ext_ci": [
+        0.715,
+        1.513
+      ],
+      "final_hr": 1.04,
+      "orientation": "direct",
+      "rel_error_pct": 5.45,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 168,
+      "time_s": 159.2,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10943953",
+      "pdf": "PMC10943953.pdf",
+      "area": "neurology",
+      "gt_hr": 0.718,
+      "gt_ci": [
+        0.546,
+        0.945
+      ],
+      "ext_hr": 0.718,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.718,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 113,
+      "time_s": 141.5,
+      "status": "PASS",
+      "n_curves_found": 18,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10891404",
+      "pdf": "PMC10891404.pdf",
+      "area": "neurology",
+      "gt_hr": 0.66,
+      "gt_ci": [
+        0.41,
+        1.07
+      ],
+      "ext_hr": 0.66,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.66,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 102.0,
+      "status": "PASS",
+      "n_curves_found": 8,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10624988",
+      "pdf": "PMC10624988.pdf",
+      "area": "neurology",
+      "gt_hr": 0.89,
+      "gt_ci": [
+        0.48,
+        1.63
+      ],
+      "ext_hr": 0.89,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.89,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 182,
+      "time_s": 131.2,
+      "status": "PASS",
+      "n_curves_found": 20,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC11483706",
+      "pdf": "PMC11483706.pdf",
+      "area": "oncology",
+      "gt_hr": 0.33,
+      "gt_ci": [
+        0.22,
+        0.5
+      ],
+      "ext_hr": 0.451,
+      "ext_ci": [
+        0.328,
+        0.619
+      ],
+      "final_hr": 0.451,
+      "orientation": "direct",
+      "rel_error_pct": 36.67,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 200,
+      "time_s": 53.5,
+      "status": "PASS",
+      "n_curves_found": 11,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10713185",
+      "pdf": "PMC10713185.pdf",
+      "area": "oncology",
+      "gt_hr": 0.7,
+      "gt_ci": [
+        0.61,
+        0.81
+      ],
+      "ext_hr": 0.693,
+      "ext_ci": [
+        0.475,
+        1.012
+      ],
+      "final_hr": 0.693,
+      "orientation": "direct",
+      "rel_error_pct": 1.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 139,
+      "time_s": 2082.0,
+      "status": "PASS",
+      "n_curves_found": 17,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11758124",
+      "pdf": "PMC11758124.pdf",
+      "area": "oncology",
+      "gt_hr": 0.82,
+      "gt_ci": [
+        0.69,
+        0.98
+      ],
+      "ext_hr": 0.828,
+      "ext_ci": [
+        0.533,
+        1.284
+      ],
+      "final_hr": 0.828,
+      "orientation": "direct",
+      "rel_error_pct": 0.98,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 108,
+      "time_s": 147.1,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10613141",
+      "pdf": "PMC10613141.pdf",
+      "area": "oncology",
+      "gt_hr": 1.21,
+      "gt_ci": [
+        0.69,
+        2.13
+      ],
+      "ext_hr": 1.093,
+      "ext_ci": [
+        0.765,
+        1.563
+      ],
+      "final_hr": 1.093,
+      "orientation": "direct",
+      "rel_error_pct": 9.67,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 137,
+      "time_s": 161.1,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11094424",
+      "pdf": "PMC11094424.pdf",
+      "area": "oncology",
+      "gt_hr": 0.52,
+      "gt_ci": [
+        0.42,
+        0.66
+      ],
+      "ext_hr": 0.499,
+      "ext_ci": [
+        0.358,
+        0.694
+      ],
+      "final_hr": 0.499,
+      "orientation": "direct",
+      "rel_error_pct": 4.04,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 173,
+      "time_s": 301.8,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11406080",
+      "pdf": "PMC11406080.pdf",
+      "area": "oncology",
+      "gt_hr": 0.5,
+      "gt_ci": [
+        0.38,
+        0.65
+      ],
+      "ext_hr": 0.488,
+      "ext_ci": [
+        0.345,
+        0.691
+      ],
+      "final_hr": 0.488,
+      "orientation": "direct",
+      "rel_error_pct": 2.4,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 107,
+      "time_s": 149.8,
+      "status": "PASS",
+      "n_curves_found": 12,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11484657",
+      "pdf": "PMC11484657.pdf",
+      "area": "oncology",
+      "gt_hr": 0.61,
+      "gt_ci": [
+        0.49,
+        0.77
+      ],
+      "ext_hr": 0.48,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.48,
+      "orientation": "direct",
+      "rel_error_pct": 21.31,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 153,
+      "time_s": 53.1,
+      "status": "FAIL",
+      "n_curves_found": 18,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC11528205",
+      "pdf": "PMC11528205.pdf",
+      "area": "oncology",
+      "gt_hr": 0.59,
+      "gt_ci": [
+        0.47,
+        0.74
+      ],
+      "ext_hr": 0.49,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.49,
+      "orientation": "direct",
+      "rel_error_pct": 16.95,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 195,
+      "time_s": 74.9,
+      "status": "PASS",
+      "n_curves_found": 11,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC11620791",
+      "pdf": "PMC11620791.pdf",
+      "area": "oncology",
+      "gt_hr": 0.79,
+      "gt_ci": [
+        0.66,
+        0.95
+      ],
+      "ext_hr": 0.768,
+      "ext_ci": [
+        0.562,
+        1.051
+      ],
+      "final_hr": 0.768,
+      "orientation": "direct",
+      "rel_error_pct": 2.78,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 200,
+      "time_s": 102.5,
+      "status": "PASS",
+      "n_curves_found": 8,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11686335",
+      "pdf": "PMC11686335.pdf",
+      "area": "oncology",
+      "gt_hr": 0.63,
+      "gt_ci": [
+        0.51,
+        0.78
+      ],
+      "ext_hr": 0.73,
+      "ext_ci": [
+        0.486,
+        1.097
+      ],
+      "final_hr": 0.73,
+      "orientation": "direct",
+      "rel_error_pct": 15.87,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 153,
+      "time_s": 157.8,
+      "status": "PASS",
+      "n_curves_found": 23,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11687940",
+      "pdf": "PMC11687940.pdf",
+      "area": "oncology",
+      "gt_hr": 0.72,
+      "gt_ci": [
+        0.59,
+        0.88
+      ],
+      "ext_hr": 0.693,
+      "ext_ci": [
+        0.503,
+        0.955
+      ],
+      "final_hr": 0.693,
+      "orientation": "direct",
+      "rel_error_pct": 3.75,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 100,
+      "time_s": 90.7,
+      "status": "PASS",
+      "n_curves_found": 6,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10062393",
+      "pdf": "PMC10062393.pdf",
+      "area": "oncology",
+      "gt_hr": 0.78,
+      "gt_ci": [
+        0.61,
+        1.0
+      ],
+      "ext_hr": 1.073,
+      "ext_ci": [
+        0.618,
+        1.863
+      ],
+      "final_hr": 1.073,
+      "orientation": "direct",
+      "rel_error_pct": 37.56,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 100,
+      "time_s": 136.9,
+      "status": "FAIL",
+      "n_curves_found": 4,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10387776",
+      "pdf": "PMC10387776.pdf",
+      "area": "oncology",
+      "gt_hr": 0.68,
+      "gt_ci": [
+        0.53,
+        0.87
+      ],
+      "ext_hr": 0.885,
+      "ext_ci": [
+        0.655,
+        1.195
+      ],
+      "final_hr": 0.885,
+      "orientation": "direct",
+      "rel_error_pct": 30.15,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 197,
+      "time_s": 146.5,
+      "status": "FAIL",
+      "n_curves_found": 8,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10638879",
+      "pdf": "PMC10638879.pdf",
+      "area": "oncology",
+      "gt_hr": 0.56,
+      "gt_ci": [
+        0.37,
+        0.84
+      ],
+      "ext_hr": 0.613,
+      "ext_ci": [
+        0.437,
+        0.86
+      ],
+      "final_hr": 0.613,
+      "orientation": "direct",
+      "rel_error_pct": 9.46,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 305,
+      "time_s": 38.6,
+      "status": "PASS",
+      "n_curves_found": 11,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10655973",
+      "pdf": "PMC10655973.pdf",
+      "area": "oncology",
+      "gt_hr": 0.57,
+      "gt_ci": [
+        0.44,
+        0.74
+      ],
+      "ext_hr": 0.549,
+      "ext_ci": [
+        0.395,
+        0.762
+      ],
+      "final_hr": 0.549,
+      "orientation": "direct",
+      "rel_error_pct": 3.68,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 101,
+      "time_s": 308.1,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10774956",
+      "pdf": "PMC10774956.pdf",
+      "area": "oncology",
+      "gt_hr": 0.69,
+      "gt_ci": [
+        0.5,
+        0.97
+      ],
+      "ext_hr": 0.817,
+      "ext_ci": [
+        0.558,
+        1.197
+      ],
+      "final_hr": 0.817,
+      "orientation": "direct",
+      "rel_error_pct": 18.41,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 142,
+      "time_s": 239.7,
+      "status": "PASS",
+      "n_curves_found": 19,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10836324",
+      "pdf": "PMC10836324.pdf",
+      "area": "oncology",
+      "gt_hr": 0.63,
+      "gt_ci": [
+        0.5,
+        0.8
+      ],
+      "ext_hr": 0.592,
+      "ext_ci": [
+        0.316,
+        1.111
+      ],
+      "final_hr": 0.592,
+      "orientation": "direct",
+      "rel_error_pct": 6.03,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 65,
+      "time_s": 283.9,
+      "status": "PASS",
+      "n_curves_found": 13,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10944099",
+      "pdf": "PMC10944099.pdf",
+      "area": "oncology",
+      "gt_hr": 0.67,
+      "gt_ci": [
+        0.48,
+        0.93
+      ],
+      "ext_hr": 0.658,
+      "ext_ci": [
+        0.362,
+        1.194
+      ],
+      "final_hr": 0.658,
+      "orientation": "direct",
+      "rel_error_pct": 1.79,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 66,
+      "time_s": 141.6,
+      "status": "PASS",
+      "n_curves_found": 7,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11046044",
+      "pdf": "PMC11046044.pdf",
+      "area": "oncology",
+      "gt_hr": 0.7,
+      "gt_ci": [
+        0.56,
+        0.87
+      ],
+      "ext_hr": 0.734,
+      "ext_ci": [
+        0.462,
+        1.164
+      ],
+      "final_hr": 0.734,
+      "orientation": "direct",
+      "rel_error_pct": 4.86,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 106,
+      "time_s": 82.5,
+      "status": "PASS",
+      "n_curves_found": 24,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11056588",
+      "pdf": "PMC11056588.pdf",
+      "area": "oncology",
+      "gt_hr": 0.53,
+      "gt_ci": [
+        0.36,
+        0.79
+      ],
+      "ext_hr": 0.543,
+      "ext_ci": [
+        0.392,
+        0.754
+      ],
+      "final_hr": 0.543,
+      "orientation": "direct",
+      "rel_error_pct": 2.45,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 192,
+      "time_s": 61.2,
+      "status": "PASS",
+      "n_curves_found": 17,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11185856",
+      "pdf": "PMC11185856.pdf",
+      "area": "oncology",
+      "gt_hr": 0.72,
+      "gt_ci": [
+        0.52,
+        0.99
+      ],
+      "ext_hr": 0.654,
+      "ext_ci": [
+        0.433,
+        0.988
+      ],
+      "final_hr": 0.654,
+      "orientation": "direct",
+      "rel_error_pct": 9.17,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 135,
+      "time_s": 42.2,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11228234",
+      "pdf": "PMC11228234.pdf",
+      "area": "oncology",
+      "gt_hr": 0.58,
+      "gt_ci": [
+        0.42,
+        0.81
+      ],
+      "ext_hr": 0.689,
+      "ext_ci": [
+        0.512,
+        0.927
+      ],
+      "final_hr": 0.689,
+      "orientation": "direct",
+      "rel_error_pct": 18.79,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 103,
+      "time_s": 74.5,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11250169",
+      "pdf": "PMC11250169.pdf",
+      "area": "oncology",
+      "gt_hr": 0.67,
+      "gt_ci": [
+        0.53,
+        0.85
+      ],
+      "ext_hr": 1.01,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 1.01,
+      "orientation": "direct",
+      "rel_error_pct": 50.75,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 125,
+      "time_s": 143.7,
+      "status": "FAIL",
+      "n_curves_found": 3,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC11333275",
+      "pdf": "PMC11333275.pdf",
+      "area": "oncology",
+      "gt_hr": 0.73,
+      "gt_ci": [
+        0.56,
+        0.94
+      ],
+      "ext_hr": 0.838,
+      "ext_ci": [
+        0.456,
+        1.539
+      ],
+      "final_hr": 0.838,
+      "orientation": "direct",
+      "rel_error_pct": 14.79,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 107,
+      "time_s": 43.4,
+      "status": "PASS",
+      "n_curves_found": 7,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11416116",
+      "pdf": "PMC11416116.pdf",
+      "area": "oncology",
+      "gt_hr": 0.73,
+      "gt_ci": [
+        0.56,
+        0.96
+      ],
+      "ext_hr": 0.638,
+      "ext_ci": [
+        0.466,
+        0.875
+      ],
+      "final_hr": 0.638,
+      "orientation": "direct",
+      "rel_error_pct": 12.6,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 136,
+      "time_s": 41.5,
+      "status": "PASS",
+      "n_curves_found": 7,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11116590",
+      "pdf": "PMC11116590.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.151,
+      "gt_ci": [
+        0.017,
+        1.314
+      ],
+      "ext_hr": 0.157,
+      "ext_ci": [
+        0.102,
+        0.239
+      ],
+      "final_hr": 0.157,
+      "orientation": "direct",
+      "rel_error_pct": 3.97,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 37,
+      "time_s": 58.6,
+      "status": "PASS",
+      "n_curves_found": 14,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC12024468",
+      "pdf": "PMC12024468.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.53,
+      "gt_ci": [
+        0.5,
+        0.57
+      ],
+      "ext_hr": 0.543,
+      "ext_ci": [
+        0.057,
+        5.222
+      ],
+      "final_hr": 0.543,
+      "orientation": "direct",
+      "rel_error_pct": 2.45,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 162,
+      "time_s": 83.6,
+      "status": "PASS",
+      "n_curves_found": 19,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11759330",
+      "pdf": "PMC11759330.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.9,
+      "gt_ci": [
+        0.43,
+        1.89
+      ],
+      "ext_hr": 0.9,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.9,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 110,
+      "time_s": 54.1,
+      "status": "PASS",
+      "n_curves_found": 23,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10540713",
+      "pdf": "PMC10540713.pdf",
+      "area": "respiratory",
+      "gt_hr": 3.6,
+      "gt_ci": [
+        2.9,
+        4.3
+      ],
+      "ext_hr": 2.434,
+      "ext_ci": [
+        1.737,
+        3.41
+      ],
+      "final_hr": 2.434,
+      "orientation": "direct",
+      "rel_error_pct": 32.39,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 173,
+      "time_s": 72.1,
+      "status": "FAIL",
+      "n_curves_found": 14,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11251083",
+      "pdf": "PMC11251083.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.8,
+      "gt_ci": [
+        0.68,
+        0.94
+      ],
+      "ext_hr": 0.8,
+      "ext_ci": [
+        0.511,
+        1.126
+      ],
+      "final_hr": 0.8,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 53,
+      "time_s": 49.4,
+      "status": "PASS",
+      "n_curves_found": 13,
+      "hr_method": "text_hr_snap"
+    },
+    {
+      "name": "PMC12013682",
+      "pdf": "PMC12013682.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.83,
+      "gt_ci": [
+        0.7,
+        0.99
+      ],
+      "ext_hr": 0.787,
+      "ext_ci": [
+        0.559,
+        1.108
+      ],
+      "final_hr": 0.787,
+      "orientation": "direct",
+      "rel_error_pct": 5.18,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 171,
+      "time_s": 77.7,
+      "status": "PASS",
+      "n_curves_found": 4,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11907552",
+      "pdf": "PMC11907552.pdf",
+      "area": "respiratory",
+      "gt_hr": 1.1,
+      "gt_ci": [
+        1.03,
+        1.25
+      ],
+      "ext_hr": 1.25,
+      "ext_ci": [
+        0.617,
+        2.533
+      ],
+      "final_hr": 1.25,
+      "orientation": "direct",
+      "rel_error_pct": 13.64,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 160,
+      "time_s": 38.3,
+      "status": "PASS",
+      "n_curves_found": 12,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC12059390",
+      "pdf": "PMC12059390.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.87,
+      "gt_ci": [
+        0.8,
+        0.94
+      ],
+      "ext_hr": 0.849,
+      "ext_ci": [
+        0.555,
+        1.299
+      ],
+      "final_hr": 0.849,
+      "orientation": "direct",
+      "rel_error_pct": 2.41,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 116,
+      "time_s": 35.4,
+      "status": "PASS",
+      "n_curves_found": 5,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11508213",
+      "pdf": "PMC11508213.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.58,
+      "gt_ci": [
+        0.42,
+        0.79
+      ],
+      "ext_hr": 0.516,
+      "ext_ci": [
+        0.373,
+        0.715
+      ],
+      "final_hr": 0.516,
+      "orientation": "direct",
+      "rel_error_pct": 11.03,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 120,
+      "time_s": 61.8,
+      "status": "PASS",
+      "n_curves_found": 23,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC12027513",
+      "pdf": "PMC12027513.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.62,
+      "gt_ci": [
+        0.43,
+        0.87
+      ],
+      "ext_hr": 0.656,
+      "ext_ci": [
+        0.48,
+        0.896
+      ],
+      "final_hr": 0.656,
+      "orientation": "direct",
+      "rel_error_pct": 5.81,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 187,
+      "time_s": 59.5,
+      "status": "PASS",
+      "n_curves_found": 12,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC12209358",
+      "pdf": "PMC12209358.pdf",
+      "area": "rheumatology",
+      "gt_hr": 0.36,
+      "gt_ci": [
+        0.14,
+        0.92
+      ],
+      "ext_hr": 0.86,
+      "ext_ci": [
+        0.626,
+        1.18
+      ],
+      "final_hr": 0.86,
+      "orientation": "direct",
+      "rel_error_pct": 138.89,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 38,
+      "time_s": 51.4,
+      "status": "PASS",
+      "n_curves_found": 19,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10923855",
+      "pdf": "PMC10923855.pdf",
+      "area": "rheumatology",
+      "gt_hr": 0.76,
+      "gt_ci": [
+        0.66,
+        0.89
+      ],
+      "ext_hr": 0.541,
+      "ext_ci": [
+        0.37,
+        0.792
+      ],
+      "final_hr": 0.541,
+      "orientation": "direct",
+      "rel_error_pct": 28.82,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 200,
+      "time_s": 57.3,
+      "status": "FAIL",
+      "n_curves_found": 25,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC12107056",
+      "pdf": "PMC12107056.pdf",
+      "area": "rheumatology",
+      "gt_hr": 1.17,
+      "gt_ci": [
+        1.06,
+        1.3
+      ],
+      "ext_hr": 1.161,
+      "ext_ci": [
+        0.819,
+        1.648
+      ],
+      "final_hr": 1.161,
+      "orientation": "direct",
+      "rel_error_pct": 0.77,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 185,
+      "time_s": 51.4,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10949559",
+      "pdf": "PMC10949559.pdf",
+      "area": "rheumatology",
+      "gt_hr": 1.469,
+      "gt_ci": [
+        1.11,
+        1.944
+      ],
+      "ext_hr": 1.436,
+      "ext_ci": [
+        1.337,
+        1.543
+      ],
+      "final_hr": 1.436,
+      "orientation": "direct",
+      "rel_error_pct": 2.25,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 5966,
+      "time_s": 53.0,
+      "status": "PASS",
+      "n_curves_found": 18,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11205390",
+      "pdf": "PMC11205390.pdf",
+      "area": "rheumatology",
+      "gt_hr": 0.74,
+      "gt_ci": [
+        0.68,
+        0.8
+      ],
+      "ext_hr": 0.741,
+      "ext_ci": [
+        0.537,
+        1.021
+      ],
+      "final_hr": 0.741,
+      "orientation": "direct",
+      "rel_error_pct": 0.14,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 175,
+      "time_s": 78.0,
+      "status": "PASS",
+      "n_curves_found": 8,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11204241",
+      "pdf": "PMC11204241.pdf",
+      "area": "rheumatology",
+      "gt_hr": 0.21,
+      "gt_ci": [
+        0.08,
+        0.51
+      ],
+      "ext_hr": 0.21,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.21,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 123,
+      "time_s": 167.3,
+      "status": "PASS",
+      "n_curves_found": 9,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC11499952",
+      "pdf": "PMC11499952.pdf",
+      "area": "rheumatology",
+      "gt_hr": 0.45,
+      "gt_ci": [
+        0.3,
+        0.65
+      ],
+      "ext_hr": 0.59,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.59,
+      "orientation": "direct",
+      "rel_error_pct": 31.11,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 127,
+      "time_s": 22.7,
+      "status": "PASS",
+      "n_curves_found": 15,
+      "hr_method": "text_hr_pair_fallback"
+    },
+    {
+      "name": "PMC10849177",
+      "pdf": "PMC10849177.pdf",
+      "area": "rheumatology",
+      "gt_hr": 0.657,
+      "gt_ci": [
+        0.495,
+        0.871
+      ],
+      "ext_hr": 0.583,
+      "ext_ci": [
+        0.417,
+        0.816
+      ],
+      "final_hr": 0.583,
+      "orientation": "direct",
+      "rel_error_pct": 11.26,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 186,
+      "time_s": 32.8,
+      "status": "PASS",
+      "n_curves_found": 2,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC12236988",
+      "pdf": "PMC12236988.pdf",
+      "area": "rheumatology",
+      "gt_hr": 0.7,
+      "gt_ci": [
+        0.52,
+        0.95
+      ],
+      "ext_hr": 2.047,
+      "ext_ci": [
+        1.437,
+        2.916
+      ],
+      "final_hr": 2.047,
+      "orientation": "direct",
+      "rel_error_pct": 192.43,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 71,
+      "time_s": 73.6,
+      "status": "FAIL",
+      "n_curves_found": 6,
+      "hr_method": "closest_to_1"
+    },
+    {
+      "name": "PMC10672715",
+      "pdf": "PMC10672715.pdf",
+      "area": "rheumatology",
+      "gt_hr": 0.86,
+      "gt_ci": [
+        0.8,
+        0.9
+      ],
+      "ext_hr": 1.917,
+      "ext_ci": [
+        1.451,
+        2.534
+      ],
+      "final_hr": 1.917,
+      "orientation": "direct",
+      "rel_error_pct": 122.91,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "ipd_records": 259,
+      "time_s": 78.4,
+      "status": "FAIL",
+      "n_curves_found": 11,
+      "hr_method": "text_hr_match"
+    }
+  ]
+}

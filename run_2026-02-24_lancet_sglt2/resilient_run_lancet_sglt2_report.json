@@ -1,0 +1,210 @@
+{
+  "corpus": "lancet_sglt2",
+  "total": 34,
+  "results": [
+    {
+      "pdf": "1-s2.0-S0002914922011213.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 51.36
+    },
+    {
+      "pdf": "1-s2.0-S0140673622014295-mmc1.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 85.0
+    },
+    {
+      "pdf": "1-s2.0-S0140673622014295.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 53.18
+    },
+    {
+      "pdf": "1_s2.0_S221317792100442X_main.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 49.5
+    },
+    {
+      "pdf": "Anatomy+of+a+Research+Note.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 11.11
+    },
+    {
+      "pdf": "bmj.i1855.full.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 41.75
+    },
+    {
+      "pdf": "burnett-et-al-thirty-years-of-evidence-on-the-efficacy-of-drug-treatments-for-chronic-heart-failure-with-reduced.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 70.77
+    },
+    {
+      "pdf": "cherbi-et-al-early-initiation-of-sodium-glucose-cotransporter-2-inhibitors-in-acute-heart-failure-a-systematic-review.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 122.63
+    },
+    {
+      "pdf": "ehi115.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 37.33
+    },
+    {
+      "pdf": "fcvm-11-1388337.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 122.57
+    },
+    {
+      "pdf": "jcm-11-00348-v2.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 124.75
+    },
+    {
+      "pdf": "NEJM199909023411001.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 17.46
+    },
+    {
+      "pdf": "NEJM200105313442201.pdf",
+      "status": "error",
+      "exit_code": 1,
+      "duration_s": 22.48
+    },
+    {
+      "pdf": "NEJMoa1009492.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 58.8
+    },
+    {
+      "pdf": "NEJMoa1313731.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 39.41
+    },
+    {
+      "pdf": "NEJMoa1409077.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 37.09
+    },
+    {
+      "pdf": "NEJMoa1908655.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 24.55
+    },
+    {
+      "pdf": "NEJMoa1911303.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 25.96
+    },
+    {
+      "pdf": "NEJMoa2022190.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 33.49
+    },
+    {
+      "pdf": "NEJMoa2030183.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 39.87
+    },
+    {
+      "pdf": "NEJMoa2107038 (1).pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 28.51
+    },
+    {
+      "pdf": "NEJMoa2107038.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 29.42
+    },
+    {
+      "pdf": "nejmoa2107038_appendix.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 62.67
+    },
+    {
+      "pdf": "NEJMoa2206286.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 19.19
+    },
+    {
+      "pdf": "s0140-67362904440-2.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 50.84
+    },
+    {
+      "pdf": "s0140-67362911181-9.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 27.65
+    },
+    {
+      "pdf": "s0140-67362961373-8.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 52.88
+    },
+    {
+      "pdf": "s12933-022-01455-2.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 31.35
+    },
+    {
+      "pdf": "s12933-022-01679-2.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 62.91
+    },
+    {
+      "pdf": "s41591-021-01659-1.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 70.27
+    },
+    {
+      "pdf": "s41591-022-01703-8.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 61.0
+    },
+    {
+      "pdf": "Vaduganathan_DELIVER-EMPEROR-Preserved-Meta-Analysis.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 45.91
+    },
+    {
+      "pdf": "xiang_2022_oi_220915_1663087733.39363.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 128.25
+    },
+    {
+      "pdf": "zafeiropoulos-et-al-pharmacological-treatments-in-heart-failure-with-mildly-reduced-and-preserved-ejection-fraction.pdf",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 69.32
+    }
+  ]
+}

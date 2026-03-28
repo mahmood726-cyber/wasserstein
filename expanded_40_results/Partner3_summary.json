@@ -1,0 +1,42 @@
+{
+  "pdf_path": "Partner3.pdf",
+  "pdf_name": "Partner3.pdf",
+  "hr": 0.54,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_synthetic_ipd",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 100,
+    "n_events": 18,
+    "n_censored": 82,
+    "n_records": 100
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 100,
+    "n_events": 28,
+    "n_censored": 72,
+    "n_records": 100
+  },
+  "total_ipd_records": 200,
+  "curve1_times": null,
+  "curve1_survivals": null,
+  "curve2_times": null,
+  "curve2_survivals": null,
+  "confidence": 0.2,
+  "orientation_method": "text_synthetic_ipd",
+  "text_hr": 0.54,
+  "n_curves_found": 0,
+  "n_pages_scanned": 11,
+  "processing_time_s": 28.21,
+  "warnings": [
+    "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:42:41.169529+00:00"
+}

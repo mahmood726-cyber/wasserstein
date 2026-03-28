@@ -1,0 +1,90 @@
+{
+  "pdf_path": "chun-et-al-cryoballoon-versus-laserballoon.pdf",
+  "pdf_name": "chun-et-al-cryoballoon-versus-laserballoon.pdf",
+  "hr": 0.898,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "derived_hr_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 41,
+    "n_events": 30,
+    "n_censored": 11,
+    "n_records": 41
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 41,
+    "n_events": 31,
+    "n_censored": 10,
+    "n_records": 41
+  },
+  "total_ipd_records": 82,
+  "curve1_times": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "curve1_times_length": 460,
+  "curve1_survivals": [
+    0.991574109536576,
+    0.9977020298736117,
+    0.6909230180007659,
+    0.6920720030639602,
+    0.692454998085025,
+    0.6928379931060896,
+    0.6928379931060896,
+    0.6928379931060896,
+    0.692454998085025,
+    0.9904251244733818
+  ],
+  "curve1_survivals_length": 460,
+  "curve2_times": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "curve2_times_length": 98,
+  "curve2_survivals": [
+    0.9923400995787055,
+    0.9923400995787055,
+    0.9923400995787055,
+    0.9919571045576407,
+    0.9919571045576407,
+    0.9919571045576407,
+    0.9911911145155113,
+    0.693603983148219,
+    0.693603983148219,
+    0.6932209881271543
+  ],
+  "curve2_survivals_length": 98,
+  "confidence": 0.75,
+  "orientation_method": "derived_hr_fallback",
+  "text_hr": 0.898,
+  "n_curves_found": 8,
+  "n_pages_scanned": 9,
+  "processing_time_s": 31.47,
+  "warnings": [
+    "Used derived HR from event rates (curve extraction failed: 0.967 vs derived 0.898)"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T13:56:33.819520+00:00"
+}

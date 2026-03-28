@@ -1,0 +1,91 @@
+{
+  "pdf_path": "Augustus.pdf",
+  "pdf_name": "Augustus.pdf",
+  "hr": 0.69,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 58,
+    "n_events": 47,
+    "n_censored": 11,
+    "n_records": 58
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 42,
+    "n_events": 32,
+    "n_censored": 10,
+    "n_records": 42
+  },
+  "total_ipd_records": 100,
+  "curve1_times": [
+    0.17169260700389105,
+    0.17217898832684825,
+    0.17266536964980544,
+    0.17315175097276264,
+    0.17363813229571984,
+    0.17412451361867703,
+    0.17461089494163423,
+    0.17509727626459143,
+    0.17558365758754862,
+    0.17607003891050585
+  ],
+  "curve1_times_length": 667,
+  "curve1_survivals": [
+    0.5518292682926829,
+    0.5518292682926829,
+    0.6234756097560976,
+    0.6234756097560976,
+    0.6234756097560976,
+    0.6234756097560976,
+    0.6234756097560976,
+    0.6234756097560976,
+    0.6234756097560976,
+    0.6234756097560976
+  ],
+  "curve1_survivals_length": 667,
+  "curve2_times": [
+    0.1619649805447471,
+    0.16245136186770429,
+    0.16293774319066148,
+    0.16342412451361868,
+    0.16391050583657588,
+    0.16439688715953307,
+    0.16488326848249027,
+    0.16536964980544747,
+    0.16585603112840466,
+    0.16634241245136186
+  ],
+  "curve2_times_length": 1179,
+  "curve2_survivals": [
+    0.47063492063492063,
+    0.47063492063492063,
+    0.47063492063492063,
+    0.47063492063492063,
+    0.47063492063492063,
+    0.47063492063492063,
+    0.47063492063492063,
+    0.47063492063492063,
+    0.47063492063492063,
+    0.471031746031746
+  ],
+  "curve2_survivals_length": 1179,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 0.69,
+  "n_curves_found": 6,
+  "n_pages_scanned": 12,
+  "processing_time_s": 48.86,
+  "warnings": [
+    "Text HR match weak: extracted 0.492 vs text 0.69 (log-err=0.338)",
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:22:20.382029+00:00"
+}

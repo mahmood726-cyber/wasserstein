@@ -1,0 +1,90 @@
+{
+  "pdf_path": "euu064.pdf",
+  "pdf_name": "euu064.pdf",
+  "hr": 0.881,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "derived_hr_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 93,
+    "n_events": 81,
+    "n_censored": 12,
+    "n_records": 93
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 92,
+    "n_events": 79,
+    "n_censored": 13,
+    "n_records": 92
+  },
+  "total_ipd_records": 185,
+  "curve1_times": [
+    0.0004631773969430292,
+    0.0009263547938860583,
+    0.0013895321908290875,
+    0.0018527095877721167,
+    0.002315886984715146,
+    0.002779064381658175,
+    0.003242241778601204,
+    0.0037054191755442334,
+    0.0041685965724872626,
+    0.004631773969430292
+  ],
+  "curve1_times_length": 1999,
+  "curve1_survivals": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "curve1_survivals_length": 1999,
+  "curve2_times": [
+    0.002779064381658175,
+    0.003242241778601204,
+    0.0037054191755442334,
+    0.0041685965724872626,
+    0.004631773969430292,
+    0.005094951366373321,
+    0.00555812876331635,
+    0.006021306160259379,
+    0.006484483557202408,
+    0.006947660954145438
+  ],
+  "curve2_times_length": 1772,
+  "curve2_survivals": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "curve2_survivals_length": 1772,
+  "confidence": 0.75,
+  "orientation_method": "derived_hr_fallback",
+  "text_hr": 0.881,
+  "n_curves_found": 15,
+  "n_pages_scanned": 9,
+  "processing_time_s": 60.85,
+  "warnings": [
+    "Used derived HR from event rates (curve extraction failed: 0.753 vs derived 0.881)"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T13:57:03.162767+00:00"
+}

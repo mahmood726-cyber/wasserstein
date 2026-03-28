@@ -1,0 +1,51 @@
+{
+  "truthcert_version": "1.4",
+  "certification_status": "UNCERTIFIED",
+  "pipeline": {
+    "version": "1.4",
+    "date": "2026-02-15T02:54:40.606000+00:00",
+    "file_hashes": {
+      "km_pipeline.py": "67623f0166bed24b",
+      "robust_km_pipeline.py": "765a747c66a9fae6",
+      "improved_hr_estimation.py": "007214463f320700",
+      "simple_multicurve_handler.py": "e75edb319732e1f8",
+      "expanded_gold_trials.py": "c579ed8f32f43fdf",
+      "regression_validate_13.py": "03f8e82ab6fa0c25"
+    }
+  },
+  "validation": {
+    "total_trials": 40,
+    "extracted": 40,
+    "within_ci": 36,
+    "error_under_10pct": 30,
+    "median_error_pct": 2.5,
+    "mean_error_pct": 27.5,
+    "therapeutic_areas": 11,
+    "regression_13_pass": true,
+    "regression_13_median_error": 1.2
+  },
+  "targets": {
+    "within_ci_80pct": {
+      "target": 0.8,
+      "actual": 0.9,
+      "pass": true
+    },
+    "median_error_5pct": {
+      "target": 5.0,
+      "actual": 2.5,
+      "pass": true
+    },
+    "areas_5plus": {
+      "target": 5,
+      "actual": 11,
+      "pass": true
+    }
+  },
+  "known_limitations": [
+    "PMC10553121: PDF OCR artifact (= rendered as 5)",
+    "PMC10990610: Multi-HR paper (wrong endpoint selected)",
+    "PMC11296275: Review paper (wrong trial HR selected)",
+    "PMC10052578: Multi-endpoint paper (OS vs PFS)"
+  ],
+  "report_hash": "c90475d812fe5683"
+}

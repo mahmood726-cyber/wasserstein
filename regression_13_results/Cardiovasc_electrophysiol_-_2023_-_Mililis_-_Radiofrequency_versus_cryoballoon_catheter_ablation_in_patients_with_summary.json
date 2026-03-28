@@ -1,0 +1,90 @@
+{
+  "pdf_path": "Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf",
+  "pdf_name": "Cardiovasc electrophysiol - 2023 - Mililis - Radiofrequency versus cryoballoon catheter ablation in patients with.pdf",
+  "hr": 0.972,
+  "ci_lower": 0.684,
+  "ci_upper": 1.38,
+  "p_value": null,
+  "hr_method": "closest_to_1",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 28,
+    "n_events": 14,
+    "n_censored": 14,
+    "n_records": 28
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 33,
+    "n_events": 20,
+    "n_censored": 13,
+    "n_records": 33
+  },
+  "total_ipd_records": 61,
+  "curve1_times": [
+    0.1781609195402299,
+    0.1793103448275862,
+    0.18045977011494252,
+    0.18160919540229886,
+    0.18275862068965518,
+    0.1839080459770115,
+    0.1850574712643678,
+    0.18620689655172415,
+    0.18735632183908046,
+    0.18850574712643678
+  ],
+  "curve1_times_length": 561,
+  "curve1_survivals": [
+    1.0,
+    1.0,
+    1.0,
+    0.9930394431554525,
+    0.9860788863109049,
+    0.9837587006960556,
+    0.9837587006960556,
+    0.9907192575406032,
+    0.9907192575406032,
+    0.9860788863109049
+  ],
+  "curve1_survivals_length": 561,
+  "curve2_times": [
+    0.1839080459770115,
+    0.1850574712643678,
+    0.18620689655172415,
+    0.18735632183908046,
+    0.18850574712643678,
+    0.1896551724137931,
+    0.19080459770114944,
+    0.19195402298850575,
+    0.20229885057471264,
+    0.20344827586206896
+  ],
+  "curve2_times_length": 300,
+  "curve2_survivals": [
+    1.0,
+    0.9976798143851509,
+    0.9976798143851509,
+    0.9976798143851509,
+    0.9976798143851509,
+    0.9976798143851509,
+    0.9976798143851509,
+    0.9976798143851509,
+    0.9396751740139211,
+    0.9396751740139211
+  ],
+  "curve2_survivals_length": 300,
+  "confidence": 0.6,
+  "orientation_method": "closest_to_1",
+  "text_hr": null,
+  "n_curves_found": 9,
+  "n_pages_scanned": 6,
+  "processing_time_s": 42.65,
+  "warnings": [
+    "No text HR found; orientation resolved by closest-to-1.0 prior (less reliable for extreme HRs)"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T10:10:41.931695+00:00"
+}

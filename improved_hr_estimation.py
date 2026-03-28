@@ -992,8 +992,13 @@ class ImprovedHREstimator:
                 # Use reciprocal as approximation
                 if result.hr > 0:
                     result.hr_inverted = round(1.0 / result.hr, 3)
-                    result.ci_lower_inverted = round(1.0 / result.ci_upper, 3)
-                    result.ci_upper_inverted = round(1.0 / result.ci_lower, 3)
+                    if (result.ci_lower is not None and result.ci_upper is not None and
+                            result.ci_lower > 0 and result.ci_upper > 0):
+                        result.ci_lower_inverted = round(1.0 / result.ci_upper, 3)
+                        result.ci_upper_inverted = round(1.0 / result.ci_lower, 3)
+                    else:
+                        result.ci_lower_inverted = None
+                        result.ci_upper_inverted = None
 
         return result
 

@@ -1,0 +1,454 @@
+{
+  "validation": "expanded_15_trials_v1.4",
+  "timestamp": "2026-02-15T12:32:07.324302+00:00",
+  "pipeline_version": "1.4",
+  "total_time_s": 1357.9,
+  "overall": {
+    "subset": "OVERALL",
+    "n_trials": 15,
+    "n_extracted": 14,
+    "n_within_ci": 10,
+    "n_under_10pct": 5,
+    "mean_error_pct": 72.76,
+    "median_error_pct": 18.53,
+    "categories": {
+      "PASS": [
+        "PMC10115555",
+        "SGLT2-nonDM",
+        "PMC11103724"
+      ],
+      "MARGINAL": [
+        "PMC10427418",
+        "SUSTAIN-6",
+        "PMC10323201",
+        "PMC10105623"
+      ],
+      "FAIL_ACCURACY": [
+        "PMC10553121",
+        "PMC10990610",
+        "PMC11296275",
+        "PMC10052578"
+      ],
+      "TEXT_ONLY": [
+        "SGLT2-insulin",
+        "PMC10952210",
+        "PMC11448330"
+      ],
+      "FAIL_EXTRACT": [
+        "PMC10805160"
+      ]
+    }
+  },
+  "original_ablation": null,
+  "cardio_metabolic": null,
+  "phase2_diverse": {
+    "subset": "Phase 2 Diverse",
+    "n_trials": 15,
+    "n_extracted": 14,
+    "n_within_ci": 10,
+    "n_under_10pct": 5,
+    "mean_error_pct": 72.76,
+    "median_error_pct": 18.53,
+    "categories": {
+      "PASS": [
+        "PMC10115555",
+        "SGLT2-nonDM",
+        "PMC11103724"
+      ],
+      "MARGINAL": [
+        "PMC10427418",
+        "SUSTAIN-6",
+        "PMC10323201",
+        "PMC10105623"
+      ],
+      "FAIL_ACCURACY": [
+        "PMC10553121",
+        "PMC10990610",
+        "PMC11296275",
+        "PMC10052578"
+      ],
+      "TEXT_ONLY": [
+        "SGLT2-insulin",
+        "PMC10952210",
+        "PMC11448330"
+      ],
+      "FAIL_EXTRACT": [
+        "PMC10805160"
+      ]
+    }
+  },
+  "targets": {
+    "within_ci_pct": 66.7,
+    "within_ci_target": 80,
+    "median_error_pct": 18.5,
+    "median_error_target": 5,
+    "n_areas_with_pass": 5,
+    "areas_target": 5,
+    "all_met": false
+  },
+  "verdict": "FAIL",
+  "trials": [
+    {
+      "name": "PMC10115555",
+      "pdf": "PMC10115555.pdf",
+      "area": "oncology",
+      "gt_hr": 0.82,
+      "gt_ci": [
+        0.69,
+        0.97
+      ],
+      "ext_hr": 0.881,
+      "ext_ci": [
+        0.62,
+        1.254
+      ],
+      "final_hr": 0.881,
+      "orientation": "direct",
+      "rel_error_pct": 7.44,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 148,
+      "time_s": 60.1,
+      "status": "PASS",
+      "n_curves_found": 21,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10427418",
+      "pdf": "PMC10427418.pdf",
+      "area": "oncology",
+      "gt_hr": 0.678,
+      "gt_ci": [
+        0.546,
+        0.841
+      ],
+      "ext_hr": 0.605,
+      "ext_ci": [
+        0.432,
+        0.848
+      ],
+      "final_hr": 0.605,
+      "orientation": "direct",
+      "rel_error_pct": 10.77,
+      "within_ci": "True",
+      "error_under_10pct": "False",
+      "ipd_records": 179,
+      "time_s": 52.8,
+      "status": "PASS",
+      "n_curves_found": 17,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10553121",
+      "pdf": "PMC10553121.pdf",
+      "area": "oncology",
+      "gt_hr": 0.73,
+      "gt_ci": [
+        0.62,
+        0.86
+      ],
+      "ext_hr": 4.989,
+      "ext_ci": [
+        3.133,
+        7.947
+      ],
+      "final_hr": 4.989,
+      "orientation": "direct",
+      "rel_error_pct": 583.42,
+      "within_ci": "False",
+      "error_under_10pct": "False",
+      "ipd_records": 176,
+      "time_s": 51.4,
+      "status": "FAIL",
+      "n_curves_found": 16,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "SUSTAIN-6",
+      "pdf": "PMC11943310.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.74,
+      "gt_ci": [
+        0.58,
+        0.95
+      ],
+      "ext_hr": 0.944,
+      "ext_ci": [
+        0.698,
+        1.275
+      ],
+      "final_hr": 0.944,
+      "orientation": "direct",
+      "rel_error_pct": 27.57,
+      "within_ci": "True",
+      "error_under_10pct": "False",
+      "ipd_records": 192,
+      "time_s": 127.9,
+      "status": "PASS",
+      "n_curves_found": 30,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "SGLT2-insulin",
+      "pdf": "40036884_Effects of SGLT2 inhibition on insulin u.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.81,
+      "gt_ci": [
+        0.71,
+        0.93
+      ],
+      "ext_hr": 0.81,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.81,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 0,
+      "time_s": 63.4,
+      "status": "PASS",
+      "n_curves_found": 12,
+      "hr_method": "text_derived_only"
+    },
+    {
+      "name": "SGLT2-nonDM",
+      "pdf": "40978864_Sodium-Glucose Cotransporter 2 SGLT2 Inh.pdf",
+      "area": "diabetes",
+      "gt_hr": 0.73,
+      "gt_ci": [
+        0.6,
+        0.88
+      ],
+      "ext_hr": 0.746,
+      "ext_ci": [
+        0.546,
+        1.019
+      ],
+      "final_hr": 0.746,
+      "orientation": "direct",
+      "rel_error_pct": 2.19,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 189,
+      "time_s": 116.4,
+      "status": "PASS",
+      "n_curves_found": 28,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10323201",
+      "pdf": "PMC10323201.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.62,
+      "gt_ci": [
+        0.38,
+        0.99
+      ],
+      "ext_hr": 0.457,
+      "ext_ci": [
+        0.322,
+        0.648
+      ],
+      "final_hr": 0.457,
+      "orientation": "direct",
+      "rel_error_pct": 26.29,
+      "within_ci": "True",
+      "error_under_10pct": "False",
+      "ipd_records": 177,
+      "time_s": 72.4,
+      "status": "PASS",
+      "n_curves_found": 16,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10952210",
+      "pdf": "PMC10952210.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.32,
+      "gt_ci": [
+        0.14,
+        0.76
+      ],
+      "ext_hr": 0.61,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.61,
+      "orientation": "direct",
+      "rel_error_pct": 90.62,
+      "within_ci": true,
+      "error_under_10pct": false,
+      "ipd_records": 0,
+      "time_s": 149.5,
+      "status": "PASS",
+      "n_curves_found": 18,
+      "hr_method": "text_derived_only"
+    },
+    {
+      "name": "PMC10990610",
+      "pdf": "PMC10990610.pdf",
+      "area": "respiratory",
+      "gt_hr": 0.66,
+      "gt_ci": [
+        0.53,
+        0.83
+      ],
+      "ext_hr": 1.768,
+      "ext_ci": [
+        1.281,
+        2.44
+      ],
+      "final_hr": 1.768,
+      "orientation": "direct",
+      "rel_error_pct": 167.88,
+      "within_ci": "False",
+      "error_under_10pct": "False",
+      "ipd_records": 189,
+      "time_s": 186.6,
+      "status": "FAIL",
+      "n_curves_found": 13,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10805160",
+      "pdf": "PMC10805160.pdf",
+      "area": "neurology",
+      "gt_hr": 0.59,
+      "ext_hr": null,
+      "within_ci": false,
+      "error_under_10pct": false,
+      "time_s": 5.5,
+      "status": "EXCEPTION",
+      "error": "OpenCV(4.10.0) D:\\a\\opencv-python\\opencv-python\\opencv\\modules\\core\\src\\alloc.cpp:73: error: (-4:Insufficient memory) Failed to allocate 25245000 bytes in function 'cv::OutOfMemoryError'\n"
+    },
+    {
+      "name": "PMC11296275",
+      "pdf": "PMC11296275.pdf",
+      "area": "neurology",
+      "gt_hr": 0.69,
+      "gt_ci": [
+        0.57,
+        0.83
+      ],
+      "ext_hr": 0.299,
+      "ext_ci": [
+        0.207,
+        0.433
+      ],
+      "final_hr": 0.299,
+      "orientation": "direct",
+      "rel_error_pct": 56.67,
+      "within_ci": "False",
+      "error_under_10pct": "False",
+      "ipd_records": 182,
+      "time_s": 175.7,
+      "status": "FAIL",
+      "n_curves_found": 14,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11448330",
+      "pdf": "PMC11448330.pdf",
+      "area": "neurology",
+      "gt_hr": 0.8,
+      "gt_ci": [
+        0.61,
+        1.05
+      ],
+      "ext_hr": 0.8,
+      "ext_ci": [
+        null,
+        null
+      ],
+      "final_hr": 0.8,
+      "orientation": "direct",
+      "rel_error_pct": 0.0,
+      "within_ci": true,
+      "error_under_10pct": true,
+      "ipd_records": 0,
+      "time_s": 66.0,
+      "status": "PASS",
+      "n_curves_found": 10,
+      "hr_method": "text_derived_only"
+    },
+    {
+      "name": "PMC10052578",
+      "pdf": "PMC10052578.pdf",
+      "area": "infectious",
+      "gt_hr": 0.69,
+      "gt_ci": [
+        0.56,
+        0.85
+      ],
+      "ext_hr": 0.935,
+      "ext_ci": [
+        0.69,
+        1.266
+      ],
+      "final_hr": 0.935,
+      "orientation": "direct",
+      "rel_error_pct": 35.51,
+      "within_ci": "False",
+      "error_under_10pct": "False",
+      "ipd_records": 193,
+      "time_s": 93.9,
+      "status": "FAIL",
+      "n_curves_found": 17,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC10105623",
+      "pdf": "PMC10105623.pdf",
+      "area": "infectious",
+      "gt_hr": 0.35,
+      "gt_ci": [
+        0.24,
+        0.51
+      ],
+      "ext_hr": 0.385,
+      "ext_ci": [
+        0.272,
+        0.546
+      ],
+      "final_hr": 0.385,
+      "orientation": "direct",
+      "rel_error_pct": 10.0,
+      "within_ci": "True",
+      "error_under_10pct": "False",
+      "ipd_records": 165,
+      "time_s": 49.2,
+      "status": "PASS",
+      "n_curves_found": 14,
+      "hr_method": "text_hr_match"
+    },
+    {
+      "name": "PMC11103724",
+      "pdf": "PMC11103724.pdf",
+      "area": "infectious",
+      "gt_hr": 0.33,
+      "gt_ci": [
+        0.26,
+        0.43
+      ],
+      "ext_hr": 0.331,
+      "ext_ci": [
+        0.226,
+        0.485
+      ],
+      "final_hr": 0.331,
+      "orientation": "direct",
+      "rel_error_pct": 0.3,
+      "within_ci": "True",
+      "error_under_10pct": "True",
+      "ipd_records": 176,
+      "time_s": 87.1,
+      "status": "PASS",
+      "n_curves_found": 23,
+      "hr_method": "text_hr_match"
+    }
+  ]
+}

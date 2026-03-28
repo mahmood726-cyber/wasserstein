@@ -1,0 +1,15 @@
+MASTER AUDIT 2026-02-24
+
+Per-corpus:
+- Ablation: input=27, hr=24/27, ipd=24, ipd_rows=3481, run(ok=18, skip=7, timeout=0, error=2)
+- SGL2: input=29, hr=28/29, ipd=28, ipd_rows=9066, run(ok=28, skip=0, timeout=0, error=1)
+- lancet_sglt2: input=34, hr=33/34, ipd=33, ipd_rows=12899, run(ok=33, skip=0, timeout=0, error=1)
+
+Combined: input=90, hr=85/90, ipd=85, ipd_rows=25446, run(ok=79, skip=7, timeout=0, error=4)
+
+Failed files:
+- [Ablation] BMRI2018-3629384.pdf: Insufficient curves: 1
+- [Ablation] Supplemental Appendix.pdf: Insufficient curves: 1
+- [Ablation] Supplemental Tables 1 and 2.pdf: Insufficient curves: 1
+- [SGL2] nejmoa1504720_appendix.pdf: Insufficient curves: 0
+- [lancet_sglt2] NEJM200105313442201.pdf: Insufficient curves: 1

@@ -1,0 +1,90 @@
+{
+  "pdf_path": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf",
+  "pdf_name": "andrade-et-al-cryoballoon-or-radiofrequency-ablation-for-atrial-fibrillation-assessed-by-continuous-monitoring.pdf",
+  "hr": 1.08,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_hr_pair_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 63,
+    "n_events": 52,
+    "n_censored": 11,
+    "n_records": 63
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 68,
+    "n_events": 48,
+    "n_censored": 20,
+    "n_records": 68
+  },
+  "total_ipd_records": 131,
+  "curve1_times": [
+    0.13901979264844486,
+    0.14467483506126297,
+    0.14514608859566447,
+    0.14561734213006597,
+    0.1460885956644675,
+    0.146559849198869,
+    0.1470311027332705,
+    0.147502356267672,
+    0.14797360980207352,
+    0.14844486333647502
+  ],
+  "curve1_times_length": 205,
+  "curve1_survivals": [
+    0.7065963060686016,
+    0.516622691292876,
+    0.516622691292876,
+    0.516622691292876,
+    0.516622691292876,
+    0.516622691292876,
+    0.516622691292876,
+    0.516622691292876,
+    0.516622691292876,
+    0.516622691292876
+  ],
+  "curve1_survivals_length": 205,
+  "curve2_times": [
+    0.13053722902921772,
+    0.13100848256361922,
+    0.13147973609802074,
+    0.13195098963242224,
+    0.13242224316682374,
+    0.13289349670122527,
+    0.13336475023562677,
+    0.13383600377002827,
+    0.13430725730442977,
+    0.1347785108388313
+  ],
+  "curve2_times_length": 966,
+  "curve2_survivals": [
+    0.7445910290237467,
+    0.7430079155672823,
+    0.7430079155672823,
+    0.7398416886543535,
+    0.7377308707124011,
+    0.7377308707124011,
+    0.7319261213720316,
+    0.7313984168865435,
+    0.7298153034300792,
+    0.7255936675461742
+  ],
+  "curve2_survivals_length": 966,
+  "confidence": 0.6,
+  "orientation_method": "text_hr_pair_fallback",
+  "text_hr": 1.08,
+  "n_curves_found": 13,
+  "n_pages_scanned": 10,
+  "processing_time_s": 46.95,
+  "warnings": [
+    "Curve HR diverged from text HR; using text HR while retaining the selected curve pair for IPD."
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T16:41:23.698955+00:00"
+}

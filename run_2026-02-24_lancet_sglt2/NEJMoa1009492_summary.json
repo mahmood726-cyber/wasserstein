@@ -1,0 +1,51 @@
+{
+  "pdf_path": "NEJMoa1009492.pdf",
+  "pdf_name": "NEJMoa1009492.pdf",
+  "hr": 0.63,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "text_synthetic_ipd",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 100,
+    "n_events": 25,
+    "n_censored": 75,
+    "n_records": 100
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 100,
+    "n_events": 34,
+    "n_censored": 66,
+    "n_records": 100
+  },
+  "total_ipd_records": 200,
+  "curve1_times": null,
+  "curve1_survivals": null,
+  "curve2_times": null,
+  "curve2_survivals": null,
+  "confidence": 0.2,
+  "orientation_method": "text_synthetic_ipd",
+  "text_hr": 0.63,
+  "n_curves_found": 1,
+  "n_pages_scanned": 11,
+  "processing_time_s": 56.14,
+  "warnings": [
+    "Synthetic IPD generated from text-reported HR (no reliable curve pair)."
+  ],
+  "text_hr_context": "mpared with 25.9% in the placebo group (hazard ratio, 0.63; 95% confidence interval [CI], 0.54 to 0.74; P<0.001). A total of 12.5% of patient",
+  "pair_description": "",
+  "pair_rank": 0,
+  "pair_quality_score": 0.0,
+  "pair_orientation": "",
+  "certification_status": "UNCERTIFIED",
+  "verification_level": "unchecked",
+  "verification_checks_passed": [],
+  "verification_checks_failed": [],
+  "verification_hash": "",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-24T05:38:43.531708+00:00"
+}

@@ -1,0 +1,90 @@
+{
+  "pdf_path": "Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf",
+  "pdf_name": "Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf",
+  "hr": 0.525,
+  "ci_lower": null,
+  "ci_upper": null,
+  "p_value": null,
+  "hr_method": "derived_hr_fallback",
+  "ipd_arm1": {
+    "arm_label": "treatment",
+    "arm_index": 1,
+    "n_patients": 173,
+    "n_events": 173,
+    "n_censored": 0,
+    "n_records": 173
+  },
+  "ipd_arm2": {
+    "arm_label": "control",
+    "arm_index": 0,
+    "n_patients": 129,
+    "n_events": 129,
+    "n_censored": 0,
+    "n_records": 129
+  },
+  "total_ipd_records": 302,
+  "curve1_times": [
+    0.038696537678207736,
+    0.03937542430414121,
+    0.04005431093007468,
+    0.04073319755600815,
+    0.041412084181941616,
+    0.042090970807875085,
+    0.04276985743380855,
+    0.04344874405974202,
+    0.04412763068567549,
+    0.04480651731160896
+  ],
+  "curve1_times_length": 840,
+  "curve1_survivals": [
+    0.6409691629955947,
+    0.6409691629955947,
+    0.6409691629955947,
+    0.6409691629955947,
+    0.6409691629955947,
+    0.6409691629955947,
+    0.6409691629955947,
+    0.6409691629955947,
+    0.6409691629955947,
+    0.6409691629955947
+  ],
+  "curve1_survivals_length": 840,
+  "curve2_times": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "curve2_times_length": 1590,
+  "curve2_survivals": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "curve2_survivals_length": 1590,
+  "confidence": 0.65,
+  "orientation_method": "derived_hr_fallback",
+  "text_hr": 0.525,
+  "n_curves_found": 5,
+  "n_pages_scanned": 8,
+  "processing_time_s": 42.3,
+  "warnings": [
+    "Used derived HR from event rates (curve extraction failed: 0.472 vs derived 0.525)"
+  ],
+  "certification_status": "UNCERTIFIED",
+  "pipeline_version": "1.4",
+  "timestamp": "2026-02-17T10:09:59.276899+00:00"
+}
