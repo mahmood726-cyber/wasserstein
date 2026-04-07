@@ -78,7 +78,7 @@
       {
         "name": "result sentence has interval",
         "ok": true,
-        "detail": "Sentence 4 should include a confidence interval."
+        "detail": "Sentence 4 should include a quantitative result such as a percentage, count, or interval."
       },
       {
         "name": "result sentence has estimand",
