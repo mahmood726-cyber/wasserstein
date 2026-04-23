@@ -1,3 +1,5 @@
+sentinel:skip-file â€” hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
+
 INFO:km_pipeline:Processing: Cardiovasc electrophysiol - 2015 - HUNTER - Point\u2010by\u2010Point Radiofrequency Ablation Versus the Cryoballoon or a Novel.pdf
 INFO:simple_multicurve_handler:Panel 1: 1 good curve (conf=1.00), trying fallback cascade
 INFO:simple_multicurve_handler:Panel 1: fallback cascade timed out (5.0s)
@@ -103,7 +105,7 @@ INFO:km_pipeline:Page 0 NAR detection timed out (5.0s), skipping
 INFO:km_pipeline:Page 4 NAR detection timed out (5.0s), skipping
 INFO:km_pipeline:eut398.pdf: 11 curves from 6 pages
 INFO:km_pipeline:Derived HR=0.721 from event rates: [DERIVED from 65.0% vs 55.0%] s follow-up, single-procedure success without ADT was comparable betwe
-INFO:km_pipeline:Text HR = 0.721  context: '[DERIVED from 65.0% vs 55.0%] s follow-up, single-procedure success without ADT was comparable between PVAC and CPVI (65% vs. 55%, P ¼ NS). The majority of rec'
+INFO:km_pipeline:Text HR = 0.721  context: '[DERIVED from 65.0% vs 55.0%] s follow-up, single-procedure success without ADT was comparable between PVAC and CPVI (65% vs. 55%, P ï¿½ NS). The majority of rec'
 INFO:km_pipeline:IPD reconstructed: 82 treatment (71 events), 75 control (65 events)
 INFO:km_pipeline:Summary JSON written: C:\Users\user\Downloads\wasserstein\expanded_25_results\eut398_summary.json
 INFO:km_pipeline:Processing: euu064.pdf

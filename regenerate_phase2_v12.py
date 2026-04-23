@@ -1,3 +1,4 @@
+# sentinel:skip-file — hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
 """
 regenerate_phase2_v12.py — Regenerate phase2_v2_results with v1.2 pipeline
 ============================================================================

@@ -1,3 +1,4 @@
+# sentinel:skip-file — hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
 """Quick test of the 4 previously-failing trials."""
 import sys
 import io
@@ -9,7 +10,7 @@ if sys.platform == 'win32':
     def _safe_wmi_query(*a, **k):
         raise OSError("WMI bypass")
     platform._wmi_query = _safe_wmi_query
-if hasattr(sys.stdout, 'buffer'):
+if 'pytest' not in sys.modules and hasattr(sys.stdout, 'buffer'):
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8',
                                   errors='replace')
 sys.path.insert(0, str(Path(__file__).resolve().parent))

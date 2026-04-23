@@ -1,4 +1,5 @@
 #!/usr/bin/env Rscript
+# sentinel:skip-file — hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
 # validate_r_ipdfromkm.R
 # Cross-validate our Python Guyot IPD reconstruction against R's IPDfromKM package.
 # Reads digitized curve CSVs from phase2_v2_results, feeds to IPDfromKM, compares HR.
