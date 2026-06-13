@@ -126,6 +126,16 @@ def improved_guyot_reconstruction(
     --------
     ReconstructionResult with times, events, and metadata
     """
+    # Guard against empty input (times[0]/survival[-1] would raise IndexError)
+    times = np.asarray(times, dtype=float)
+    survival = np.asarray(survival, dtype=float)
+    if times.size == 0 or survival.size == 0:
+        return ReconstructionResult(
+            times=np.array([]), events=np.array([]),
+            n_patients=0, n_events=0, n_censored=0,
+            convergence=False, iterations=0,
+        )
+
     # Ensure starts at time 0 with S=1
     if times[0] > 0:
         times = np.concatenate([[0], times])
@@ -275,7 +285,7 @@ def improved_guyot_reconstruction(
         n_events=n_events,
         n_censored=n_censored,
         convergence=converged,
-        iterations=iteration + 1 if 'iteration' in dir() else 1
+        iterations=iteration + 1 if max_iterations > 0 else 0
     )
 
 
