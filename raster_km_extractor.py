@@ -78,14 +78,26 @@ def extract_raster_km(png_path):
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
     # ---- OCR text + boxes -----------------------------------------------------------
+    # Normalize the figure to a target width before OCR (~1100 px): real figures come at wildly
+    # varying resolutions (embedded 500px thumbnails or 2200px scans); easyocr misses small axis
+    # digits on both extremes. OCR on the resized image, then scale bboxes back to ORIGINAL pixel
+    # coords so they line up with the HSV curve tracer (which runs on the original image).
+    ocr_scale = 1.0
+    ocr_img = str(png_path)
+    if W > 0:
+        s = 1100.0 / W
+        s = min(max(s, 0.5), 4.0)
+        if abs(s - 1.0) > 0.05:
+            ocr_scale = s
+            ocr_img = cv2.resize(img, None, fx=s, fy=s, interpolation=cv2.INTER_CUBIC)
     try:
-        results = _reader().readtext(str(png_path))
+        results = _reader().readtext(ocr_img)
     except Exception:
         return None
     # results: [ [box(4 pts), text, conf], ... ]
     toks = []
     for box, text, conf in results:
-        xs = [p[0] for p in box]; ys = [p[1] for p in box]
+        xs = [p[0] / ocr_scale for p in box]; ys = [p[1] / ocr_scale for p in box]
         toks.append({"text": text, "cx": float(np.mean(xs)), "cy": float(np.mean(ys)),
                      "x0": min(xs), "y0": min(ys), "conf": conf})
     nums = [(_num(t["text"]), t["cx"], t["cy"]) for t in toks if _is_num(t["text"])]

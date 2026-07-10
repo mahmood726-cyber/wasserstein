@@ -68,6 +68,26 @@ Result files: `results/reconstruction_full500{,_faithful}.json`, `results/endtoe
 
 `km_pipeline.extract` cascades vector → raster-OCR → legacy, fail-closed at each step.
 
+## Real-world validation (honest status — the current frontier)
+
+Tested on real open-access PLoS One RCT PDFs (Hasegawa 2016, DOI 10.1371/journal.pone.0162400;
+Zhou 2015, DOI 10.1371/journal.pone.0117002). **The pipeline does NOT yet extract real published
+figures out of the box.** Concrete gaps the synthetic corpus did not capture:
+
+1. **Black & white figures** — many papers distinguish arms by line STYLE (solid/dashed), not
+   color (Zhou 2015: 0% colored pixels). The HSV colour tracer finds no arms. This is the biggest
+   gap; it needs a grayscale/line-style tracer.
+2. **OCR at native resolution** missed small axis digits on both 500px thumbnails and 2200px
+   scans — FIXED by normalising the figure to ~1100px before OCR (real figures then read 57–76
+   numeric tokens; synthetic benchmark unchanged, tests green).
+3. **Figure identification** — a paper embeds several images (KM curve, number-at-risk table,
+   forest plot, CONSORT). Choosing the KM panel is unsolved.
+4. **Legend orientation** — real trials label arms with drug names ("UFT/LV", "D3P"), not
+   Control/Experimental, so role matching does not fire.
+
+So the world-class numbers above are **on synthetic/colored figures**; robust extraction from
+arbitrary real published PDFs (esp. B&W) is the genuine remaining work, now precisely scoped.
+
 ## Reproduce
 
 ```bash

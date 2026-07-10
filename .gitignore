@@ -80,3 +80,7 @@ deprecated/
 # OS
 .DS_Store
 Thumbs.db
+
+# real-paper validation (downloaded PDFs + extracted figures, not for redistribution)
+realpaper_test/*.pdf
+realpaper_test/*_imgs/
