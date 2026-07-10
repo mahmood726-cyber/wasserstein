@@ -35,11 +35,15 @@ def _cox_loghr(exp_ipd, ctl_ipd):
     return float("nan"), float("nan")
 
 
-def build_vector_result(pdf_path, pdf_name, PipelineResult, IPDExport, default_n=100, t0=None):
-    """Return a PipelineResult from vector extraction, or None to fall back to raster."""
+def build_result_from_extraction(ex, pdf_path, pdf_name, PipelineResult, IPDExport,
+                                 source="vector", default_n=100, t0=None):
+    """Build a PipelineResult from a curve-extraction dict (vector OR raster-OCR), or None.
+
+    ex is the common extractor output: {n_arms, arms:[{times,survivals,role}],
+    y_is_percent, y_truncated?, orientation_from_legend}. `source` labels the path.
+    """
     if t0 is None:
         t0 = time.time()
-    ex = extract_vector_km(pdf_path)
     if not ex or ex.get("n_arms", 0) < 1:
         return None
 
@@ -57,7 +61,7 @@ def build_vector_result(pdf_path, pdf_name, PipelineResult, IPDExport, default_n
                                        int(default_n), follow_up=float(max(a["times"])) if a["times"] else None)
         return ipd
 
-    warnings = ["vector_path", f"orientation:{'legend' if ex.get('orientation_from_legend') else 'unknown'}"]
+    warnings = [f"{source}_path", f"orientation:{'legend' if ex.get('orientation_from_legend') else 'unknown'}"]
     if ex.get("y_truncated"):
         warnings.append("y_axis_truncated_calibrated")
     if ex.get("n_arms", 0) > 2:
@@ -93,7 +97,7 @@ def build_vector_result(pdf_path, pdf_name, PipelineResult, IPDExport, default_n
         curve1_times=[float(x) for x in exp_arm["times"]], curve1_survivals=[float(x) for x in exp_arm["survivals"]],
         curve2_times=([float(x) for x in arms[1]["times"]] if len(arms) >= 2 else None),
         curve2_survivals=([float(x) for x in arms[1]["survivals"]] if len(arms) >= 2 else None),
-        confidence=0.99, orientation_method=("vector_legend" if ex.get("orientation_from_legend") else "vector_unknown"),
+        confidence=0.99, orientation_method=(f"{source}_legend" if ex.get("orientation_from_legend") else f"{source}_unknown"),
         text_hr=None, n_curves_found=ex["n_arms"], n_pages_scanned=1,
         processing_time_s=round(time.time() - t0, 3), warnings=warnings,
     )

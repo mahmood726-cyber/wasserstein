@@ -11,3 +11,4 @@ scikit-learn>=1.3.0
 
 # Optional: OCR for axis labels and numbers-at-risk tables
 # pytesseract>=0.3.10  # Requires Tesseract OCR installed on system
+easyocr

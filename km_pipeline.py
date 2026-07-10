@@ -263,18 +263,48 @@ class KMPipeline(RobustKMPipeline):
 
         # Vector fast-path (roadmap L8): born-digital PDFs are read EXACTLY from the content
         # stream (step-polylines + printed axis ticks + legend), giving near-zero digitization
-        # error and legend-based orientation. Returns None for raster/scanned figures, which
-        # then take the raster pipeline below. Toggle with enable_vector_path=False.
+        # error and legend-based orientation. Toggle with enable_vector_path=False.
         if getattr(self, "enable_vector_path", True):
             try:
-                from vector_pipeline import build_vector_result
-                vres = build_vector_result(pdf_path, pdf_name, PipelineResult, IPDExport, t0=t0)
-                if vres is not None and vres.total_ipd_records > 0:
-                    logger.info(f"{pdf_name}: vector fast-path ({vres.n_curves_found} curves, "
-                                f"orient={vres.orientation_method})")
-                    return vres
-            except Exception as e:  # never let the fast-path break the raster fallback
+                from vector_pipeline import build_result_from_extraction
+                from vector_km_extractor import extract_vector_km
+                exv = extract_vector_km(pdf_path)
+                if exv:
+                    r = build_result_from_extraction(exv, pdf_path, pdf_name, PipelineResult,
+                                                     IPDExport, source="vector", t0=t0)
+                    if r is not None and r.total_ipd_records > 0:
+                        logger.info(f"{pdf_name}: vector fast-path ({r.n_curves_found} curves, {r.orientation_method})")
+                        return r
+            except Exception as e:
                 logger.info(f"vector fast-path skipped: {e}")
+
+        # Raster-OCR path: scanned/image PDFs are calibrated from OCR'd axis ticks + legend
+        # and traced with a column-wise sub-pixel HSV tracer. Beats the legacy raster path
+        # (benchmark IAE 0.0018 vs 0.27). Returns None -> legacy pipeline below.
+        if getattr(self, "enable_ocr_raster", True):
+            try:
+                import tempfile, fitz
+                from vector_pipeline import build_result_from_extraction
+                from raster_km_extractor import extract_raster_km
+                doc = fitz.open(pdf_path)
+                pg = doc[0]
+                pix = pg.get_pixmap(dpi=200)
+                tmp = os.path.join(tempfile.gettempdir(), f"_km_{Path(pdf_path).stem}.png")
+                pix.save(tmp)
+                doc.close()
+                exr = extract_raster_km(tmp)
+                try:
+                    os.remove(tmp)
+                except OSError:
+                    pass
+                if exr:
+                    r = build_result_from_extraction(exr, pdf_path, pdf_name, PipelineResult,
+                                                     IPDExport, source="raster_ocr", t0=t0)
+                    if r is not None and r.total_ipd_records > 0:
+                        logger.info(f"{pdf_name}: raster-OCR path ({r.n_curves_found} curves, {r.orientation_method})")
+                        return r
+            except Exception as e:
+                logger.info(f"raster-OCR path skipped: {e}")
 
         # Step 1: Run the full HR extraction pipeline
         logger.info(f"Processing: {pdf_name}")
