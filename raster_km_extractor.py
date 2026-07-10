@@ -188,6 +188,46 @@ def extract_raster_km(png_path):
         if best and best[1] <= 25:
             best[0]["role"] = role
 
+    # ---- N per arm from the number-at-risk table (roadmap L6) -----------------------
+    for a in arms:
+        a["n"] = None
+    risk_y = None
+    for t in toks:
+        if "risk" in str(t["text"]).lower():
+            risk_y = t["cy"]
+            break
+    if risk_y is not None:
+        nar = [(_num(t["text"]), t["cx"], t["cy"]) for t in toks
+               if _is_num(t["text"]) and t["cy"] > risk_y - 5]
+        rows_nar = {}
+        for v, cx, cy in nar:
+            rows_nar.setdefault(round(cy / 12), []).append((v, cx, cy))
+        row_items = sorted(rows_nar.values(), key=lambda it: np.mean([y for _, _, y in it]))
+        for ri, items in enumerate(row_items):
+            if len(items) < 2:
+                continue
+            n_est = int(max(v for v, _, _ in items))
+            ry = np.mean([y for _, _, y in items])
+            role = None
+            for t in toks:
+                if _is_num(t["text"]):
+                    continue
+                if abs(t["cy"] - ry) < 10:
+                    ll = str(t["text"]).lower()
+                    for subs, r in ROLE_BY_LABEL:
+                        if any(x in ll for x in subs):
+                            role = r
+                            break
+                if role is not None:
+                    break
+            target = None
+            if role is not None:
+                target = next((a for a in arms if a["role"] == role), None)
+            if target is None and ri < len(arms):
+                target = arms[ri]
+            if target is not None and target.get("n") is None:
+                target["n"] = n_est
+
     arms.sort(key=lambda a: (a["role"] if a["role"] is not None else 9))
     return {
         "n_arms": len(arms), "arms": arms,

@@ -53,15 +53,19 @@ def build_result_from_extraction(ex, pdf_path, pdf_name, PipelineResult, IPDExpo
         return {1: 0, 0: 1}.get(a.get("role"), 2)
     arms = sorted(arms, key=role_key)
 
+    n_from_nar = any(a.get("n") for a in arms)
+
     def _reconstruct(a):
-        # N is not recoverable from the curve alone; default (flagged). Curve fidelity and HR
-        # DIRECTION are N-independent, so vector IAE/RMSE/direction stay exact; only CI width
-        # depends on N (roadmap L6/NAR will supply the true N).
+        # Real N from the number-at-risk table (roadmap L6) when available; else default
+        # (flagged). Curve fidelity and HR DIRECTION are N-independent; N fixes event counts,
+        # HR magnitude, and CI width.
+        n = int(a["n"]) if a.get("n") else int(default_n)
         ipd = reconstruct_arm_faithful(np.array(a["times"], float), np.array(a["survivals"], float),
-                                       int(default_n), follow_up=float(max(a["times"])) if a["times"] else None)
+                                       n, follow_up=float(max(a["times"])) if a["times"] else None)
         return ipd
 
-    warnings = [f"{source}_path", f"orientation:{'legend' if ex.get('orientation_from_legend') else 'unknown'}"]
+    warnings = [f"{source}_path", f"orientation:{'legend' if ex.get('orientation_from_legend') else 'unknown'}",
+                f"N:{'nar' if n_from_nar else 'default'}"]
     if ex.get("y_truncated"):
         warnings.append("y_axis_truncated_calibrated")
     if ex.get("n_arms", 0) > 2:
