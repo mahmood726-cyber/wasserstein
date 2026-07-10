@@ -136,18 +136,32 @@ def render_figure(rows, meta, out_pdf, out_png, degradation, yaxis, nar):
     meta["nar_present"] = bool(nar)
 
     fig.tight_layout()
-    fig.savefig(out_pdf, format="pdf", bbox_inches="tight")     # vector, exact
     dpi = {"clean_600dpi": 600, "raster_300dpi": 300,
            "raster_150dpi": 150, "jpeg_q40_150dpi": 150}[degradation]
     fig.savefig(out_png, format="png", dpi=dpi, bbox_inches="tight")
-    plt.close(fig)
 
-    if degradation == "jpeg_q40_150dpi":
+    # PDF: only the clean tier is a true VECTOR PDF (step-polylines readable exactly via
+    # get_drawings). The raster/jpeg tiers are SCANNED-EQUIVALENT: an image-only PDF whose
+    # single object is the rasterized (optionally JPEG-degraded) bitmap -- NO vector paths.
+    # This makes the vector-path lever measurable HONESTLY (it must fall back to pixel tracing
+    # on ~75% of the corpus) rather than acing every plot. is_vector is recorded per plot.
+    if degradation == "clean_600dpi":
+        fig.savefig(out_pdf, format="pdf", bbox_inches="tight")   # vector, exact
+        meta["is_vector_pdf"] = True
+    else:
+        plt.close(fig)
         from PIL import Image
         im = Image.open(out_png).convert("RGB")
-        jpg = str(out_png).rsplit(".", 1)[0] + ".jpg"
-        im.save(jpg, "JPEG", quality=40)
-        meta["compressed_jpg"] = True
+        if degradation == "jpeg_q40_150dpi":
+            import io as _io
+            buf = _io.BytesIO(); im.save(buf, "JPEG", quality=40); buf.seek(0)
+            im = Image.open(buf).convert("RGB")
+            meta["compressed_jpg"] = True
+        im.save(str(out_pdf), "PDF", resolution=float(dpi))       # image-only (scanned-equivalent) PDF
+        meta["is_vector_pdf"] = False
+        return
+    plt.close(fig)
+    meta["is_vector_pdf"] = True
 
 
 # --------------------------------------------------------------- corpus plan
@@ -192,6 +206,7 @@ def generate_corpus(n_plots=DEFAULT_N_PLOTS, verbose=True):
         datasets.append({"name": pid, "n_arms": spec["arms"], "n_per_arm": spec["n"],
                          "censoring": spec["cens"], "degradation": spec["deg"],
                          "yaxis": spec["yaxis"], "nar_present": bool(spec["nar"]),
+                         "is_vector": meta.get("is_vector_pdf", True),
                          "hr_true": meta.get("hr_true"), "render_ok": meta.get("render_ok", False)})
         if verbose and (idx + 1) % 50 == 0:
             print(f"  generated {idx + 1}/{n_plots}")

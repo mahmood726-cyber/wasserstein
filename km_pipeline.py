@@ -261,6 +261,21 @@ class KMPipeline(RobustKMPipeline):
             return self._empty_result(pdf_path, pdf_name,
                                       error=f"File not found: {pdf_path}")
 
+        # Vector fast-path (roadmap L8): born-digital PDFs are read EXACTLY from the content
+        # stream (step-polylines + printed axis ticks + legend), giving near-zero digitization
+        # error and legend-based orientation. Returns None for raster/scanned figures, which
+        # then take the raster pipeline below. Toggle with enable_vector_path=False.
+        if getattr(self, "enable_vector_path", True):
+            try:
+                from vector_pipeline import build_vector_result
+                vres = build_vector_result(pdf_path, pdf_name, PipelineResult, IPDExport, t0=t0)
+                if vres is not None and vres.total_ipd_records > 0:
+                    logger.info(f"{pdf_name}: vector fast-path ({vres.n_curves_found} curves, "
+                                f"orient={vres.orientation_method})")
+                    return vres
+            except Exception as e:  # never let the fast-path break the raster fallback
+                logger.info(f"vector fast-path skipped: {e}")
+
         # Step 1: Run the full HR extraction pipeline
         logger.info(f"Processing: {pdf_name}")
         hr_result = self.extract_hr(pdf_path,
