@@ -100,11 +100,25 @@ def extract_raster_km(png_path):
         ycols.setdefault(round(cx / 10), []).append((v, cy))
     xf = _best_line(xrows, want_positive=True)
     yf = _best_line(ycols, want_positive=False)
-    if not xf or not yf:
-        return None
-    _, xm, xb, xvals = xf
-    _, ym, yb, yvals = yf
-    y_is_percent = bool(max(yvals) > 1.5)
+    if xf and yf:
+        _, xm, xb, xvals = xf
+        _, ym, yb, yvals = yf
+        y_is_percent = bool(max(yvals) > 1.5)
+    else:
+        # 4th raster track (hybrid): escalate to a registered vision model when local OCR
+        # calibration fails on a degraded scan. No-op if no vision backend is registered.
+        from vision_fallback import vision_read
+        vr = vision_read(png_path)
+        if not vr:
+            return None
+        xt = np.array(vr["x_ticks"], float)
+        yt = np.array(vr["y_ticks"], float)
+        if len(xt) < 2 or len(yt) < 2:
+            return None
+        xm, xb = np.polyfit(xt[:, 1], xt[:, 0], 1)
+        ym, yb = np.polyfit(yt[:, 1], yt[:, 0], 1)
+        xvals, yvals = xt[:, 0], yt[:, 0]
+        y_is_percent = bool(vr.get("y_is_percent", max(yvals) > 1.5))
     y_scale = 100.0 if y_is_percent else 1.0
 
     def px2t(px):
@@ -197,8 +211,26 @@ def extract_raster_km(png_path):
             risk_y = t["cy"]
             break
     if risk_y is not None:
-        nar = [(_num(t["text"]), t["cx"], t["cy"]) for t in toks
-               if _is_num(t["text"]) and t["cy"] > risk_y - 5]
+        # L16: re-OCR the number-at-risk band on an UPSCALED crop with a digit allowlist —
+        # the small NAR font is misread at 150 dpi in the whole-image pass. Fall back to the
+        # first-pass tokens if the focused pass yields too little.
+        y0 = max(0, int(risk_y) - 4)
+        crop = img[y0:, :]
+        nar = []
+        if crop.size and crop.shape[0] > 8:
+            up = cv2.resize(crop, None, fx=3.0, fy=3.0, interpolation=cv2.INTER_CUBIC)
+            try:
+                nres = _reader().readtext(up, allowlist="0123456789")
+                for box, text, conf in nres:
+                    if _is_num(text) and conf > 0.3:
+                        cx = float(np.mean([p[0] for p in box])) / 3.0
+                        cy = y0 + float(np.mean([p[1] for p in box])) / 3.0
+                        nar.append((_num(text), cx, cy))
+            except Exception:
+                nar = []
+        if len(nar) < 2 * max(1, len(arms)):     # focused pass too sparse -> first-pass tokens
+            nar = [(_num(t["text"]), t["cx"], t["cy"]) for t in toks
+                   if _is_num(t["text"]) and t["cy"] > risk_y - 5]
         rows_nar = {}
         for v, cx, cy in nar:
             rows_nar.setdefault(round(cy / 12), []).append((v, cx, cy))
