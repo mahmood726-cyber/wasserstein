@@ -178,12 +178,14 @@ def improved_guyot_reconstruction(
             recon_times.extend(censor_times)
             recon_events.extend([0] * c)
 
-    # Add final censoring for remaining patients
-    if len(survival) > 0 and survival[-1] > 0:
-        n_remaining = int(round(survival[-1] * n_total))
-        if n_remaining > 0:
-            recon_times.extend([times[-1]] * n_remaining)
-            recon_events.extend([0] * n_remaining)
+    # Fill the remaining survivors so the population is EXACTLY n_total (conservation),
+    # mirroring improved_hr_estimation.py. Using round(survival[-1] * n_total) here
+    # double-counts survivors whenever the interval loop already emitted them — badly so
+    # when a real number-at-risk table is supplied under censoring (up to ~30% inflation).
+    n_remaining = n_total - len(recon_times)
+    if n_remaining > 0:
+        recon_times.extend([times[-1]] * n_remaining)
+        recon_events.extend([0] * n_remaining)
 
     recon_times = np.array(recon_times)
     recon_events = np.array(recon_events)
@@ -250,13 +252,10 @@ def improved_guyot_reconstruction(
                     closest_idx = np.argmin(np.abs(censor_times - error_time))
                     global_idx = np.where(recon_events == 0)[0][closest_idx]
                     recon_events[global_idx] = 1
-                else:
-                    # Add a new event at this time
-                    recon_times = np.append(recon_times, error_time)
-                    recon_events = np.append(recon_events, 1)
-                    sort_idx = np.argsort(recon_times)
-                    recon_times = recon_times[sort_idx]
-                    recon_events = recon_events[sort_idx]
+                # else: no convertible censoring remains. Do NOT append a brand-new event
+                # body — that inflates n_patients/n_events and breaks population conservation
+                # (the faithful algorithm only ever RELABELS, never adds bodies). Leave this
+                # interval's residual error rather than corrupt the reconstructed N.
 
             elif error_sign < -tolerance:
                 # Reconstructed survival too low - too many events
