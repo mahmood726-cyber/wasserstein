@@ -78,27 +78,35 @@ def build_result_from_extraction(ex, pdf_path, pdf_name, PipelineResult, IPDExpo
         return IPDExport(arm_label=label, arm_index=idx, n_patients=len(ipd),
                          n_events=ev, n_censored=len(ipd) - ev, records=recs), ipd
 
-    exp_arm = arms[0]
-    ipd1_exp, ipd1_rows = _export(exp_arm, 0, "treatment")
-    ipd2 = None
-    hr = ci_lo = ci_hi = None
-    total = ipd1_exp.n_patients
+    # Build ALL arms (roadmap L12: >=3-arm support). arms are role-sorted (experimental first,
+    # control second). ipd_arm1/ipd_arm2 stay the primary exp-vs-ctl pair for back-compat;
+    # ipd_arms carries every reconstructed arm.
+    label_for = {1: "treatment", 0: "control", 2: "arm_c"}
+    exports, all_rows = [], []
+    for i, a in enumerate(arms):
+        lbl = label_for.get(a.get("role"), f"arm_{i}")
+        exp, rws = _export(a, i, lbl)
+        exports.append(exp)
+        all_rows.append(rws)
 
+    ipd1_exp = exports[0]
+    ipd2 = exports[1] if len(exports) >= 2 else None
+    total = sum(e.n_patients for e in exports)
+    hr = ci_lo = ci_hi = None
     if len(arms) >= 2:
-        ctl_arm = arms[1]
-        ipd2, ipd2_rows = _export(ctl_arm, 1, "control")
-        total += ipd2.n_patients
-        lhr, se = _cox_loghr(ipd1_rows, ipd2_rows)
+        lhr, se = _cox_loghr(all_rows[0], all_rows[1])   # experimental vs control
         if np.isfinite(lhr):
             hr = float(np.exp(lhr))
             if np.isfinite(se):
                 ci_lo, ci_hi = float(np.exp(lhr - 1.959964 * se)), float(np.exp(lhr + 1.959964 * se))
+    if not n_from_nar:
+        ci_lo = ci_hi = None                              # roadmap: no fabricated CI when N is unknown
 
     return PipelineResult(
         pdf_path=str(pdf_path), pdf_name=pdf_name,
-        hr=hr, ci_lower=ci_lo, ci_upper=ci_hi, p_value=None, hr_method="vector_faithful_cox",
-        ipd_arm1=ipd1_exp, ipd_arm2=ipd2, total_ipd_records=total,
-        curve1_times=[float(x) for x in exp_arm["times"]], curve1_survivals=[float(x) for x in exp_arm["survivals"]],
+        hr=hr, ci_lower=ci_lo, ci_upper=ci_hi, p_value=None, hr_method=f"{source}_faithful_cox",
+        ipd_arm1=ipd1_exp, ipd_arm2=ipd2, ipd_arms=exports, total_ipd_records=total,
+        curve1_times=[float(x) for x in arms[0]["times"]], curve1_survivals=[float(x) for x in arms[0]["survivals"]],
         curve2_times=([float(x) for x in arms[1]["times"]] if len(arms) >= 2 else None),
         curve2_survivals=([float(x) for x in arms[1]["survivals"]] if len(arms) >= 2 else None),
         confidence=0.99, orientation_method=(f"{source}_legend" if ex.get("orientation_from_legend") else f"{source}_unknown"),

@@ -111,7 +111,10 @@ def main():
                "hr_true": meta.get("hr_true")}
         try:
             res = pipe.extract(str(pdf))
-            recon_arms = [_arm_ipd(res.ipd_arm1), _arm_ipd(res.ipd_arm2)]
+            if getattr(res, "ipd_arms", None):                 # L12: full N-arm result
+                recon_arms = [_arm_ipd(a) for a in res.ipd_arms]
+            else:
+                recon_arms = [_arm_ipd(res.ipd_arm1), _arm_ipd(res.ipd_arm2)]
             sc = score_plot(rows, recon_arms, meta)
             rec.update(sc)
             rec["pipeline_succeeded"] = bool(res.succeeded)

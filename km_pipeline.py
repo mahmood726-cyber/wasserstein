@@ -168,6 +168,9 @@ class PipelineResult:
     processing_time_s: float
     warnings: List[str]
     text_hr_context: str = ""
+    # roadmap L12: full N-arm support (>=3 arms). ipd_arm1/ipd_arm2 remain the primary
+    # comparison pair for backward compatibility; ipd_arms holds ALL reconstructed arms.
+    ipd_arms: Optional[list] = None
     pair_description: str = ""
     pair_rank: int = 0
     pair_quality_score: float = 0.0
