@@ -8,17 +8,20 @@ censoring regimes, four degradation tiers (600/300/150 dpi + JPEG-q40), y-axis f
 truncated, ~60% with a number-at-risk table. Raster/JPEG tiers are **image-only PDFs**
 (scanned-equivalent), so the vector path is measured honestly on only the ~25% that are vector.
 
-## Headline (200-plot end-to-end, all strata, both paths)
+## Headline (FULL 500-plot end-to-end, all strata, both paths)
 
 | Metric | Result | SOTA target | Source anchor |
 |---|---|---|---|
-| Survival AE (median) | **0.0028** | ≤ 0.005 | KM-GPT (arXiv:2509.18141) |
-| IAE / Wasserstein-1 | **0.0033** | ≤ 0.018 | KM-GPT |
-| per-arm RMSE | **0.0047** | ≤ 0.012 | SurvdigitizeR (BMC 2024) |
-| HR %-diff (median) | **1.21%** | ≤ 2.14% | n=58 study (PMC12409465) |
-| **direction accuracy** | **1.000** | ~1.0 | — |
+| Survival AE (median) | **0.0026** | ≤ 0.005 | KM-GPT (arXiv:2509.18141) |
+| IAE / Wasserstein-1 | **0.0032** | ≤ 0.018 | KM-GPT |
+| per-arm RMSE | **0.0046** | ≤ 0.012 | SurvdigitizeR (BMC 2024) |
+| HR %-diff (mean / median) | **2.81% / 1.21%** | ≤ 2.85% / ≤ 2.14% | n=58 study (PMC12409465) |
+| **direction accuracy** | **0.993** | ~1.0 | — |
 | number-at-risk N accuracy (raster) | **20/20** | — | — |
-| 3-arm full recovery | **1.00** | — | — |
+| 3-arm full recovery | **1.00** (n=165) | — | — |
+
+Per tier (median IAE / direction): clean 0.0023 / 0.99 · raster-300 0.0033 / 0.99 ·
+raster-150 0.0031 / 1.00 · JPEG-q40 0.0046 / 1.00.
 
 > HR and direction are scored against the **realized true-IPD Cox HR** (the effect actually in
 > the simulated data — what any digitizer can recover), NOT the nominal simulation parameter,
