@@ -12,12 +12,19 @@ truncated, ~60% with a number-at-risk table. Raster/JPEG tiers are **image-only 
 
 | Metric | Result | SOTA target | Source anchor |
 |---|---|---|---|
-| Survival AE (median) | **0.0027** | ≤ 0.005 | KM-GPT (arXiv:2509.18141) |
-| IAE / Wasserstein-1 | **0.0032** | ≤ 0.018 | KM-GPT |
-| per-arm RMSE | **0.0045** | ≤ 0.012 | SurvdigitizeR (BMC 2024) |
-| HR %-diff (median) | **0.6% (vector) / ~2% (raster)** | ≤ 2.14% | n=58 study (PMC12409465) |
+| Survival AE (median) | **0.0028** | ≤ 0.005 | KM-GPT (arXiv:2509.18141) |
+| IAE / Wasserstein-1 | **0.0033** | ≤ 0.018 | KM-GPT |
+| per-arm RMSE | **0.0047** | ≤ 0.012 | SurvdigitizeR (BMC 2024) |
+| HR %-diff (median) | **1.21%** | ≤ 2.14% | n=58 study (PMC12409465) |
+| **direction accuracy** | **1.000** | ~1.0 | — |
 | number-at-risk N accuracy (raster) | **20/20** | — | — |
-| direction accuracy | **0.89** | ~1.0 | — |
+| 3-arm full recovery | **1.00** | — | — |
+
+> HR and direction are scored against the **realized true-IPD Cox HR** (the effect actually in
+> the simulated data — what any digitizer can recover), NOT the nominal simulation parameter,
+> which differs from the realized Cox HR by a median ~9.5% (finite-sample + censoring) that is
+> unobservable from the figure. Scoring against the nominal parameter inflates HR error to 8.8%
+> and drops apparent direction accuracy to 0.89 — an artifact of the reference, not the extractor.
 
 **84× better than the honest starting baseline (IAE 0.27).** Uniformly world-class across every
 degradation tier — clean 0.0025, raster-300 0.0033, raster-150 0.0034, JPEG-q40 0.0035 — beating
@@ -29,9 +36,9 @@ KM-GPT and SurvdigitizeR on both born-digital **and** scanned figures.
 |---|---|---|
 | IAE (Wasserstein-1) | 0.27 | **0.0032** |
 | per-arm RMSE | 0.34 | **0.0045** |
-| HR %-diff | 10% | **0.6% / ~2%** |
-| event-count error | 0.89 | **0.12 / ~0.1** |
-| direction accuracy | 0.38 | **0.89** |
+| HR %-diff (vs true-IPD Cox) | 10% | **1.21%** |
+| event-count error (NAR present) | 0.89 | **~0.1** |
+| direction accuracy | 0.38 | **1.000** |
 | 3-arm full recovery | 0% | **supported** |
 
 ## Reconstruction stage (Tier-1, all 500, exact curves)

@@ -120,12 +120,20 @@ def main():
             rec["pipeline_succeeded"] = bool(res.succeeded)
             rec["hr_recon"] = res.hr
             rec["n_curves_found"] = res.n_curves_found
-            if res.hr and meta.get("hr_true"):
-                rec["hr_abs_logdiff"] = abs(np.log(res.hr) - np.log(meta["hr_true"]))
-                rec["hr_pct_diff"] = 100 * abs(res.hr - meta["hr_true"]) / meta["hr_true"]
-                # direction: pipeline HR vs true HR sign (both relative to 1.0)
-                if abs(np.log(meta["hr_true"])) > np.log(1.05):
-                    rec["direction_correct"] = bool((res.hr < 1) == (meta["hr_true"] < 1))
+            # Score the reconstructed HR against the REALIZED true-IPD Cox HR (the actual
+            # effect in the data a perfect extractor recovers) -- NOT the nominal simulation
+            # parameter meta['hr_true'], which differs from the realized Cox HR by a median
+            # ~9.5% (finite-sample + censoring) that is unobservable from the figure and would
+            # unfairly inflate the extractor's HR error.
+            if res.hr:
+                lt, _ = cox_loghr_2arm(rows)
+                if np.isfinite(lt):
+                    true_hr = float(np.exp(lt))
+                    rec["hr_true_ipd"] = true_hr
+                    rec["hr_abs_logdiff"] = abs(np.log(res.hr) - lt)
+                    rec["hr_pct_diff"] = 100 * abs(res.hr - true_hr) / true_hr
+                    if abs(lt) > np.log(1.05):
+                        rec["direction_correct"] = bool((res.hr < 1) == (true_hr < 1))
         except Exception as e:
             rec.update({"ok": False, "pipeline_succeeded": False, "error": str(e)[:200]})
         per_plot.append(rec)
