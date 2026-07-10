@@ -100,93 +100,38 @@ def reconstruct_ipd_guyot(times: np.ndarray,
     -------
     List of IPDRecord
     """
-    # Ensure sorted by time
-    sort_idx = np.argsort(times)
-    times = times[sort_idx]
-    survivals = survivals[sort_idx]
+    # FAITHFUL reconstruction (2026-07-10, roadmap L3): delegate to the Python port of the
+    # audited, test-verified registry-ipd engine (guyotCore + normalizeAndExpand). This
+    # replaces the previous single-forward-pass heuristic, which on the honest 500-plot
+    # true-IPD benchmark scored IAE 0.036 / RMSE 0.043 / HR%-diff 9.2% (MISS every SOTA
+    # target) and never conserved N. The faithful port scores IAE 0.0062 / RMSE 0.0090 /
+    # HR%-diff 2.1% (PASS every target) and returns EXACTLY total_n rows by construction.
+    # It also anchor-matches the number-at-risk table and reconciles to total_events by
+    # swapping censor<->event (the old code's min(n_remaining, 10) tail cap silently dropped
+    # patients when N was estimated). See benchmark/ for the measurement.
+    from faithful_guyot import reconstruct_arm_faithful
 
-    # Ensure survivals are monotonically decreasing
-    for i in range(1, len(survivals)):
-        if survivals[i] > survivals[i-1]:
-            survivals[i] = survivals[i-1]
+    times = np.asarray(times, dtype=float)
+    survivals = np.asarray(survivals, dtype=float)
+    if len(times) == 0:
+        return []
+    order = np.argsort(times)
+    times = times[order]
+    survivals = survivals[order]
 
-    # Estimate total N if not provided
     if total_n is None:
-        if n_risk_values is not None and len(n_risk_values) > 0:
-            total_n = int(n_risk_values[0])
-        else:
-            # Default estimation
-            total_n = 100
+        # NOTE (roadmap L6): the N=100 fallback fabricates the sample size (and therefore
+        # the HR CI width) when neither NAR nor a caller N is available. Kept here to
+        # preserve the call contract; L6 will replace it with an explicit "N-unknown" flag.
+        total_n = int(n_risk_values[0]) if (n_risk_values is not None and len(n_risk_values) > 0) else 100
 
-    # Interpolate number at risk if provided
-    has_nar = n_risk_times is not None and n_risk_values is not None
-    if has_nar and len(n_risk_times) >= 2 and len(n_risk_values) >= 2:
-        # Use NAR for accurate censoring calculation
-        n_at_risk = _interpolate_nar(n_risk_times, n_risk_values, times, total_n)
-    else:
-        # Estimate N at risk from survival curve (less accurate)
-        n_at_risk = (survivals * total_n).astype(int)
-        n_at_risk = np.maximum(n_at_risk, 1)
-
-    ipd = []
-
-    # Calculate events at each interval using Guyot method
-    for i in range(1, len(times)):
-        s_prev = survivals[i-1]
-        s_curr = survivals[i]
-        n_prev = n_at_risk[i-1]
-        n_curr = n_at_risk[i] if i < len(n_at_risk) else 1
-        t_prev = times[i-1]
-        t_curr = times[i]
-
-        if s_prev <= 0 or s_curr <= 0:
-            continue
-
-        # Conditional probability of event in interval
-        cond_prob = 1 - (s_curr / s_prev)
-
-        # Expected number of events
-        n_events_interval = int(np.round(n_prev * cond_prob))
-        n_events_interval = max(0, min(n_events_interval, n_prev - 1))
-
-        # Number censored
-        if has_nar:
-            # Use actual NAR difference for censoring
-            # Censored = NAR_prev - NAR_curr - events
-            n_censored_interval = n_prev - n_curr - n_events_interval
-            n_censored_interval = max(0, n_censored_interval)
-        else:
-            # Estimate censoring assuming uniform distribution
-            n_censored_interval = n_prev - n_curr - n_events_interval
-            n_censored_interval = max(0, n_censored_interval)
-
-        # Generate event times uniformly within interval
-        # Using same linspace for events and censorings (Breslow convention:
-        # censored patients are still at risk at event time). Float ties are
-        # handled by np.round(times, 6) in log_rank_test.
-        if n_events_interval > 0:
-            event_times = np.linspace(t_prev + 0.001, t_curr - 0.001, n_events_interval)
-            for et in event_times:
-                ipd.append(IPDRecord(time=et, event=1, arm=0))
-
-        if n_censored_interval > 0:
-            censor_times = np.linspace(t_prev + 0.001, t_curr - 0.001, n_censored_interval)
-            for ct in censor_times:
-                ipd.append(IPDRecord(time=ct, event=0, arm=0))
-
-    # Add final censored observations at end of follow-up
-    n_remaining = total_n - len(ipd)
-    if n_remaining > 0:
-        if has_nar:
-            # NAR-calibrated N is accurate: add all remaining
-            final_censored = n_remaining
-        else:
-            # Estimated N may be too high: cap to avoid dilution
-            final_censored = min(n_remaining, 10)
-        for _ in range(final_censored):
-            ipd.append(IPDRecord(time=times[-1], event=0, arm=0))
-
-    return ipd
+    follow_up = float(times[-1])
+    ipd_rows = reconstruct_arm_faithful(
+        times, survivals, int(total_n),
+        nar_times=n_risk_times, nar_values=n_risk_values,
+        total_events=total_events, follow_up=follow_up,
+    )
+    return [IPDRecord(time=float(r["time"]), event=int(r["status"]), arm=0) for r in ipd_rows]
 
 
 def _interpolate_nar(nar_times: np.ndarray,

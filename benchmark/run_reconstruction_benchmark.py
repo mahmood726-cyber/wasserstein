@@ -18,9 +18,9 @@ import numpy as np
 
 from bench_contract import KMDATA_DIR, SUMMARY_PATH, RESULTS_DIR, F_TIME, F_STATUS, F_ARM, TARGETS
 from km_metrics import km_from_ipd, eval_km, plot_metrics, hr_metrics
-from faithful_guyot import reconstruct_arm_faithful
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from faithful_guyot import reconstruct_arm_faithful
 from improved_guyot_algorithm import improved_guyot_reconstruction
 
 
