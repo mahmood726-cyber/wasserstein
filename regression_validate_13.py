@@ -5,11 +5,25 @@ regression_validate_13.py — Phase 2 Regression Validation
 Runs km_pipeline on the 13 gold-tier trials and compares HR extraction
 against ground truth. Reports pass/fail per trial and overall.
 
-Criteria (from PLAN_SIRATAL_MUSTAQEEM.md):
-  - All 13 must extract successfully
-  - All 13 HRs within reported CI (100% within CI)
-  - 12/13 should have relative error <10%
+DEPRECATED AS A HEADLINE ACCURACY CLAIM (2026-07-10, roadmap L2).
+This harness compares extracted HR only to PUBLISHED summary statistics on 13
+single-specialty (cardiac-ablation) trials — it never compares reconstructed IPD to
+true per-patient data. The CANONICAL, ungameable accuracy benchmark is now
+benchmark/run_reconstruction_benchmark.py + benchmark/run_endtoend_benchmark.py, which
+score against a synthetic true-IPD corpus (AE, IAE/Wasserstein-1, RMSE, KS, RMST, HR).
+
+The three evaluation cheats have been removed here (2026-07-10):
+  - reciprocal-orientation selection (picking whichever of HR/1-HR matched GT),
+  - post-hoc exclusion of known-fail trials from the pass count,
+  - min-of-two-orientations headline error.
+Re-running now yields the HONEST (lower) number for this legacy tier.
+
+Criteria (HONEST):
+  - Extraction success reported on all 13 (no exclusions).
+  - HR scored in the extracted orientation only; direction correctness is a metric.
+  - Error is the direct (not min-of-two) relative error.
 """
+import math
 
 import os
 import sys
@@ -175,25 +189,16 @@ def main():
                 # Check: extracted HR within ground truth CI?
                 within_ci = gt_lo <= ext_hr <= gt_hi
 
-                # Reciprocal handling for derived-HR trials where arm
-                # ordering is genuinely unknown (HR could be X or 1/X).
-                # Pick whichever orientation gives lower error vs GT.
-                recip_hr = None
-                within_ci_recip = False
-                if trial.get("hr_source") == "derived" and ext_hr > 0:
-                    recip_hr = 1.0 / ext_hr
-                    within_ci_recip = gt_lo <= recip_hr <= gt_hi
-
-                if (recip_hr is not None and
-                        abs(recip_hr - gt_hr) < abs(ext_hr - gt_hr)):
-                    rel_error = abs(recip_hr - gt_hr) / gt_hr * 100
-                    orientation = "reciprocal"
-                    final_hr = recip_hr
-                else:
-                    rel_error = abs(ext_hr - gt_hr) / gt_hr * 100
-                    orientation = "direct"
-                    final_hr = ext_hr
-
+                # HONEST (2026-07-10 L2 de-cheat): score the extracted HR AS-IS. The old
+                # code picked whichever of {HR, 1/HR} was closest to the ground truth for
+                # derived-HR trials — a circular, fit-to-the-test selection that masks
+                # arm-direction failures. Orientation must come from the figure legend, not
+                # from matching the answer. Direction correctness is now an honest metric.
+                final_hr = ext_hr
+                orientation = "direct"
+                rel_error = abs(ext_hr - gt_hr) / gt_hr * 100
+                direction_correct = (((ext_hr < 1.0) == (gt_hr < 1.0))
+                                     if abs(math.log(gt_hr)) > math.log(1.05) else None)
                 within_ci_final = gt_lo <= final_hr <= gt_hi
 
                 status = "PASS" if within_ci_final else "FAIL"
@@ -203,8 +208,8 @@ def main():
                           if ext_lo is not None and ext_hi is not None
                           else "[N/A]")
                 print(f"  Extracted: HR={ext_hr:.3f} {ci_str}")
-                if orientation == "reciprocal":
-                    print(f"  Reciprocal: HR={recip_hr:.3f} (better match)")
+                if direction_correct is False:
+                    print(f"  Direction: WRONG (ext {'<' if ext_hr < 1 else '>'}1 vs GT {'<' if gt_hr < 1 else '>'}1)")
                 print(f"  Rel Error: {rel_error:.1f}% {'OK' if error_ok else '>10%'}")
                 print(f"  Within CI: {within_ci_final} -> {status}")
                 print(f"  Time: {elapsed:.1f}s")
@@ -304,14 +309,13 @@ def main():
         tm = f"{r['time_s']:.0f}s"
         print(f"{name:<20} {gt:>6} {ext:>7} {err:>6} {ci:>4} {status:>8} {tm:>6}")
 
-    # Known limitations:
-    #   FREEZEAF-30M: 0 extractable curves (no KM figure detected)
-    #   WACA-PVAC: known arm-inversion issue (derived HR, curve HR differ)
-    # Count of extractable trials = 12 (excluding known-limitation PDFs)
-    n_extractable = 12
-    # Overall verdict: all extracted must be within CI; allow up to 2 >10% error
-    regression_pass = (n_extracted >= n_extractable and n_within_ci >= n_extracted
-                       and n_under_10 >= n_extracted - 2)
+    # HONEST (2026-07-10 L2): no post-hoc exclusions. The old code set n_extractable=12,
+    # silently dropping the two trials the pipeline is known to fail (FREEZEAF-30M: no KM
+    # figure detected; WACA-PVAC: arm-inversion) from the denominator — fitting the verdict
+    # to known behaviour. The full 13 are scored; known failures count as failures.
+    n_extractable = 13
+    regression_pass = (n_extracted >= n_extractable and n_within_ci >= n_extractable
+                       and n_under_10 >= n_extractable - 2)
     print()
     if regression_pass:
         print("VERDICT: PASS — No regression detected")
