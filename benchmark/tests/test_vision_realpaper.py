@@ -80,3 +80,28 @@ def test_self_consistency_flags_bad_reads():
     r = ensemble_with_confidence(E, C, t, 300, 300,
                                  nar_times=[0, 15.5, 31], nar_exp=[300, 165, 250], nar_ctl=[300, 110, 20])
     assert "nar_curve_mismatch" in r["flags"]
+
+
+def test_auto_reread_loop_self_corrects():
+    """extract_reliable() gathers reads until confidence is high and drops a poisoning outlier so
+    one bad read cannot corrupt the result."""
+    import numpy as np
+    from vision_km_pipeline import extract_reliable
+    t = [0, 3.875, 7.75, 11.625, 15.5, 19.375, 23.25, 27.125, 31]
+    baseE = [1.0,0.89,0.82,0.71,0.58,0.47,0.39,0.32,0.28]
+    baseC = [1.0,0.86,0.70,0.53,0.39,0.27,0.17,0.12,0.07]
+    rng = np.random.default_rng(1)
+    calls = {"n": 0}
+
+    def flaky(_):
+        calls["n"] += 1
+        if calls["n"] == 3:  # one bad read
+            return {"times": t, "exp": [1.0,0.68,0.52,0.38,0.28,0.20,0.14,0.10,0.06], "ctl": baseC}
+        e = np.clip(np.array(baseE) + rng.normal(0, 0.02, 9), 0, 1)
+        c = np.clip(np.array(baseC) + rng.normal(0, 0.02, 9), 0, 1)
+        e[0] = c[0] = 1.0
+        return {"times": t, "exp": list(e), "ctl": list(c)}
+
+    r = extract_reliable("x", flaky, 300, 300)
+    assert r["confidence"] == "high"      # converged despite the bad read
+    assert r["hr"] < 1.0                  # correct direction, outlier did not flip it

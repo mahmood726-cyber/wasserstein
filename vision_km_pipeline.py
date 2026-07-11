@@ -164,6 +164,52 @@ def ensemble_with_confidence(exp_reads, ctl_reads, times, n_exp, n_ctl, follow_u
     return out
 
 
+def extract_reliable(image_path, read_fn, n_exp, n_ctl, times=None, nar_times=None,
+                     nar_exp=None, nar_ctl=None, min_reads=3, max_reads=7):
+    """Self-correcting extraction: gather reads until the self-consistency confidence is 'high'.
+
+    read_fn(image_path) -> a single vision read dict {times?, exp:[...], ctl:[...]} (or None). The
+    loop takes `min_reads`, and while confidence is not 'high' (an inconsistent/outlier read is
+    dragging the ensemble) it fetches more reads up to `max_reads`, dropping the single most
+    outlying read once past min_reads so one bad read cannot poison the result. Returns the
+    ensemble_with_confidence dict plus n_reads and reads_requested.
+    """
+    exp_reads, ctl_reads = [], []
+    t = times
+    requested = 0
+    best = None
+    while requested < max_reads:
+        rd = read_fn(image_path)
+        requested += 1
+        if not rd or not rd.get("exp") or not rd.get("ctl"):
+            continue
+        t = rd.get("times", t)
+        exp_reads.append(rd["exp"]); ctl_reads.append(rd["ctl"])
+        if len(exp_reads) < min_reads:
+            continue
+        # drop the single most-outlying read (by its own reconstructed log-HR) once we have a few,
+        # so one bad read cannot poison the ensemble
+        use_e, use_c = exp_reads, ctl_reads
+        if len(exp_reads) >= 4:
+            hrs = []
+            for e, c in zip(exp_reads, ctl_reads):
+                r = reconstruct_two_arm(e, c, t, n_exp, n_ctl)
+                hrs.append(np.log(r["hr"]) if r["hr"] and np.isfinite(r["hr"]) else 0.0)
+            med = np.median(hrs)
+            drop = int(np.argmax(np.abs(np.array(hrs) - med)))
+            use_e = [e for i, e in enumerate(exp_reads) if i != drop]
+            use_c = [c for i, c in enumerate(ctl_reads) if i != drop]
+        best = ensemble_with_confidence(use_e, use_c, t, n_exp, n_ctl,
+                                        nar_times=nar_times, nar_exp=nar_exp, nar_ctl=nar_ctl)
+        best["n_reads"] = len(use_e)
+        best["reads_requested"] = requested
+        if best["confidence"] == "high":
+            return best
+    if best is None:
+        return None
+    return best
+
+
 def extract_from_pdf_figure(image_path, vision_reader, n_exp, n_ctl, sample_times=None):
     """Full vision-assisted extraction of one KM panel image.
 
