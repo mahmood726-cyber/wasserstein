@@ -89,6 +89,12 @@ reader; `benchmark/tests/test_vision_realpaper.py` pins the result).
 These are colored, B&W, overlapping, crossing, and multi-panel figures — the vision-assisted
 pipeline handled all of them and recovered the effect within CI, with correct direction.
 
+**Quantified vision-path accuracy on synthetic ground truth** (6 figures, colored + B&W, true HRs
+0.54–1.69): reconstructed-vs-true HR **median error 2.4%, mean 2.9%, direction 5/5 (100%)** — on par
+with the CV path's HR target (≤2.14%) and, crucially, working on the B&W figures where the CV tracer
+fails. Accuracy improves further with FINE survival sampling + reading the number-at-risk table
+(vision reads both): Hasegawa RFS tightened 0.755 → 0.680 with NAR anchors.
+
 Pure-CV real-paper gaps (why vision is needed): (1) B&W line-style figures — the HSV tracer finds
 no arms; a `raster_bw_extractor.py` top/bottom-envelope tracer handles clean B&W (synthetic IAE
 0.0019) but not close/crossing solid curves; (2) OCR normalization to ~1100px (FIXED); (3) multi-

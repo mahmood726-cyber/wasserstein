@@ -23,11 +23,16 @@ def test_hasegawa_os_hr_within_published_ci():
 
 
 def test_hasegawa_rfs_hr_within_published_ci():
-    # Hasegawa RFS: published HR 0.56 [0.38, 0.83]
-    r = reconstruct_two_arm([1.0, 0.60, 0.44, 0.38, 0.37, 0.37, 0.355],
-                            [1.0, 0.37, 0.32, 0.32, 0.31, 0.31, 0.31],
-                            [0, 1, 2, 3, 4, 5, 6], 88, 89)
-    # reconstructed 0.755 -- within the published CI, and the published 0.56 is within the recon CI
+    # Hasegawa RFS: published HR 0.56 [0.38, 0.83]. FINE survival sampling + the number-at-risk
+    # table (both read by vision) tighten the estimate 0.755 -> 0.680 [0.46, 1.02].
+    t = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6]
+    r = reconstruct_two_arm(
+        [1.0, 0.84, 0.62, 0.50, 0.42, 0.39, 0.385, 0.375, 0.37, 0.355],
+        [1.0, 0.55, 0.43, 0.36, 0.345, 0.32, 0.32, 0.32, 0.315, 0.31],
+        t, 88, 89, follow_up=6.0,
+        nar_times=[0, 1, 2, 3, 4, 5, 6],
+        nar_exp=[88, 53, 36, 32, 28, 20, 15], nar_ctl=[89, 36, 30, 27, 27, 22, 18])
+    assert r["hr"] < 1.0                                   # UFT/LV favored, correct direction
     assert _within(r["hr"], 0.38, 0.83) or (r["hr_ci"][0] <= 0.56 <= r["hr_ci"][1])
 
 

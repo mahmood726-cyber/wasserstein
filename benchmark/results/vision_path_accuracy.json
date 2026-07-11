@@ -1,0 +1,44 @@
+{
+ "description": "vision-path HR accuracy on synthetic ground truth (6 figs, colored+BW)",
+ "median_hr_pct_err": 2.4,
+ "mean_hr_pct_err": 2.9,
+ "direction": "5/5",
+ "per_fig": [
+  {
+   "fig": 0,
+   "style": "color",
+   "recon": 1.648,
+   "true": 1.687
+  },
+  {
+   "fig": 1,
+   "style": "bw",
+   "recon": 0.516,
+   "true": 0.541
+  },
+  {
+   "fig": 2,
+   "style": "color",
+   "recon": 1.395,
+   "true": 1.383
+  },
+  {
+   "fig": 3,
+   "style": "bw",
+   "recon": 1.126,
+   "true": 1.125
+  },
+  {
+   "fig": 4,
+   "style": "color",
+   "recon": 0.771,
+   "true": 0.752
+  },
+  {
+   "fig": 5,
+   "style": "bw",
+   "recon": 0.911,
+   "true": 0.98
+  }
+ ]
+}

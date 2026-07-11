@@ -85,3 +85,4 @@ Thumbs.db
 realpaper_test/*.pdf
 realpaper_test/*_imgs/
 bw_dev/
+vision_eval/
