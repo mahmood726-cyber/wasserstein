@@ -1,0 +1,9 @@
+{
+ "description": "pure-CV auto-extraction over arbitrary open-access PLoS survival-RCT PDFs",
+ "pdfs_analyzed": 150,
+ "km_extracted": 8,
+ "km_rate_pct": 5.3,
+ "plausible_hr_extractions": 5,
+ "plausible_rate_pct": 3.3,
+ "note": "denominator includes reviews/protocols/observational (search noise); several extractions are false positives (implausible HR). Contrast: vision path recovered 3/3 real HRs within published CI, 2.4% median HR error on ground truth."
+}

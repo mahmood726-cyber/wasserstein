@@ -102,6 +102,8 @@ panel figure identification (vision solves it); (4) at-risk-table contamination 
 (vision + RANSAC handle it). The pure-CV paths remain the fast, offline, deterministic default;
 vision is the robust fallback for hard real figures.
 
+**Large-scale real-PDF test (300 open-access PLoS survival-RCT PDFs downloaded; 150 analyzed).** Pure-CV auto-extraction of a KM curve: ~5% (8/150), of which several are false positives -> ~3% plausible. 0 overlapped with a parseable published HR for validation. The low rate reflects both search-denominator noise (many reviews/protocols/observational) AND pure-CV fragility on real figures. This QUANTIFIES AT SCALE why the vision-assisted path is needed: on the real figures the vision path was tested on, it recovered 3/3 HRs within the published CI (2.4% median HR error on ground truth). Pure CV = world-class on clean/synthetic, unreliable on arbitrary real PDFs; vision = the reliable real-world path. (realbatch/, benchmark/results/realbatch_cv_rate.json)
+
 ## Reproduce
 
 ```bash

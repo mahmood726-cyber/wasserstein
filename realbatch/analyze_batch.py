@@ -131,10 +131,15 @@ def main():
     import glob
     manifest = {r["pmcid"]: r for r in json.load(open(os.path.join(BASE, "plos_manifest.json")))}
     pdfs = sorted(glob.glob(os.path.join(PDFDIR, "*.pdf")))
-    results = []
+    # resume: keep already-analyzed PMCIDs
+    rp = os.path.join(BASE, "batch_results.json")
+    results = json.load(open(rp)) if os.path.exists(rp) else []
+    done = {x["pmcid"] for x in results}
     t0 = time.time()
     for i, pdf in enumerate(pdfs):
         pmcid = os.path.splitext(os.path.basename(pdf))[0]
+        if pmcid in done:
+            continue
         r = manifest.get(pmcid, {"pmcid": pmcid, "abstract": ""})
         # parse the reported HR from the FULL PDF TEXT (higher yield than the truncated abstract)
         try:
@@ -160,7 +165,7 @@ def main():
         results.append(rec)
         if (i + 1) % 10 == 0:
             km = sum(x["km_extracted"] for x in results)
-            print(f"  {i+1}/{len(recs)}  km_extracted={km}  ({time.time()-t0:.0f}s)", flush=True)
+            print(f"  {i+1}/{len(pdfs)}  km_extracted={km}  ({time.time()-t0:.0f}s)", flush=True)
             json.dump(results, open(os.path.join(BASE, "batch_results.json"), "w"), indent=1)
     json.dump(results, open(os.path.join(BASE, "batch_results.json"), "w"), indent=1)
     n = len(results); km = sum(x["km_extracted"] for x in results)
