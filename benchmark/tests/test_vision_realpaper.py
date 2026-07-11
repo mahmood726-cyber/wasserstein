@@ -107,6 +107,36 @@ def test_auto_reread_loop_self_corrects():
     assert r["hr"] < 1.0                  # correct direction, outlier did not flip it
 
 
+def test_self_contained_figure_hr_reproduced():
+    """Strongest validation: the figure carries BOTH the curve and the hazard ratio printed on it,
+    so the ground truth needs no external HR<->figure matching. Reconstructing the HR from the curve
+    reproduces the printed HR to ~1% and reproduces the printed 95% CI. Two real PLoS figures with an
+    in-figure HR + at-risk table (vision reads captured as fixtures).
+
+    PMC13225653 (OS, PMRT vs No PMRT): printed HR 0.33 [0.07, 1.51]  -> recon 0.326 [0.070, 1.510]
+    PMC13155632 (High vs Low, printed 1.29 [0.98, 1.71], Low ref)    -> recon 0.765 [0.584, 1.003]
+    """
+    # PMC13225653 OS: exp=PMRT (higher survival), ctl=No PMRT
+    r1 = reconstruct_two_arm(
+        [1.0, 1.0, 1.0, 0.87, 0.81, 0.81, 0.81, 0.81, 0.81],
+        [1.0, 0.94, 0.87, 0.80, 0.57, 0.57, 0.43, 0.43, 0.43],
+        [0, 36, 72, 108, 144, 180, 216, 252, 288], 22, 35, follow_up=288,
+        nar_times=[0, 48, 96, 144, 192, 240, 288],
+        nar_exp=[22, 15, 10, 7, 3, 2, 0], nar_ctl=[35, 24, 16, 10, 4, 3, 1])
+    assert _within(r1["hr"], 0.07, 1.51)          # recon HR inside the PRINTED CI
+    assert abs(r1["hr"] - 0.33) < 0.05            # within ~1 abs-pct of the printed point estimate
+
+    # PMC13155632: exp=High (higher survival), ctl=Low; printed 1.29 is Low-vs-High so recon ~ 1/1.29
+    r2 = reconstruct_two_arm(
+        [1.0, 0.945, 0.925, 0.905, 0.89, 0.878, 0.868, 0.86],
+        [1.0, 0.938, 0.905, 0.885, 0.855, 0.838, 0.828, 0.82],
+        [0, 1.57, 3.14, 4.71, 6.29, 7.86, 9.43, 11], 733, 734, follow_up=11,
+        nar_times=[0, 2, 4, 6, 8, 10],
+        nar_exp=[733, 692, 632, 586, 514, 184], nar_ctl=[734, 672, 608, 561, 470, 219])
+    assert _within(r2["hr"], 1 / 1.71, 1 / 0.98)  # recon inside inverted printed CI
+    assert abs(r2["hr"] - 1 / 1.29) < 0.03
+
+
 def test_robust_tail_truncation_fixes_steep_tail():
     """Without an at-risk table, an anomalous steep late-tail drop over-inflates the HR (all N
     wrongly assumed at risk). robust_tail truncates the unsupported tail. PMC9612472: HR 5.37 -> ~2.0,
