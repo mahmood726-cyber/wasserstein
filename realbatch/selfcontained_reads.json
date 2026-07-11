@@ -28,5 +28,35 @@
   "nar_times": [0, 2, 4, 6, 8, 10],
   "nar_arm1": [733, 692, 632, 586, 514, 184],
   "nar_arm2": [734, 672, 608, 561, 470, 219]
+ },
+ {
+  "pmcid": "PMC13095019",
+  "endpoint": "OS",
+  "km_found": true,
+  "which_file": "PMC13095019_f0.png",
+  "times": [0, 4, 8, 12, 16, 20, 24, 28],
+  "arm1": {"label": "Furosemide", "survival": [1.0, 0.94, 0.87, 0.80, 0.71, 0.65, 0.60, 0.56]},
+  "arm2": {"label": "Non-Furosemide", "survival": [1.0, 0.80, 0.63, 0.55, 0.50, 0.48, 0.44, 0.42]},
+  "higher_curve": "arm1",
+  "printed_hr": 0.60,
+  "printed_ci": [0.48, 0.76],
+  "nar_times": [0, 7, 14, 21, 28],
+  "nar_arm1": [280, 234, 194, 172, 158],
+  "nar_arm2": [280, 179, 140, 125, 117]
+ },
+ {
+  "pmcid": "PMC13148700",
+  "endpoint": "OS",
+  "km_found": true,
+  "which_file": "PMC13148700_f1.png",
+  "times": [0, 50, 100, 150, 200, 250, 300, 350],
+  "arm1": {"label": "log2(EASIX) Low", "survival": [1.0, 0.71, 0.63, 0.60, 0.58, 0.56, 0.55, 0.53]},
+  "arm2": {"label": "log2(EASIX) High", "survival": [1.0, 0.62, 0.58, 0.55, 0.53, 0.51, 0.49, 0.47]},
+  "higher_curve": "arm1",
+  "printed_hr": 1.22,
+  "printed_ci": [1.15, 1.29],
+  "nar_times": [0, 50, 100, 150, 200, 250, 300, 350],
+  "nar_arm1": [2428, 1589, 1489, 1435, 1390, 1357, 1338, 1315],
+  "nar_arm2": [2428, 1433, 1321, 1274, 1242, 1209, 1184, 1161]
  }
 ]

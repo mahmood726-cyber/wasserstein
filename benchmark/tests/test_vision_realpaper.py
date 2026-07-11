@@ -136,6 +136,27 @@ def test_self_contained_figure_hr_reproduced():
     assert _within(r2["hr"], 1 / 1.71, 1 / 0.98)  # recon inside inverted printed CI
     assert abs(r2["hr"] - 1 / 1.29) < 0.03
 
+    # PMC13095019 OS: exp=Furosemide (higher), ctl=Non-Furosemide; printed HR 0.60 [0.48, 0.76]
+    r3 = reconstruct_two_arm(
+        [1.0, 0.94, 0.87, 0.80, 0.71, 0.65, 0.60, 0.56],
+        [1.0, 0.80, 0.63, 0.55, 0.50, 0.48, 0.44, 0.42],
+        [0, 4, 8, 12, 16, 20, 24, 28], 280, 280, follow_up=28,
+        nar_times=[0, 7, 14, 21, 28],
+        nar_exp=[280, 234, 194, 172, 158], nar_ctl=[280, 179, 140, 125, 117])
+    assert _within(r3["hr"], 0.48, 0.76)
+    assert abs(r3["hr"] - 0.60) < 0.08
+
+    # PMC13148700: exp=EASIX-Low (higher), ctl=EASIX-High; printed 1.22 [1.15,1.29] is High-ref so recon ~1/1.22
+    r4 = reconstruct_two_arm(
+        [1.0, 0.71, 0.63, 0.60, 0.58, 0.56, 0.55, 0.53],
+        [1.0, 0.62, 0.58, 0.55, 0.53, 0.51, 0.49, 0.47],
+        [0, 50, 100, 150, 200, 250, 300, 350], 2428, 2428, follow_up=350,
+        nar_times=[0, 50, 100, 150, 200, 250, 300, 350],
+        nar_exp=[2428, 1589, 1489, 1435, 1390, 1357, 1338, 1315],
+        nar_ctl=[2428, 1433, 1321, 1274, 1242, 1209, 1184, 1161])
+    assert _within(r4["hr"], 1 / 1.29, 1 / 1.15)
+    assert abs(r4["hr"] - 1 / 1.22) < 0.03
+
 
 def test_robust_tail_truncation_fixes_steep_tail():
     """Without an at-risk table, an anomalous steep late-tail drop over-inflates the HR (all N
