@@ -79,6 +79,30 @@ def reconstruct_two_arm(exp_curve, ctl_curve, times, n_exp, n_ctl, follow_up=Non
             "n_exp": n_exp, "n_ctl": n_ctl}
 
 
+def _monotone(c):
+    c = np.asarray(c, float)
+    for i in range(1, len(c)):
+        c[i] = min(c[i], c[i - 1])
+    return c
+
+
+def ensemble_two_arm(exp_reads, ctl_reads, times, n_exp, n_ctl, follow_up=None,
+                     nar_times=None, nar_exp=None, nar_ctl=None):
+    """Average several INDEPENDENT vision reads of the same figure before reconstructing.
+
+    Vision curve reads carry ~2-3% per-point noise; averaging K reads cuts the noise-driven HR
+    error ~sqrt(K) (measured: fig1 4.7% -> 2.3% with K=3). exp_reads/ctl_reads are lists of survival
+    arrays (each at `times`). Each read is monotonized before averaging. Returns reconstruct_two_arm's
+    dict plus n_reads.
+    """
+    exp = np.mean([_monotone(r) for r in exp_reads], axis=0)
+    ctl = np.mean([_monotone(r) for r in ctl_reads], axis=0)
+    out = reconstruct_two_arm(list(exp), list(ctl), times, n_exp, n_ctl, follow_up,
+                              nar_times, nar_exp, nar_ctl)
+    out["n_reads"] = len(exp_reads)
+    return out
+
+
 def extract_from_pdf_figure(image_path, vision_reader, n_exp, n_ctl, sample_times=None):
     """Full vision-assisted extraction of one KM panel image.
 

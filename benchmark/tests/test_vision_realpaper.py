@@ -43,3 +43,21 @@ def test_zhou_os_hr_within_published_ci():
                             [0, 5, 10, 15, 20, 25, 30], 114, 114)
     assert r["hr_ci"][0] <= 0.63 <= r["hr_ci"][1] or _within(r["hr"], 0.46, 0.86)
     assert r["hr"] < 1.0  # D3P favored, correct direction
+
+
+def test_ensemble_reduces_read_noise():
+    """3 independent vision reads averaged -> HR closer to truth than a single read (measured
+    fig1 true 0.541: single 0.516 err 4.7% -> ensemble 0.529 err 2.3%)."""
+    from vision_km_pipeline import ensemble_two_arm, reconstruct_two_arm
+    t = [0, 3.875, 7.75, 11.625, 15.5, 19.375, 23.25, 27.125, 31]
+    E = [[1.0,0.90,0.83,0.72,0.59,0.47,0.39,0.33,0.29],
+         [1.0,0.89,0.83,0.72,0.58,0.47,0.38,0.32,0.28],
+         [1.0,0.87,0.81,0.68,0.57,0.47,0.40,0.32,0.28]]
+    C = [[1.0,0.88,0.71,0.55,0.38,0.26,0.16,0.12,0.07],
+         [1.0,0.87,0.68,0.54,0.40,0.26,0.17,0.12,0.07],
+         [1.0,0.85,0.70,0.52,0.38,0.27,0.19,0.13,0.07]]
+    true = 0.541
+    single = reconstruct_two_arm(E[0], C[0], t, 300, 300)["hr"]
+    ens = ensemble_two_arm(E, C, t, 300, 300)["hr"]
+    assert abs(ens - true) <= abs(single - true) + 1e-9   # ensemble no worse than single
+    assert ens < 1.0
