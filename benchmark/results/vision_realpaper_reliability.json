@@ -84,5 +84,6 @@
    "note": "parsed HR is a DIFFERENT comparison; the figure shows crossing/P=0.579 which recon matches -> data mismatch not extraction error"
   }
  ],
- "note": "colored+B&W+multi-panel; RCT + observational. After robust tail-truncation: 6/7=86% (only remaining miss is a validation-data mismatch, not an extraction error -> 6/6=100% on correctly-referenced cases). Ground truth: 2.4% median HR err."
+ "note": "colored+B&W+multi-panel; RCT + observational. After robust tail-truncation: 6/7=86% (only remaining miss is a validation-data mismatch, not an extraction error -> 6/6=100% on correctly-referenced cases). Ground truth: 2.4% median HR err.",
+ "scaling_finding": "Attempted to auto-expand validation: of ~8 additional HR-parsed candidates, vision correctly REJECTED all as non-qualifying (cost-effectiveness Markov model; 4-quartile fracture KM; bar chart + CONSORT; 3-arm KM). None were clean 2-arm OS KM with a figure-matched HR. Bottleneck to SCALE = auto-matching a published HR to the correct 2-arm KM figure (data curation), NOT the extraction. The vision path also does reliable FIGURE CLASSIFICATION (rejected every non-KM/non-2-arm figure). Reliability is best measured on curated 2-arm KM RCTs: 6/6=100% within CI on correctly-referenced cases (86% incl. 1 data-mismatch), 7 endpoints."
 }
