@@ -86,3 +86,7 @@ realpaper_test/*.pdf
 realpaper_test/*_imgs/
 bw_dev/
 vision_eval/
+realbatch/pdfs/
+realbatch/figs/
+realbatch/_tmp_fig*.png
+realbatch/*.log
