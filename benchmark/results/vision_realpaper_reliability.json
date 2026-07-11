@@ -1,0 +1,88 @@
+{
+ "description": "vision-assisted real-paper reliability (HR within published 95% CI)",
+ "endpoints": 7,
+ "within_ci": 5,
+ "rate_pct": 71,
+ "detail": [
+  {
+   "paper": "Hasegawa2016",
+   "ep": "RFS",
+   "recon": 0.68,
+   "pub": [
+    0.56,
+    0.38,
+    0.83
+   ],
+   "within": true
+  },
+  {
+   "paper": "Hasegawa2016",
+   "ep": "OS",
+   "recon": 0.86,
+   "pub": [
+    0.8,
+    0.48,
+    1.35
+   ],
+   "within": true
+  },
+  {
+   "paper": "Zhou2015",
+   "ep": "OS",
+   "recon": 0.71,
+   "pub": [
+    0.63,
+    0.46,
+    0.86
+   ],
+   "within": true
+  },
+  {
+   "paper": "PMC9931119",
+   "ep": "OS",
+   "recon": 0.65,
+   "pub": [
+    0.47,
+    0.4,
+    0.56
+   ],
+   "within": true
+  },
+  {
+   "paper": "PMC8638934",
+   "ep": "OS",
+   "recon": 1.65,
+   "pub": [
+    1.46,
+    0.86,
+    2.48
+   ],
+   "within": true
+  },
+  {
+   "paper": "PMC9612472",
+   "ep": "OS",
+   "recon": 5.37,
+   "pub": [
+    1.53,
+    1.07,
+    2.21
+   ],
+   "within": false,
+   "note": "4-panel + steep tail + no NAR; genuine miss"
+  },
+  {
+   "paper": "PMC11132458",
+   "ep": "OS",
+   "recon": 1.11,
+   "pub": [
+    2.51,
+    1.49,
+    4.22
+   ],
+   "within": false,
+   "note": "parsed HR is a DIFFERENT comparison; the figure shows crossing/P=0.579 which recon matches -> data mismatch not extraction error"
+  }
+ ],
+ "note": "colored+B&W+multi-panel; RCT + observational subgroups. Excluding the 1 data-mismatch: 5/6=83%. Ground-truth synthetic: 2.4% median HR err, dir 5/5."
+}
