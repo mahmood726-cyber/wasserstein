@@ -93,7 +93,7 @@ pipeline handled all of them and recovered the effect within CI, with correct di
 0.54–1.69): reconstructed-vs-true HR **median error 2.4%, mean 2.9%, direction 5/5 (100%)** — on par
 with the CV path's HR target (≤2.14%) and, crucially, working on the B&W figures where the CV tracer
 fails. Accuracy improves further with FINE survival sampling + reading the number-at-risk table
-(vision reads both): Hasegawa RFS tightened 0.755 → 0.680 with NAR anchors. ENSEMBLE (average K independent vision reads) cuts noise-driven HR error ~sqrt(K): fig1 4.7%→2.3% at K=3 (ensemble_two_arm).
+(vision reads both): Hasegawa RFS tightened 0.755 → 0.680 with NAR anchors. ENSEMBLE (average K independent vision reads) cuts noise-driven HR error ~sqrt(K): fig1 4.7%→2.3% at K=3 (ensemble_two_arm). SELF-CONSISTENCY (ensemble_with_confidence): flags unreliable reads via ensemble log-HR variance and a survival-vs-at-risk-table check (read NAR must be <= N*S(t)) -> confidence high/medium/low + flags, so a bad read is caught, not trusted silently.
 
 Pure-CV real-paper gaps (why vision is needed): (1) B&W line-style figures — the HSV tracer finds
 no arms; a `raster_bw_extractor.py` top/bottom-envelope tracer handles clean B&W (synthetic IAE

@@ -103,6 +103,67 @@ def ensemble_two_arm(exp_reads, ctl_reads, times, n_exp, n_ctl, follow_up=None,
     return out
 
 
+def _km_at_risk_at(ipd_arm, query_times):
+    """Number still at risk (time >= t) for a reconstructed arm at each query time."""
+    t = np.array([r["time"] for r in ipd_arm], float)
+    return [int((t >= q - 1e-9).sum()) for q in query_times]
+
+
+def ensemble_with_confidence(exp_reads, ctl_reads, times, n_exp, n_ctl, follow_up=None,
+                             nar_times=None, nar_exp=None, nar_ctl=None):
+    """Ensemble reconstruction + self-consistency signals that flag an unreliable read.
+
+    Two checks:
+      (1) ensemble variance -- reconstruct each read's HR; the coefficient of variation across
+          reads measures read agreement (high CV => the figure is being read inconsistently).
+      (2) NAR consistency -- if a number-at-risk table was read, the ensemble reconstruction's
+          own at-risk counts must match it (max relative deviation); a large mismatch means the
+          survival read and the NAR read disagree, i.e. one is wrong.
+
+    Returns the ensemble result plus: per_read_hr, hr_cv, nar_max_dev, confidence ('high'|'medium'|
+    'low') and a 'flags' list. Low confidence => re-read / more reads recommended.
+    """
+    per = []
+    for e, c in zip(exp_reads, ctl_reads):
+        r = reconstruct_two_arm(e, c, times, n_exp, n_ctl, follow_up)
+        if r["hr"] and np.isfinite(r["hr"]):
+            per.append(r["hr"])
+    out = ensemble_two_arm(exp_reads, ctl_reads, times, n_exp, n_ctl, follow_up,
+                           nar_times, nar_exp, nar_ctl)
+    logs = np.log(per) if len(per) >= 2 else np.array([0.0])
+    hr_cv = float(np.std(logs)) if len(per) >= 2 else 0.0     # sd of log-HR across reads
+    flags = []
+    if hr_cv > 0.15:
+        flags.append("high_read_variance")
+
+    nar_max_dev = None
+    if nar_times is not None and nar_exp is not None and nar_ctl is not None:
+        # Consistency between the READ survival curve and the READ at-risk table, independent of
+        # the reconstruction: with censoring, at-risk(t) <= N_start * S(t). If the read NAR exceeds
+        # the survival-implied bound N*S(t), the survival read and the NAR read contradict each
+        # other (one is wrong). exp_mean/ctl_mean are the ensemble-averaged read curves.
+        exp_mean = np.mean([_monotone(r) for r in exp_reads], axis=0)
+        ctl_mean = np.mean([_monotone(r) for r in ctl_reads], axis=0)
+        devs = []
+        for curve, nv, N in [(exp_mean, nar_exp, n_exp), (ctl_mean, nar_ctl, n_ctl)]:
+            s_at = np.interp(nar_times, times, curve)
+            for s, want in zip(s_at, nv):
+                implied = N * s
+                if want > 0:
+                    devs.append(max(0.0, (want - implied) / want))   # excess of NAR over N*S
+        nar_max_dev = float(max(devs)) if devs else None
+        if nar_max_dev is not None and nar_max_dev > 0.15:
+            flags.append("nar_curve_mismatch")
+
+    confidence = "high"
+    if flags:
+        confidence = "low" if len(flags) >= 2 else "medium"
+    out.update({"per_read_hr": [round(x, 4) for x in per], "hr_cv": round(hr_cv, 4),
+                "nar_max_dev": (round(nar_max_dev, 3) if nar_max_dev is not None else None),
+                "confidence": confidence, "flags": flags})
+    return out
+
+
 def extract_from_pdf_figure(image_path, vision_reader, n_exp, n_ctl, sample_times=None):
     """Full vision-assisted extraction of one KM panel image.
 

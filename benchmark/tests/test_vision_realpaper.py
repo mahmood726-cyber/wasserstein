@@ -61,3 +61,22 @@ def test_ensemble_reduces_read_noise():
     ens = ensemble_two_arm(E, C, t, 300, 300)["hr"]
     assert abs(ens - true) <= abs(single - true) + 1e-9   # ensemble no worse than single
     assert ens < 1.0
+
+
+def test_self_consistency_flags_bad_reads():
+    """The confidence layer flags unreliable reads: consistent reads -> high; an outlier read ->
+    high_read_variance; a survival/at-risk-table contradiction -> nar_curve_mismatch."""
+    from vision_km_pipeline import ensemble_with_confidence
+    t = [0, 3.875, 7.75, 11.625, 15.5, 19.375, 23.25, 27.125, 31]
+    E = [[1.0,0.90,0.83,0.72,0.59,0.47,0.39,0.33,0.29],
+         [1.0,0.89,0.83,0.72,0.58,0.47,0.38,0.32,0.28],
+         [1.0,0.87,0.81,0.68,0.57,0.47,0.40,0.32,0.28]]
+    C = [[1.0,0.88,0.71,0.55,0.38,0.26,0.16,0.12,0.07],
+         [1.0,0.87,0.68,0.54,0.40,0.26,0.17,0.12,0.07],
+         [1.0,0.85,0.70,0.52,0.38,0.27,0.19,0.13,0.07]]
+    assert ensemble_with_confidence(E, C, t, 300, 300)["confidence"] == "high"
+    Ebad = [E[0], E[1], [1.0,0.70,0.55,0.40,0.30,0.22,0.15,0.10,0.06]]
+    assert "high_read_variance" in ensemble_with_confidence(Ebad, C, t, 300, 300)["flags"]
+    r = ensemble_with_confidence(E, C, t, 300, 300,
+                                 nar_times=[0, 15.5, 31], nar_exp=[300, 165, 250], nar_ctl=[300, 110, 20])
+    assert "nar_curve_mismatch" in r["flags"]
