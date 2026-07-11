@@ -90,3 +90,19 @@ realbatch/pdfs/
 realbatch/figs/
 realbatch/_tmp_fig*.png
 realbatch/*.log
+
+# realbatch scratch / intermediate batch data (regenerable; keep tracked *.py + selfcontained_reads.json)
+realbatch/batch_results.json
+realbatch/download_manifest.json
+realbatch/hr_candidates*.json
+realbatch/plos_manifest.json
+realbatch/selfcontained_results.json
+realbatch/vbatch*_ids.json
+realbatch/valfigs/
+realbatch/vbatch/
+
+# Sentinel pre-push hook output (auto-generated per session)
+sentinel-findings.md
+sentinel-findings.jsonl
+STUCK_FAILURES.md
+STUCK_FAILURES.jsonl
