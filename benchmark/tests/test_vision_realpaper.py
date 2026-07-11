@@ -105,3 +105,24 @@ def test_auto_reread_loop_self_corrects():
     r = extract_reliable("x", flaky, 300, 300)
     assert r["confidence"] == "high"      # converged despite the bad read
     assert r["hr"] < 1.0                  # correct direction, outlier did not flip it
+
+
+def test_robust_tail_truncation_fixes_steep_tail():
+    """Without an at-risk table, an anomalous steep late-tail drop over-inflates the HR (all N
+    wrongly assumed at risk). robust_tail truncates the unsupported tail. PMC9612472: HR 5.37 -> ~2.0,
+    inside the published CI [1.07, 2.21]. Well-behaved tails are NOT truncated (no regression)."""
+    from vision_km_pipeline import reconstruct_two_arm
+    t = [0, 357, 714, 1071, 1429, 1786, 2143, 2500]
+    exp = [1.0, 0.97, 0.945, 0.925, 0.91, 0.895, 0.745, 0.655]
+    ctl = [1.0, 0.99, 0.975, 0.965, 0.955, 0.945, 0.93, 0.925]
+    hr_full = reconstruct_two_arm(exp, ctl, t, 150, 150, robust_tail=False)["hr"]
+    hr_rob = reconstruct_two_arm(exp, ctl, t, 150, 150, robust_tail=True)["hr"]
+    assert hr_full > 4.0 and hr_rob < 3.0        # tail truncation pulls it down
+    assert 1.07 <= hr_rob <= 2.21                # into the published CI
+    # a well-behaved curve is unchanged by robust_tail
+    e2 = [1.0, 0.9, 0.83, 0.72, 0.59, 0.47, 0.39, 0.33, 0.29]
+    c2 = [1.0, 0.88, 0.71, 0.55, 0.38, 0.26, 0.16, 0.12, 0.07]
+    tt = [0, 3.875, 7.75, 11.625, 15.5, 19.375, 23.25, 27.125, 31]
+    a = reconstruct_two_arm(e2, c2, tt, 300, 300, robust_tail=True)["hr"]
+    b = reconstruct_two_arm(e2, c2, tt, 300, 300, robust_tail=False)["hr"]
+    assert abs(a - b) < 1e-9

@@ -47,8 +47,28 @@ def ipd_from_curve(times, survivals, n, follow_up=None):
     return reconstruct_arm_faithful(t, s, int(n), follow_up=follow_up if follow_up is not None else float(t.max()))
 
 
+def _reliable_horizon(times, *curves):
+    """Index to truncate at, to drop an UNRELIABLE steep tail. Without a number-at-risk table the
+    reconstruction assumes all N are still at risk late, so a steep late drop (few patients, noisy)
+    becomes many phantom events and inflates the HR. Detect an anomalously steep drop in the later
+    half of follow-up (>4x the median per-interval drop) and truncate before it. Returns len(times)
+    when the tail is well-behaved."""
+    n = len(times)
+    cut = n
+    for c in curves:
+        c = np.asarray(c, float)
+        drops = np.array([c[i - 1] - c[i] for i in range(1, n)])
+        pos = drops[drops > 1e-6]
+        med = np.median(pos) if pos.size else 0.02
+        for i in range(2, n):
+            if drops[i - 1] > max(4 * med, 0.08) and times[i] > 0.5 * times[-1]:
+                cut = min(cut, i)
+                break
+    return max(cut, 4)                                    # keep at least a few points
+
+
 def reconstruct_two_arm(exp_curve, ctl_curve, times, n_exp, n_ctl, follow_up=None,
-                        nar_times=None, nar_exp=None, nar_ctl=None):
+                        nar_times=None, nar_exp=None, nar_ctl=None, robust_tail=True):
     """Build pseudo-IPD for both arms + Cox HR (experimental vs control).
 
     exp_curve/ctl_curve: survival fractions at `times`. Supplying the number-at-risk table
@@ -56,6 +76,13 @@ def reconstruct_two_arm(exp_curve, ctl_curve, times, n_exp, n_ctl, follow_up=Non
     anchor-exact and materially tightens the HR toward truth (e.g. RFS 0.755 -> 0.680 with NAR).
     Returns dict with ipd, hr, ci, medians.
     """
+    # Robust tail: only when NO at-risk table is available (with a NAR table the tail is anchored
+    # and trustworthy). Truncate an anomalous unsupported steep tail so it can't inflate the HR.
+    if robust_tail and nar_times is None:
+        cut = _reliable_horizon(times, exp_curve, ctl_curve)
+        if cut < len(times):
+            times = list(times)[:cut]; exp_curve = list(exp_curve)[:cut]; ctl_curve = list(ctl_curve)[:cut]
+            follow_up = float(times[-1])
     fu = follow_up if follow_up is not None else float(max(times))
     ipd = []
     for arm, curve, n, nv in [(1, exp_curve, n_exp, nar_exp), (0, ctl_curve, n_ctl, nar_ctl)]:

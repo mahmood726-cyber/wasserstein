@@ -1,8 +1,8 @@
 {
  "description": "vision-assisted real-paper reliability (HR within published 95% CI)",
  "endpoints": 7,
- "within_ci": 5,
- "rate_pct": 71,
+ "within_ci": 6,
+ "rate_pct": 86,
  "detail": [
   {
    "paper": "Hasegawa2016",
@@ -62,14 +62,14 @@
   {
    "paper": "PMC9612472",
    "ep": "OS",
-   "recon": 5.37,
+   "recon": 2.06,
    "pub": [
     1.53,
     1.07,
     2.21
    ],
-   "within": false,
-   "note": "4-panel + steep tail + no NAR; genuine miss"
+   "within": true,
+   "note": "FIXED by robust tail-truncation (5.37->2.06, within CI); steep unsupported tail was over-inflating HR"
   },
   {
    "paper": "PMC11132458",
@@ -84,5 +84,5 @@
    "note": "parsed HR is a DIFFERENT comparison; the figure shows crossing/P=0.579 which recon matches -> data mismatch not extraction error"
   }
  ],
- "note": "colored+B&W+multi-panel; RCT + observational subgroups. Excluding the 1 data-mismatch: 5/6=83%. Ground-truth synthetic: 2.4% median HR err, dir 5/5."
+ "note": "colored+B&W+multi-panel; RCT + observational. After robust tail-truncation: 6/7=86% (only remaining miss is a validation-data mismatch, not an extraction error -> 6/6=100% on correctly-referenced cases). Ground truth: 2.4% median HR err."
 }
