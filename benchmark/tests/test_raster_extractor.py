@@ -14,7 +14,8 @@ from km_metrics import plot_metrics
 
 try:
     import easyocr  # noqa: F401
-    from raster_km_extractor import extract_raster_km
+    import raster_km_extractor as RK
+    extract_raster_km = RK.extract_raster_km
     HAVE_OCR = True
 except Exception:
     HAVE_OCR = False
@@ -40,3 +41,18 @@ def test_raster_ocr_recovers_curves_and_orientation():
                 recon.append({"time": r["time"], "status": r["status"], "arm": role})
         pm = plot_metrics(rows, recon)
         assert pm["iae"] < 0.02, f"raster-OCR IAE {pm['iae']} should beat the 0.018 target"
+
+
+def test_raster_legend_phrase_groups_multiword_labels():
+    import raster_km_extractor as RK
+
+    labels = [
+        {"text": "Usual", "x0": 100.0, "x1": 126.0, "cx": 113.0, "cy": 20.0},
+        {"text": "care", "x0": 131.0, "x1": 151.0, "cx": 141.0, "cy": 20.5},
+        {"text": "Active", "x0": 100.0, "x1": 130.0, "cx": 115.0, "cy": 40.0},
+        {"text": "treatment", "x0": 135.0, "x1": 185.0, "cx": 160.0, "cy": 40.0},
+    ]
+    rows = RK._label_rows(labels)
+    roles = {row["text"]: RK._role_from_label(row["text"]) for row in rows}
+    assert roles["Usual care"] == 0
+    assert roles["Active treatment"] == 1

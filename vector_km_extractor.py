@@ -14,8 +14,8 @@ import numpy as np
 
 # arm role by legend label (lowercased substring match)
 ROLE_BY_LABEL = [
-    (("control", "placebo", "standard", "comparator"), 0),
-    (("experimental", "treatment", "intervention"), 1),
+    (("control", "placebo", "standard", "usual care", "routine care", "comparator"), 0),
+    (("experimental", "treatment", "intervention", "active"), 1),
     (("arm c", "third"), 2),
 ]
 
@@ -55,6 +55,49 @@ def _saturation(c):
     r, g, b = c[:3]
     mx, mn = max(r, g, b), min(r, g, b)
     return mx - mn                      # chroma; grey/black ~ 0
+
+
+def _role_from_label(label):
+    if not label:
+        return None
+    ll = str(label).lower()
+    for subs, role in ROLE_BY_LABEL:
+        if any(x in ll for x in subs):
+            return role
+    return None
+
+
+def _legend_phrase_to_right(words, sx, sy, row_tol=8, max_gap=26, max_words=5):
+    """Return the same-row legend phrase immediately to the right of a swatch.
+
+    PyMuPDF's ``words`` output splits labels such as "usual care" into separate
+    tokens. Role resolution must see the phrase, not only the nearest token.
+    """
+    row = []
+    for w in words:
+        if _is_num(w[4]):
+            continue
+        wx, wy = (w[0] + w[2]) / 2, (w[1] + w[3]) / 2
+        if abs(wy - sy) <= row_tol and w[0] >= sx - 2:
+            row.append(w)
+    if not row:
+        return None
+    row.sort(key=lambda w: w[0])
+
+    phrase = []
+    last_right = None
+    for w in row:
+        if not phrase:
+            phrase.append(str(w[4]))
+            last_right = w[2]
+            continue
+        if w[0] - float(last_right) > max_gap:
+            break
+        phrase.append(str(w[4]))
+        last_right = w[2]
+        if len(phrase) >= max_words:
+            break
+    return " ".join(phrase).strip() or None
 
 
 def extract_vector_km(pdf_path, page_index=0):
@@ -157,16 +200,9 @@ def extract_vector_km(pdf_path, page_index=0):
             if span > 40 or len(pts) > 6:             # not a swatch (that's the curve)
                 continue
             sx = np.mean([p[0] for p in pts]); sy = np.mean([p[1] for p in pts])
-            best, bestd = None, 1e9
-            for w in words:
-                if _is_num(w[4]):
-                    continue
-                wx, wy = (w[0] + w[2]) / 2, (w[1] + w[3]) / 2
-                dist = abs(wy - sy) + max(0, w[0] - sx) * 0.2   # prefer word to the right, same row
-                if wy > sy - 8 and wy < sy + 8 and dist < bestd:
-                    bestd, best = dist, w[4]
-            if best:
-                label_by_color[_color_key(c)] = best
+            label = _legend_phrase_to_right(words, sx, sy)
+            if label:
+                label_by_color[_color_key(c)] = label
 
         # ---- assemble per-arm curves ------------------------------------------------
         arms = []
@@ -181,13 +217,7 @@ def extract_vector_km(pdf_path, page_index=0):
             for i in range(1, len(s)):
                 s[i] = min(s[i], s[i - 1])
             label = label_by_color.get(key)
-            role = None
-            if label:
-                ll = label.lower()
-                for subs, r in ROLE_BY_LABEL:
-                    if any(x in ll for x in subs):
-                        role = r
-                        break
+            role = _role_from_label(label)
             arms.append({"color": key, "label": label, "role": role,
                          "times": t.tolist(), "survivals": s.tolist()})
 
@@ -221,11 +251,7 @@ def extract_vector_km(pdf_path, page_index=0):
                         continue
                     wy = (w[1] + w[3]) / 2
                     if abs(wy - ry) < 7:
-                        ll = str(w[4]).lower()
-                        for subs, r in ROLE_BY_LABEL:
-                            if any(x in ll for x in subs):
-                                role = r
-                                break
+                        role = _role_from_label(w[4])
                     if role is not None:
                         break
                 target = None

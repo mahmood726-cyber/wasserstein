@@ -65,3 +65,51 @@ def test_percent_axis_detected_and_scaled():
         assert ex["y_is_percent"] is True
         for a in ex["arms"]:
             assert max(a["survivals"]) <= 1.001, "percent axis must be scaled back to [0,1]"
+
+
+def test_vector_legend_roles_use_multiword_labels(monkeypatch):
+    class Pt:
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+
+    class Page:
+        def get_drawings(self):
+            return [
+                {"color": (0, 0, 1), "items": [("m", Pt(30, 20)), ("l", Pt(80, 40)), ("l", Pt(130, 60))]},
+                {"color": (1, 0, 0), "items": [("m", Pt(30, 22)), ("l", Pt(80, 45)), ("l", Pt(130, 70))]},
+                {"color": (0, 0, 1), "items": [("m", Pt(150, 30)), ("l", Pt(164, 30))]},
+                {"color": (1, 0, 0), "items": [("m", Pt(150, 47)), ("l", Pt(164, 47))]},
+            ]
+
+        def get_text(self, _kind):
+            # x axis row: value increases with x
+            # y axis column: value decreases with y because PDF y grows downward
+            return [
+                (26, 120, 34, 128, "0", 0, 0, 0),
+                (76, 120, 84, 128, "10", 0, 0, 1),
+                (126, 120, 134, 128, "20", 0, 0, 2),
+                (6, 116, 14, 124, "0", 0, 1, 0),
+                (6, 66, 14, 74, "0.5", 0, 1, 1),
+                (6, 16, 14, 24, "1", 0, 1, 2),
+                (170, 25, 195, 35, "Usual", 0, 2, 0),
+                (200, 25, 220, 35, "care", 0, 2, 1),
+                (170, 42, 198, 52, "Active", 0, 3, 0),
+                (203, 42, 250, 52, "treatment", 0, 3, 1),
+            ]
+
+    class Doc:
+        def __getitem__(self, _index):
+            return Page()
+
+        def close(self):
+            return None
+
+    import fitz
+    monkeypatch.setattr(fitz, "open", lambda _path: Doc())
+
+    ex = extract_vector_km("dummy.pdf")
+    assert ex is not None
+    assert ex["orientation_from_legend"] is True
+    roles = sorted(a["role"] for a in ex["arms"])
+    assert roles == [0, 1]

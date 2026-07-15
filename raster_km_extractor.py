@@ -17,8 +17,8 @@ _ARM_HUES = {  # name -> (H center in OpenCV 0-179, tolerance)
     "blue": (110, 20), "red": (0, 12), "green": (60, 25),
 }
 ROLE_BY_LABEL = [
-    (("control", "placebo", "standard", "comparator"), 0),
-    (("experimental", "treatment", "intervention"), 1),
+    (("control", "placebo", "standard", "usual care", "routine care", "comparator"), 0),
+    (("experimental", "treatment", "intervention", "active"), 1),
     (("arm c", "third"), 2),
 ]
 
@@ -43,6 +43,56 @@ def _is_num(s):
 
 def _num(s):
     return float(str(s).replace("%", "").replace(",", "").replace("O", "0").strip())
+
+
+def _role_from_label(label):
+    if not label:
+        return None
+    ll = str(label).lower()
+    for subs, role in ROLE_BY_LABEL:
+        if any(x in ll for x in subs):
+            return role
+    return None
+
+
+def _label_rows(labels, row_tol=10, max_gap=35):
+    """Group OCR word tokens into same-row legend phrases."""
+    rows = []
+    for token in sorted(labels, key=lambda t: (t["cy"], t["x0"])):
+        placed = False
+        for row in rows:
+            if abs(token["cy"] - row["cy"]) <= row_tol:
+                row["tokens"].append(token)
+                n = len(row["tokens"])
+                row["cy"] = ((row["cy"] * (n - 1)) + token["cy"]) / n
+                row["x0"] = min(row["x0"], token["x0"])
+                placed = True
+                break
+        if not placed:
+            rows.append({"cy": token["cy"], "x0": token["x0"], "tokens": [token]})
+
+    grouped = []
+    for row in rows:
+        tokens = sorted(row["tokens"], key=lambda t: t["x0"])
+        phrase = []
+        current = []
+        last_x = None
+        for token in tokens:
+            if current and last_x is not None and token["x0"] - last_x > max_gap:
+                phrase.append(current)
+                current = []
+            current.append(token)
+            # Prefer right edge if present; otherwise center is still stable.
+            last_x = float(token.get("x1", token["cx"]))
+        if current:
+            phrase.append(current)
+        for chunk in phrase:
+            grouped.append({
+                "text": " ".join(str(t["text"]) for t in chunk),
+                "x0": min(t["x0"] for t in chunk),
+                "cy": sum(t["cy"] for t in chunk) / len(chunk),
+            })
+    return grouped
 
 
 def _best_line(groups, want_positive):
@@ -99,7 +149,7 @@ def extract_raster_km(png_path):
     for box, text, conf in results:
         xs = [p[0] / ocr_scale for p in box]; ys = [p[1] / ocr_scale for p in box]
         toks.append({"text": text, "cx": float(np.mean(xs)), "cy": float(np.mean(ys)),
-                     "x0": min(xs), "y0": min(ys), "conf": conf})
+                     "x0": min(xs), "x1": max(xs), "y0": min(ys), "conf": conf})
     nums = [(_num(t["text"]), t["cx"], t["cy"]) for t in toks if _is_num(t["text"])]
     if len(nums) < 4:
         return None
@@ -185,13 +235,8 @@ def extract_raster_km(png_path):
     for a in arms:
         a["role"] = None
     labels = [t for t in toks if not _is_num(t["text"]) and len(t["text"]) >= 3]
-    for lab in labels:
-        ll = lab["text"].lower()
-        role = None
-        for subs, r in ROLE_BY_LABEL:
-            if any(x in ll for x in subs):
-                role = r
-                break
+    for lab in _label_rows(labels):
+        role = _role_from_label(lab["text"])
         if role is None:
             continue
         # swatch is just LEFT of the label at the same y; sample hue there
@@ -257,11 +302,7 @@ def extract_raster_km(png_path):
                 if _is_num(t["text"]):
                     continue
                 if abs(t["cy"] - ry) < 10:
-                    ll = str(t["text"]).lower()
-                    for subs, r in ROLE_BY_LABEL:
-                        if any(x in ll for x in subs):
-                            role = r
-                            break
+                    role = _role_from_label(t["text"])
                 if role is not None:
                     break
             target = None

@@ -90,3 +90,17 @@ realbatch/pdfs/
 realbatch/figs/
 realbatch/_tmp_fig*.png
 realbatch/*.log
+realbatch/*.json
+realbatch/valfigs/
+realbatch/vbatch/
+realbatch/vbatch*/
+benchmark/results/endtoend_*.json
+
+# Sentinel/session output generated locally
+PROGRESS.md
+STUCK_FAILURES.md
+STUCK_FAILURES.jsonl
+sentinel-findings.md
+sentinel-findings.jsonl
+review-findings.md
+review-findings.jsonl

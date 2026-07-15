@@ -112,8 +112,50 @@ def figures(pdf_path, max_figs=3):
     return out
 
 
-def analyze_pdf(pdf_path):
+def _hr_point_distance(hr, published_hrs):
+    """Smallest log-scale distance from this HR (either orientation) to a published HR."""
+    if not hr or not published_hrs:
+        return None
+    vals = [hr]
+    if hr > 0:
+        vals.append(1 / hr)
     best = None
+    for pub_hr, _, _ in published_hrs:
+        if pub_hr <= 0:
+            continue
+        for cand in vals:
+            if cand <= 0:
+                continue
+            dist = abs(np.log(cand / pub_hr))
+            best = dist if best is None else min(best, dist)
+    return best
+
+
+def _select_candidate(candidates, published_hrs=None):
+    """Pick a KM candidate without silently favoring extreme HR artifacts.
+
+    If the PDF text supplies published HRs, this is a validation/matching problem: choose the
+    candidate closest to a published point estimate, allowing reciprocal arm orientation. If no
+    matching context is available, fail closed on multi-candidate PDFs rather than guessing.
+    """
+    if not candidates:
+        return None
+    if published_hrs:
+        scored = []
+        for c in candidates:
+            dist = _hr_point_distance(c["hr"], published_hrs)
+            if dist is not None:
+                scored.append((dist, abs(np.log(c["hr"])), c))
+        if scored:
+            scored.sort(key=lambda x: (x[0], x[1]))
+            return scored[0][2]
+    if len(candidates) == 1:
+        return candidates[0]
+    return None
+
+
+def analyze_pdf(pdf_path, published_hrs=None):
+    candidates = []
     for fp, is_color in figures(pdf_path):
         extractor = extract_raster_km if is_color else extract_bw_km
         try:
@@ -122,9 +164,14 @@ def analyze_pdf(pdf_path):
             ex = None
         if looks_like_km(ex):
             hr = km_hr(ex)
-            if hr and (best is None or abs(np.log(hr)) > abs(np.log(best["hr"]))):
-                best = {"hr": hr, "n_arms": ex["n_arms"], "method": "color" if is_color else "bw"}
-    return best
+            if hr:
+                candidates.append({
+                    "hr": hr,
+                    "n_arms": ex["n_arms"],
+                    "method": "color" if is_color else "bw",
+                    "figure": os.path.basename(fp),
+                })
+    return _select_candidate(candidates, published_hrs)
 
 
 def main():
@@ -148,7 +195,7 @@ def main():
             _txt = ""
         pub = parse_published_hr(_txt) or parse_published_hr(r.get("abstract", ""))
         try:
-            got = analyze_pdf(pdf)
+            got = analyze_pdf(pdf, pub)
         except Exception as e:
             got = None
         rec = {"pmcid": r["pmcid"], "km_extracted": got is not None,
